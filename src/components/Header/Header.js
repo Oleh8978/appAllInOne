@@ -4,7 +4,6 @@ import {
   SafeAreaView, View, Text, TouchableOpacity,
 } from 'react-native';
 
-import ChevronLeftBlueImage from '../../../assets/svgs/ChevronLeftBlue';
 import ChevronLeftWhiteImage from '../../../assets/svgs/ChevronLeftWhite';
 
 import colors from '../../../styles/colors';
@@ -13,28 +12,26 @@ import styles from './Header.styles';
 export default function Header({
   navigation,
   topText,
-  bottomText,
   goBack = true,
   goBackFunction = () => navigation.goBack(),
-  isLight = true,
   deviceMarginTop,
+  customStyles,
 }) {
-  const topTextColor = isLight ? colors.white : colors.black;
-  const bottomTextColor = isLight ? colors.white : colors.grey;
-
   return (
     <SafeAreaView style={{ ...styles.wrapper, marginTop: deviceMarginTop }}>
       <View style={styles.header}>
         {goBack && (
           <TouchableOpacity style={styles.backArrow} onPress={goBackFunction}>
-            {isLight ? <ChevronLeftWhiteImage /> : <ChevronLeftBlueImage />}
+            <ChevronLeftWhiteImage />
           </TouchableOpacity>
         )}
-        <Text allowFontScaling={false} style={{ ...styles.topText, color: topTextColor }}>{topText}</Text>
+        <Text 
+         allowFontScaling={false} 
+         style={{ ...styles.topText, color: colors.white, ...customStyles }}
+        >
+         {topText}
+        </Text>
       </View>
-      <Text allowFontScaling={false} style={{ ...styles.bottomText, color: bottomTextColor }}>
-        {bottomText}
-      </Text>
     </SafeAreaView>
   );
 }
@@ -47,6 +44,5 @@ Header.propTypes = {
   bottomText: PropTypes.string,
   goBack: PropTypes.bool,
   goBackFunction: PropTypes.func,
-  isLight: PropTypes.bool,
   deviceMarginTop: PropTypes.number,
 };

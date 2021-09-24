@@ -9,5 +9,5 @@ export default {
   paddingHorizontal: '5%',
   borderTopLeftRadius: 10,
   borderTopRightRadius: 10,
-  backgroundColor: colors.white,
+  backgroundColor: 'transparent',
 };

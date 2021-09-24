@@ -5,7 +5,7 @@ export default {
   width: '100%',
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: colors.purple,
+  backgroundColor: 'transparent',
   paddingBottom: 20,
   paddingVertical: Platform.OS === 'android' ? 20 : 40,
 };

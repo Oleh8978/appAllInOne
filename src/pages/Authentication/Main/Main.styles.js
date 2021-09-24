@@ -3,34 +3,35 @@ import { authPageWrapper as wrapper } from '../../../../styles/mixins';
 import colors from '../../../../styles/colors';
 
 export default StyleSheet.create({
-  main: {
+  container: {
     ...wrapper,
-    backgroundColor: colors.purple,
+    backgroundColor: '#392994',
+  },
+  mainContainer: {
+    marginTop: 'auto',
+    marginBottom: 0,
+    paddingHorizontal: 15,
+  },
+  main: {
+    height: '100%',
+    width: '100%',
     paddingBottom: 40,
+
   },
   logo: {
-    marginBottom: 25,
+    marginBottom: 30,
   },
   textsWrapper: {
-    marginBottom: 10,
+    marginBottom: 90,
     textAlign: 'center',
     color: colors.white,
   },
   welcome: {
     fontFamily: 'OpenSans-Bold',
+    textTransform: 'uppercase',
   },
   logoText: {
     marginTop: 7,
     marginBottom: 15,
-  },
-  test: {
-    position: 'relative',
-    bottom: 10,
-    fontFamily: 'OpenSans-Bold',
-    fontSize: 37,
-    color: colors.white,
-  },
-  meet: {
-    fontSize: 28,
   },
 });

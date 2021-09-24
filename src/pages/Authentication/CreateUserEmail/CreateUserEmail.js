@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Animated, ScrollView, View,
+  Text, ScrollView, View, Image, Linking
 } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useFocusEffect } from '@react-navigation/native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import statusBar from '../../../../utilities/statusBar';
 import createUser from '../../../../services/cognito/createUserThroughEmail';
@@ -18,21 +19,23 @@ import FormInput from '../../../components/FormInput/FormInput';
 import Notification from '../../../components/Notification/Notification';
 import Indent from '../../../components/Indent/Indent';
 import PasswordValidator from '../../../components/PasswordValidator/PasswordValidator';
+import OpenURLButton from '../../../components/openLinkComponent/openLinkComponent';
 
 import { AUTHENTICATION } from '../../../../constants/navigation/navigators';
 import { CONFIRM_EMAIL_ADDRESS } from '../../../../constants/navigation/authenticationScreens';
 
-import createYourAccount from '../../../../assets/images/createYourAccount.png';
+import { SIGN_TYPE } from '../../../../constants/navigation/authenticationScreens';
+
 import {
   authPageWrapper as wrapper,
   header,
   view,
 } from '../../../../styles/mixins';
 import styles from './CreateUserEmail.styles';
+import colors from '../../../../styles/colors';
+
 import {
   emailValidator,
-  familyNameValidator,
-  nameValidator,
   passwordValidator,
 } from '../../../../utilities/yupValidators';
 
@@ -70,21 +73,22 @@ function CreateUserEmail({ navigation, height, addHeight }) {
   }, [password]);
 
   return (
-    <View style={{ ...wrapper }}>
+    <LinearGradient style={{ ...wrapper, backgroundColor: 'transparent' }} colors={[colors.lightBlue, colors.darkBlue]} >
       <View style={header}>
-        <Header topText="Create Account" navigation={navigation} />
-        <Animated.Image source={createYourAccount} style={[{ height }]} />
+        <Header 
+          topText="Create your account with email" 
+          navigation={navigation} 
+          customStyles={{marginLeft: 55, marginRight: 45 }}
+        />
       </View>
+      <ScrollView showsVerticalScrollIndicator={false} style={{width: '100%'}}>
+      <Image source={require('../../../../assets/images/acauntEmailImg.png')} style={styles.imageTop} />
       <Formik
         validationSchema={yup.object().shape({
-          name: nameValidator,
-          familyName: familyNameValidator,
           email: emailValidator,
           password: passwordValidator,
         })}
         initialValues={{
-          name: '',
-          familyName: '',
           email: '',
           password: '',
         }}
@@ -119,30 +123,10 @@ function CreateUserEmail({ navigation, height, addHeight }) {
         }) => (
           <View style={styles.formWrapper}>
             <View style={styles.form}>
-              <ScrollView
-                style={styles.scrollableFormBody}
-                showsVerticalScrollIndicator={false}
+              <View
+                style={styles.formBody}
               >
-                <FormInput
-                  autoCompleteType="name"
-                  autoCapitalize="words"
-                  set={handleChange('name')}
-                  onBlur={handleBlur('name')}
-                  value={values.name}
-                  textContentType="givenName"
-                  placeholder="First name"
-                  error={touched.name && errors.name}
-                />
-                <FormInput
-                  autoCompleteType="name"
-                  autoCapitalize="words"
-                  set={handleChange('familyName')}
-                  onBlur={handleBlur('familyName')}
-                  value={values.familyName}
-                  textContentType="familyName"
-                  placeholder="Last name"
-                  error={touched.familyName && errors.familyName}
-                />
+                
                 <FormInput
                   keyboardType="email-address"
                   autoCompleteType="email"
@@ -150,7 +134,8 @@ function CreateUserEmail({ navigation, height, addHeight }) {
                   onBlur={handleBlur('email')}
                   value={values.email}
                   textContentType="emailAddress"
-                  placeholder="Email Address"
+                  placeholder="Enter your email address"
+                  headerText={'Email'}
                   error={touched.email && errors.email}
                 />
                 <FormInput
@@ -162,30 +147,43 @@ function CreateUserEmail({ navigation, height, addHeight }) {
                   onBlur={handleBlur('password')}
                   value={values.password}
                   textContentType="newPassword"
-                  placeholder="Password"
+                  placeholder="Create your password"
+                  headerText={'Password'}
                   error={touched.password && !!errors.password}
                 />
                 <Indent height={5} />
                 <PasswordValidator validators={passwordValidators} />
                 <Indent height={10} />
-              </ScrollView>
+              </View>
             </View>
             <View style={view}>
-              <DefaultButton
-                title="Create Account"
-                onPress={handleSubmit}
-                showLoader={showLoader}
-                disabled={!(isValid && dirty)}
-              />
-              <Animated.View style={[{ ...view, maxHeight: height }]}>
-                <Footer navigation={navigation} customContactBorderWidth={addHeight} />
-              </Animated.View>
+              <View style={{width:"100%", paddingHorizontal: 15}}>
+                <DefaultButton
+                  title="Next"
+                  onPress={handleSubmit}
+                  showLoader={showLoader}
+                  isArrowNext={true}
+                  disabled={!(isValid && dirty)}
+                />
+              </View>
+              <View style={{...styles.textContainer, flex: 1, flexWrap: 'wrap'}}>
+                  <Text style={styles.textFooter}>
+                    By clicking NEXT I agree to the{' '}
+                  </Text>
+                    <OpenURLButton text={'Terms'} url='' customStyleTxt={{textDecorationLine: 'underline'}}/>
+                  <Text style={styles.textFooter}>
+                  {' '}and{' '}
+                  </Text>
+                    <OpenURLButton text={'Privacy Policy'} url='' customStyleTxt={{textDecorationLine: 'underline'}}/>
+              </View>
+                <Footer navigation={navigation} customContactBorderWidth={addHeight} textFooter={'Log into your account'} onPressFunctionality={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'login' } })} />
             </View>
           </View>
         )}
       </Formik>
       <Notification notification={formError} close={() => setFormError('')} />
-    </View>
+    </ScrollView>
+    </LinearGradient>
   );
 }
 CreateUserEmail.propTypes = {

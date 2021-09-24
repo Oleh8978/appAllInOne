@@ -1,38 +1,49 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  SafeAreaView, View, Text,
+  SafeAreaView, View, Text, Image,
 } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import statusBar from '../../../utilities/statusBar';
+import Header from '../../components/Header/Header';
 
 import DefaultButton from '../../components/DefaultButton/DefaultButton';
-import Indent from '../../components/Indent/Indent';
 
-import WellDoneImage from '../../../assets/svgs/WellDone';
 import { view } from '../../../styles/mixins';
 import styles from './WellDone.styles';
+import colors from '../../../styles/colors';
 
-export default function WellDone({ route }) {
+export default function WellDone({ route, navigation }) {
   useFocusEffect(() => statusBar('light'));
 
   return (
-    <SafeAreaView style={styles.wrapper}>
-      <View />
-      <View style={view}>
-        <WellDoneImage />
-        <Text allowFontScaling={false} style={styles.wellDoneText}>
-          Well Done!
-        </Text>
-      </View>
-      <DefaultButton
-        customStyles={{ marginVertical: 0, top: -20 }}
-        title={route.params.buttonText}
-        onPress={route.params.onPress}
-      />
-      <Indent />
-    </SafeAreaView>
+    <LinearGradient colors={[colors.lightBlue, colors.darkBlue]} style={{ ...view, height: '100%', justifyContent: 'flex-start' }}>
+      <SafeAreaView style={styles.wrapper}>
+        <Header
+          topText=""
+          navigation={navigation}
+        />
+        <View style={view}>
+          <Image source={require('../../../assets/images/wellDoneImg.png')} style={styles.imageTop} />
+          <Text allowFontScaling={false} style={styles.wellDoneText}>
+            Well Done!
+          </Text>
+          <Text allowFontScaling={false} style={styles.wellDoneTextBottom}>
+            New password has been saved
+          </Text>
+        </View>
+        <View style={styles.buttonContainer}>
+          <DefaultButton
+            customStyles={{ marginVertical: 0, top: -20 }}
+            title="Next"
+            isArrowNext
+            onPress={route.params.onPress}
+          />
+        </View>
+      </SafeAreaView>
+    </LinearGradient>
   );
 }
 

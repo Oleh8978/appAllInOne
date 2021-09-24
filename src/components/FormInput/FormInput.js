@@ -30,6 +30,7 @@ export default function FormInput({
   error = '',
   style = {},
   maxLength = 1000000,
+  headerText = '',
 }) {
   const isHideFunctional = isHide || autoCompleteType === 'password';
   const [isInvisible, setIsInvisible] = useState(isHideFunctional);
@@ -60,10 +61,10 @@ export default function FormInput({
         allowFontScaling={false}
         style={{
           ...styles.placeholder,
-          color: inFocus || value.length ? colors.purple : colors.white,
+          color: colors.white,
         }}
       >
-        {placeholder}
+        {headerText}
       </Text>
       <TextInput
         autoFocus={autoFocus}
@@ -80,15 +81,14 @@ export default function FormInput({
         style={{
           ...styles.input,
           fontFamily: inputFont,
-          borderColor: error ? colors.red : colors.greyLight,
           ...style,
         }}
-        placeholderTextColor={colors.purple}
+        placeholderTextColor={colors.grey}
         onFocus={_onFocus}
         onBlur={_onBlur}
         maxLength={maxLength}
       />
-      <Text allowFontScaling={false} style={styles.error}>{error}</Text>
+      {/* <Text allowFontScaling={false} style={styles.error}>{error}</Text> */}
       {isHideFunctional && (
         <TouchableOpacity
           style={styles.eyeWrapper}
