@@ -4,21 +4,29 @@ import colors from '../../../../styles/colors';
 import { DEVICE_WIDTH } from '../../../../constants/constants';
 
 export default StyleSheet.create({
+  kycPage: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: colors.white
+  },
   progressBar: {
-    height: 12,
+    height: 60,
     width: '90%',
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 9,
     paddingHorizontal: '1%',
-    backgroundColor: colors.greyLight,
   },
   progressValue: {
     height: 6,
-    width: '33%',
+    width: '40%',
     marginRight: '0.5%',
-    borderRadius: 9,
-    backgroundColor: colors.green,
+    backgroundColor: '#6560E0',
+  },
+  stepContainer: {
+    flexDirection: 'column',
+    marginLeft: -12,
+    marginRight: -10,
+    marginTop: 17,
   },
   description: {
     fontSize: DEVICE_WIDTH <= 360 ? 17 : 21,
@@ -100,4 +108,18 @@ export default StyleSheet.create({
     borderTopWidth: 1,
     borderColor: colors.greyLight,
   },
+  headText: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 40,
+    marginBottom: 20,
+    fontSize: 20,
+    textAlign: 'center'
+  },
+  topImage: {
+    width: '100%',
+    height: 330,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  }
 });

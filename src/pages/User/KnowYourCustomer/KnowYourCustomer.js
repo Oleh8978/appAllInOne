@@ -16,9 +16,16 @@ import KeyboardNormalizer from '../../../HOCs/KeyboardNormalizerScrolling';
 import Header from '../../../components/Header/Header';
 import EMLogoHeader from '../../../components/EMLogoHeader/EMLogoHeader';
 import Notification from '../../../components/Notification/Notification';
-import KYCText from './KYCPages/KYCText';
+
+import KYCfirstStep from './KYCPages/KYCfirstStep';
+import KYCSecondStep from './KYCPages/KYCSecondStep';
+import KYCtheThirdStep from './KYCPages/KYCtheThirdStep';
 import KYCScan from './KYCPages/KYCScan';
 import KYCFinish from './KYCPages/KYCFinish';
+
+import BlueCheckBoxImage from '../../../../assets/svgs/BlueCheckBoxImage';
+import BlueCheckBoxCheckedImage from '../../../../assets/svgs/BlueCheckBoxCheckedImage';
+import BlueCheckBoxCircleImage from '../../../../assets/svgs/BlueCheckBoxCircleImage';
 
 import {
   smallHeader,
@@ -30,13 +37,14 @@ import styles from './KnowYourCustomer.styles';
 
 function KnowYourCustomer({ navigation, route }) {
   useFocusEffect(() => statusBar('dark'));
-  const [page, setPage] = useState(Store.user.KYCProgress);
+  // const [page, setPage] = useState(Store.user.KYCProgress);
+  const [page, setPage] = useState(1);
 
   const [formErrors, setFormErrors] = useState([]);
   const [showLoader, setShowLoader] = useState(false);
 
   useEffect(() => {
-    setPage(page < route.params?.page ? route.params?.page : page);
+    // setPage(page < route.params?.page ? route.params?.page : page);
 
     const parent = navigation.dangerouslyGetParent();
     parent.setOptions({
@@ -56,6 +64,7 @@ function KnowYourCustomer({ navigation, route }) {
     if (page < 3) {
       navigation.push(KNOW_YOUR_CUSTOMER, { page: page + 1 });
     } else navigation.navigate(ACCOUNT);
+
   };
 
   const addErrors = (errors) => setFormErrors([...formErrors, ...errors]);
@@ -65,28 +74,47 @@ function KnowYourCustomer({ navigation, route }) {
       // Text information: Name, Date of Birth etc.
       case 1:
         return (
-          <KYCText
+          <KYCfirstStep
             type={route?.params?.type}
             jumpToNextPage={jumpToNextPage}
             setFormErrors={addErrors}
             showLoader={showLoader}
             setShowLoader={setShowLoader}
+            title={'Enter your personal details:'}
           />
         );
 
         // Document Scan uploading
       case 2:
         return (
-          <KYCScan
-            jumpToNextPage={jumpToNextPage}
-            setFormErrors={addErrors}
-            showLoader={showLoader}
-            setShowLoader={setShowLoader}
-          />
-        );
+          // <KYCScan
+          //   jumpToNextPage={jumpToNextPage}
+          //   setFormErrors={addErrors}
+          //   showLoader={showLoader}
+          //   setShowLoader={setShowLoader}
+          // />
+          <KYCSecondStep
+          type={route?.params?.type}
+          jumpToNextPage={jumpToNextPage}
+          setFormErrors={addErrors}
+          showLoader={showLoader}
+          setShowLoader={setShowLoader}
+          title={'Select a document to verify your identity:'}
+        />);
 
         // Finish
       case 3:
+        return (
+          <KYCtheThirdStep
+          KYCtheThirdStep
+          type={route?.params?.type} 
+          jumpToNextPage={jumpToNextPage}
+          setFormErrors={addErrors}
+          showLoader={showLoader}
+          setShowLoader={setShowLoader}
+          title={'Enter your personal details:'} 
+        />);
+      case 4:
         return <KYCFinish jumpToNextPage={jumpToNextPage} />;
 
       default:
@@ -94,12 +122,43 @@ function KnowYourCustomer({ navigation, route }) {
     }
   };
 
+  const circleImage = (page, value) => {
+    if (page > value) {
+      return (
+        <View style={{ ...styles.stepContainer }}>
+          <BlueCheckBoxCheckedImage style={{ marginLeft: 'auto', marginRight: 'auto' }} />
+          <Text style={{ color: '#6560E0' }}>
+            Step
+            {`${value}`}
+          </Text>
+        </View>);
+    } if (page < value) {
+      return (
+        <View style={{ ...styles.stepContainer }}>
+          <BlueCheckBoxCircleImage style={{ marginLeft: 'auto', marginRight: 'auto' }} />
+          <Text style={{ color: '#6560E0', opacity: 0.5 }}>
+            Step
+            {`${value}`}
+          </Text>
+        </View> );
+    } if (page === value) {
+      return (
+        <View style={{ ...styles.stepContainer }}>
+          <BlueCheckBoxImage style={{ marginLeft: 'auto', marginRight: 'auto' }} />
+          <Text style={{ color: '#6560E0' }}>
+            Step
+            {`${value}`}
+          </Text>
+        </View> );
+    }
+  };
+
   return (
-    <>
+    <View style={{...styles.kycPage}}>
       <View style={smallHeader}>
         <EMLogoHeader />
         <Header
-          topText={`${page}/KYC Verification`}
+          topText="KYC Verification"
           navigation={navigation}
           goBackFunction={() => {
             if (!showLoader) {
@@ -107,25 +166,22 @@ function KnowYourCustomer({ navigation, route }) {
             }
           }}
         />
-        <View style={styles.progressBar}>
-          {[0, 1, 2].map((value, i) => (i < page ? (
-            <View
-              style={{
-                ...styles.progressValue,
-                opacity: i + 1 === page ? 1 : 0.5,
-              }}
-              key={value}
-            />
-          ) : (
-            <View key={value} />
-          )))}
-        </View>
+
       </View>
       <View style={body}>
+      <View style={styles.progressBar}>
+          {<>
+            {circleImage(page, 1)}
+            <View style={{ ...styles.progressValue, opacity: page >= 2 ? 1 : 0.5 }} />
+            {circleImage(page, 2)}
+            <View style={{ ...styles.progressValue, opacity: page >= 3 ? 1 : 0.5 }} />
+            {circleImage(page, 3)}
+          </>}
+        </View>
         {pageContent(page)}
       </View>
       {formErrors.map((error) => <Notification notification={error} close={deleteLastError} key={error.id} />)}
-    </>
+    </View>
   );
 }
 

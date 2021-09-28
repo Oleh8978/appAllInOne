@@ -7,7 +7,5 @@ export default {
   justifyContent: 'flex-start',
   alignItems: 'center',
   paddingHorizontal: '5%',
-  borderTopLeftRadius: 10,
-  borderTopRightRadius: 10,
   backgroundColor: colors.white,
 };

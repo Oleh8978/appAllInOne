@@ -50,7 +50,7 @@ import CloseImage from '../../../../../assets/svgs/Close';
 import { view } from '../../../../../styles/mixins';
 import styles from '../KnowYourCustomer.styles';
 
-function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowLoader, setFormErrors }) {
+function KYCfirstStep({ type = 'natural_person', jumpToNextPage, showLoader, setShowLoader, setFormErrors, title }) {
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [date, setDate] = useState(new Date('January 1, 2000'));
   const [dateIsPicked, setDateIsPicked] = useState(false);
@@ -74,47 +74,48 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
   const openAgreement = async (values) => {
     try {
       setShowLoader(true);
-      const KYCFormedData = type === 'natural_person'
-        ? {
+      const KYCFormedData = {
           name: `${values.name} ${values.familyName}`,
           email: values.email || '',
           'date-of-birth': getShortDate(date),
-          'tax-id-number': values.taxId,
-          'tax-country': 'US',
-          'tax-state': taxState,
+          // 'tax-id-number': values.taxId,
+          // 'tax-country': 'US',
+          // 'tax-state': taxState,
           'primary-phone-number': {
             country: 'US',
             number: values.phoneNumber,
           },
-          'primary-address': {
-            country: 'US',
-            region: state,
-            city: values.city,
-            'street-1': values.streetAddress,
-            'postal-code': values.postalCode,
-          },
-        } : {
-          name: values.name,
-          email: values.email || '',
-          'date-of-incorporation': getShortDate(date),
-          'description-of-services': values.descriptionOfServices,
-          'jurisdictions-of-business-activity': 'US',
-          'tax-id-number': values.taxId,
-          'tax-country': 'US',
-          'region-of-formation': regionFormation,
-          'tax-state': taxState,
-          'primary-phone-number': {
-            country: 'US',
-            number: values.phoneNumber,
-          },
-          'primary-address': {
-            country: 'US',
-            region: state,
-            city: values.city,
-            'street-1': values.streetAddress,
-            'postal-code': values.postalCode,
-          },
-        };
+          // 'primary-address': {
+          //   country: 'US',
+          //   region: state,
+          //   city: values.city,
+          //   'street-1': values.streetAddress,
+          //   'postal-code': values.postalCode,
+          // },
+        } 
+        // : 
+        // {
+        //   name: values.name,
+        //   email: values.email || '',
+        //   'date-of-incorporation': getShortDate(date),
+        //   'description-of-services': values.descriptionOfServices,
+        //   'jurisdictions-of-business-activity': 'US',
+        //   'tax-id-number': values.taxId,
+        //   'tax-country': 'US',
+        //   'region-of-formation': regionFormation,
+        //   'tax-state': taxState,
+        //   'primary-phone-number': {
+        //     country: 'US',
+        //     number: values.phoneNumber,
+        //   },
+        //   'primary-address': {
+        //     country: 'US',
+        //     region: state,
+        //     city: values.city,
+        //     'street-1': values.streetAddress,
+        //     'postal-code': values.postalCode,
+        //   },
+        // };
       setTextFormedData(KYCFormedData);
       const parseUserAgreement = (await getUserAgreement(KYCFormedData.name)).content
         // delete fonts cause weren't sure we have them
@@ -141,56 +142,57 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
     setShowLoader(false);
   };
 
-  const uploadText = async () => {
-    setShowLoader(true);
-    try {
-      await registerContact(textFormedData, type)
-        .then(async () => {
-          await jumpToNextPage();
-        });
-    } catch (e) {
-      try {
-        const errors = JSON.parse(/{.+}/.exec(e.message))?.errors;
-        if (errors) {
-          setFormErrors(errors.map(primeTrustErrorFormatter));
-        } else {
-          setFormErrors([{ message: e.message, id: Math.random() }]);
-        }
-      } catch (_e) {
-        setFormErrors([{ message: _e.message, id: Math.random() }]);
-      }
-    }
-    setShowLoader(false);
-    setShowAgreement(false);
-  };
+  // const uploadText = async () => {
+  //   setShowLoader(true);
+  //   try {
+  //     await registerContact(textFormedData, type)
+  //       .then(async () => {
+  //         await jumpToNextPage();
+  //       });
+  //   } catch (e) {
+  //     try {
+  //       const errors = JSON.parse(/{.+}/.exec(e.message))?.errors;
+  //       if (errors) {
+  //         setFormErrors(errors.map(primeTrustErrorFormatter));
+  //       } else {
+  //         setFormErrors([{ message: e.message, id: Math.random() }]);
+  //       }
+  //     } catch (_e) {
+  //       setFormErrors([{ message: _e.message, id: Math.random() }]);
+  //     }
+  //   }
+  //   setShowLoader(false);
+  //   setShowAgreement(false);
+  // };
 
   return (
     <>
+    <Text style={{...styles.headText}}>{title}</Text>
       <Formik
         validationSchema={yup.object().shape({
           name: nameValidator,
           familyName: familyNameValidator,
           email: emailValidator,
           phoneNumber: phoneNumberValidator,
-          streetAddress: streetValidator,
-          city: cityValidator,
-          postalCode: postalCodeValidator,
-          taxId: taxNumberValidator,
+          // streetAddress: streetValidator,
+          // city: cityValidator,
+          // postalCode: postalCodeValidator,
+          // taxId: taxNumberValidator,
         })}
         initialValues={{
           name: type === 'natural_person' ? Store.user.givenName : '',
-          descriptionOfServices: '',
+          // descriptionOfServices: '',
           familyName: Store.user.familyName,
           email: Store.user.email,
           date: '',
           phoneNumber: '',
-          regionFormation: '',
-          taxState: '',
-          state: '',
-          city: '',
-          streetAddress: '',
-          postalCode: '',
-          taxId: '',
+          // regionFormation: '',
+          // taxState: '',
+          // state: '',
+          // city: '',
+          // streetAddress: '',
+          // postalCode: '',
+          // taxId: '',
         }}
         onSubmit={openAgreement}
       >
@@ -218,7 +220,7 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
                     placeholder={type === 'natural_person' ? 'First Name' : 'Company Name'}
                     error={touched.name && errors.name}
                   />
-                  {type === 'company' && (
+                  {/* {type === 'company' && (
                     <FormInput
                       set={handleChange('descriptionOfServices')}
                       onBlur={handleBlur('descriptionOfServices')}
@@ -226,7 +228,7 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
                       placeholder="Description Of Services"
                       error={touched.descriptionOfServices && errors.descriptionOfServices}
                     />
-                  )}
+                  )} */}
                   {type === 'natural_person' && (
                     <FormInput
                       autoCompleteType="name"
@@ -273,7 +275,7 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
                     placeholder="Phone Number"
                     error={touched.phoneNumber && errors.phoneNumber}
                   />
-                  {type === 'company' && (
+                  {/* {type === 'company' && (
                   <View style={view}>
                     <FormInput
                       editable={false}
@@ -307,8 +309,8 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
                     </View>
                     )}
                   </View>
-                  )}
-                  <View style={view}>
+                  )} */}
+                  {/* <View style={view}>
                     <FormInput
                       editable={false}
                       onFocus={() => {
@@ -340,8 +342,8 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
                         />
                       </View>
                     )}
-                  </View>
-                  <View style={view}>
+                  </View> */}
+                  {/* <View style={view}>
                     <FormInput
                       editable={false}
                       onFocus={() => {
@@ -373,8 +375,8 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
                         />
                       </View>
                     )}
-                  </View>
-                  <FormInput
+                  </View> */}
+                  {/* <FormInput
                     autoCapitalize="sentences"
                     set={handleChange('city')}
                     onBlur={handleBlur('city')}
@@ -382,8 +384,8 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
                     textContentType="addressCityAndState"
                     placeholder="City"
                     error={touched.city && errors.city}
-                  />
-                  <FormInput
+                  /> */}
+                  {/* <FormInput
                     autoCapitalize="sentences"
                     autoCompleteType="street-address"
                     set={handleChange('streetAddress')}
@@ -392,8 +394,8 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
                     textContentType="fullStreetAddress"
                     placeholder="Street Address"
                     error={touched.streetAddress && errors.streetAddress}
-                  />
-                  <FormInput
+                  /> */}
+                  {/* <FormInput
                     keyboardType="number-pad"
                     set={(value) => postalCodeFormatter(value, handleChange('postalCode'))}
                     onBlur={handleBlur('postalCode')}
@@ -403,8 +405,8 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
                     placeholder="Postal Code"
                     error={touched.postalCode && errors.postalCode}
                     maxLength={5}
-                  />
-                  <FormInput
+                  /> */}
+                  {/* <FormInput
                     isHide
                     keyboardType="number-pad"
                     set={(value) => numberFormatter(value, handleChange('taxId'))}
@@ -413,8 +415,8 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
                     placeholder="Social Security Number\Tax ID"
                     error={touched.taxId && errors.taxId}
                     maxLength={9}
-                  />
-                  <Indent height={17} />
+                  /> */}
+                  {/* <Indent height={17} /> */}
                   <DefaultButton
                     title="Next Step"
                     onPress={handleSubmit}
@@ -424,8 +426,6 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
                         isValid
                           && dirty
                           && dateIsPicked
-                          && taxStateIsPicked
-                          && stateIsPicked
                           && (type === 'natural_person' || regionFormationIsPicked)
                       )
                     }
@@ -440,7 +440,7 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
       {showDatePicker && (
         <DatePicker
           close={() => setShowDatePicker(false)}
-          header={type === 'natural_person' ? 'Set your date of birth' : 'Set date of incorporation'}
+          header={type === 'natural_person' ? 'Select your birth day date' : 'Set date of incorporation'}
           value={date}
           onValueChange={(event, _date) => {
             if (Platform.OS === 'android') {
@@ -455,7 +455,7 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
           select={() => setShowDatePicker(false)}
         />
       )}
-      {showRegionFormationPicker && (
+      {/* {showRegionFormationPicker && (
       <Picker
         close={() => setShowRegionFormationPicker(false)}
         header="Pick your region formation"
@@ -464,8 +464,8 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
         list={USA_STATES_LIST}
         select={() => setShowRegionFormationPicker(false)}
       />
-      )}
-      {showTaxStatePicker && (
+      )} */}
+      {/* {showTaxStatePicker && (
         <Picker
           close={() => setShowTaxStatePicker(false)}
           header="Pick your tax state"
@@ -474,8 +474,8 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
           list={USA_STATES_LIST}
           select={() => setShowTaxStatePicker(false)}
         />
-      )}
-      {showStatePicker && (
+      )} */}
+      {/* {showStatePicker && (
         <Picker
           close={() => setShowStatePicker(false)}
           header="Pick your state"
@@ -484,8 +484,8 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
           list={USA_STATES_LIST}
           select={() => setShowStatePicker(false)}
         />
-      )}
-      {showAgreement && (
+      )} */}
+      {/* {showAgreement && (
         <Modal
           animationType="slide"
           transparent
@@ -531,12 +531,12 @@ function KYCText({ type = 'natural_person', jumpToNextPage, showLoader, setShowL
             </SafeAreaView>
           </View>
         </Modal>
-      )}
+      )} */}
     </>
   );
 }
 
-KYCText.propTypes = {
+KYCfirstStep.propTypes = {
   jumpToNextPage: PropTypes.func,
   showLoader: PropTypes.bool,
   setShowLoader: PropTypes.func,
@@ -544,4 +544,4 @@ KYCText.propTypes = {
   type: PropTypes.string,
 };
 
-export default KYCText;
+export default KYCfirstStep;

@@ -75,7 +75,7 @@ export default observer(({ navigation }) => {
 
   return (
     <Tab.Navigator tabBarOptions={{ style: { position: 'absolute' }, showLabel: false }}>
-      <Tab.Screen
+      {/* <Tab.Screen
         name={DASHBOARD}
         component={DashboardScreen}
         options={{
@@ -89,8 +89,8 @@ export default observer(({ navigation }) => {
             </View>
           )),
         }}
-      />
-      <Tab.Screen
+      /> */}
+      {/* <Tab.Screen
         name={WALLETS}
         component={WalletsScreen}
         options={{
@@ -104,8 +104,8 @@ export default observer(({ navigation }) => {
             </View>
           )),
         }}
-      />
-      <Tab.Screen
+      /> */}
+      {/* <Tab.Screen
         name={TRANSACTIONS}
         component={TransactionsScreen}
         options={{
@@ -119,7 +119,7 @@ export default observer(({ navigation }) => {
             </View>
           )),
         }}
-      />
+      /> */}
       <Tab.Screen
         name={ACCOUNT}
         component={AccountScreen}

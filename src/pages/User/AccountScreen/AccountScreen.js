@@ -25,17 +25,17 @@ export default function AccountScreen() {
       initialRouteName={ACCOUNT}
       screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen name={ACCOUNT} component={Account} />
-      <Stack.Screen name={SETTINGS} component={Settings} />
+      {/* <Stack.Screen name={ACCOUNT} component={Account} /> */}
+      {/* <Stack.Screen name={SETTINGS} component={Settings} /> */}
       {/* TODO: fix gesture */}
       <Stack.Screen
         name={KNOW_YOUR_CUSTOMER}
         component={KnowYourCustomer}
         options={{ gestureEnabled: false }}
       />
-      <Stack.Screen name={CHANGE_PASSWORD} component={ChangePassword} />
-      <Stack.Screen name={PASSCODE} component={Passcode} />
-      <Stack.Screen name={WELL_DONE} component={WellDone} />
+      {/* <Stack.Screen name={CHANGE_PASSWORD} component={ChangePassword} /> */}
+      {/* <Stack.Screen name={PASSCODE} component={Passcode} /> */}
+      {/* <Stack.Screen name={WELL_DONE} component={WellDone} /> */}
     </Stack.Navigator>
   );
 }
