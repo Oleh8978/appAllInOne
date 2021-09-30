@@ -72,17 +72,17 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
             'postal-code': values.postalCode,
           },
         };
-      setTextFormedData(KYCFormedData);
-      const parseUserAgreement = (await getUserAgreement(KYCFormedData.name)).content
-        // delete fonts cause weren't sure we have them
-        .replace(/font-family:[.\w\s]*/g, '')
-        // delete useless end of text
-        .replace(/Agreed as of day[.\s\S\n]+between:/g, '')
-        // change line break to space for right html rendering
-        .replace(/(<.+>)([^<]*)(<\/.+>)/g, (m, p1, p2, p3) => `${p1}${p2.replace(/\n/g, ' ')}${p3}`);
-      setUserAgreement(parseUserAgreement);
-      setAgreedCheckpoint(false);
-      setShowAgreement(true);
+      // setTextFormedData(KYCFormedData);
+      // const parseUserAgreement = (await getUserAgreement(KYCFormedData.name)).content
+      //   // delete fonts cause weren't sure we have them
+      //   .replace(/font-family:[.\w\s]*/g, '')
+      //   // delete useless end of text
+      //   .replace(/Agreed as of day[.\s\S\n]+between:/g, '')
+      //   // change line break to space for right html rendering
+      //   .replace(/(<.+>)([^<]*)(<\/.+>)/g, (m, p1, p2, p3) => `${p1}${p2.replace(/\n/g, ' ')}${p3}`);
+      // setUserAgreement(parseUserAgreement);
+      // setAgreedCheckpoint(false);
+      // setShowAgreement(true);
     } catch (e) {
       try {
         const errors = JSON.parse(/{.+}/.exec(e.message))?.errors;
@@ -95,6 +95,8 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
         setFormErrors([{ message: _e.message, id: Math.random() }]);
       }
     }
+    // uncomment only for test purposses to jump to next page
+    jumpToNextPage();
     setShowLoader(false);
   };
 
@@ -117,8 +119,6 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
         setFormErrors([{ message: _e.message, id: Math.random() }]);
       }
     }
-    // uncomment only for test purposses to jump to next page
-    jumpToNextPage();
     setShowLoader(false);
     setShowAgreement(false);
   };
