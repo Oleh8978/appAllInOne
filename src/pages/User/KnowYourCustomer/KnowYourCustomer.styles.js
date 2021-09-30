@@ -54,8 +54,8 @@ export default StyleSheet.create({
   },
   close: {
     position: 'absolute',
-    right: -10,
-    top: -10,
+    right: 2,
+    top: 2,
     zIndex: 1,
     backgroundColor: colors.white,
     borderRadius: 12,
@@ -64,13 +64,13 @@ export default StyleSheet.create({
   },
   photoHeader: {
     position: 'relative',
-    top: -10,
+    top: 90,
     width: '100%',
     maxWidth: '95%',
     textAlign: 'center',
     fontSize: 18,
     fontFamily: 'OpenSans-SemiBold',
-    color: colors.purple,
+    color: colors.black,
   },
   agreementBackground: {
     flex: 1,
@@ -131,6 +131,7 @@ export default StyleSheet.create({
   },
   kycUploadContainer: {
     width: 'auto',
+    height: 220,
     marginBottom: 17,
   },
   sideText: {

@@ -1,7 +1,8 @@
 import React from 'react';
 import {
-  View, Text, KeyboardAvoidingView,
+  View, Text, KeyboardAvoidingView, ImageBackground, Image
 } from 'react-native';
+
 import PropTypes from 'prop-types';
 import Modal from 'react-native-modal';
 import styles from './Modal.styles';
@@ -20,6 +21,9 @@ export default function ModalWrapper({
   header,
   swipeDirection = 'down',
   keyboardNormalizer = false,
+  customStyleBackground = {},
+  customStyleBody = {},
+  isNeedLine = true,
 }) {
   return (
     <Modal
@@ -28,18 +32,24 @@ export default function ModalWrapper({
       isVisible
       onSwipeComplete={close}
       onBackdropPress={close}
-      style={styles.filterModal}
+      style={{...styles.filterModal, ...customStyleBackground}}
       propagateSwipe
     >
-      <ContentWrapper keyboardNormalizer={keyboardNormalizer}>
-        <View style={styles.filterModalBody}>
-          <View style={styles.sliderWrapper}>
-            <View style={styles.slider} />
+        <ContentWrapper keyboardNormalizer={keyboardNormalizer}>
+          <View style={{
+            ...styles.filterModalBody, 
+            ...customStyleBody, 
+            marginBottom: 5, 
+            marginTop: 'auto'
+            }}
+          >
+            <View style={styles.sliderWrapper}>
+              {isNeedLine ? <View style={styles.slider} /> : <></>}
+            </View>
+            {header ? <Text allowFontScaling={false} style={styles.modalHeader}>{header}</Text> : null}
+            {children}
           </View>
-          {header ? <Text allowFontScaling={false} style={styles.modalHeader}>{header}</Text> : null}
-          {children}
-        </View>
-      </ContentWrapper>
+        </ContentWrapper>
     </Modal>
   );
 }

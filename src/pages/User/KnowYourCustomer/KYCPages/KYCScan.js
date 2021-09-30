@@ -35,9 +35,16 @@ import CloseImage from '../../../../../assets/svgs/CloseBlue';
 
 import { view } from '../../../../../styles/mixins';
 import styles from '../KnowYourCustomer.styles';
+import colors from '../../../../../styles/colors';
 
 function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors, selectedType }) {
   const [documents, setDocuments] = useState([]);
+  // for the plate with image 
+  const [numberOfUpload, setNumberOfUpload] = useState(0)
+  // for the 1,2 documents
+  const [document1, setDocument1] = useState(undefined);
+  const [document2, setDocument2] = useState(undefined);
+
   const [documentsQuantity, setDocumentsQuantity] = useState(1); // max 2
   const [needUploadTwoPhoto, setNeedUploadTwoPhoto] = useState(false);
   const [documentType, setDocumentType] = useState(ID_DOCUMENTS_LIST[0].value);
@@ -74,7 +81,7 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors, sel
   const [openCameraLoader, setOpenCameraLoader] = useState(false);
   const [openGalleryLoader, setOpenGalleryLoader] = useState(false);
 
-  console.log('selectedType ', selectedType)
+  // console.log('documents ', documents)
 
   useEffect(() => {
     const severalPhoto = documentType === 'drivers_license' || documentType === 'government_id';
@@ -82,9 +89,9 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors, sel
 
     setNeedUploadTwoPhoto(severalPhoto);
     setDocumentsQuantity(newDocumentsQuantity);
-    if (documents.length === 1 && severalPhoto) {
-      setShowUploadWayPicker(true);
-    }
+    // if (documents.length === 1 && severalPhoto) {
+    //   setShowUploadWayPicker(true);
+    // }
     setDocumentTypeName(ID_DOCUMENTS_LIST.find((_document) => _document.value === documentType).name);
   }, [documentType, documents.length]);
 
@@ -157,6 +164,8 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors, sel
         setFormErrors([{ message: _e.message, id: Math.random() }]);
       }
     }
+    // uncomment for the test purposes to move to finish page 
+    // jumpToNextPage(); 
     setShowLoader(false);
   };
 
@@ -171,7 +180,16 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors, sel
       return [300, Math.floor(300 / ratio)];
     });
 
-    setShowUploadWayPicker(false);
+    if (numberOfUpload === 1) {
+      setDocument1(cutDocuments[0])
+      setShowUploadWayPicker(false);
+    }
+
+    if(numberOfUpload === 2 ) {
+      setDocument2(cutDocuments[1])
+      setShowUploadWayPicker(false);
+    }
+
     setDocumentSize(newSizes);
     setDocuments(cutDocuments);
   };
@@ -209,7 +227,7 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors, sel
     try {
       setOpenGalleryLoader(true);
       await ImagePicker.openPicker({
-        multiple: needUploadTwoPhoto,
+        multiple: false,
         mediaType: 'photo',
         maxFiles: documentsQuantity, // iOS only
       })
@@ -240,93 +258,89 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors, sel
 
   const deleteDocument = (i) => {
     if (!showLoader) {
+      console.log('i ', i)
+      console.log('documentSize ', documentSize)
+      console.log('documents ', documents)
       setDocumentSize(documentSize.filter((_document, j) => j !== i));
       setDocuments(documents.filter((_document, j) => j !== i));
+      setShowUploadWayPicker(false);
       setOtherDocumentName('');
+      i === 0 ? setDocument1(undefined) : setDocument2(undefined);
     }
   };
 
-  console.log('needUploadTwoPhoto + 1 ', needUploadTwoPhoto + 1)
-
-  const documentMapper = () => {
-    // for (let n = 0; n < needUploadTwoPhoto + 1; n++) {
-    //   return (<View style={{...styles.kycUploadContainer}}>
-    //     <KYCImageDoc style={{width: '100%'}}/>
-    //       <DefaultButton 
-    //             title={'Upload'}
-    //             isUpload 
-    //             customStyles={{marginTop: 15}}
-    //             onPress={() => (documents.length ? setShowUploadWayPicker(true) : setShowDocumentTypePicker(true))}
-    //             customStyles={{...styles.kycUpload}}
-    //     />
-    //     {needUploadTwoPhoto && <Text allowFontScaling={false} style={styles.photoHeader}>{n === 1 ? 'Front side' : 'Back side'}</Text>}
-    //   </View> )
-    // }
-  }
-
-  const numberArray = () => {
-    const numbersArray = []
-    n = 0
-    while (n < needUploadTwoPhoto + 1) {
-      numbersArray.push(n)
-    }
-
-    return numbersArray
-  }
-
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <View>
+      <View style={{marginBottom: 230}}>
         <View style={{view}}>
         <Text style={{...styles.headText}}>{selectedType.name === 'Other' ? 'Please upload selected documents' : `Upload photos of your ${selectedType.name}:`}</Text>
-          {/* {documents.length ? ( */}
-            <>
-              <View style={styles.hr} />
-              {/* {documents.map((document, i) => ( */}
-                <View style={styles.documentWrapper} key={Math.random()}>
-                  {/* {needUploadTwoPhoto && <Text allowFontScaling={false} style={styles.photoHeader}>{!i ? 'Front side' : 'Back side'}</Text>} */}
-                  <View>
-                    <TouchableWithoutFeedback onPress={() => deleteDocument(i)}>
+          {document1 === undefined ? <View style={{...styles.kycUploadContainer, marginBottom: 40 }}>
+            <KYCImageDoc style={{width: '100%'}}/>
+              <DefaultButton 
+                    title={'Upload'}
+                    isUpload 
+                    customStyles={{marginTop: 15}}
+                    onPress={() => {setShowUploadWayPicker(true); setNumberOfUpload(1)}}
+                    customStyles={{...styles.kycUpload}}
+              />
+              <Text allowFontScaling={false} style={styles.photoHeader}>{'Front side'}</Text>
+            </View> : <>
+            <View style={{marginbottom: 15}}>
+                    <TouchableWithoutFeedback onPress={() => deleteDocument(0)}>
                       <View style={styles.close}>
                         <CloseImage />
                       </View>
                     </TouchableWithoutFeedback>
-                    {/* <Image
-                      source={{ uri: document.path }}
+                    <Image
+                      source={{ uri: document1.path }}
                       style={{
-                        width: documentSize[i][0],
-                        height: documentSize[i][1],
-                        maxWidth: '93%',
+                        width: '100%',
+                        height: documentSize[0][1],
+                        maxWidth: '100%',
+                        marginBottom: 45,
                       }}
-                    /> */}
-                  </View>
-                </View>
-              {/* ))} */}
-            </>
-            { }
-          {/* ) : ( <View style={{...styles.kycUploadContainer}}>
-                  <KYCImageDoc />
+                    />
+                    <Text allowFontScaling={false} style={{...styles.photoHeader, position: 'absolute', top: documentSize[0][1] + 10}}>{'Front side'}</Text>
+                  </View></>}
+
+            {document2 === undefined ? 
+                <View style={{...styles.kycUploadContainer}}>
+                  <KYCImageDoc style={{width: '100%'}}/>
                     <DefaultButton 
                           title={'Upload'}
                           isUpload 
                           customStyles={{marginTop: 15}}
-                          onPress={() => (documents.length ? setShowUploadWayPicker(true) : setShowDocumentTypePicker(true))}
+                          onPress={() => {setShowUploadWayPicker(true); setNumberOfUpload(2)}}
                           customStyles={{...styles.kycUpload}}
-                  />
-                  {needUploadTwoPhoto && <Text allowFontScaling={false} style={styles.photoHeader}>{!i ? 'Front side' : 'Back side'}</Text>}
-                </View> )} */}
-          <Text allowFontScaling={false} style={styles.description}>
-            Valid Proof of Govt Issued ID
-          </Text>
-          <Indent height={10} />
+                    />
+                  <Text allowFontScaling={false} style={styles.photoHeader}>{'Back side'}</Text>
+                </View> 
+                : 
+                <>
+                  <View style={{marginbottom: 15}}>
+                    <TouchableWithoutFeedback onPress={() => deleteDocument(1)}>
+                      <View style={styles.close}>
+                        <CloseImage />
+                      </View>
+                    </TouchableWithoutFeedback>
+                    <Image
+                      source={{ uri: document2.path }}
+                      style={{
+                        width: '100%',
+                        height: documentSize[0][1],
+                        maxWidth: '100%',
+                        marginBottom: 45,
+                      }}
+                    />
+                    <Text allowFontScaling={false} style={{...styles.photoHeader, position: 'absolute', top: documentSize[0][1] + 10}}>{'Back side'}</Text>
+                  </View></>}
+                <>
+            </>
         </View>
         <View style={view}>
           {!(documents.length === needUploadTwoPhoto + 1)
             ? (
-              <DefaultButton
-                title="Upload"
-                onPress={() => (documents.length ? setShowUploadWayPicker(true) : setShowDocumentTypePicker(true))}
-              />
+              <></>
             )
             : (
               <DefaultButton
@@ -335,44 +349,47 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors, sel
                 showLoader={showLoader}
               />
             )}
-          <Indent height={DEVICE_WIDTH <= 360 ? 195 : 230} />
         </View>
-        {/* {showDocumentTypePicker && (
-          <Picker
-            close={() => setShowDocumentTypePicker(false)}
-            header="Pick downloaded document type"
-            value={documentType}
-            onValueChange={setDocumentType}
-            list={ID_DOCUMENTS_LIST}
-            select={() => {
-              setShowDocumentTypePicker(false);
-              if (documentType === 'other') {
-                setShowOtherDocumentNameInput(true);
-              } else {
-                setShowUploadWayPicker(true);
-              }
-            }}
-          />
-        )} */}
         {showUploadWayPicker && (
           <Modal
             close={() => setShowUploadWayPicker(false)}
-            header={
-              needUploadTwoPhoto
-                ? (documents.length ? 'Upload other document side'
-                  : 'Upload front and back document sides') : ''
-            }
+            isNeedLine={false}
+            customStyleBody={{backgroundColor: 'transparrent'}}
           >
-            <DefaultButton
-              title="Take Photo"
-              onPress={cameraPicker}
-              showLoader={openCameraLoader}
-            />
+            <View style={{
+                backgroundColor: colors.white, 
+                borderRadius: 10, 
+                width: '100%', 
+                marginLeft: 20, 
+                marginRight: 20, 
+                opacity: 0.8 }}
+            >
+              <DefaultButton
+                title="Take Photo"
+                onPress={cameraPicker}
+                showLoader={openCameraLoader}
+                customStyles={{backgroundColor: 'transparrent', marginTop: 0}}
+              />
+              <DefaultButton
+                customStyles={{ marginTop: 10 }}
+                title="Choose From Library"
+                onPress={documentPicker}
+                showLoader={openGalleryLoader}
+                customStyles={{backgroundColor: 'transparrent'}}
+              />
+            </View>
+
             <DefaultButton
               customStyles={{ marginTop: 10 }}
-              title="Choose From Library"
-              onPress={documentPicker}
+              title="Cancel"
+              onPress={() => {setShowUploadWayPicker(false)}}
               showLoader={openGalleryLoader}
+              customStyles={{
+                backgroundColor: colors.white, 
+                borderRadius: 10,
+                opacity: 0.8,
+                marginTop: 10,
+              }}
             />
             <Indent height={20} />
           </Modal>

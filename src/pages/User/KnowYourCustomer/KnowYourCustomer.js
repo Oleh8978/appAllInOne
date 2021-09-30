@@ -129,7 +129,13 @@ function KnowYourCustomer({ navigation, route }) {
 
       case 4: 
           return (
-            <KYCScan jumpToNextPage = {jumpToNextPage} selectedType={selectedType} />
+            <KYCScan 
+            jumpToNextPage = {jumpToNextPage} 
+            selectedType={selectedType} 
+            setFormErrors={addErrors} 
+            showLoader={showLoader}
+            setShowLoader={setShowLoader}
+            />
           )
       case 5:
         return <KYCFinish jumpToNextPage={jumpToNextPage} />;

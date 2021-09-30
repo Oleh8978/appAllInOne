@@ -126,6 +126,8 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
         setFormErrors([{ message: _e.message, id: Math.random() }]);
       }
     }
+    // uncomment only for test purposses to jump to next page 
+    // jumpToNextPage(); 
     setShowLoader(false);
     setShowAgreement(false);
   };
