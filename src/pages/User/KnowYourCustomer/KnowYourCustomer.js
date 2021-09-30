@@ -5,13 +5,9 @@ import { useFocusEffect } from '@react-navigation/native';
 import { observer } from 'mobx-react-lite';
 import LinearGradient from 'react-native-linear-gradient';
 
-import Store from '../../../store';
 import statusBar from '../../../../utilities/statusBar';
 
-import {
-  KNOW_YOUR_CUSTOMER,
-  ACCOUNT,
-} from '../../../../constants/navigation/userScreens';
+import { ACCOUNT } from '../../../../constants/navigation/userScreens';
 
 import KeyboardNormalizer from '../../../HOCs/KeyboardNormalizerScrolling';
 import Header from '../../../components/Header/Header';
@@ -44,9 +40,9 @@ function KnowYourCustomer({ navigation, route }) {
   const [formErrors, setFormErrors] = useState([]);
   const [showLoader, setShowLoader] = useState(false);
   const [firstPageData, setFirstPageData] = useState({});
-  //selected type of documents
+  // selected type of documents
   const [selectedType, setSelectedType] = useState({});
-  
+
   useEffect(() => {
     setPage(page < route.params?.page ? route.params?.page : page);
 
@@ -66,9 +62,8 @@ function KnowYourCustomer({ navigation, route }) {
     setFormErrors([]);
     if (page < 5) {
       // navigation.push(KNOW_YOUR_CUSTOMER, { page: page + 1 });
-      setPage(page + 1)
+      setPage(page + 1);
     } else navigation.navigate(ACCOUNT);
-
   };
 
   const addErrors = (errors) => setFormErrors([...formErrors, ...errors]);
@@ -80,8 +75,8 @@ function KnowYourCustomer({ navigation, route }) {
       email: values.email,
       date: '',
       phoneNumber: '',
-    })
-  }
+    });
+  };
 
   const pageContent = (_page = 1) => {
     switch (_page) {
@@ -95,7 +90,7 @@ function KnowYourCustomer({ navigation, route }) {
             showLoader={showLoader}
             setShowLoader={setShowLoader}
             firstPageGetter={firstPageGetter}
-            title={'Enter your personal details:'}
+            title="Enter your personal details:"
           />
         );
 
@@ -103,40 +98,41 @@ function KnowYourCustomer({ navigation, route }) {
       case 2:
         return (
           <KYCSecondStep
-          type={route?.params?.type}
-          jumpToNextPage={jumpToNextPage}
-          setFormErrors={addErrors}
-          showLoader={showLoader}
-          setShowLoader={setShowLoader}
-          firstPageData={firstPageData}
-          title={'Enter your personal details:'}
-        />);
+            type={route?.params?.type}
+            jumpToNextPage={jumpToNextPage}
+            setFormErrors={addErrors}
+            showLoader={showLoader}
+            setShowLoader={setShowLoader}
+            firstPageData={firstPageData}
+            title="Enter your personal details:"
+          />
+);
 
         // Finish
       case 3:
         return (
           <KYCtheThirdStep
-          KYCtheThirdStep
-          type={route?.params?.type} 
-          jumpToNextPage={jumpToNextPage}
-          setFormErrors={addErrors}
-          showLoader={showLoader}
-          setShowLoader={setShowLoader}
-          onPress={setSelectedType}
-          title={'Select a document to verify your identity:'} 
-        />
-        );
-
-      case 4: 
-          return (
-            <KYCScan 
-            jumpToNextPage = {jumpToNextPage} 
-            selectedType={selectedType} 
-            setFormErrors={addErrors} 
+            KYCtheThirdStep
+            type={route?.params?.type}
+            jumpToNextPage={jumpToNextPage}
+            setFormErrors={addErrors}
             showLoader={showLoader}
             setShowLoader={setShowLoader}
+            onPress={setSelectedType}
+            title="Select a document to verify your identity:"
+          />
+        );
+
+      case 4:
+          return (
+            <KYCScan
+              jumpToNextPage={jumpToNextPage}
+              selectedType={selectedType}
+              setFormErrors={addErrors}
+              showLoader={showLoader}
+              setShowLoader={setShowLoader}
             />
-          )
+          );
       case 5:
         return <KYCFinish jumpToNextPage={jumpToNextPage} />;
 
@@ -154,7 +150,8 @@ function KnowYourCustomer({ navigation, route }) {
             Step
             {`${value}`}
           </Text>
-        </View>);
+        </View>
+);
     } if (page < value) {
       return (
         <View style={{ ...styles.stepContainer }}>
@@ -163,7 +160,8 @@ function KnowYourCustomer({ navigation, route }) {
             Step
             {`${value}`}
           </Text>
-        </View> );
+        </View>
+ );
     } if (page === value) {
       return (
         <View style={{ ...styles.stepContainer }}>
@@ -172,17 +170,20 @@ function KnowYourCustomer({ navigation, route }) {
             Step
             {`${value}`}
           </Text>
-        </View> );
+        </View>
+ );
     }
   };
 
   return (
-    <View style={{...styles.kycPage}}>
-      <LinearGradient colors={[colors.lightBlue, colors.darkBlue]}  
-        style={{...smallHeader, 
-        borderBottomRightRadius: 38, 
-        borderBottomLeftRadius: 38, 
-        marginBottom: 30}}>
+    <View style={{ ...styles.kycPage }}>
+      <LinearGradient
+        colors={[colors.lightBlue, colors.darkBlue]}
+        style={{ ...smallHeader,
+        borderBottomRightRadius: 38,
+        borderBottomLeftRadius: 38,
+        marginBottom: 30 }}
+      >
         <Header
           topText="KYC Verification"
           navigation={navigation}
@@ -194,15 +195,15 @@ function KnowYourCustomer({ navigation, route }) {
         />
 
       </LinearGradient>
-      <View style={{...body, height: '100%', minHeight: 480 }}>
-      <View style={styles.progressBar}>
-          {<>
+      <View style={{ ...body, height: '100%', minHeight: 480 }}>
+        <View style={styles.progressBar}>
+          <>
             {circleImage(page, 1)}
             <View style={{ ...styles.progressValue, opacity: page >= 2 ? 1 : 0.5 }} />
             {circleImage(page, 2)}
             <View style={{ ...styles.progressValue, opacity: page >= 3 ? 1 : 0.5 }} />
             {circleImage(page, 3)}
-          </>}
+          </>
         </View>
         {pageContent(page)}
       </View>

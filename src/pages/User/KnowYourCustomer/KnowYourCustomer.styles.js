@@ -7,7 +7,7 @@ export default StyleSheet.create({
   kycPage: {
     height: '100%',
     width: '100%',
-    backgroundColor: colors.white
+    backgroundColor: colors.white,
   },
   progressBar: {
     height: 60,
@@ -114,7 +114,7 @@ export default StyleSheet.create({
     marginTop: 40,
     marginBottom: 20,
     fontSize: 20,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   topImage: {
     width: '100%',
@@ -138,5 +138,5 @@ export default StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: 100,
-  }
+  },
 });

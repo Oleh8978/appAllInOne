@@ -18,18 +18,18 @@ export default function Header({
   customStyles,
 }) {
   return (
-    <SafeAreaView style={{ ...styles.wrapper, marginTop: deviceMarginTop,}}>
-      <View style={{...styles.header}}>
+    <SafeAreaView style={{ ...styles.wrapper, marginTop: deviceMarginTop }}>
+      <View style={{ ...styles.header }}>
         {goBack && (
           <TouchableOpacity style={styles.backArrow} onPress={goBackFunction}>
             <ChevronLeftWhiteImage />
           </TouchableOpacity>
         )}
-        <Text 
-         allowFontScaling={false} 
-         style={{ ...styles.topText, color: colors.white, ...customStyles }}
+        <Text
+          allowFontScaling={false}
+          style={{ ...styles.topText, color: colors.white, ...customStyles }}
         >
-         {topText}
+          {topText}
         </Text>
       </View>
     </SafeAreaView>

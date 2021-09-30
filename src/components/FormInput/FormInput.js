@@ -96,7 +96,7 @@ export default function FormInput({
         onBlur={_onBlur}
         maxLength={maxLength}
       />
-      {isNeedArrow && <ArrowDown style={styles.arrowDown}/>}
+      {isNeedArrow && <ArrowDown style={styles.arrowDown} />}
       {/* <Text allowFontScaling={false} style={styles.error}>{error}</Text> */}
       {isHideFunctional && (
         <TouchableOpacity

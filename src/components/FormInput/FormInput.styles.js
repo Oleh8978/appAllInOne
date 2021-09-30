@@ -45,6 +45,6 @@ export default StyleSheet.create({
   arrowDown: {
     position: 'absolute',
     right: 11,
-    top: 45
-  }
+    top: 45,
+  },
 });

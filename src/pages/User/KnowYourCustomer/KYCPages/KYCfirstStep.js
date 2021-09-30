@@ -10,14 +10,8 @@ import {
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
-import getUserAgreement from '../../../../../services/getUserAgreement';
-
 import Store from '../../../../store';
-import {
-  getDate,
-  getShortDate,
-} from '../../../../../utilities/formatters/timeFormatter';
-import primeTrustErrorFormatter from '../../../../../utilities/formatters/primeTrustErrorFormatter';
+import { getDate } from '../../../../../utilities/formatters/timeFormatter';
 import numberFormatter from '../../../../../utilities/formatters/numberFormatter';
 
 import {
@@ -37,19 +31,19 @@ import { view } from '../../../../../styles/mixins';
 import styles from '../KnowYourCustomer.styles';
 import colors from '../../../../../styles/colors';
 
-function KYCfirstStep({ type = 'natural_person', jumpToNextPage, showLoader, title, firstPageGetter}) {
+function KYCfirstStep({ type = 'natural_person', jumpToNextPage, showLoader, title, firstPageGetter }) {
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [date, setDate] = useState(new Date('January 1, 2000'));
   const [dateIsPicked, setDateIsPicked] = useState(false);
 
   const dataSetter = (data) => {
-    firstPageGetter(data)
-    jumpToNextPage()
-  }
+    firstPageGetter(data);
+    jumpToNextPage();
+  };
 
   return (
     <>
-    <Text style={{...styles.headText}}>{title}</Text>
+      <Text style={{ ...styles.headText }}>{title}</Text>
       <Formik
         validationSchema={yup.object().shape({
           name: nameValidator,
@@ -81,22 +75,22 @@ function KYCfirstStep({ type = 'natural_person', jumpToNextPage, showLoader, tit
               <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={view}>
                   <FormInput
-                    headerText={'First name'}
-                    textheaderCustomStyle={{color: colors.grey}}
+                    headerText="First name"
+                    textheaderCustomStyle={{ color: colors.grey }}
                     autoCompleteType="name"
                     autoCapitalize="words"
                     set={handleChange('name')}
                     onBlur={handleBlur('name')}
                     value={values.name}
                     textContentType="givenName"
-                    placeholder={'Enter your First name'}
+                    placeholder="Enter your First name"
                     error={touched.name && errors.name}
-                    inputCustomStyle={{...shadow}}
+                    inputCustomStyle={{ ...shadow }}
                   />
                   {type === 'natural_person' && (
                     <FormInput
-                      headerText={'Last name'}
-                      textheaderCustomStyle={{color: colors.grey}}
+                      headerText="Last name"
+                      textheaderCustomStyle={{ color: colors.grey }}
                       autoCompleteType="name"
                       autoCapitalize="words"
                       set={handleChange('familyName')}
@@ -105,12 +99,12 @@ function KYCfirstStep({ type = 'natural_person', jumpToNextPage, showLoader, tit
                       textContentType="familyName"
                       placeholder="Enter your Last name"
                       error={touched.familyName && errors.familyName}
-                      inputCustomStyle={{...shadow}}
+                      inputCustomStyle={{ ...shadow }}
                     />
                   )}
                   <FormInput
-                    headerText={'Email address'}
-                    textheaderCustomStyle={{color: colors.grey}}
+                    headerText="Email address"
+                    textheaderCustomStyle={{ color: colors.grey }}
                     keyboardType="email-address"
                     autoCompleteType="email"
                     set={handleChange('email')}
@@ -119,11 +113,11 @@ function KYCfirstStep({ type = 'natural_person', jumpToNextPage, showLoader, tit
                     textContentType="emailAddress"
                     placeholder="Enter your email Address"
                     error={touched.email && errors.email}
-                    inputCustomStyle={{...shadow}}
+                    inputCustomStyle={{ ...shadow }}
                   />
                   <FormInput
-                    headerText={'date of birth'}
-                    textheaderCustomStyle={{color: colors.grey}}
+                    headerText="date of birth"
+                    textheaderCustomStyle={{ color: colors.grey }}
                     editable={false}
                     onFocus={() => {
                       setShowDatePicker(true);
@@ -131,18 +125,18 @@ function KYCfirstStep({ type = 'natural_person', jumpToNextPage, showLoader, tit
                     }}
                     onBlur={handleBlur('date')}
                     value={dateIsPicked ? getDate(date) : ''}
-                    placeholder={'Select your birth day date'}
+                    placeholder="Select your birth day date"
                     error={
                       touched.date
                       && !dateIsPicked
                       && 'This Date is required'
                     }
-                    inputCustomStyle={{...shadow}}
+                    inputCustomStyle={{ ...shadow }}
                     isNeedArrow
                   />
                   <FormInput
-                    textheaderCustomStyle={{color: colors.grey}}
-                    headerText={'Phone'}
+                    textheaderCustomStyle={{ color: colors.grey }}
+                    headerText="Phone"
                     autoCompleteType="tel"
                     keyboardType="phone-pad"
                     set={(value) => numberFormatter(value, handleChange('phoneNumber'))}
@@ -150,15 +144,15 @@ function KYCfirstStep({ type = 'natural_person', jumpToNextPage, showLoader, tit
                     value={values.phoneNumber}
                     placeholder="Phone Number"
                     error={touched.phoneNumber && errors.phoneNumber}
-                    inputCustomStyle={{...shadow}}
+                    inputCustomStyle={{ ...shadow }}
                   />
-                  
+
                   <DefaultButton
                     title="Next"
                     onPress={handleSubmit}
                     showLoader={showLoader}
                     isLight={false}
-                    isArrowNext={true}
+                    isArrowNext
                     disabled={
                       !(
                         isValid
@@ -167,7 +161,7 @@ function KYCfirstStep({ type = 'natural_person', jumpToNextPage, showLoader, tit
                           && (type === 'natural_person')
                       )
                     }
-                    customStyles={{marginTop: 15}}
+                    customStyles={{ marginTop: 15 }}
                   />
                   <Indent height={195} />
                 </View>

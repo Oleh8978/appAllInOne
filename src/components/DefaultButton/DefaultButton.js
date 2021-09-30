@@ -63,7 +63,7 @@ export default function DefaultButton({
     }
 
     if (isUpload) {
-      return <UploadImage />
+      return <UploadImage />;
     }
 
     return <></>;

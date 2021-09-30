@@ -13,11 +13,7 @@ import HTML from 'react-native-render-html';
 
 import getUserAgreement from '../../../../../services/getUserAgreement';
 
-import Store from '../../../../store/index';
-
-import {
-  getShortDate,
-} from '../../../../../utilities/formatters/timeFormatter';
+import { getShortDate } from '../../../../../utilities/formatters/timeFormatter';
 import primeTrustErrorFormatter from '../../../../../utilities/formatters/primeTrustErrorFormatter';
 import postalCodeFormatter from '../../../../../utilities/formatters/postalCodeFormatter';
 import numberFormatter from '../../../../../utilities/formatters/numberFormatter';
@@ -25,14 +21,10 @@ import numberFormatter from '../../../../../utilities/formatters/numberFormatter
 import { USA_STATES_LIST } from '../../../../../constants/constants';
 
 import {
-  nameValidator,
-  familyNameValidator,
-  phoneNumberValidator,
   streetValidator,
   cityValidator,
   postalCodeValidator,
   taxNumberValidator,
-  emailValidator,
 } from '../../../../../utilities/yupValidators';
 
 import FormInput from '../../../../components/FormInput/FormInput';
@@ -46,7 +38,6 @@ import styles from '../KnowYourCustomer.styles';
 import colors from '../../../../../styles/colors';
 
 function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, setShowLoader, setFormErrors, title, firstPageData }) {
-
   const [showRegionFormationPicker, setShowRegionFormationPicker] = useState(false);
   const [regionFormation, setRegionFormation] = useState(USA_STATES_LIST[0].value);
 
@@ -80,7 +71,7 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
             'street-1': values.streetAddress,
             'postal-code': values.postalCode,
           },
-        }
+        };
       setTextFormedData(KYCFormedData);
       const parseUserAgreement = (await getUserAgreement(KYCFormedData.name)).content
         // delete fonts cause weren't sure we have them
@@ -126,15 +117,15 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
         setFormErrors([{ message: _e.message, id: Math.random() }]);
       }
     }
-    // uncomment only for test purposses to jump to next page 
-    // jumpToNextPage(); 
+    // uncomment only for test purposses to jump to next page
+    // jumpToNextPage();
     setShowLoader(false);
     setShowAgreement(false);
   };
 
   return (
     <>
-    <Text style={{...styles.headText}}>{title}</Text>
+      <Text style={{ ...styles.headText }}>{title}</Text>
       <Formik
         validationSchema={yup.object().shape({
           streetAddress: streetValidator,
@@ -168,8 +159,8 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
                 <View style={view}>
                   <View style={view}>
                     <FormInput
-                      textheaderCustomStyle={{color: colors.grey}}
-                      headerText={'Taxt state'}
+                      textheaderCustomStyle={{ color: colors.grey }}
+                      headerText="Taxt state"
                       editable={false}
                       onFocus={() => {
                         setShowTaxStatePicker(true);
@@ -184,7 +175,7 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
                         && !taxStateIsPicked
                         && 'Tax state is required'
                       }
-                      inputCustomStyle={{...shadow}}
+                      inputCustomStyle={{ ...shadow }}
                       isNeedArrow
                     />
                     {Platform.OS === 'android' && (
@@ -205,8 +196,8 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
                   </View>
                   <View style={view}>
                     <FormInput
-                      textheaderCustomStyle={{color: colors.grey}}
-                      headerText={'State'}
+                      textheaderCustomStyle={{ color: colors.grey }}
+                      headerText="State"
                       editable={false}
                       onFocus={() => {
                         setShowStatePicker(true);
@@ -222,7 +213,7 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
                         && 'State state is required'
                       }
                       isNeedArrow
-                      inputCustomStyle={{...shadow}}
+                      inputCustomStyle={{ ...shadow }}
                     />
                     {Platform.OS === 'android' && (
                       <View style={styles.invisiblePicker}>
@@ -241,8 +232,8 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
                     )}
                   </View>
                   <FormInput
-                    textheaderCustomStyle={{color: colors.grey}}
-                    headerText={'City'}
+                    textheaderCustomStyle={{ color: colors.grey }}
+                    headerText="City"
                     autoCapitalize="sentences"
                     set={handleChange('city')}
                     onBlur={handleBlur('city')}
@@ -250,11 +241,11 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
                     textContentType="addressCityAndState"
                     placeholder="Select your city"
                     error={touched.city && errors.city}
-                    inputCustomStyle={{...shadow}}
+                    inputCustomStyle={{ ...shadow }}
                   />
                   <FormInput
-                    textheaderCustomStyle={{color: colors.grey}}
-                    headerText={'Street addresss'}
+                    textheaderCustomStyle={{ color: colors.grey }}
+                    headerText="Street addresss"
                     autoCapitalize="sentences"
                     autoCompleteType="street-address"
                     set={handleChange('streetAddress')}
@@ -263,11 +254,11 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
                     textContentType="fullStreetAddress"
                     placeholder="Enter your street address"
                     error={touched.streetAddress && errors.streetAddress}
-                    inputCustomStyle={{...shadow}}
+                    inputCustomStyle={{ ...shadow }}
                   />
                   <FormInput
-                    textheaderCustomStyle={{color: colors.grey}}
-                    headerText={'post code'}
+                    textheaderCustomStyle={{ color: colors.grey }}
+                    headerText="post code"
                     keyboardType="number-pad"
                     set={(value) => postalCodeFormatter(value, handleChange('postalCode'))}
                     onBlur={handleBlur('postalCode')}
@@ -277,10 +268,10 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
                     placeholder="Enter your post code"
                     error={touched.postalCode && errors.postalCode}
                     maxLength={5}
-                    inputCustomStyle={{...shadow}}
+                    inputCustomStyle={{ ...shadow }}
                   />
                   <FormInput
-                    textheaderCustomStyle={{color: colors.grey}}
+                    textheaderCustomStyle={{ color: colors.grey }}
                     headerText={'Social Security Number\Tax ID'}
                     isHide
                     keyboardType="number-pad"
@@ -290,7 +281,7 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
                     placeholder="Social Security Number\Tax ID"
                     error={touched.taxId && errors.taxId}
                     maxLength={9}
-                    inputCustomStyle={{...shadow}}
+                    inputCustomStyle={{ ...shadow }}
                   />
                   <DefaultButton
                     title="Next Step"
@@ -305,7 +296,7 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
                           && (type === 'natural_person')
                       )
                     }
-                    customStyles={{marginTop: 15, marginBottom: 150}}
+                    customStyles={{ marginTop: 15, marginBottom: 150 }}
                   />
                   <Indent height={195} />
                 </View>
