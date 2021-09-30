@@ -118,7 +118,7 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
       }
     }
     // uncomment only for test purposses to jump to next page
-    // jumpToNextPage();
+    jumpToNextPage();
     setShowLoader(false);
     setShowAgreement(false);
   };

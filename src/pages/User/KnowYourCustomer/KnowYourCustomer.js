@@ -35,7 +35,7 @@ import colors from '../../../../styles/colors';
 function KnowYourCustomer({ navigation, route }) {
   useFocusEffect(() => statusBar('dark'));
   // const [page, setPage] = useState(Store.user.KYCProgress);
-  const [page, setPage] = useState(3);
+  const [page, setPage] = useState(1);
 
   const [formErrors, setFormErrors] = useState([]);
   const [showLoader, setShowLoader] = useState(false);

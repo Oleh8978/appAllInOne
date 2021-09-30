@@ -159,7 +159,7 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors, sel
       }
     }
     // uncomment for the test purposes to move to finish page
-    // jumpToNextPage();
+    jumpToNextPage();
     setShowLoader(false);
   };
 
@@ -277,17 +277,17 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors, sel
               />
               <Text allowFontScaling={false} style={styles.photoHeader}>Front side</Text>
             </View>
-) : (
-  <>
-    <View style={{ marginbottom: 15 }}>
-      <TouchableWithoutFeedback onPress={() => deleteDocument(0)}>
-        <View style={styles.close}>
-          <CloseImage />
-        </View>
-      </TouchableWithoutFeedback>
-      <Image
-        source={{ uri: document1.path }}
-        style={{
+                ) : (
+                  <>
+                    <View style={{ marginbottom: 15 }}>
+                      <TouchableWithoutFeedback onPress={() => deleteDocument(0)}>
+                        <View style={styles.close}>
+                          <CloseImage />
+                        </View>
+                      </TouchableWithoutFeedback>
+                      <Image
+                        source={{ uri: document1.path }}
+                        style={{
                         width: '100%',
                         height: documentSize[0][1],
                         maxWidth: '100%',
