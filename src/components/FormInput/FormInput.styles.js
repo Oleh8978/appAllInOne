@@ -7,9 +7,13 @@ export default StyleSheet.create({
   input: {
     width: '100%',
     marginVertical: DEVICE_WIDTH <= 360 ? 1 : 3,
-    borderColor: colors.greyLight,
-    borderBottomWidth: 1,
     color: colors.black,
+    backgroundColor: colors.white,
+    borderRadius: 8,
+    borderColor: colors.grey,
+    borderWidth: 1,
+    padding: 15,
+    height: 48,
   },
   placeholder: {
     fontSize: 14,
@@ -22,12 +26,14 @@ export default StyleSheet.create({
   },
   eyeWrapper: {
     position: 'absolute',
-    bottom: 10,
-    right: 0,
+    bottom: 14,
+    right: 15,
   },
   eye: {
     width: 24,
     height: 24,
+    marginHorizontal: 15,
+    backgroundColor: 'red',
   },
   error: {
     position: 'absolute',
@@ -36,4 +42,9 @@ export default StyleSheet.create({
     fontSize: 11,
     color: colors.red,
   },
+  arrowDown: {
+    position: 'absolute',
+    right: 11,
+    top: 45
+  }
 });

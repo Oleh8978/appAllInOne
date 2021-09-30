@@ -121,5 +121,21 @@ export default StyleSheet.create({
     height: 330,
     marginLeft: 'auto',
     marginRight: 'auto',
+  },
+  kycUpload: {
+    marginTop: -140,
+    marginRight: 'auto',
+    marginLeft: 'auto',
+    width: 196,
+    height: 50,
+  },
+  kycUploadContainer: {
+    width: 'auto',
+    marginBottom: 17,
+  },
+  sideText: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 100,
   }
 });

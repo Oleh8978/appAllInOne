@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 
 import EyeImage from '../../../assets/svgs/Eye';
+import ArrowDown from '../../../assets/svgs/ArrowDown';
+
 import styles from './FormInput.styles';
 import colors from '../../../styles/colors';
 
@@ -29,7 +31,11 @@ export default function FormInput({
   onFocus = () => {},
   error = '',
   style = {},
+  textheaderCustomStyle = {},
   maxLength = 1000000,
+  headerText = '',
+  inputCustomStyle = {},
+  isNeedArrow = false,
 }) {
   const isHideFunctional = isHide || autoCompleteType === 'password';
   const [isInvisible, setIsInvisible] = useState(isHideFunctional);
@@ -60,10 +66,11 @@ export default function FormInput({
         allowFontScaling={false}
         style={{
           ...styles.placeholder,
-          color: inFocus || value.length ? colors.purple : colors.white,
+          color: colors.white,
+          ...textheaderCustomStyle,
         }}
       >
-        {placeholder}
+        {headerText}
       </Text>
       <TextInput
         autoFocus={autoFocus}
@@ -82,13 +89,15 @@ export default function FormInput({
           fontFamily: inputFont,
           borderColor: error ? colors.red : colors.greyLight,
           ...style,
+          ...inputCustomStyle,
         }}
-        placeholderTextColor={colors.purple}
+        placeholderTextColor={colors.grey}
         onFocus={_onFocus}
         onBlur={_onBlur}
         maxLength={maxLength}
       />
-      <Text allowFontScaling={false} style={styles.error}>{error}</Text>
+      {isNeedArrow && <ArrowDown style={styles.arrowDown}/>}
+      {/* <Text allowFontScaling={false} style={styles.error}>{error}</Text> */}
       {isHideFunctional && (
         <TouchableOpacity
           style={styles.eyeWrapper}

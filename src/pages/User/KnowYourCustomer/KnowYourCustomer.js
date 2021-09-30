@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { observer } from 'mobx-react-lite';
+import LinearGradient from 'react-native-linear-gradient';
 
 import Store from '../../../store';
 import statusBar from '../../../../utilities/statusBar';
@@ -14,7 +15,6 @@ import {
 
 import KeyboardNormalizer from '../../../HOCs/KeyboardNormalizerScrolling';
 import Header from '../../../components/Header/Header';
-import EMLogoHeader from '../../../components/EMLogoHeader/EMLogoHeader';
 import Notification from '../../../components/Notification/Notification';
 
 import KYCfirstStep from './KYCPages/KYCfirstStep';
@@ -32,19 +32,23 @@ import {
   formWrapper as body,
 } from '../../../../styles/mixins';
 import styles from './KnowYourCustomer.styles';
+import colors from '../../../../styles/colors';
 
 // TODO create logic: if PrimeTrust request more documents
 
 function KnowYourCustomer({ navigation, route }) {
   useFocusEffect(() => statusBar('dark'));
   // const [page, setPage] = useState(Store.user.KYCProgress);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(3);
 
   const [formErrors, setFormErrors] = useState([]);
   const [showLoader, setShowLoader] = useState(false);
-
+  const [firstPageData, setFirstPageData] = useState({});
+  //selected type of documents
+  const [selectedType, setSelectedType] = useState({});
+  
   useEffect(() => {
-    // setPage(page < route.params?.page ? route.params?.page : page);
+    setPage(page < route.params?.page ? route.params?.page : page);
 
     const parent = navigation.dangerouslyGetParent();
     parent.setOptions({
@@ -58,16 +62,26 @@ function KnowYourCustomer({ navigation, route }) {
   const deleteLastError = () => setFormErrors(formErrors.slice(0, formErrors.length - 1));
 
   const jumpToNextPage = async () => {
-    await Store.user.setKYCProgress();
+    // await Store.user.setKYCProgress();
     setFormErrors([]);
-
-    if (page < 3) {
-      navigation.push(KNOW_YOUR_CUSTOMER, { page: page + 1 });
+    if (page < 5) {
+      // navigation.push(KNOW_YOUR_CUSTOMER, { page: page + 1 });
+      setPage(page + 1)
     } else navigation.navigate(ACCOUNT);
 
   };
 
   const addErrors = (errors) => setFormErrors([...formErrors, ...errors]);
+
+  const firstPageGetter = (values) => {
+    setFirstPageData({
+      name: values.givenName,
+      familyName: values.familyName,
+      email: values.email,
+      date: '',
+      phoneNumber: '',
+    })
+  }
 
   const pageContent = (_page = 1) => {
     switch (_page) {
@@ -80,6 +94,7 @@ function KnowYourCustomer({ navigation, route }) {
             setFormErrors={addErrors}
             showLoader={showLoader}
             setShowLoader={setShowLoader}
+            firstPageGetter={firstPageGetter}
             title={'Enter your personal details:'}
           />
         );
@@ -87,19 +102,14 @@ function KnowYourCustomer({ navigation, route }) {
         // Document Scan uploading
       case 2:
         return (
-          // <KYCScan
-          //   jumpToNextPage={jumpToNextPage}
-          //   setFormErrors={addErrors}
-          //   showLoader={showLoader}
-          //   setShowLoader={setShowLoader}
-          // />
           <KYCSecondStep
           type={route?.params?.type}
           jumpToNextPage={jumpToNextPage}
           setFormErrors={addErrors}
           showLoader={showLoader}
           setShowLoader={setShowLoader}
-          title={'Select a document to verify your identity:'}
+          firstPageData={firstPageData}
+          title={'Enter your personal details:'}
         />);
 
         // Finish
@@ -112,9 +122,16 @@ function KnowYourCustomer({ navigation, route }) {
           setFormErrors={addErrors}
           showLoader={showLoader}
           setShowLoader={setShowLoader}
-          title={'Enter your personal details:'} 
-        />);
-      case 4:
+          onPress={setSelectedType}
+          title={'Select a document to verify your identity:'} 
+        />
+        );
+
+      case 4: 
+          return (
+            <KYCScan jumpToNextPage = {jumpToNextPage} selectedType={selectedType} />
+          )
+      case 5:
         return <KYCFinish jumpToNextPage={jumpToNextPage} />;
 
       default:
@@ -155,8 +172,11 @@ function KnowYourCustomer({ navigation, route }) {
 
   return (
     <View style={{...styles.kycPage}}>
-      <View style={smallHeader}>
-        <EMLogoHeader />
+      <LinearGradient colors={[colors.lightBlue, colors.darkBlue]}  
+        style={{...smallHeader, 
+        borderBottomRightRadius: 38, 
+        borderBottomLeftRadius: 38, 
+        marginBottom: 30}}>
         <Header
           topText="KYC Verification"
           navigation={navigation}
@@ -167,8 +187,8 @@ function KnowYourCustomer({ navigation, route }) {
           }}
         />
 
-      </View>
-      <View style={body}>
+      </LinearGradient>
+      <View style={{...body, height: '100%', minHeight: 480 }}>
       <View style={styles.progressBar}>
           {<>
             {circleImage(page, 1)}

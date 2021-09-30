@@ -15,4 +15,10 @@ export default {
   red: '#FF3D00',
   redLight: '#FF5B5B',
   orange: '#FFA53B',
+
+  lightBlue: '#6560E0',
+  darkBlue: '#392994',
+  lightGreen: '#BCF6DF',
+  darkGreen: '#38E39F',
+  grey: '#848CA5',
 };

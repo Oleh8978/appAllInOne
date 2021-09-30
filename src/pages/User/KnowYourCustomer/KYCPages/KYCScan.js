@@ -29,13 +29,14 @@ import Modal from '../../../../components/Modal/Modal';
 import FormInput from '../../../../components/FormInput/FormInput';
 import Score from '../../../../components/Score/Score';
 
-import KYCUploadImage from '../../../../../assets/svgs/KYCUpload';
+// import KYCUploadImage from '../../../../../assets/svgs/KYCUpload';
+import KYCImageDoc from '../../../../../assets/svgs/KYCImageDoc';
 import CloseImage from '../../../../../assets/svgs/CloseBlue';
 
 import { view } from '../../../../../styles/mixins';
 import styles from '../KnowYourCustomer.styles';
 
-function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors }) {
+function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors, selectedType }) {
   const [documents, setDocuments] = useState([]);
   const [documentsQuantity, setDocumentsQuantity] = useState(1); // max 2
   const [needUploadTwoPhoto, setNeedUploadTwoPhoto] = useState(false);
@@ -72,6 +73,8 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors }) {
 
   const [openCameraLoader, setOpenCameraLoader] = useState(false);
   const [openGalleryLoader, setOpenGalleryLoader] = useState(false);
+
+  console.log('selectedType ', selectedType)
 
   useEffect(() => {
     const severalPhoto = documentType === 'drivers_license' || documentType === 'government_id';
@@ -243,40 +246,75 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors }) {
     }
   };
 
+  console.log('needUploadTwoPhoto + 1 ', needUploadTwoPhoto + 1)
+
+  const documentMapper = () => {
+    // for (let n = 0; n < needUploadTwoPhoto + 1; n++) {
+    //   return (<View style={{...styles.kycUploadContainer}}>
+    //     <KYCImageDoc style={{width: '100%'}}/>
+    //       <DefaultButton 
+    //             title={'Upload'}
+    //             isUpload 
+    //             customStyles={{marginTop: 15}}
+    //             onPress={() => (documents.length ? setShowUploadWayPicker(true) : setShowDocumentTypePicker(true))}
+    //             customStyles={{...styles.kycUpload}}
+    //     />
+    //     {needUploadTwoPhoto && <Text allowFontScaling={false} style={styles.photoHeader}>{n === 1 ? 'Front side' : 'Back side'}</Text>}
+    //   </View> )
+    // }
+  }
+
+  const numberArray = () => {
+    const numbersArray = []
+    n = 0
+    while (n < needUploadTwoPhoto + 1) {
+      numbersArray.push(n)
+    }
+
+    return numbersArray
+  }
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View>
-        <View style={view}>
-          {documents.length ? (
+        <View style={{view}}>
+        <Text style={{...styles.headText}}>{selectedType.name === 'Other' ? 'Please upload selected documents' : `Upload photos of your ${selectedType.name}:`}</Text>
+          {/* {documents.length ? ( */}
             <>
-              <Text allowFontScaling={false} style={styles.documentName}>
-                {`Your ${otherDocumentName || documentTypeName}`}
-              </Text>
               <View style={styles.hr} />
-              {documents.map((document, i) => (
-                <View style={styles.documentWrapper} key={document.path}>
-                  <Indent height={15} />
-                  {needUploadTwoPhoto && <Text allowFontScaling={false} style={styles.photoHeader}>{!i ? 'Front side' : 'Back side'}</Text>}
+              {/* {documents.map((document, i) => ( */}
+                <View style={styles.documentWrapper} key={Math.random()}>
+                  {/* {needUploadTwoPhoto && <Text allowFontScaling={false} style={styles.photoHeader}>{!i ? 'Front side' : 'Back side'}</Text>} */}
                   <View>
                     <TouchableWithoutFeedback onPress={() => deleteDocument(i)}>
                       <View style={styles.close}>
                         <CloseImage />
                       </View>
                     </TouchableWithoutFeedback>
-                    <Image
+                    {/* <Image
                       source={{ uri: document.path }}
                       style={{
                         width: documentSize[i][0],
                         height: documentSize[i][1],
                         maxWidth: '93%',
                       }}
-                    />
+                    /> */}
                   </View>
                 </View>
-              ))}
+              {/* ))} */}
             </>
-          )
-            : <KYCUploadImage maxWidth="100%" />}
+            { }
+          {/* ) : ( <View style={{...styles.kycUploadContainer}}>
+                  <KYCImageDoc />
+                    <DefaultButton 
+                          title={'Upload'}
+                          isUpload 
+                          customStyles={{marginTop: 15}}
+                          onPress={() => (documents.length ? setShowUploadWayPicker(true) : setShowDocumentTypePicker(true))}
+                          customStyles={{...styles.kycUpload}}
+                  />
+                  {needUploadTwoPhoto && <Text allowFontScaling={false} style={styles.photoHeader}>{!i ? 'Front side' : 'Back side'}</Text>}
+                </View> )} */}
           <Text allowFontScaling={false} style={styles.description}>
             Valid Proof of Govt Issued ID
           </Text>
@@ -299,7 +337,7 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors }) {
             )}
           <Indent height={DEVICE_WIDTH <= 360 ? 195 : 230} />
         </View>
-        {showDocumentTypePicker && (
+        {/* {showDocumentTypePicker && (
           <Picker
             close={() => setShowDocumentTypePicker(false)}
             header="Pick downloaded document type"
@@ -315,7 +353,7 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors }) {
               }
             }}
           />
-        )}
+        )} */}
         {showUploadWayPicker && (
           <Modal
             close={() => setShowUploadWayPicker(false)}
