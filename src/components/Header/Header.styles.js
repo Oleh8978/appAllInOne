@@ -10,6 +10,7 @@ export default StyleSheet.create({
   },
   header: {
     width: '100%',
+    marginBottom: 15,
   },
   backArrow: {
     width: 125,
@@ -22,12 +23,7 @@ export default StyleSheet.create({
   topText: {
     fontFamily: 'OpenSans-SemiBold',
     textAlign: 'center',
-    fontSize: DEVICE_WIDTH <= 375 ? 22 : 26,
-  },
-  bottomText: {
-    marginTop: 10,
-    paddingHorizontal: '15%',
-    textAlign: 'center',
-    fontSize: 15,
+    marginTop: 8,
+    fontSize: DEVICE_WIDTH <= 375 ? 20 : 24,
   },
 });

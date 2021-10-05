@@ -5,38 +5,8 @@ import Svg, {
 
 function ChevronLeftBlue(props) {
   return (
-    <Svg
-      width={24}
-      height={24}
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <Path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M15.707 17.293a1 1 0 01-1.414 1.414l-6-6a1 1 0 010-1.414l6-6a1 1 0 111.414 1.414L10.414 12l5.293 5.293z"
-        fill="#7843C5"
-      />
-      <Mask
-        id="prefix__a"
-        maskUnits="userSpaceOnUse"
-        x={8}
-        y={5}
-        width={8}
-        height={14}
-      >
-        <Path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M15.707 17.293a1 1 0 01-1.414 1.414l-6-6a1 1 0 010-1.414l6-6a1 1 0 111.414 1.414L10.414 12l5.293 5.293z"
-          fill="#fff"
-        />
-      </Mask>
-      <G mask="url(#prefix__a)">
-        <Path fill="#7843C5" d="M0 0h24v24H0z" />
-      </G>
+    <Svg width={40} height={40} {...props} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <Path d="M6.66663 20L5.95952 19.2929L5.25241 20L5.95952 20.7071L6.66663 20ZM31.6666 21C32.2189 21 32.6666 20.5523 32.6666 20C32.6666 19.4477 32.2189 19 31.6666 19V21ZM15.9595 9.29289L5.95952 19.2929L7.37373 20.7071L17.3737 10.7071L15.9595 9.29289ZM5.95952 20.7071L15.9595 30.7071L17.3737 29.2929L7.37373 19.2929L5.95952 20.7071ZM6.66663 21H31.6666V19H6.66663V21Z" fill="#392994"/>
     </Svg>
   );
 }

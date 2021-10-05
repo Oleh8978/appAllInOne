@@ -8,3 +8,4 @@ export const RESET_PASSWORD_CODE = 'RESET_PASSWORD_CODE';
 export const BIOMETRIC = 'BIOMETRIC';
 export const WELL_DONE = 'WELL_DONE';
 export const PASSCODE = 'PASSCODE';
+export const TWO_FACTOR_AUTH = 'TWO_FACTOR_AUTH';
