@@ -22,7 +22,15 @@ export default function Code({navigation}) {
            navigation={navigation}
           />
           <ScrollView style={styles.body}>
-              <Image source={require('../../../../../assets/images/twoAuth.png')} style={styles.img}/>
+              {code.length === 6 ? 
+                <Image 
+                 source={require('../../../../../assets/images/codeDone.png')} 
+                 style={styles.img}
+                /> : 
+                <Image 
+                 source={require('../../../../../assets/images/twoAuth.png')} 
+                 style={styles.img}
+                />}
               <Text style={styles.mainHeader}>
                 Easy Peasy
               </Text>
