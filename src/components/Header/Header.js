@@ -19,7 +19,7 @@ export default function Header({
 }) {
   return (
     <SafeAreaView style={{ ...styles.wrapper, marginTop: deviceMarginTop }}>
-      <View style={styles.header}>
+      <View style={{ ...styles.header }}>
         {goBack && (
           <TouchableOpacity style={styles.backArrow} onPress={goBackFunction}>
             <ChevronLeftWhiteImage />

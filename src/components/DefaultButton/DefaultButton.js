@@ -7,8 +7,9 @@ import {
 
 import Loader from '../Loader/Loader';
 
-import ArrowNext from '../../../assets/svgs/ArrovNext';
+import ArrowNext from '../../../assets/svgs/ArrowNext';
 import EmailImage from '../../../assets/svgs/EmailImage';
+import UploadImage from '../../../assets/svgs/UploadImage';
 
 import colors from '../../../styles/colors';
 import styles from './DefaultButton.styles';
@@ -26,6 +27,7 @@ export default function DefaultButton({
   showLoader = false,
   isSmall = false,
   isEmail = false,
+  isUpload = false,
 }) {
   const press = async () => {
     if (onPress && !showLoader) {
@@ -47,7 +49,8 @@ export default function DefaultButton({
     }
   };
 
-  const leftBodyProvider = () => {
+
+  const rightBodyProvider = () => {
     if (isArrowNext && showLoader === false) {
       return (<ArrowNext />);
     }
@@ -60,10 +63,14 @@ export default function DefaultButton({
 );
     }
 
+    if (isUpload) {
+      return <UploadImage />;
+    }
+
     return <></>;
   };
 
-  const rightBodyProvider = () => {
+  const leftBodyProvider = () => {
     if (isEmail) {
       return <EmailImage style={{ marginTop: 1, marginRight: 5 }} />;
     }
@@ -83,7 +90,7 @@ export default function DefaultButton({
       onPress={press}
       disabled={disabled}
     >
-      {rightBodyProvider()}
+      {leftBodyProvider()}
       <Text
         allowFontScaling={false}
         style={{
@@ -96,7 +103,7 @@ export default function DefaultButton({
       >
         {title}
       </Text>
-      {leftBodyProvider()}
+      {rightBodyProvider()}
     </TouchableOpacity>
   );
 }

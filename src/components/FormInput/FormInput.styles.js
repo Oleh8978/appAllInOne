@@ -10,6 +10,8 @@ export default StyleSheet.create({
     color: colors.black,
     backgroundColor: colors.white,
     borderRadius: 8,
+    borderColor: colors.grey,
+    borderWidth: 1,
     padding: 15,
     height: 48,
   },
@@ -39,5 +41,10 @@ export default StyleSheet.create({
     right: 0,
     fontSize: 11,
     color: colors.red,
+  },
+  arrowDown: {
+    position: 'absolute',
+    right: 11,
+    top: 45,
   },
 });

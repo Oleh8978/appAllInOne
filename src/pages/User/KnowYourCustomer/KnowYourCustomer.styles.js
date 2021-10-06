@@ -4,21 +4,29 @@ import colors from '../../../../styles/colors';
 import { DEVICE_WIDTH } from '../../../../constants/constants';
 
 export default StyleSheet.create({
+  kycPage: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: colors.white,
+  },
   progressBar: {
-    height: 12,
+    height: 60,
     width: '90%',
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 9,
     paddingHorizontal: '1%',
-    backgroundColor: colors.greyLight,
   },
   progressValue: {
     height: 6,
-    width: '33%',
+    width: '40%',
     marginRight: '0.5%',
-    borderRadius: 9,
-    backgroundColor: colors.green,
+    backgroundColor: '#6560E0',
+  },
+  stepContainer: {
+    flexDirection: 'column',
+    marginLeft: -12,
+    marginRight: -10,
+    marginTop: 17,
   },
   description: {
     fontSize: DEVICE_WIDTH <= 360 ? 17 : 21,
@@ -46,8 +54,8 @@ export default StyleSheet.create({
   },
   close: {
     position: 'absolute',
-    right: -10,
-    top: -10,
+    right: 2,
+    top: 2,
     zIndex: 1,
     backgroundColor: colors.white,
     borderRadius: 12,
@@ -56,13 +64,13 @@ export default StyleSheet.create({
   },
   photoHeader: {
     position: 'relative',
-    top: -10,
+    top: 90,
     width: '100%',
     maxWidth: '95%',
     textAlign: 'center',
     fontSize: 18,
     fontFamily: 'OpenSans-SemiBold',
-    color: colors.purple,
+    color: colors.black,
   },
   agreementBackground: {
     flex: 1,
@@ -99,5 +107,36 @@ export default StyleSheet.create({
     backgroundColor: colors.white,
     borderTopWidth: 1,
     borderColor: colors.greyLight,
+  },
+  headText: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 40,
+    marginBottom: 20,
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  topImage: {
+    width: '100%',
+    height: 330,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+  kycUpload: {
+    marginTop: -140,
+    marginRight: 'auto',
+    marginLeft: 'auto',
+    width: 196,
+    height: 50,
+  },
+  kycUploadContainer: {
+    width: 'auto',
+    height: 220,
+    marginBottom: 17,
+  },
+  sideText: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 100,
   },
 });
