@@ -15,6 +15,7 @@
 		1930E33A63BE32EA7A0CE938 /* libPods-RhinoGlobal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55FB9994336E1B00D9CD40BF /* libPods-RhinoGlobal.a */; };
 		1A2A33D45B8775AE727962BD /* libPods-RhinoGlobal-RhinoGlobalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 886870651147E95279BF434A /* libPods-RhinoGlobal-RhinoGlobalTests.a */; };
 		6B26B4CC26A595BF00E16499 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B26B4CB26A595BF00E16499 /* NetworkExtension.framework */; };
+		6B93FC6427035E5F00326436 /* libswiftWebKit.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B93FC6327035E5F00326436 /* libswiftWebKit.tbd */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8C2EF0A5F78C4369A104413C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6342D7F67B8E4A5491995195 /* OpenSans-ExtraBold.ttf */; };
 		CCAE24A6D21543DC9C7106D9 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE3A3594782D40C59CB41A3D /* OpenSans-Regular.ttf */; };
@@ -47,6 +48,7 @@
 		6342D7F67B8E4A5491995195 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBold.ttf"; path = "../assets/fonts/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		6B26B4CA26A595BF00E16499 /* RhinoGlobal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = RhinoGlobal.entitlements; path = RhinoGlobal/RhinoGlobal.entitlements; sourceTree = "<group>"; };
 		6B26B4CB26A595BF00E16499 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		6B93FC6327035E5F00326436 /* libswiftWebKit.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftWebKit.tbd; path = usr/lib/swift/libswiftWebKit.tbd; sourceTree = SDKROOT; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RhinoGlobal/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		886870651147E95279BF434A /* libPods-RhinoGlobal-RhinoGlobalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RhinoGlobal-RhinoGlobalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D4E025D928CF028A9315C35 /* Pods-RhinoGlobal-RhinoGlobalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RhinoGlobal-RhinoGlobalTests.debug.xcconfig"; path = "Target Support Files/Pods-RhinoGlobal-RhinoGlobalTests/Pods-RhinoGlobal-RhinoGlobalTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B93FC6427035E5F00326436 /* libswiftWebKit.tbd in Frameworks */,
 				1930E33A63BE32EA7A0CE938 /* libPods-RhinoGlobal.a in Frameworks */,
 				6B26B4CC26A595BF00E16499 /* NetworkExtension.framework in Frameworks */,
 			);
@@ -112,6 +115,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6B93FC6327035E5F00326436 /* libswiftWebKit.tbd */,
 				6B26B4CB26A595BF00E16499 /* NetworkExtension.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				55FB9994336E1B00D9CD40BF /* libPods-RhinoGlobal.a */,
@@ -523,6 +527,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
+				);
 				MARKETING_VERSION = 1.0.56;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -551,6 +559,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
 				);
 				MARKETING_VERSION = 1.0.56;
 				OTHER_LDFLAGS = (

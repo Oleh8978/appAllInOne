@@ -82,14 +82,14 @@ export default function Main({ navigation }) {
               customStyles={{ marginBottom: 5 }}
               onPress={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'registration' } })}
               isLight
-              customStyles={{backgroundColor: colors.darkGreen}}
+              customStyles={{ backgroundColor: colors.darkGreen }}
             />
             <DefaultButton
               title="Log in"
               onPress={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'login' } })}
               disabled={false}
               isArrowNext
-              customStyles={{backgroundColor: colors.white, marginTop: 10}}
+              customStyles={{ backgroundColor: colors.white, marginTop: 10 }}
             />
           </View>
           <Footer onPressFunctionality={onPressFunctionality} textFooter="Contact support" />

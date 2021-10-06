@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Text, ScrollView, View, Image, Linking
+  Text, ScrollView, View, Image,
 } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -22,9 +22,7 @@ import PasswordValidator from '../../../components/PasswordValidator/PasswordVal
 import OpenURLButton from '../../../components/openLinkComponent/openLinkComponent';
 
 import { AUTHENTICATION } from '../../../../constants/navigation/navigators';
-import { CONFIRM_EMAIL_ADDRESS } from '../../../../constants/navigation/authenticationScreens';
-
-import { SIGN_TYPE } from '../../../../constants/navigation/authenticationScreens';
+import { CONFIRM_EMAIL_ADDRESS, SIGN_TYPE } from '../../../../constants/navigation/authenticationScreens';
 
 import {
   authPageWrapper as wrapper,
@@ -39,7 +37,7 @@ import {
   passwordValidator,
 } from '../../../../utilities/yupValidators';
 
-function CreateUserEmail({ navigation, height, addHeight }) {
+function CreateUserEmail({ navigation, addHeight }) {
   useFocusEffect(() => statusBar('dark'));
 
   const [password, setPassword] = useState('');
@@ -73,26 +71,26 @@ function CreateUserEmail({ navigation, height, addHeight }) {
   }, [password]);
 
   return (
-    <LinearGradient style={{ ...wrapper, backgroundColor: 'transparent' }} colors={[colors.lightBlue, colors.darkBlue]} >
+    <LinearGradient style={{ ...wrapper, backgroundColor: 'transparent' }} colors={[colors.lightBlue, colors.darkBlue]}>
       <View style={header}>
-        <Header 
-          topText="Create your account with email" 
-          navigation={navigation} 
-          customStyles={{marginLeft: 55, marginRight: 45 }}
+        <Header
+          topText="Create your account with email"
+          navigation={navigation}
+          customStyles={{ marginLeft: 55, marginRight: 45 }}
         />
       </View>
-      <ScrollView showsVerticalScrollIndicator={false} style={{width: '100%'}}>
-      <Image source={require('../../../../assets/images/acauntEmailImg.png')} style={styles.imageTop} />
-      <Formik
-        validationSchema={yup.object().shape({
+      <ScrollView showsVerticalScrollIndicator={false} style={{ width: '100%' }}>
+        <Image source={require('../../../../assets/images/acauntEmailImg.png')} style={styles.imageTop} />
+        <Formik
+          validationSchema={yup.object().shape({
           email: emailValidator,
           password: passwordValidator,
         })}
-        initialValues={{
+          initialValues={{
           email: '',
           password: '',
         }}
-        onSubmit={async (newUser, { resetForm }) => {
+          onSubmit={async (newUser, { resetForm }) => {
           try {
             setShowLoader(true);
             const { user } = await createUser(newUser);
@@ -110,8 +108,8 @@ function CreateUserEmail({ navigation, height, addHeight }) {
           }
           setShowLoader(false);
         }}
-      >
-        {({
+        >
+          {({
           handleChange,
           handleBlur,
           handleSubmit,
@@ -126,7 +124,7 @@ function CreateUserEmail({ navigation, height, addHeight }) {
               <View
                 style={styles.formBody}
               >
-                
+
                 <FormInput
                   keyboardType="email-address"
                   autoCompleteType="email"
@@ -135,7 +133,7 @@ function CreateUserEmail({ navigation, height, addHeight }) {
                   value={values.email}
                   textContentType="emailAddress"
                   placeholder="Enter your email address"
-                  headerText={'Email'}
+                  headerText="Email"
                   error={touched.email && errors.email}
                 />
                 <FormInput
@@ -148,7 +146,7 @@ function CreateUserEmail({ navigation, height, addHeight }) {
                   value={values.password}
                   textContentType="newPassword"
                   placeholder="Create your password"
-                  headerText={'Password'}
+                  headerText="Password"
                   error={touched.password && !!errors.password}
                 />
                 <Indent height={5} />
@@ -157,32 +155,35 @@ function CreateUserEmail({ navigation, height, addHeight }) {
               </View>
             </View>
             <View style={view}>
-              <View style={{width:"100%", paddingHorizontal: 15}}>
+              <View style={{ width: '100%', paddingHorizontal: 15 }}>
                 <DefaultButton
                   title="Next"
                   onPress={handleSubmit}
                   showLoader={showLoader}
-                  isArrowNext={true}
+                  isArrowNext
                   disabled={!(isValid && dirty)}
                 />
               </View>
-              <View style={{...styles.textContainer, flex: 1, flexWrap: 'wrap'}}>
-                  <Text style={styles.textFooter}>
-                    By clicking NEXT I agree to the{' '}
-                  </Text>
-                    <OpenURLButton text={'Terms'} url='' customStyleTxt={{textDecorationLine: 'underline'}}/>
-                  <Text style={styles.textFooter}>
-                  {' '}and{' '}
-                  </Text>
-                    <OpenURLButton text={'Privacy Policy'} url='' customStyleTxt={{textDecorationLine: 'underline'}}/>
+              <View style={{ ...styles.textContainer, flex: 1, flexWrap: 'wrap' }}>
+                <Text style={styles.textFooter}>
+                  By clicking NEXT I agree to the
+                  {' '}
+                </Text>
+                <OpenURLButton text="Terms" url="" customStyleTxt={{ textDecorationLine: 'underline' }} />
+                <Text style={styles.textFooter}>
+                  {' '}
+                  and
+                  {' '}
+                </Text>
+                <OpenURLButton text="Privacy Policy" url="" customStyleTxt={{ textDecorationLine: 'underline' }} />
               </View>
-                <Footer navigation={navigation} customContactBorderWidth={addHeight} textFooter={'Log into your account'} onPressFunctionality={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'login' } })} />
+              <Footer navigation={navigation} customContactBorderWidth={addHeight} textFooter="Log into your account" onPressFunctionality={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'login' } })} />
             </View>
           </View>
         )}
-      </Formik>
-      <Notification notification={formError} close={() => setFormError('')} />
-    </ScrollView>
+        </Formik>
+        <Notification notification={formError} close={() => setFormError('')} />
+      </ScrollView>
     </LinearGradient>
   );
 }
@@ -190,7 +191,6 @@ CreateUserEmail.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
-  height: PropTypes.object,
 };
 
 export default KeyboardNormalizer(CreateUserEmail, wrapper, 171, 0, 1);
