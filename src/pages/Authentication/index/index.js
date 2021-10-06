@@ -34,7 +34,7 @@ export default function Authentication() {
       initialRouteName={MAIN}
       screenOptions={{ headerShown: false }}
     >
-      {/* <Stack.Screen name={MAIN} component={Main} />
+      <Stack.Screen name={MAIN} component={Main} />
       <Stack.Screen name={SIGN_TYPE} component={SignType} />
       <Stack.Screen name={CREATE_USER_EMAIL} component={CreateUserEmail} />
       <Stack.Screen
@@ -45,7 +45,7 @@ export default function Authentication() {
       <Stack.Screen name={RESET_PASSWORD_CODE} component={ResetPasswordCode} />
       <Stack.Screen name={BIOMETRIC} component={Biometric} />
       <Stack.Screen name={WELL_DONE} component={WellDone} />
-      <Stack.Screen name={PASSCODE} component={Passcode} /> */}
+      <Stack.Screen name={PASSCODE} component={Passcode} />
       <Stack.Screen name={TWO_FACTOR_AUTH} component={TwoFactorAuthentication} />
     </Stack.Navigator>
   );
