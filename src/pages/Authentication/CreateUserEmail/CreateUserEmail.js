@@ -188,7 +188,7 @@ function CreateUserEmail({ navigation, addHeight }) {
                 navigation={navigation}
                 customContactBorderWidth={addHeight}
                 textFooter="Log into your account"
-                onPressFunctionality={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'login' } })}
+                onPress={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'login' } })}
               />
             </View>
           </View>

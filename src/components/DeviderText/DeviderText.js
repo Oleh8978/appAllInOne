@@ -7,18 +7,18 @@ import {
 
 import styles from './DeviderText.styles';
 
-export default function DeviderText({
-  textDevider,
+export default function DividerText({
+  textDivider,
   customStyle,
 }) {
   return (
-    <View style={styles.constainer}>
+    <View style={styles.container}>
       <View style={styles.first}>
         <View style={styles.line} />
       </View>
       <View style={{ ...styles.second, ...customStyle }}>
         <Text allowFontScaling={false} style={styles.textStyle}>
-          {textDevider}
+          {textDivider}
         </Text>
       </View>
       <View style={styles.third}>
@@ -28,6 +28,6 @@ export default function DeviderText({
   );
 }
 
-DeviderText.propTypes = {
-    textDevider: PropTypes.string,
+DividerText.propTypes = {
+    textDivider: PropTypes.string,
 };

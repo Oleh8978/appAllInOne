@@ -13,7 +13,7 @@ import styles from './Footer.styles';
 
 export default function Footer({
   textFooter,
-  onPressFunctionality,
+  onPress,
   customStyle,
   customStyleContainer,
 }) {
@@ -22,7 +22,7 @@ export default function Footer({
   return (
     <SafeAreaView style={{ ...view, marginBottom, ...customStyle }}>
       <TouchableOpacity
-        onPress={() => onPressFunctionality()}
+        onPress={onPress}
         style={{ ...styles.button, ...customStyleContainer }}
       >
         <Text allowFontScaling={false} style={styles.textStyle}>
