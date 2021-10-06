@@ -104,7 +104,7 @@ function SignType({ navigation, route: { params: type } }) {
   const signIn = async ({ email, password }) => {
     try {
       setShowLoader(true);
-      await signInUser(email, password);
+    await signInUser(email, password);
       setFormError('');
 
       if (await AsyncStorage.getItem(USE_BIOMETRIC) === 'true') {
@@ -204,7 +204,6 @@ function SignType({ navigation, route: { params: type } }) {
             <View style={styles.form}>
               <View
                 style={styles.scrollableFormBody}
-
               >
                 <FormInput
                   keyboardType="email-address"
@@ -243,9 +242,10 @@ function SignType({ navigation, route: { params: type } }) {
               customStyle={{ marginTop: 5 }}
               customStyleContainer={{ marginTop: 0 }}
               onPressFunctionality={() => {
-              navigation.navigate(AUTHENTICATION, { screen: FORGOT_PASSWORD,
-                                                    params: { email: errors.email ? '' : values.email } });
-                                                   }}
+              navigation.navigate(AUTHENTICATION,
+                { screen: FORGOT_PASSWORD,
+                  params: { email: errors.email ? '' : values.email } });
+                }}
             />
             )}
             {isLogin
@@ -255,8 +255,7 @@ function SignType({ navigation, route: { params: type } }) {
               customStyle={{ marginTop: 5 }}
               onPressFunctionality={() => navigation.navigate(SIGN_TYPE, { type: 'create' })}
             />
-)}
-
+          )}
           </View>
         )}
               </Formik>
@@ -266,8 +265,7 @@ function SignType({ navigation, route: { params: type } }) {
               title="Continue with Email"
               onPress={() => navigation.navigate(CREATE_USER_EMAIL)}
               isLight
-              customStyles={{ marginTop: 15,
-                            width: '100%' }}
+              customStyles={{ marginTop: 15, width: '100%' }}
               isEmail
             />
           </View>

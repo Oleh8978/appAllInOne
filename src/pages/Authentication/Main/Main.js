@@ -79,7 +79,6 @@ export default function Main({ navigation }) {
             </Text>
             <DefaultButton
               title="Create account"
-              customStyles={{ marginBottom: 5 }}
               onPress={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'registration' } })}
               isLight
               customStyles={{ backgroundColor: colors.darkGreen }}

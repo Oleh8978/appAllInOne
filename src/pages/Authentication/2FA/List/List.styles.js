@@ -21,7 +21,7 @@ export default StyleSheet.create({
         marginTop: 35,
         maxWidth: 230,
         marginLeft: 'auto',
-        marginRight: 'auto'
+        marginRight: 'auto',
     },
     subHeader: {
         textAlign: 'center',
@@ -32,6 +32,6 @@ export default StyleSheet.create({
         marginTop: 10,
         marginBottom: 15,
 
-    }
+    },
 
 });

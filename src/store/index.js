@@ -337,16 +337,9 @@ class Wallets {
                   }));
 
               if (_wallets.length === 1) { // Here is creating all available wallets if they weren't created before
-                await Promise.all(
-                    AVAILABLE_COINS
-                        .filter(((_coin) => !this.root.wallets.wallets.some((wallet) => wallet.coin === _coin.value)))
-                        .map(async (coin) => {
-                          await createWallet(coin.value);
-                        }),
-                );
+                await createWallet();
                 return this.root.wallets.updateWallets();
               }
-
               this.isSeveralWallets = this.wallets.length > 2; // exclude USD wallet
               this.wallets = _wallets;
               this.setTotals();
