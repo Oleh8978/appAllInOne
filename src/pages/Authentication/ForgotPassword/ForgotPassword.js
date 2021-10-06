@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  Dimensions, 
-  View, 
-  Image, 
+  Dimensions,
+  View,
+  Image,
   Text,
-  ScrollView
+  ScrollView,
 } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { Auth } from 'aws-amplify';
@@ -52,22 +52,22 @@ function ForgotPassword({ navigation, height, route }) {
             navigation={navigation}
           />
         </View>
-        <ScrollView style={{width: '100%', height: '100%'}} showsHorizontalScrollIndicator={false}>
-        <Image source={require('../../../../assets/images/ForgotPasswordImage.png')} style={styles.imageTop} />
-        <View style={styles.textContainer}>
-          <Text style={styles.textContainerTop}>
-            Forgot password?
-          </Text>
-          <View style={styles.containerBottom}>
-            <Text style={styles.textContainerBottom}>
-              Please enter your email address to request a password reset
+        <ScrollView style={{ width: '100%', height: '100%' }} showsHorizontalScrollIndicator={false}>
+          <Image source={require('../../../../assets/images/ForgotPasswordImage.png')} style={styles.imageTop} />
+          <View style={styles.textContainer}>
+            <Text style={styles.textContainerTop}>
+              Forgot password?
             </Text>
+            <View style={styles.containerBottom}>
+              <Text style={styles.textContainerBottom}>
+                Please enter your email address to request a password reset
+              </Text>
+            </View>
           </View>
-        </View>
-        <Formik
-          validationSchema={yup.object().shape({ email: emailValidator })}
-          initialValues={{ email: route.params?.email }}
-          onSubmit={async (user) => {
+          <Formik
+            validationSchema={yup.object().shape({ email: emailValidator })}
+            initialValues={{ email: route.params?.email }}
+            onSubmit={async (user) => {
             try {
               setShowLoader(true);
               const email = user.email;
@@ -83,8 +83,8 @@ function ForgotPassword({ navigation, height, route }) {
             }
             setShowLoader(false);
           }}
-        >
-          {({
+          >
+            {({
             handleChange,
             handleBlur,
             handleSubmit,
@@ -116,8 +116,8 @@ function ForgotPassword({ navigation, height, route }) {
               />
             </View>
           )}
-        </Formik>
-        <Footer textFooter="Log into your account" customStyle={{ marginTop: 15 }} onPressFunctionality={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'login' } })} />
+          </Formik>
+          <Footer textFooter="Log into your account" customStyle={{ marginTop: 15 }} onPressFunctionality={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'login' } })} />
         </ScrollView>
       </LinearGradient>
       <Notification notification={formError} close={() => setFormError('')} />

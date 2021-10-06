@@ -14,14 +14,14 @@ function PasswordValidator({ validators }) {
       <View style={styles.wrapper}>
 
         <View style={styles.requirmentWrapper}>
-          {validators.length ? <RadioButtomImageActive style={{marginTop: 1, marginRight: 1}}/> : <RadioButtomImageInactive style={{marginTop: 1, marginRight: 1}}/>}
+          {validators.length ? <RadioButtomImageActive style={{ marginTop: 1, marginRight: 1 }} /> : <RadioButtomImageInactive style={{ marginTop: 1, marginRight: 1 }} />}
           <Text style={{ ...styles.passwordRequirement }}>
             8 characters
           </Text>
         </View>
 
         <View style={styles.requirmentWrapper}>
-          {validators.number ? <RadioButtomImageActive style={{marginTop: 1, marginRight: 1}}/> : <RadioButtomImageInactive style={{marginTop: 1, marginRight: 1}}/>}
+          {validators.number ? <RadioButtomImageActive style={{ marginTop: 1, marginRight: 1 }} /> : <RadioButtomImageInactive style={{ marginTop: 1, marginRight: 1 }} />}
           <Text style={{ ...styles.passwordRequirement }}>
             1 number
           </Text>
@@ -32,14 +32,14 @@ function PasswordValidator({ validators }) {
       <View style={{ ...styles.wrapper, marginLeft: 15 }}>
 
         <View style={styles.requirmentWrapper}>
-          {validators.upperCaseLetter? <RadioButtomImageActive style={{marginTop: 1, marginRight: 1}}/> : <RadioButtomImageInactive style={{marginTop: 1, marginRight: 1}}/>}
+          {validators.upperCaseLetter ? <RadioButtomImageActive style={{ marginTop: 1, marginRight: 1 }} /> : <RadioButtomImageInactive style={{ marginTop: 1, marginRight: 1 }} />}
           <Text style={{ ...styles.passwordRequirement }}>
             1 uppercase letter
           </Text>
         </View>
 
         <View style={styles.requirmentWrapper}>
-          {validators.lowercaseLetter? <RadioButtomImageActive style={{marginTop: 1, marginRight: 1}}/> : <RadioButtomImageInactive style={{marginTop: 1, marginRight: 1}}/>}
+          {validators.lowercaseLetter ? <RadioButtomImageActive style={{ marginTop: 1, marginRight: 1 }} /> : <RadioButtomImageInactive style={{ marginTop: 1, marginRight: 1 }} />}
           <Text style={{ ...styles.passwordRequirement }}>
             1 lowercase letter
           </Text>

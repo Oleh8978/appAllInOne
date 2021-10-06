@@ -29,9 +29,9 @@ export default {
     flexDirection: 'row',
     width: '100%',
     marginTop: 3,
-    padding: 15
+    padding: 15,
   },
   textFooter: {
-    color: colors.white
-  }
+    color: colors.white,
+  },
 };

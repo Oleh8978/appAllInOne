@@ -85,7 +85,7 @@ function ResetPasswordCode({ navigation, route, height }) {
         screen: WELL_DONE,
         params: {
           onPress: () => navigation.navigate(AUTHENTICATION, {
-            screen: SIGN_TYPE, type: 'login'
+            screen: SIGN_TYPE, type: 'login',
           }),
         },
       });

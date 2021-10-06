@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Text, 
-  TouchableOpacity, 
-  View, 
-  ScrollView, 
+  Text,
+  TouchableOpacity,
+  View,
+  ScrollView,
   Image,
-  Platform
+  Platform,
 } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -30,7 +30,7 @@ import {
   BIOMETRIC,
   FORGOT_PASSWORD,
   SIGN_TYPE,
-  CREATE_USER_EMAIL
+  CREATE_USER_EMAIL,
 } from '../../../../constants/navigation/authenticationScreens';
 import { WILL_TUNE_BIOMETRIC } from '../../../../constants/storageKeys';
 
@@ -149,35 +149,35 @@ function SignType({ navigation, route: { params: type } }) {
           topText={isLogin ? 'Log in to your account' : 'Create your account'}
           isLight
         />
-        <ScrollView showsVerticalScrollIndicator={false} style={{width: '100%', height: '100%'}}>
-        {isLogin ? <></> : <Image source={require('../../../../assets/images/MainPage.png')} alt="img" style={{ width: '100%', height: 345 }} />}
-        <View style={{ ...view, marginTop: 10, marginTop: isLogin ? 100 : 0 }}>
-          <TouchableOpacity
-            style={shadowBlock}
-            onPress={() => authentication('SignInWithApple')}
-          >
-            <View style={{ ...styles.buttonsItemContainer }}>
-              <AppleImage style={{ ...styles.logo, marginLeft: -25 }} />
-              <Text allowFontScaling={false} style={styles.signUpText}>Continue with Apple</Text>
+        <ScrollView showsVerticalScrollIndicator={false} style={{ width: '100%', height: '100%' }}>
+          {isLogin ? <></> : <Image source={require('../../../../assets/images/MainPage.png')} alt="img" style={{ width: '100%', height: 345 }} />}
+          <View style={{ ...view, marginTop: 10, marginTop: isLogin ? 100 : 0 }}>
+            <TouchableOpacity
+              style={shadowBlock}
+              onPress={() => authentication('SignInWithApple')}
+            >
+              <View style={{ ...styles.buttonsItemContainer }}>
+                <AppleImage style={{ ...styles.logo, marginLeft: -25 }} />
+                <Text allowFontScaling={false} style={styles.signUpText}>Continue with Apple</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={shadowBlock}
+              onPress={() => authentication('Google')}
+            >
+              <View style={styles.buttonsItemContainer}>
+                <GoogleImage style={{ ...styles.logo, marginLeft: -15, marginRight: 5 }} />
+                <Text allowFontScaling={false} style={styles.signUpText}>Continue with Google</Text>
+              </View>
+            </TouchableOpacity>
+            <View style={{ ...shadowBlock, opacity: 0.25 }}>
+              <View style={styles.buttonsItemContainer}>
+                <FacebookImage style={styles.logo} />
+                <Text allowFontScaling={false} style={styles.signUpText}>Continue with Facebook</Text>
+              </View>
             </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={shadowBlock}
-            onPress={() => authentication('Google')}
-          >
-            <View style={styles.buttonsItemContainer}>
-              <GoogleImage style={{ ...styles.logo, marginLeft: -15, marginRight: 5 }} />
-              <Text allowFontScaling={false} style={styles.signUpText}>Continue with Google</Text>
-            </View>
-          </TouchableOpacity>
-          <View style={{ ...shadowBlock, opacity: 0.25 }}>
-            <View style={styles.buttonsItemContainer}>
-              <FacebookImage style={styles.logo} />
-              <Text allowFontScaling={false} style={styles.signUpText}>Continue with Facebook</Text>
-            </View>
-          </View>
-          <DeviderText textDevider={isLogin ? 'or use your email' : 'or'} customStyle={{ minWidth: isLogin ? 15 : 12 }} />
-          {isLogin
+            <DeviderText textDevider={isLogin ? 'or use your email' : 'or'} customStyle={{ minWidth: isLogin ? 15 : 12 }} />
+            {isLogin
             ? (
               <Formik
                 validationSchema={yup.object().shape({
@@ -200,11 +200,11 @@ function SignType({ navigation, route: { params: type } }) {
            isValid,
            dirty,
         }) => (
-          <View style={{...styles.formWrapper, height: Platform.Os === 'IOS' ? '100%' : 350}}>
+          <View style={{ ...styles.formWrapper, height: Platform.Os === 'IOS' ? '100%' : 350 }}>
             <View style={styles.form}>
               <View
                 style={styles.scrollableFormBody}
-                
+
               >
                 <FormInput
                   keyboardType="email-address"
@@ -244,14 +244,18 @@ function SignType({ navigation, route: { params: type } }) {
               customStyleContainer={{ marginTop: 0 }}
               onPressFunctionality={() => {
               navigation.navigate(AUTHENTICATION, { screen: FORGOT_PASSWORD,
-                                                    params: { email: errors.email ? '' : values.email }, });
+                                                    params: { email: errors.email ? '' : values.email } });
                                                    }}
             />
             )}
-            {isLogin && 
-            <Footer textFooter="Create an account" 
-              customStyle={{ marginTop: 5}} 
-              onPressFunctionality={() => navigation.navigate(SIGN_TYPE, { type: 'create' })} />}
+            {isLogin
+            && (
+            <Footer
+              textFooter="Create an account"
+              customStyle={{ marginTop: 5 }}
+              onPressFunctionality={() => navigation.navigate(SIGN_TYPE, { type: 'create' })}
+            />
+)}
 
           </View>
         )}
@@ -268,10 +272,10 @@ function SignType({ navigation, route: { params: type } }) {
             />
           </View>
           )}
-          {!isLogin && <Footer textFooter="Log into your account" customStyle={{ marginTop: 15 }} onPressFunctionality={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'login' } })} />}
-        </View>
-        <View />
-        <View />
+            {!isLogin && <Footer textFooter="Log into your account" customStyle={{ marginTop: 15 }} onPressFunctionality={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'login' } })} />}
+          </View>
+          <View />
+          <View />
         </ScrollView>
       </LinearGradient>
       <Notification type="error" notification={loginError} close={() => setLoginError('')} />
