@@ -36,6 +36,7 @@ export default function FormInput({
   headerText = '',
   inputCustomStyle = {},
   isNeedArrow = false,
+
 }) {
   const isHideFunctional = isHide || autoCompleteType === 'password';
   const [isInvisible, setIsInvisible] = useState(isHideFunctional);
@@ -87,7 +88,6 @@ export default function FormInput({
         style={{
           ...styles.input,
           fontFamily: inputFont,
-          borderColor: error ? colors.red : colors.greyLight,
           ...style,
           ...inputCustomStyle,
         }}

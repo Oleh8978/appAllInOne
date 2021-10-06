@@ -5,7 +5,6 @@ import Main from '../Main/Main';
 import SignType from '../SignType/SignType';
 import CreateUserEmail from '../CreateUserEmail/CreateUserEmail';
 import ConfirmEmailAddress from '../ConfirmEmailAddress/ConfirmEmailAddress';
-import SignInUserEmail from '../SignInUserEmail/SignInUserEmail';
 import ForgotPassword from '../ForgotPassword/ForgotPassword';
 import ResetPasswordCode from '../ResetPasswordCode/ResetPasswordCode';
 import Biometric from '../Biometric/Biometric';
@@ -16,7 +15,6 @@ import {
   SIGN_TYPE,
   CREATE_USER_EMAIL,
   CONFIRM_EMAIL_ADDRESS,
-  SIGN_IN_USER_EMAIL,
   FORGOT_PASSWORD,
   RESET_PASSWORD_CODE,
   BIOMETRIC,
@@ -39,7 +37,6 @@ export default function Authentication() {
         name={CONFIRM_EMAIL_ADDRESS}
         component={ConfirmEmailAddress}
       />
-      <Stack.Screen name={SIGN_IN_USER_EMAIL} component={SignInUserEmail} />
       <Stack.Screen name={FORGOT_PASSWORD} component={ForgotPassword} />
       <Stack.Screen name={RESET_PASSWORD_CODE} component={ResetPasswordCode} />
       <Stack.Screen name={BIOMETRIC} component={Biometric} />

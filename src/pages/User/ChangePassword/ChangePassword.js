@@ -24,7 +24,7 @@ import DefaultButton from '../../../components/DefaultButton/DefaultButton';
 import Indent from '../../../components/Indent/Indent';
 import Notification from '../../../components/Notification/Notification';
 
-import newPasswordImage from '../../../../assets/images/newPassword.png';
+import newPasswordImage from '../../../../assets/images/NewPasImage.png';
 import {
   authPageWrapper as wrapper,
   formWrapperSE,

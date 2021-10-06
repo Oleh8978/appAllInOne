@@ -49,6 +49,7 @@ export default function DefaultButton({
     }
   };
 
+
   const rightBodyProvider = () => {
     if (isArrowNext && showLoader === false) {
       return (<ArrowNext />);
@@ -73,7 +74,6 @@ export default function DefaultButton({
     if (isEmail) {
       return <EmailImage style={{ marginTop: 1, marginRight: 5 }} />;
     }
-
     return <></>;
   };
 

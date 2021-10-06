@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  View, Animated, SafeAreaView, ScrollView,
+  View, Image, Text, SafeAreaView, ScrollView,
 } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { Auth } from 'aws-amplify';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import LinearGradient from 'react-native-linear-gradient';
 
 import statusBar from '../../../../utilities/statusBar';
 import {
@@ -16,7 +17,7 @@ import {
 
 import { AUTHENTICATION } from '../../../../constants/navigation/navigators';
 import {
-  SIGN_IN_USER_EMAIL,
+  SIGN_TYPE,
   WELL_DONE,
 } from '../../../../constants/navigation/authenticationScreens';
 import { DEVICE_WIDTH } from '../../../../constants/constants';
@@ -29,13 +30,14 @@ import Indent from '../../../components/Indent/Indent';
 import Notification from '../../../components/Notification/Notification';
 import PasswordValidator from '../../../components/PasswordValidator/PasswordValidator';
 
-import newPasswordImage from '../../../../assets/images/newPassword.png';
+import styles from './ResetPasswordCode.styles';
 import {
   authPageWrapper as wrapper,
   view,
   formWrapper,
   header,
 } from '../../../../styles/mixins';
+import colors from '../../../../styles/colors';
 
 function ResetPasswordCode({ navigation, route, height }) {
   useFocusEffect(() => statusBar('dark'));
@@ -51,7 +53,6 @@ function ResetPasswordCode({ navigation, route, height }) {
       lowercaseLetter: true,
     },
   );
-  const [repeatPassword, setRepeatPassword] = useState('');
 
   useEffect(() => {
     if (password.length) {
@@ -83,9 +84,8 @@ function ResetPasswordCode({ navigation, route, height }) {
       navigation.navigate(AUTHENTICATION, {
         screen: WELL_DONE,
         params: {
-          buttonText: 'Login',
           onPress: () => navigation.navigate(AUTHENTICATION, {
-            screen: SIGN_IN_USER_EMAIL,
+            screen: SIGN_TYPE, type: 'login',
           }),
         },
       });
@@ -97,30 +97,27 @@ function ResetPasswordCode({ navigation, route, height }) {
 
   return (
     <>
-      <View style={{ ...view, height: '100%' }}>
-        <View style={header}>
+      <LinearGradient colors={[colors.lightBlue, colors.darkBlue]} style={{ ...view, height: '100%', justifyContent: 'flex-start' }}>
+        <View style={{ ...header, backgroundColor: 'transparent', marginTop: 0 }}>
           <Header
-            topText="Create New Password"
-            bottomText="We have sent you verification code to change your password."
+            topText=""
             navigation={navigation}
           />
-          <Indent height={28} />
-          <Animated.Image source={newPasswordImage} style={[{ height }]} />
         </View>
-        <Formik
-          validationSchema={yup.object().shape({
+        <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+          <Image source={require('../../../../assets/images/ForgotPasswordImage.png')} style={styles.imageTop} />
+          <Formik
+            validationSchema={yup.object().shape({
             code: verificationCode,
             password: passwordValidator,
-            repeatPassword: passwordValidator,
           })}
-          initialValues={{
+            initialValues={{
             code: '',
             password: '',
-            repeatPassword: '',
           }}
-          onSubmit={resetCode}
-        >
-          {({
+            onSubmit={resetCode}
+          >
+            {({
             handleChange,
             handleBlur,
             handleSubmit,
@@ -138,15 +135,31 @@ function ResetPasswordCode({ navigation, route, height }) {
                 paddingHorizontal: 0,
               }}
             >
-              <ScrollView
+              <View
                 style={{ width: '100%' }}
-                showsVerticalScrollIndicator={false}
               >
-                <View style={{ ...view, paddingHorizontal: '5%' }}>
+                <View style={styles.textContainer}>
+                  <Text style={styles.textContainerTop}>
+                    Create
+                  </Text>
+                  <Text style={styles.textContainerTop}>
+                    New Password
+                  </Text>
+                  <View style={styles.containerBottom}>
+                    <Text style={styles.textContainerBottom}>
+                      We have sent you verification code
+                    </Text>
+                    <Text style={styles.textContainerBottom}>
+                      to change your password
+                    </Text>
+                  </View>
+                </View>
+                <View style={{ ...view, paddingHorizontal: '5%', marginTop: 0 }}>
                   <FormInput
                     set={handleChange('code')}
                     value={values.code}
-                    placeholder="Verification code"
+                    placeholder="Enter verification code from Email"
+                    headerText="Verification code"
                     error={touched.code && errors.code}
                   />
                   <FormInput
@@ -155,34 +168,29 @@ function ResetPasswordCode({ navigation, route, height }) {
                     onBlur={handleBlur('password')}
                     value={values.password}
                     textContentType="password"
-                    placeholder="New password"
+                    placeholder="Create your password"
+                    headerText="Password"
                     error={touched.password && !!errors.password}
-                  />
-                  <FormInput
-                    autoCompleteType="password"
-                    set={(value) => { handleChange('repeatPassword')(value); setRepeatPassword(value); }}
-                    onBlur={handleBlur('repeatPassword')}
-                    value={values.repeatPassword}
-                    textContentType="password"
-                    placeholder="Repeat password"
-                    error={touched.repeatPassword && (!repeatPassword || (password !== repeatPassword ? 'Passwords do not match' : '') || !!errors.repeatPassword)}
                   />
                   <Indent height={5} />
                   <PasswordValidator validators={passwordValidators} />
                   <Indent height={10} />
                 </View>
-              </ScrollView>
-              <DefaultButton
-                customStyles={{ marginTop: DEVICE_WIDTH <= 360 ? 30 : 0 }}
-                title="Submit"
-                onPress={handleSubmit}
-                showLoader={showLoader}
-                disabled={!(isValid && dirty)}
-              />
+              </View>
+              <View style={styles.buttonContainer}>
+                <DefaultButton
+                  customStyles={{ marginTop: DEVICE_WIDTH <= 360 ? 30 : 0 }}
+                  title="Submit"
+                  onPress={handleSubmit}
+                  showLoader={showLoader}
+                  disabled={!(isValid && dirty)}
+                />
+              </View>
             </SafeAreaView>
           )}
-        </Formik>
-      </View>
+          </Formik>
+        </ScrollView>
+      </LinearGradient>
       <Notification notification={formError} close={() => setFormError('')} />
     </>
   );

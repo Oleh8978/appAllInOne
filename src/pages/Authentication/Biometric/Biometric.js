@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  SafeAreaView, View, TouchableWithoutFeedback, Text,
+  SafeAreaView,
+  View,
+  TouchableWithoutFeedback,
+  Text,
+  Image,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 
 import ReactNativeBiometrics from 'react-native-biometrics';
+import LinearGradient from 'react-native-linear-gradient';
 
 import statusBar from '../../../../utilities/statusBar';
 
@@ -21,7 +26,7 @@ import DefaultButton from '../../../components/DefaultButton/DefaultButton';
 import Indent from '../../../components/Indent/Indent';
 import Notification from '../../../components/Notification/Notification';
 
-import BiometricImage from '../../../../assets/svgs/Biometric';
+import styles from './Biometric.styles';
 import { authPageWrapper as wrapper, view } from '../../../../styles/mixins';
 import colors from '../../../../styles/colors';
 
@@ -71,25 +76,39 @@ export default function Biometric({ navigation }) {
 
   return (
     <>
-      <SafeAreaView style={wrapper}>
-        <Header
-          topText={'Activate Biometric \n Authentication'}
-          bottomText="Face ID/Touch ID"
-          navigation={navigation}
-          isLight={false}
-        />
-        <BiometricImage />
-        <View style={view}>
-          <DefaultButton onPress={activate} title="Activate" />
-          <Indent height={12} />
-          <TouchableWithoutFeedback onPress={deactivate}>
-            <Text allowFontScaling={false} style={{ color: colors.purple }}>
-              Set Up Later in Settings
+      <LinearGradient colors={[colors.lightBlue, colors.darkBlue]} style={{ height: '100%', justifyContent: 'flex-start' }}>
+        <SafeAreaView style={wrapper}>
+          <Header
+            topText=""
+            navigation={navigation}
+            isLight={false}
+          />
+          <Image source={require('../../../../assets/images/biometricImage.png')} style={styles.imageTop} />
+          <View style={styles.textContainer}>
+            <Text style={styles.textContainerTop}>
+              Activate biometric
             </Text>
-          </TouchableWithoutFeedback>
-          <Indent height={20} />
-        </View>
-      </SafeAreaView>
+            <Text style={styles.textContainerTop}>
+              authentification?
+            </Text>
+            <View style={styles.containerBottom}>
+              <Text style={styles.textContainerBottom}>
+                Face ID
+              </Text>
+            </View>
+          </View>
+          <View style={{ ...view, paddingHorizontal: 15 }}>
+            <DefaultButton onPress={activate} title="Activate" />
+            <Indent height={12} />
+            <TouchableWithoutFeedback onPress={deactivate}>
+              <Text allowFontScaling={false} style={{ color: colors.white, textDecorationLine: 'underline' }}>
+                Set Up Later in Settings
+              </Text>
+            </TouchableWithoutFeedback>
+            <Indent height={20} />
+          </View>
+        </SafeAreaView>
+      </LinearGradient>
       <Notification notification={error} close={() => setError(() => setError(''))} />
     </>
   );
