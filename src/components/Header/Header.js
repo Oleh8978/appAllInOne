@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 
 import ChevronLeftWhiteImage from '../../../assets/svgs/ChevronLeftWhite';
+import ChevronLeftBlue from '../../../assets/svgs/ChevronLeftBlue';
 
 import colors from '../../../styles/colors';
 import styles from './Header.styles';
@@ -16,13 +17,15 @@ export default function Header({
   goBackFunction = () => navigation.goBack(),
   deviceMarginTop,
   customStyles,
+  isBlue = false,
+  mainCustomStyle
 }) {
   return (
-    <SafeAreaView style={{ ...styles.wrapper, marginTop: deviceMarginTop }}>
+    <SafeAreaView style={{ ...styles.wrapper, marginTop: deviceMarginTop, ...mainCustomStyle }}>
       <View style={styles.header}>
         {goBack && (
           <TouchableOpacity style={styles.backArrow} onPress={goBackFunction}>
-            <ChevronLeftWhiteImage />
+            {isBlue ? <ChevronLeftBlue /> : <ChevronLeftWhiteImage />}
           </TouchableOpacity>
         )}
         <Text 

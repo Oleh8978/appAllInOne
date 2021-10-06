@@ -7,7 +7,7 @@ import {
 
 import Loader from '../Loader/Loader';
 
-import ArrowNext from '../../../assets/svgs/ArrovNext';
+import ArrowNext from '../../../assets/svgs/ArrowNext';
 import EmailImage from '../../../assets/svgs/EmailImage';
 
 import colors from '../../../styles/colors';
