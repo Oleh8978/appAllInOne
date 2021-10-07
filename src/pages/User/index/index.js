@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { observer } from 'mobx-react-lite';
+import LinearGradient from 'react-native-linear-gradient';
 
 import Store from '../../../store';
 
@@ -12,11 +13,14 @@ import {
   WALLETS,
   TRANSACTIONS,
   ACCOUNT,
+  BORROW
 } from '../../../../constants/navigation/userScreens';
 
 import AccountScreen from '../AccountScreen/AccountScreen';
 import TransactionsScreen from '../TransactionsScreen/TransactionsScreen';
 import WalletsScreen from '../WalletsScreen/WalletsScreen';
+import BorrowPages from '../Borrow/BorrowScreen';
+
 import Loader from '../../../components/Loader/Loader';
 
 import DashboardImage from '../../../../assets/svgs/Dashboard';
@@ -60,6 +64,8 @@ export default observer(({ navigation }) => {
     setGotRates(!!Object.keys(Store.wallets.exchangeRates).length);
   }, [Store.wallets.exchangeRates]);
 
+ 
+
   if (showLoader && !gotRates) {
     return (
       <View style={{
@@ -74,7 +80,21 @@ export default observer(({ navigation }) => {
   }
 
   return (
-    <Tab.Navigator tabBarOptions={{ style: { position: 'absolute' }, showLabel: false }}>
+    <>
+    <Tab.Navigator 
+     tabBarOptions={{ 
+       style: { 
+         position: 'absolute', 
+         borderTopRightRadius: 30, 
+         borderTopLeftRadius: 30, 
+         borderTopColor: 'transparent',
+         backgroundColor: 'transparent'
+         },
+         activeTintColor: colors.white,
+        inactiveTintColor: colors.white, 
+        showLabel: true 
+        }}
+    >
       {/* <Tab.Screen
         name={DASHBOARD}
         component={DashboardScreen}
@@ -89,8 +109,8 @@ export default observer(({ navigation }) => {
             </View>
           )),
         }}
-      /> */}
-      {/* <Tab.Screen
+      />
+      <Tab.Screen
         name={WALLETS}
         component={WalletsScreen}
         options={{
@@ -104,8 +124,8 @@ export default observer(({ navigation }) => {
             </View>
           )),
         }}
-      /> */}
-      {/* <Tab.Screen
+      />
+      <Tab.Screen
         name={TRANSACTIONS}
         component={TransactionsScreen}
         options={{
@@ -119,7 +139,7 @@ export default observer(({ navigation }) => {
             </View>
           )),
         }}
-      /> */}
+      />
       <Tab.Screen
         name={ACCOUNT}
         component={AccountScreen}
@@ -143,8 +163,26 @@ export default observer(({ navigation }) => {
             />
           ),
         }}
+      /> */}
+      <Tab.Screen
+        name={BORROW}
+        component={BorrowPages}
+        options={{
+          tabBarIcon: ({ focused }) => (focused ? (
+            <View style={tabStyles.activeTab}>
+              {/* <TransactionsActiveImage /> */}
+              <Image source={require('../../../../assets/images/BorrowActiveImg.png')} style={{width: 90, height: 90}}/>
+            </View>
+          ) : (
+            <View style={tabStyles.tab}>
+              <Image source={require('../../../../assets/images/BorrowInActiveImg.png')} style={{width: 60, height: 60}}/>
+            </View>
+          )),
+        }}
       />
     </Tab.Navigator>
+
+    </>
   );
 });
 

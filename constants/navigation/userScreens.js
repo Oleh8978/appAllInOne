@@ -14,3 +14,9 @@ export const WITHDRAW_CREDIT = 'WITHDRAW_CREDIT';
 export const DEPOSIT = 'DEPOSIT';
 export const WELL_DONE = 'WELL_DONE';
 export const PASSCODE = 'PASSCODE';
+
+export const BORROW = 'BORROW';
+export const BORROW_PAGES = 'BORROW_PAGES';
+export const CREDIT = 'CREDIT';
+export const LOAN = 'LOAN';
+export const INFO = 'INFO';

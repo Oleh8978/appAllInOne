@@ -36,6 +36,7 @@ export default function FormInput({
   headerText = '',
   inputCustomStyle = {},
   isNeedArrow = false,
+  customContainer = {}
 }) {
   const isHideFunctional = isHide || autoCompleteType === 'password';
   const [isInvisible, setIsInvisible] = useState(isHideFunctional);
@@ -61,7 +62,7 @@ export default function FormInput({
   };
 
   return (
-    <View style={styles.inputWrapper}>
+    <View style={{...styles.inputWrapper, ...customContainer}}>
       <Text
         allowFontScaling={false}
         style={{
