@@ -47,4 +47,11 @@ export default StyleSheet.create({
     right: 11,
     top: 45,
   },
+  maxButton: {
+    height: 20,
+    width: 35,
+    marginRight: 15,
+    marginLeft: 'auto',
+    marginTop: -35,
+  }
 });
