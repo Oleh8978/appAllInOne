@@ -11,7 +11,7 @@ export default function CheckBox({ checked }) {
     <View
       style={{
         ...styles.checkBox,
-        backgroundColor: checked ? colors.purple : colors.greyLight,
+        // backgroundColor: checked ? colors.purple : colors.greyLight,
       }}
     />
   );

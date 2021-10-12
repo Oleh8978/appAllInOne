@@ -20,3 +20,7 @@ export const BORROW_PAGES = 'BORROW_PAGES';
 export const CREDIT = 'CREDIT';
 export const LOAN = 'LOAN';
 export const INFO = 'INFO';
+export const INFO_CREDIT = 'INFO_CREDIT';
+export const INFO_LOAN = 'INFO_LOAN ';
+export const RECIVE_FOUNDS = 'RECIVE_FOUNDS';
+export const HOME = 'HOME';

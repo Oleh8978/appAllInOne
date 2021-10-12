@@ -7,12 +7,26 @@ import {
 import OTPInput from 'react-native-otp';
 import Header from '../../../../components/Header/Header';
 import DefaultButton from '../../../../components/DefaultButton/DefaultButton';
+import FooterBackground from '../../../../components/FooterBackground/FooterBackground';
+
+import { CONGRATS } from '../../../../../constants/navigation/twoFactorAuth';
+import { TWO_FACTOR_AUTH } from '../../../../../constants/navigation/authenticationScreens';
 
 import styles from './Code.styles';
 import colors from '../../../../../styles/colors';
 
-export default function Code({ navigation }) {
+export default function Code({ navigation, route }) {
     const [code, setCode] = useState('');
+
+  const moveForward = () => {
+    if (route?.params?.type === 'credit') {
+      navigation.navigate(TWO_FACTOR_AUTH,
+        { screen: CONGRATS, params: { type: 'credit' } });
+    }
+
+    return navigation.navigate(TWO_FACTOR_AUTH,
+      { screen: CONGRATS, params: { type: 'loan' } });
+  };
 
   return (
     <View>
@@ -57,9 +71,10 @@ export default function Code({ navigation }) {
                    marginTop: 30,
                 }}
           disabled={code.length < 6}
-          onPress={() => console.log('finish')}
+          onPress={() => moveForward()}
         />
       </ScrollView>
+      <FooterBackground />
     </View>
   );
 }

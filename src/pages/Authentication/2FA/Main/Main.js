@@ -5,6 +5,7 @@ import {
 
 import Header from '../../../../components/Header/Header';
 import DefaultButton from '../../../../components/DefaultButton/DefaultButton';
+import FooterBackground from '../../../../components/FooterBackground/FooterBackground';
 
 import { LIST_SCREN_2FA } from '../../../../../constants/navigation/twoFactorAuth';
 import { TWO_FACTOR_AUTH } from '../../../../../constants/navigation/authenticationScreens';
@@ -32,6 +33,7 @@ export default function Main({ navigation }) {
           <Text style={styles.skipText}>Skip</Text>
         </TouchableOpacity>
       </ScrollView>
+      <FooterBackground />
     </View>
   );
 }

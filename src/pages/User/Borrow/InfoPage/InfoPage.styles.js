@@ -16,7 +16,7 @@ export default StyleSheet.create({
         backgroundColor: colors.white,
         paddingTop: 15,
         paddingHorizontal: 15,
-        flexDirection: 'column'
+        flexDirection: 'column',
     },
     containerTop: {
         height: '100%',
@@ -37,7 +37,7 @@ export default StyleSheet.create({
         marginBottom: 20,
         flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     checkbox: {
         borderWidth: 1,
@@ -48,6 +48,6 @@ export default StyleSheet.create({
         marginRight: 5,
         justifyContent: 'center',
         alignContent: 'center',
-        paddingLeft: 2
-    }
+        paddingLeft: 2,
+    },
 });

@@ -13,7 +13,7 @@ export default StyleSheet.create({
     minHeight: 70,
     paddingVertical: 15,
     paddingHorizontal: 20,
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   typeCoin: {
       marginLeft: 3,
@@ -31,18 +31,18 @@ export default StyleSheet.create({
   },
   textTopAmount: {
       fontSize: 14,
-      fontWeight: 'bold'
+      fontWeight: 'bold',
   },
   textBottom: {
       marginLeft: 'auto',
-      marginRight: 0
+      marginRight: 0,
   },
   bottomContainer: {
       marginTop: 10,
       width: '100%',
-      flexDirection:'column'
+      flexDirection: 'column',
   },
   bottomContainerBottom: {
-      flexDirection: 'row'
-  }
+      flexDirection: 'row',
+  },
 });

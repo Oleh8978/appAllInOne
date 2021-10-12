@@ -17,7 +17,7 @@ export default StyleSheet.create({
         backgroundColor: colors.white,
         paddingTop: 15,
         paddingHorizontal: 15,
-        flexDirection: 'column'
+        flexDirection: 'column',
     },
     mainTopHeader: {
         textAlign: 'center',
@@ -41,25 +41,25 @@ export default StyleSheet.create({
     mainTopPlateHeader: {
         color: colors.darkBlue,
         fontSize: 15,
-        textAlign: 'center'
+        textAlign: 'center',
 
     },
     mainTopPlateSubHeader: {
         color: colors.darkBlue,
         fontSize: 12,
-        textAlign: 'center'
+        textAlign: 'center',
 
     },
     mainBottomPlate: {
         width: '100%',
         height: '100%',
-        flexDirection: 'column'
+        flexDirection: 'column',
     },
     mainBottomPlateHeader: {
         fontSize: 20,
         marginLeft: 0,
         marginRight: 'auto',
         marginTop: 20,
-    }
+    },
 
 });

@@ -53,5 +53,5 @@ export default StyleSheet.create({
     marginRight: 15,
     marginLeft: 'auto',
     marginTop: -35,
-  }
+  },
 });

@@ -5,6 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import Header from '../../../../components/Header/Header';
 import DefaultButton from '../../../../components/DefaultButton/DefaultButton';
+import FooterBackground from '../../../../components/FooterBackground/FooterBackground';
 
 import { CODE_SCREN_2FA } from '../../../../../constants/navigation/twoFactorAuth';
 import { TWO_FACTOR_AUTH } from '../../../../../constants/navigation/authenticationScreens';
@@ -50,6 +51,7 @@ export default function List({ navigation }) {
                  { screen: CODE_SCREN_2FA, params: { type: 'authy' } })}
         />
       </ScrollView>
+      <FooterBackground />
     </LinearGradient>
   );
 }
