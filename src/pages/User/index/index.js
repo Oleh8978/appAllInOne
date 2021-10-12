@@ -13,13 +13,15 @@ import {
   WALLETS,
   TRANSACTIONS,
   ACCOUNT,
-  BORROW
+  BORROW,
+  HOME
 } from '../../../../constants/navigation/userScreens';
 
 import AccountScreen from '../AccountScreen/AccountScreen';
 import TransactionsScreen from '../TransactionsScreen/TransactionsScreen';
 import WalletsScreen from '../WalletsScreen/WalletsScreen';
 import BorrowPages from '../Borrow/BorrowScreen';
+import HomePages from '../Home/Home';
 
 import Loader from '../../../components/Loader/Loader';
 
@@ -164,6 +166,21 @@ export default observer(({ navigation }) => {
           ),
         }}
       /> */}
+      <Tab.Screen
+        name={HOME}
+        component={HomePages}
+        options={{
+          tabBarIcon: ({ focused }) => (focused ? (
+            <View style={tabStyles.activeTab}>
+              <Image source={require('../../../../assets/images/HomeActive.png')} style={{width: 90, height: 90}}/>
+            </View>
+          ) : (
+            <View style={tabStyles.tab}>
+              <Image source={require('../../../../assets/images/HomeInactive.png')} style={{width: 60, height: 60}}/>
+            </View>
+          )),
+        }}
+      />
       <Tab.Screen
         name={BORROW}
         component={BorrowPages}

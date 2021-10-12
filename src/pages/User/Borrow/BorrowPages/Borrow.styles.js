@@ -16,5 +16,18 @@ export default StyleSheet.create({
         borderTopRightRadius: 30,
         backgroundColor: colors.white,
         paddingHorizontal: 20,
+    },
+    topContainer: {
+        marginTop: 20,
+        paddingBottom: 40,
+        borderBottomColor: colors.greyLight,
+        borderBottomWidth: 1
+    },
+    bottomContainer: {
+        marginTop: 20,
+        paddingBottom: 90
+    },
+    headerText: {
+        fontSize: 16
     }
 });

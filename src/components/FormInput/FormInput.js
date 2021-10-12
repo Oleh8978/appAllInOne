@@ -38,7 +38,8 @@ export default function FormInput({
   inputCustomStyle = {},
   isNeedArrow = false,
   customContainer = {},
-  isMax = true,
+  isMax = false,
+  setMax = () => {}
 }) {
   const isHideFunctional = isHide || autoCompleteType === 'password';
   const [isInvisible, setIsInvisible] = useState(isHideFunctional);
@@ -100,7 +101,7 @@ export default function FormInput({
         maxLength={maxLength}
       />
       {isMax && 
-        <TouchableOpacity style={styles.maxButton}>
+        <TouchableOpacity style={styles.maxButton} onPress={() => {setMax()}}>
           <LinearGradient colors={[colors.lightBlue, colors.darkBlue]} 
             style={{
               height: '100%', 

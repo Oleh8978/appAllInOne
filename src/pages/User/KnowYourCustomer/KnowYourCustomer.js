@@ -187,11 +187,11 @@ function KnowYourCustomer({ navigation, route }) {
         <Header
           topText="KYC Verification"
           navigation={navigation}
-          goBackFunction={() => {
-            if (!showLoader) {
-              navigation.navigate(ACCOUNT);
-            }
-          }}
+          // goBackFunction={() => {
+          //   if (!showLoader) {
+          //     navigation.navigate(ACCOUNT);
+          //   }
+          // }}
         />
 
       </LinearGradient>

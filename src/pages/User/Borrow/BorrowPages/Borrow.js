@@ -10,21 +10,57 @@ import  CurlyLineImage from '../../../../../assets/svgs/CurlyLineImage';
 
 import {
   BORROW,
-  INFO
+  INFO,
+  INFO_LOAN,
+  INFO_CREDIT
 } from '../../../../../constants/navigation/userScreens';
 
 import styles from './Borrow.styles';
 import colors from '../../../../../styles/colors';
 
 
+const hardcodedData = [
+  {
+    header: 'Credit Line',
+    amount: 20004.59,
+    type: 'credit',
+    nextPayment: {
+      amount: 25.59,
+      date: '25.09.2021'
+    },
+    cryptoAmount: {
+      type: 'Bitcoin',
+      short: 'BTC',
+      amount: '1.00000000',
+      equality: '50,009.10'
+    }
+  },
+  {
+    header: 'Loan 12 months',
+    amount: 20004.59,
+    type: 'loan',
+    nextPayment: {
+      amount: 25.59,
+      date: '25.09.2021'
+    },
+    cryptoAmount: {
+      type: 'Etherum',
+      short: 'ETH',
+      amount: '1.00000000',
+      equality: '50,009.10'
+    }
+  }
+]
+
+
 export default function Borrow({navigation}) {
 
-  const navigate1 = () => {
-    navigation.navigate(BORROW, {screen: INFO, params: { type: 'credit' } })
+  const moveForward = (typeLine) => {
+    navigation.navigate(BORROW, {screen: INFO, params: { type: typeLine } })
   }
 
-  const navigate2 = () => {
-    navigation.navigate(BORROW, {screen: INFO, params: { type: 'loan' } })
+  const moveForwardLineInfo = (type) => {
+    navigation.navigate(BORROW, {screen: type === 'loan' ?  INFO_LOAN : INFO_CREDIT })
   }
 
   return (
@@ -35,10 +71,34 @@ export default function Borrow({navigation}) {
      >
        <CurlyLineImage style={{...styles.imageTop}}/>
        <PageHeader/>
-       <ScrollView style={styles.mainWrapper}>
-          <Card headerText={'Credit Line'} onPress={() => navigate1()}/>
-          <Card headerText={'Credit Line'} typeOfInfo='loan' onPress={() => navigate2()}/>
+       {hardcodedData.length < 0 ? 
+       (
+       <ScrollView style={styles.mainWrapper} showsVerticalScrollIndicator={false}>
+          <Card headerText={'Credit Line'} onPress={() => moveForward('credit')}/>
+          <Card headerText={'Loan'} typeOfInfo='loan' onPress={() => moveForward('loan')}/>
        </ScrollView>
+       ) : (
+       <ScrollView style={styles.mainWrapper} showsVerticalScrollIndicator={false}>
+
+         <View style={styles.topContainer}>
+           <Text style={styles.headerText}>
+             Active credits and loans
+           </Text>
+           {hardcodedData.map(item => {
+             return <Card data={item} onPress={() => moveForwardLineInfo(item.type)} key={Math.random()}/>
+           })}
+         </View>
+
+         <View style={styles.bottomContainer}>
+           <Text style={styles.headerText}>
+             Add more credit lines or loans
+           </Text>
+          <Card headerText={'Credit Line'} onPress={() => moveForward('credit')}/>
+          <Card headerText={'Loan'} typeOfInfo='loan' onPress={() => moveForward('loan')}/>
+         </View>
+
+       </ScrollView>
+       )}
       <FooterBackground/>
     </LinearGradient>
   );

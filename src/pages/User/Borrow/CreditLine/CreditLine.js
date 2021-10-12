@@ -61,14 +61,14 @@ export default function CreditLine({navigation}) {
          showsHorizontalScrollIndicator={false}
          >  
             <Text style={styles.mainTopHeader}>
-                Yuor Loan-to-Value persentage: 
+                Your Loan-to-Value persentage: 
             </Text>
             <View style={styles.mainTopPlate}>
                 <Text style={styles.mainTopPlateHeader}>
                     50%
                 </Text>
                 <Text style={styles.mainTopPlateSubHeader}>
-                    8.59APR
+                    8.95% APR
                 </Text>
             </View>
             <View style={styles.mainBottomPlate}>
@@ -76,7 +76,7 @@ export default function CreditLine({navigation}) {
                     Choose collateral wallet:
                 </Text>
                 {staticData.map( item => {
-                    return <ResizebleCard data={item}/>
+                    return <ResizebleCard data={item} key={Math.random()} navigation={navigation}/>
                 })}
             </View>
          </ScrollView>

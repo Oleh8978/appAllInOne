@@ -9,30 +9,29 @@ export default StyleSheet.create({
     },
     body: {
         marginTop: 40,
-        marginBottom: -60,
         borderTopRightRadius: 25,
         borderTopLeftRadius: 25,
-        backgroundColor: colors.white,
         paddingRight: 15,
         paddingLeft: 15,
+        flex: 1,
     },
-    headerText: {
-        textAlign: 'center',
+    mainText: {
+        marginLeft: 'auto',
+        marginRight: 'auto',
         fontSize: 32,
-        marginTop: 35,
-        maxWidth: 230,
-        marginLeft: 'auto',
-        marginRight: 'auto',
+        color: colors.darkBlue
     },
-    subHeader: {
-        textAlign: 'center',
-        marginRight: 'auto',
-        marginLeft: 'auto',
-        maxWidth: '90%',
+    subText: {
+        marginTop:10,
         fontSize: 15,
-        marginTop: 10,
-        marginBottom: 15,
-
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        marginBottom: 'auto',
     },
-
+    itemsContainer: {
+        width: '100%', 
+        height: '100%', 
+        minHeight: '100%', 
+        justifyContent: 'space-between', 
+    }
 });

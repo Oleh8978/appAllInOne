@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 import FormInput from '../FormInput/FormInput';
 import DefaultButton from '../DefaultButton/DefaultButton';
 
-import done from '../../../assets/images/done.png'
+import done from '../../../assets/images/done.png';
 
 import Bitcoin from '../../../assets/svgs/Btc';
 import EtherumCoin from '../../../assets/svgs/EtherumCoin';
@@ -12,12 +12,18 @@ import LiteCoin from '../../../assets/svgs/LiteCoin';
 import USDCoin from '../../../assets/svgs/USDCoin';
 import TrueUSDT from '../../../assets/svgs/TrueUSDT';
 
+import {
+    BORROW,
+    RECIVE_FOUNDS
+} from '../../../constants/navigation/userScreens';
+
 import colors from '../../../styles/colors';
 import styles from './ResizebleCard.styles';
 
-function ResizebleCard({ navigation, data }) {
+function ResizebleCard({ navigation, data, typeCard = '' }) {
 
     const [isOpened, setIsOpened] = useState(false);
+    const [valueAmount, setValueAmount] = useState('');
 
     const coinImage = (type) => {
         switch (type) {
@@ -33,6 +39,15 @@ function ResizebleCard({ navigation, data }) {
                 return <TrueUSDT />
         }
     }
+
+    const moveNext = () => {
+        navigation.navigate(BORROW, { screen: RECIVE_FOUNDS, params: { value: `${valueAmount}`, name: typeCard.length !== 0 ? 'loan' : 'credit'} })
+      }
+
+    const onValueChnage = (data) => {
+        setValueAmount(data)
+    }
+
 
   return (
     <TouchableOpacity style={styles.containerStart} onPress={() => {setIsOpened(!isOpened)}}>
@@ -61,7 +76,13 @@ function ResizebleCard({ navigation, data }) {
                 <View style={styles.bottomContainer}>
                     <Text>How much do you want to get?</Text>
                     <View style={styles.bottomContainerBottom}>
-                        <FormInput customContainer={{width: '65%'}}/>
+                        <FormInput 
+                         customContainer={{width: '65%'}} 
+                         isMax placeholder={ '$' + String(data.AvailableCredit)} 
+                         value={valueAmount}
+                         set={onValueChnage}
+                         setMax = {() => setValueAmount(String(data.AvailableCredit))}
+                        />
                         <DefaultButton 
                          customStyles={{
                              width: '32%', 
@@ -71,6 +92,7 @@ function ResizebleCard({ navigation, data }) {
                              marginBottom: 'auto'
                              }}
                          title="Next"
+                         onPress={() => {moveNext()}}
                         />
                     </View>
                 </View> 

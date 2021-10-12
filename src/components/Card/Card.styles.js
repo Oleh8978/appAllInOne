@@ -10,13 +10,6 @@ export default StyleSheet.create({
         borderRadius: 10,
         borderColor: colors.darkBlue,
         borderWidth: 1,
-        elevation: 10,
-        shadowOffset: {
-          width: 3,
-          height: 3,
-        },
-        shadowColor: colors.lightBlue,
-        shadowOpacity: 0.15,
     },
     mainTop: {
         width: '100%',
@@ -58,5 +51,49 @@ export default StyleSheet.create({
     },
     checkText: {
         marginTop: 5
+    },
+    bottomBody: {
+        height: 120,
+        marginTop: 10,
+        marginHorizontal: 15,
+        flexDirection: 'row'
+    },
+    bodyBottomLeft: {
+        flex:1,
+        flexDirection: 'column',
+    },
+    bodyBottomRight: {
+        flex:1,
+        flexDirection: 'column',
+    },
+    containerTop:{
+        flexDirection: 'column',
+        height: 50
+    },
+    containerBottom: {
+        flexDirection: 'column',
+        height: 60
+    },
+    payOutText: {
+        fontSize: 15,
+        color: colors.grey
+    },
+    amountText: {
+        color: colors.darkBlue,
+        fontSize: 20
+    },
+    button: {
+        width: 100,
+        height: 30,
+        borderRadius: 8,
+        backgroundColor: colors.lightBlue,
+        marginRight: 0,
+        marginLeft: 'auto',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    buttonText: {
+        fontSize: 13,
+        color: colors.white,
     }
 });
