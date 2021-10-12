@@ -194,8 +194,8 @@ function CreateUserEmail({ navigation, addHeight }) {
           </View>
         )}
         </Formik>
-        <Notification notification={formError} close={() => setFormError('')} />
       </ScrollView>
+      <Notification notification={formError} close={() => setFormError('')} />
     </LinearGradient>
   );
 }

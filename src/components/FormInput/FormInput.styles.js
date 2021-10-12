@@ -12,7 +12,7 @@ export default StyleSheet.create({
     borderRadius: 8,
     borderColor: colors.grey,
     borderWidth: 1,
-    padding: 15,
+    padding: 14,
     height: 48,
   },
   placeholder: {

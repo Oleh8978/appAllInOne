@@ -12,7 +12,7 @@ export default StyleSheet.create({
     paddingHorizontal: 17,
     paddingTop: '10%',
     paddingBottom: 10,
-    zIndex: 1,
+    zIndex: 5,
   },
   attention: {
     height: '100%',

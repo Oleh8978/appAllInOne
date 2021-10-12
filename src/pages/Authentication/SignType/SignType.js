@@ -66,30 +66,30 @@ function SignType({ navigation, route: { params: type } }) {
   const [showLoader, setShowLoader] = useState(false);
 
   useEffect(() => {
-    // Hub.listen(/.*/, async (data) => {
-    //   if (data.payload.event === 'parsingCallbackUrl') {
-    //     setShowLoader(true);
-    //   } else if (data.payload.event === 'cognitoHostedUI') {
-    //     try {
-    //       await Auth.currentAuthenticatedUser();
-    //       try {
-    //         if (
-    //           !((await AsyncStorage.getItem(WILL_TUNE_BIOMETRIC)) === 'true')
-    //         ) {
-    //           navigation.navigate(AUTHENTICATION, { screen: BIOMETRIC });
-    //         } else {
-    //           await navigation.navigate(USER);
-    //         }
-    //         setLoginError('');
-    //       } catch (e) {
-    //         setLoginError(e);
-    //       }
-    //     } catch (_e) {
-    //       setLoginError(_e);
-    //     }
-    //     setShowLoader(false);
-    //   }
-    // });
+    Hub.listen(/.*/, async (data) => {
+      if (data.payload.event === 'parsingCallbackUrl') {
+        setShowLoader(true);
+      } else if (data.payload.event === 'cognitoHostedUI') {
+        try {
+          await Auth.currentAuthenticatedUser();
+          try {
+            if (
+              !((await AsyncStorage.getItem(WILL_TUNE_BIOMETRIC)) === 'true')
+            ) {
+              navigation.navigate(AUTHENTICATION, { screen: BIOMETRIC });
+            } else {
+              await navigation.navigate(USER);
+            }
+            setLoginError('');
+          } catch (e) {
+            setLoginError(e);
+          }
+        } catch (_e) {
+          setLoginError(_e);
+        }
+        setShowLoader(false);
+      }
+    });
   }, []);
 
   const authentication = async (provider) => {
@@ -101,21 +101,22 @@ function SignType({ navigation, route: { params: type } }) {
   };
 
   const signIn = async ({ email, password }) => {
+
     try {
       setShowLoader(true);
       await signInUser(email, password);
       setFormError('');
 
-      // if (await AsyncStorage.getItem(USE_BIOMETRIC) === 'true') {
-      //   await navigation.navigate(USER);
-      // } else {
-      //   const { available } = await ReactNativeBiometrics.isSensorAvailable();
-      //   if (available) {
-      //     await navigation.navigate(AUTHENTICATION, { screen: BIOMETRIC });
-      //   } else {
-      //     await navigation.push(PASSCODE, { nextPage: USER, isNew: true });
-      //   }
-      // }
+      if (await AsyncStorage.getItem(USE_BIOMETRIC) === 'true') {
+        await navigation.navigate(USER);
+      } else {
+        const { available } = await ReactNativeBiometrics.isSensorAvailable();
+        if (available) {
+          await navigation.navigate(AUTHENTICATION, { screen: BIOMETRIC });
+        } else {
+          await navigation.push(PASSCODE, { nextPage: USER, isNew: true });
+        }
+      }
     } catch (e) {
       setFormError(e);
     }

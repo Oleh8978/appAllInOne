@@ -6,16 +6,16 @@ import {
   Text, View,
 } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
-// import ReactNativeBiometrics from 'react-native-biometrics';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
-// import { Auth } from 'aws-amplify';
+import ReactNativeBiometrics from 'react-native-biometrics';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Auth } from 'aws-amplify';
 import LinearGradient from 'react-native-linear-gradient';
 
 import statusBar from '../../../../utilities/statusBar';
 
 import { AUTHENTICATION, USER } from '../../../../constants/navigation/navigators';
 import { PASSCODE, SIGN_TYPE } from '../../../../constants/navigation/authenticationScreens';
-// import { USE_BIOMETRIC, NUMBER_PASSCODE } from '../../../../constants/storageKeys';
+import { USE_BIOMETRIC, NUMBER_PASSCODE } from '../../../../constants/storageKeys';
 import { EMAIL } from '../../../../constants/constants';
 
 import DefaultButton from '../../../components/DefaultButton/DefaultButton';
@@ -34,33 +34,33 @@ export default function Main({ navigation }) {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    // (async () => {
-    //   try {
-    //     if (await Auth.currentAuthenticatedUser() && await AsyncStorage.getItem(USE_BIOMETRIC) === 'true') {
-    //       if ((await ReactNativeBiometrics.isSensorAvailable()).available) {
-    //         await ReactNativeBiometrics.createKeys('Confirm fingerprint').then(
-    //           async (publicKey) => {
-    //             try {
-    //               const res = await ReactNativeBiometrics.createSignature({
-    //                 promptMessage: 'To login confirm your fingerprint',
-    //                 payload: publicKey.publicKey,
-    //               });
-    //               if (res.success) {
-    //                 await navigation.navigate(USER);
-    //               }
-    //             } catch (e) {
-    //               console.log(e);
-    //             }
-    //           },
-    //         );
-    //       } else if ((await AsyncStorage.getItem(NUMBER_PASSCODE))?.length) {
-    //         await navigation.navigate(PASSCODE, { nextPage: USER });
-    //       }
-    //     }
-    //   } catch (e) {
-    //     setError('');
-    //   }
-    // })();
+    (async () => {
+      try {
+        if (await Auth.currentAuthenticatedUser() && await AsyncStorage.getItem(USE_BIOMETRIC) === 'true') {
+          if ((await ReactNativeBiometrics.isSensorAvailable()).available) {
+            await ReactNativeBiometrics.createKeys('Confirm fingerprint').then(
+              async (publicKey) => {
+                try {
+                  const res = await ReactNativeBiometrics.createSignature({
+                    promptMessage: 'To login confirm your fingerprint',
+                    payload: publicKey.publicKey,
+                  });
+                  if (res.success) {
+                    await navigation.navigate(USER);
+                  }
+                } catch (e) {
+                  console.log(e);
+                }
+              },
+            );
+          } else if ((await AsyncStorage.getItem(NUMBER_PASSCODE))?.length) {
+            await navigation.navigate(PASSCODE, { nextPage: USER });
+          }
+        }
+      } catch (e) {
+        setError('');
+      }
+    })();
   }, []);
 
   return (
