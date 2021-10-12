@@ -1,10 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-
-import {
-  TWO_FACTOR_AUTH,
-} from '../../../../constants/navigation/authenticationScreens';
+import { TWO_FACTOR_AUTH } from '../../../../constants/navigation/authenticationScreens';
 
 import {
     BORROW_PAGES,
@@ -13,9 +10,8 @@ import {
     INFO,
     RECIVE_FOUNDS,
     INFO_CREDIT,
-    INFO_LOAN
+    INFO_LOAN,
   } from '../../../../constants/navigation/userScreens';
-
 
 import Borrow from './BorrowPages/Borrow';
 import CreditLine from './CreditLine/CreditLine';

@@ -21,12 +21,12 @@ export default function Code({ navigation, route }) {
   const moveForward = () => {
     if (route?.params?.type === 'credit') {
       navigation.navigate(TWO_FACTOR_AUTH,
-        { screen: CONGRATS, params: { type: 'credit' } })
-    } 
+        { screen: CONGRATS, params: { type: 'credit' } });
+    }
 
     return navigation.navigate(TWO_FACTOR_AUTH,
-      { screen: CONGRATS, params: { type: 'loan' } })
-  }
+      { screen: CONGRATS, params: { type: 'loan' } });
+  };
 
   return (
     <View>
@@ -74,7 +74,7 @@ export default function Code({ navigation, route }) {
           onPress={() => moveForward()}
         />
       </ScrollView>
-      <FooterBackground/>
+      <FooterBackground />
     </View>
   );
 }

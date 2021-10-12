@@ -5,7 +5,7 @@ export default StyleSheet.create({
     imageTop: {
         height: 90,
         position: 'absolute',
-        right: 0
+        right: 0,
     },
     mainWrapper: {
         height: '100%',
@@ -21,13 +21,13 @@ export default StyleSheet.create({
         marginTop: 20,
         paddingBottom: 40,
         borderBottomColor: colors.greyLight,
-        borderBottomWidth: 1
+        borderBottomWidth: 1,
     },
     bottomContainer: {
         marginTop: 20,
-        paddingBottom: 90
+        paddingBottom: 90,
     },
     headerText: {
-        fontSize: 16
-    }
+        fontSize: 16,
+    },
 });

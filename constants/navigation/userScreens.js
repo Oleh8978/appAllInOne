@@ -23,4 +23,4 @@ export const INFO = 'INFO';
 export const INFO_CREDIT = 'INFO_CREDIT';
 export const INFO_LOAN = 'INFO_LOAN ';
 export const RECIVE_FOUNDS = 'RECIVE_FOUNDS';
-export const HOME = 'HOME'
+export const HOME = 'HOME';

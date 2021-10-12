@@ -18,7 +18,7 @@ export default StyleSheet.create({
         backgroundColor: colors.white,
         paddingTop: 15,
         paddingHorizontal: 15,
-        flexDirection: 'column'
+        flexDirection: 'column',
     },
     topTextContainer: {
         width: 190,
@@ -31,15 +31,15 @@ export default StyleSheet.create({
         minHeight: '100%',
         flexDirection: 'column',
         paddingTop: 15,
-        marginBottom: '75%'
+        marginBottom: '75%',
     },
     itemList: {
         width: '100%',
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     itemListTxt: {
-        marginLeft: 3
+        marginLeft: 3,
     },
     checkBoxContainer: {
         width: '100%',
@@ -54,7 +54,7 @@ export default StyleSheet.create({
         marginBottom: 0,
         paddingLeft: 4,
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     checkbox: {
         borderWidth: 1,
@@ -65,6 +65,6 @@ export default StyleSheet.create({
         marginRight: 5,
         justifyContent: 'center',
         alignContent: 'center',
-        paddingLeft: 2
-    }
+        paddingLeft: 2,
+    },
 });

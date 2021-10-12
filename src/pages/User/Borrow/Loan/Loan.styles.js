@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import shadow from '../../../../../styles/mixins/shadowBlock'
+import shadow from '../../../../../styles/mixins/shadowBlock';
 import colors from '../../../../../styles/colors';
 
 export default StyleSheet.create({
@@ -23,7 +23,7 @@ export default StyleSheet.create({
     imageTop: {
         height: 90,
         position: 'absolute',
-        right: 0
+        right: 0,
     },
     textHeader: {
         fontWeight: 'bold',
@@ -32,5 +32,5 @@ export default StyleSheet.create({
     },
     mainBottomPlate: {
         marginBottom: 100,
-    }
+    },
 });

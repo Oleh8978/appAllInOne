@@ -16,7 +16,7 @@ export default Object.assign(({
   onValueChange,
   list,
   select,
-  isWhite = false
+  isWhite = false,
 }) => {
   const [modalSwipeDirection, setModalSwipeDirection] = useState('down');
   return Platform.OS === 'android'

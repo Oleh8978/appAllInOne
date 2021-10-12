@@ -14,7 +14,7 @@ export default StyleSheet.create({
         marginLeft: 0,
         marginRight: 'auto',
         marginTop: 'auto',
-        marginBottom: 'auto'
+        marginBottom: 'auto',
     },
     rightContainer: {
         flexDirection: 'column',
@@ -22,9 +22,9 @@ export default StyleSheet.create({
     topTextRight: {
         fontWeight: 'bold',
         marginTop: 'auto',
-        marginBottom: 'auto'
+        marginBottom: 'auto',
     },
     bottomTextRight: {
-        
-    }
+
+    },
 });

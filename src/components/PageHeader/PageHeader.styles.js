@@ -47,7 +47,7 @@ export default StyleSheet.create({
         flex: 1,
     },
     rightBlock: {
-        flex: 1
+        flex: 1,
     },
     centerBlockWrapper: {
         flex: 1,
@@ -57,10 +57,10 @@ export default StyleSheet.create({
         textAlign: 'center',
         marginTop: 5,
         fontSize: 32,
-        color: colors.white
+        color: colors.white,
     },
     subHeader: {
         textAlign: 'center',
-        color: colors.white
-    }
+        color: colors.white,
+    },
 });

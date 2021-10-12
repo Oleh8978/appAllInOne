@@ -13,38 +13,39 @@ import styles from './cardListItem.styles';
 import colors from '../../../styles/colors';
 
 export default function CardListItem({ textLeft, textRightTop, textRightBottom, image }) {
-
     const coinImage = (type) => {
         switch (type) {
             case 'Bitcoin':
-                return <Bitcoin style={{marginRight: 25}}/>
+                return <Bitcoin style={{ marginRight: 25 }} />;
             case 'Etherum':
-                return <EtherumCoin style={{marginRight: 25}}/>
+                return <EtherumCoin style={{ marginRight: 25 }} />;
             case 'Litecoin':
-                return  <LiteCoin style={{marginRight: 25}}/>
+                return <LiteCoin style={{ marginRight: 25 }} />;
             case 'USD Coin':
-                return <USDCoin style={{marginRight: 25}}/>
+                return <USDCoin style={{ marginRight: 25 }} />;
             case 'TrueUSD':
-                return <TrueUSDT style={{marginRight: 25}}/>
+                return <TrueUSDT style={{ marginRight: 25 }} />;
             default:
-                return <></>
+                return <></>;
         }
-    }
+    };
 
   return (
-            <View style={styles.card}>
-                <Text style={{...styles.leftText, width: 120}}>
-                    {textLeft}
-                </Text>
-                {coinImage(image)}
-                <View style={styles.rightContainer}>
-                    <Text style={styles.topTextRight}>
-                        {textRightTop}
-                    </Text>
-                    {textRightBottom ? <Text style={styles.bottomTextRight}>
-                        {textRightBottom}
-                    </Text> : <></>}
-                </View>
-            </View>
+    <View style={styles.card}>
+      <Text style={{ ...styles.leftText, width: 120 }}>
+        {textLeft}
+      </Text>
+      {coinImage(image)}
+      <View style={styles.rightContainer}>
+        <Text style={styles.topTextRight}>
+          {textRightTop}
+        </Text>
+        {textRightBottom ? (
+          <Text style={styles.bottomTextRight}>
+            {textRightBottom}
+          </Text>
+) : <></>}
+      </View>
+    </View>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -39,7 +39,7 @@ export default function FormInput({
   isNeedArrow = false,
   customContainer = {},
   isMax = false,
-  setMax = () => {}
+  setMax = () => {},
 }) {
   const isHideFunctional = isHide || autoCompleteType === 'password';
   const [isInvisible, setIsInvisible] = useState(isHideFunctional);
@@ -65,7 +65,7 @@ export default function FormInput({
   };
 
   return (
-    <View style={{...styles.inputWrapper, ...customContainer}}>
+    <View style={{ ...styles.inputWrapper, ...customContainer }}>
       <Text
         allowFontScaling={false}
         style={{
@@ -93,29 +93,31 @@ export default function FormInput({
           fontFamily: inputFont,
           ...style,
           ...inputCustomStyle,
-          paddingRight: isMax ? 40 : 15
+          paddingRight: isMax ? 40 : 15,
         }}
         placeholderTextColor={colors.grey}
         onFocus={_onFocus}
         onBlur={_onBlur}
         maxLength={maxLength}
       />
-      {isMax && 
-        <TouchableOpacity style={styles.maxButton} onPress={() => {setMax()}}>
-          <LinearGradient colors={[colors.lightBlue, colors.darkBlue]} 
+      {isMax
+        && (
+        <TouchableOpacity style={styles.maxButton} onPress={() => { setMax(); }}>
+          <LinearGradient
+            colors={[colors.lightBlue, colors.darkBlue]}
             style={{
-              height: '100%', 
-              width: '100%', 
+              height: '100%',
+              width: '100%',
               justifyContent: 'center',
-              borderRadius: 8
+              borderRadius: 8,
               }}
           >
-            <Text style={{color: colors.white, fontSize: 10, textAlign: 'center'}}>
+            <Text style={{ color: colors.white, fontSize: 10, textAlign: 'center' }}>
               Max
-            </Text> 
+            </Text>
           </LinearGradient>
         </TouchableOpacity>
-      }
+)}
       {isNeedArrow && <ArrowDown style={styles.arrowDown} />}
       {/* <Text allowFontScaling={false} style={styles.error}>{error}</Text> */}
       {isHideFunctional && (

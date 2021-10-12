@@ -22,14 +22,14 @@ export default StyleSheet.create({
         flex: 1,
     },
     informationBody: {
-        flexDirection: 'column'
+        flexDirection: 'column',
     },
     informationBodyHeadTxtx: {
         marginHorizontal: 15,
     },
     informationBodyBottom: {
         marginHorizontal: 15,
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     informationBodyBottomLeft: {
         flexDirection: 'column',
@@ -43,44 +43,44 @@ export default StyleSheet.create({
         width: 100,
         height: 100,
         marginRight: 15,
-        marginLeft: 'auto'
+        marginLeft: 'auto',
     },
     checkRow: {
         flexDirection: 'row',
-        alignContent: 'center'
+        alignContent: 'center',
     },
     checkText: {
-        marginTop: 5
+        marginTop: 5,
     },
     bottomBody: {
         height: 120,
         marginTop: 10,
         marginHorizontal: 15,
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     bodyBottomLeft: {
-        flex:1,
+        flex: 1,
         flexDirection: 'column',
     },
     bodyBottomRight: {
-        flex:1,
+        flex: 1,
         flexDirection: 'column',
     },
-    containerTop:{
+    containerTop: {
         flexDirection: 'column',
-        height: 50
+        height: 50,
     },
     containerBottom: {
         flexDirection: 'column',
-        height: 60
+        height: 60,
     },
     payOutText: {
         fontSize: 15,
-        color: colors.grey
+        color: colors.grey,
     },
     amountText: {
         color: colors.darkBlue,
-        fontSize: 20
+        fontSize: 20,
     },
     button: {
         width: 100,
@@ -90,10 +90,10 @@ export default StyleSheet.create({
         marginRight: 0,
         marginLeft: 'auto',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     buttonText: {
         fontSize: 13,
         color: colors.white,
-    }
+    },
 });

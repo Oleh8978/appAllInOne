@@ -19,19 +19,19 @@ export default StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 'auto',
         fontSize: 32,
-        color: colors.darkBlue
+        color: colors.darkBlue,
     },
     subText: {
-        marginTop:10,
+        marginTop: 10,
         fontSize: 15,
         marginLeft: 'auto',
         marginRight: 'auto',
         marginBottom: 'auto',
     },
     itemsContainer: {
-        width: '100%', 
-        height: '100%', 
-        minHeight: '100%', 
-        justifyContent: 'space-between', 
-    }
+        width: '100%',
+        height: '100%',
+        minHeight: '100%',
+        justifyContent: 'space-between',
+    },
 });

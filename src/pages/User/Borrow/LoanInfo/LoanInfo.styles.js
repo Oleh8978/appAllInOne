@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import shadow from '../../../../../styles/mixins/shadowBlock'
+import shadow from '../../../../../styles/mixins/shadowBlock';
 import colors from '../../../../../styles/colors';
 
 export default StyleSheet.create({
@@ -23,10 +23,10 @@ export default StyleSheet.create({
     imageTop: {
         height: 90,
         position: 'absolute',
-        right: 0
+        right: 0,
     },
     underHeader: {
-        flexDirection: 'column'
+        flexDirection: 'column',
     },
     underHeaderTopText: {
         marginTop: 10,
@@ -55,17 +55,17 @@ export default StyleSheet.create({
         height: 60,
         borderRadius: 10,
         flexDirection: 'row',
-        ...shadow
+        ...shadow,
     },
     leftText: {
         marginLeft: 0,
-        marginRight: 'auto'
+        marginRight: 'auto',
     },
     rightContainer: {
         flexDirection: 'column',
     },
     topTextRight: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     bottomTextRight: {
 
@@ -74,7 +74,7 @@ export default StyleSheet.create({
         marginTop: 15,
         marginBottom: 15,
         fontWeight: 'bold',
-        fontSize: 20
+        fontSize: 20,
     },
     mainBottom: {
         marginTop: 70,

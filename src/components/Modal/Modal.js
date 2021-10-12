@@ -6,7 +6,7 @@ import {
 import PropTypes from 'prop-types';
 import Modal from 'react-native-modal';
 
-import colors from '../../../styles/colors'
+import colors from '../../../styles/colors';
 import styles from './Modal.styles';
 
 const ContentWrapper = ({ keyboardNormalizer, children }) => (keyboardNormalizer
@@ -26,7 +26,7 @@ export default function ModalWrapper({
   customStyleBackground = {},
   customStyleBody = {},
   isNeedLine = true,
-  isWhite = false
+  isWhite = false,
 }) {
   return (
     <Modal

@@ -11,16 +11,16 @@ export default StyleSheet.create({
         marginBottom: 15,
         flexDirection: 'row',
         alignItems: 'center',
-        ...shadow
+        ...shadow,
     },
     leftContainer: {
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     leftText: {
         marginLeft: 0,
         marginRight: 'auto',
         marginTop: 'auto',
-        marginBottom: 'auto'
+        marginBottom: 'auto',
     },
     rightContainer: {
         flexDirection: 'column',
@@ -30,9 +30,9 @@ export default StyleSheet.create({
     topTextRight: {
         fontWeight: 'bold',
         marginTop: 'auto',
-        marginBottom: 'auto'
+        marginBottom: 'auto',
     },
     bottomTextRight: {
-        
-    }
+
+    },
 });

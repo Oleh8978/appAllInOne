@@ -5,18 +5,18 @@ import shadow from '../../../styles/mixins/shadowBlock';
 
 export default StyleSheet.create({
     card: {
-        flex:1,
+        flex: 1,
         height: 72,
         borderRadius: 10,
         marginLeft: 5,
         flexDirection: 'column',
         justifyContent: 'center',
         alignContent: 'center',
-        ...shadow
+        ...shadow,
     },
     TopText: {
         fontWeight: 'bold',
         fontSize: 15,
         color: colors.darkBlue,
-    }
+    },
 });

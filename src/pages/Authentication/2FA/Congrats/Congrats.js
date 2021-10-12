@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { ScrollView, Text, View, Image } from 'react-native';
+import {
+ ScrollView, Text, View, Image,
+} from 'react-native';
 
 import Header from '../../../../components/Header/Header';
 import DefaultButton from '../../../../components/DefaultButton/DefaultButton';
@@ -12,61 +14,59 @@ import colors from '../../../../../styles/colors';
 import styles from './Congrats.styles';
 
 export default function Congrats({ navigation, route }) {
-
     const body = () => {
-
         if (route?.params?.type === 'credit') {
           return (
-          <>
-            <Image 
-            source={require('../../../../../assets/images/CreditLine.png')} 
-            style={{width: '100%', height: 300}} 
-            />
-            <Text style={styles.mainText}>
+            <>
+              <Image
+                source={require('../../../../../assets/images/CreditLine.png')}
+                style={{ width: '100%', height: 300 }}
+              />
+              <Text style={styles.mainText}>
                 Congradulations!
-            </Text>
-            <Text style={styles.subText}>
-                Your money has been 
+              </Text>
+              <Text style={styles.subText}>
+                Your money has been
                 successfully tranfered
-            </Text>
-           </>)
+              </Text>
+            </>
+);
         }
 
-        return  (
+        return (
           <>
-            <Image 
-             source={require('../../../../../assets/images/LoanLine.png')} 
-             style={{width: '100%', height: 300}} 
+            <Image
+              source={require('../../../../../assets/images/LoanLine.png')}
+              style={{ width: '100%', height: 300 }}
             />
             <Text style={styles.mainText}>
-                Congradulations!
+              Congradulations!
             </Text>
             <Text style={styles.subText}>
-                Your Loan has been approved.
+              Your Loan has been approved.
             </Text>
-         </>)
-    }
+          </>
+);
+    };
 
-    const moveForward = () => {
-        return navigation.navigate(BORROW,
-            { screen: BORROW_PAGES })
-    }
-    
+    const moveForward = () => navigation.navigate(BORROW,
+            { screen: BORROW_PAGES });
+
   return (
-    <View style={{height: '100%' , width: '100%'}}>
+    <View style={{ height: '100%', width: '100%' }}>
       <Header
-        isBlue={true}
+        isBlue
         topText=""
         navigation={navigation}
       />
       <ScrollView style={styles.body}>
-          <View style={styles.itemsContainer}>
-            {body()}
-            <DefaultButton 
-             title={'OK'} 
-             onPress={() => moveForward()} 
-             customStyles={{marginTop: 'auto', marginBottom: 75 }}
-            />
+        <View style={styles.itemsContainer}>
+          {body()}
+          <DefaultButton
+            title="OK"
+            onPress={() => moveForward()}
+            customStyles={{ marginTop: 'auto', marginBottom: 75 }}
+          />
         </View>
       </ScrollView>
       <FooterBackground />
