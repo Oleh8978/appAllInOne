@@ -49,15 +49,6 @@ function ResizebleCard({ navigation, data, typeCard = '' }) {
         setValueAmount(data);
     };
 
-    const moveNext = () => {
-        navigation.navigate(BORROW, { screen: RECIVE_FOUNDS, params: { value: `${valueAmount}`, name: typeCard.length !== 0 ? 'loan' : 'credit'} })
-      }
-
-    const onValueChnage = (data) => {
-        setValueAmount(data)
-    }
-
-
   return (
     <TouchableOpacity style={styles.containerStart} onPress={() => { setIsOpened(!isOpened); }}>
       <View style={{ flexDirection: 'row', width: '100%' }}>

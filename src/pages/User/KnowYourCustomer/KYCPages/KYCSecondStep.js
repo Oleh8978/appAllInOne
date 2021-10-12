@@ -184,6 +184,7 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
                           close={() => setShowTaxStatePicker(false)}
                           header="State"
                           value={taxState}
+                          isWhite={true}
                           onValueChange={(value) => {
                             setTaxState(value);
                             setTaxStateIsPicked(true);
@@ -221,6 +222,7 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
                           close={() => setShowStatePicker(false)}
                           header="Pick your state"
                           value={state}
+                          isWhite={true}
                           onValueChange={(value) => {
                             setState(value);
                             setStateIsPicked(true);
@@ -310,6 +312,7 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
         close={() => setShowRegionFormationPicker(false)}
         header="Pick your region formation"
         value={regionFormation}
+        isWhite={true}
         onValueChange={setRegionFormation}
         list={USA_STATES_LIST}
         select={() => setShowRegionFormationPicker(false)}
@@ -320,6 +323,7 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
           close={() => setShowTaxStatePicker(false)}
           header="Pick your tax state"
           value={taxState}
+          isWhite={true}
           onValueChange={setTaxState}
           list={USA_STATES_LIST}
           select={() => setShowTaxStatePicker(false)}
@@ -330,6 +334,7 @@ function KYCSecondStep({ type = 'natural_person', jumpToNextPage, showLoader, se
           close={() => setShowStatePicker(false)}
           header="Pick your state"
           value={state}
+          isWhite={true}
           onValueChange={setState}
           list={USA_STATES_LIST}
           select={() => setShowStatePicker(false)}
