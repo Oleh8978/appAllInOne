@@ -122,7 +122,8 @@ export default function LoanInfo({ navigation }) {
         showsVerticalScrollIndicator={false}
         nestedScrollEnabled
       >
-        {isBalanceOpened === true
+        <View style={{ position: 'relative', right: 10, maxWidth: '95%' }}>
+          {isBalanceOpened === true
             ? (
               <TouchableOpacity
                 onPress={() => setIsBalanceOpened(!isBalanceOpened)}
@@ -138,7 +139,7 @@ export default function LoanInfo({ navigation }) {
                   {dataToBeRemoved.map((item) => <BalanceDetailsComponent data={item} key={Math.random()} />)}
                 </View>
               </TouchableOpacity>
-)
+            )
           : (
             <TouchableOpacity
               onPress={() => setIsBalanceOpened(!isBalanceOpened)}
@@ -149,7 +150,8 @@ export default function LoanInfo({ navigation }) {
               </Text>
               <ArrowDown />
             </TouchableOpacity>
-)}
+            )}
+        </View>
         <View style={styles.priceChart}>
           <Text style={styles.priceChartText}>
             Price Chart
@@ -232,7 +234,7 @@ export default function LoanInfo({ navigation }) {
               </Text>
             </LinearGradient>
           </TouchableOpacity>
-          <TouchableOpacity style={{ ...styles.wrapperItemsSteps, width: 115, height: 114 }} onPress={() => TWOFA()}>
+          <TouchableOpacity style={{ ...styles.wrapperItemsSteps, width: 115, height: 114 }}>
             <LinearGradient
               colors={[
                  colors.lightBlue,
@@ -283,7 +285,7 @@ export default function LoanInfo({ navigation }) {
               </Text>
             </LinearGradient>
           </TouchableOpacity>
-          <TouchableOpacity style={{ ...styles.wrapperItemsSteps, width: 115, height: 114 }}>
+          <TouchableOpacity style={{ ...styles.wrapperItemsSteps, width: 115, height: 114 }} onPress={() => TWOFA()}>
             <LinearGradient
               colors={[
                  colors.lightBlue,

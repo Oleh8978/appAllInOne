@@ -104,7 +104,7 @@ export default function Borrow({ navigation }) {
   const openCredit = {
     type: 'openCredit',
   };
-  
+
   return (
     <LinearGradient
       colors={[colors.darkGreen, colors.darkBlue]}

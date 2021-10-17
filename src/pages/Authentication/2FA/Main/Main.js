@@ -32,9 +32,10 @@ export default function Main({ navigation }) {
           Go beyond the password and protect yourself from hackers and account takeovers.
         </Text>
         <DefaultButton title="Next" isArrowNext onPress={() => navigation.navigate(TWO_FACTOR_AUTH, { screen: LIST_SCREN_2FA })} />
-        <TouchableOpacity 
-         style={styles.skipContainer} 
-         onPress={() => { navigation.navigate(USER,
+        <TouchableOpacity
+          style={styles.skipContainer}
+          onPress={() => {
+ navigation.navigate(USER,
         { screen: HOME_PAGE, params: { screen: HOME } });
          }}
         >

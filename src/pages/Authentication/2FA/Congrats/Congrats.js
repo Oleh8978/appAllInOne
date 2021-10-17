@@ -8,8 +8,9 @@ import Header from '../../../../components/Header/Header';
 import DefaultButton from '../../../../components/DefaultButton/DefaultButton';
 import FooterBackground from '../../../../components/FooterBackground/FooterBackground';
 
-import { BORROW, BORROW_PAGES } from '../../../../../constants/navigation/userScreens';
-import { HOME, HOME_PAGE } from '../../../../../constants/navigation/userScreens';
+import {
+ BORROW, BORROW_PAGES, HOME, HOME_PAGE,
+} from '../../../../../constants/navigation/userScreens';
 import { USER } from '../../../../../constants/navigation/navigators';
 
 import colors from '../../../../../styles/colors';
@@ -62,8 +63,7 @@ export default function Congrats({ navigation, route }) {
             <Text style={styles.mainText}>
               Congradulations!
             </Text>
-            <Text style={styles.subText}>
-            </Text>
+            <Text style={styles.subText} />
           </>
         );
     };
@@ -73,12 +73,13 @@ export default function Congrats({ navigation, route }) {
         return navigation.navigate(BORROW,
           { screen: BORROW_PAGES });
       }
-      
+
       return navigation.navigate(USER,
-        { screen: HOME_PAGE, params: {
-          screen: HOME
+        { screen: HOME_PAGE,
+          params: {
+          screen: HOME,
         } });
-    }
+    };
 
   return (
     <View style={{ height: '100%', width: '100%' }}>

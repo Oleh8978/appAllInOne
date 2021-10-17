@@ -83,15 +83,17 @@ function PageHeader({
     return (
       <View style={styles.mainBottom}>
         <TouchableOpacity
-          style={styles.mainBottomLeft}
+          style={{ ...styles.mainBottomLeft, backgroundColor: 'rgba(256, 256, 256, 0.5)' }}
           onPress={() => { console.log('credit card'); }}
+          disabled
         >
           <CreditCardImage />
           <Text>Borrow</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.mainBottomRight}
+          style={{ ...styles.mainBottomRight, backgroundColor: 'rgba(256, 256, 256, 0.5)' }}
           nPress={() => { console.log('chistory'); }}
+          disabled
         >
           <HistoryClockImage />
           <Text>Repay</Text>

@@ -15,12 +15,10 @@ import colors from '../../../../../styles/colors';
 import styles from './CreditLine.styles';
 import KYCStatus from '../../../../../services/getKycStatus';
 
-
 import {
   HOME,
   HOME_PAGE,
 } from '../../../../../constants/navigation/userScreens';
-
 
 const customHook = (navigation) => {
   const getKYCData = async () => {

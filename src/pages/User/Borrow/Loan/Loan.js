@@ -24,7 +24,6 @@ import {
   HOME_PAGE,
 } from '../../../../../constants/navigation/userScreens';
 
-
 const customHook = (navigation) => {
   const getKYCData = async () => {
     const data = await KYCStatus();

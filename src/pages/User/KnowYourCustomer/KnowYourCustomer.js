@@ -51,16 +51,15 @@ function KnowYourCustomer({ navigation, route }) {
     const data = await KYCStatus();
 
     if (data.tier === 2) {
-      setPage(3)
+      setPage(3);
     }
   };
 
   useEffect(() => {
-
     getKYCData();
 
     setPage(page < route.params?.page ? route.params?.page : page);
-    
+
     const parent = navigation.dangerouslyGetParent();
 
     parent.setOptions({
@@ -70,7 +69,6 @@ function KnowYourCustomer({ navigation, route }) {
     return () => parent.setOptions({
       tabBarVisible: true,
     });
-
   }, []);
 
   const deleteLastError = () => setFormErrors(formErrors.slice(0, formErrors.length - 1));
@@ -81,7 +79,7 @@ function KnowYourCustomer({ navigation, route }) {
     if (page < 5) {
       // navigation.push(KNOW_YOUR_CUSTOMER, { page: page + 1 });
       setPage(page + 1);
-    } else navigation.navigate( USER, { screen: HOME_PAGE,  params: {screen : HOME} });
+    } else navigation.navigate(USER, { screen: HOME_PAGE, params: { screen: HOME } });
   };
 
   const addErrors = (errors) => setFormErrors([...formErrors, ...errors]);

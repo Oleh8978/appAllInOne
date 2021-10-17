@@ -7,6 +7,7 @@ import {
   Image,
   Platform,
 } from 'react-native';
+import ReactNativeBiometrics from 'react-native-biometrics';
 import { useFocusEffect } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LinearGradient from 'react-native-linear-gradient';
@@ -30,9 +31,9 @@ import {
   BIOMETRIC,
   FORGOT_PASSWORD,
   SIGN_TYPE,
-  CREATE_USER_EMAIL,
+  CREATE_USER_EMAIL, PASSCODE,
 } from '../../../../constants/navigation/authenticationScreens';
-import { WILL_TUNE_BIOMETRIC } from '../../../../constants/storageKeys';
+import { USE_BIOMETRIC, WILL_TUNE_BIOMETRIC } from '../../../../constants/storageKeys';
 
 import KeyboardNormalizer from '../../../HOCs/KeyboardNormalizerFolding';
 

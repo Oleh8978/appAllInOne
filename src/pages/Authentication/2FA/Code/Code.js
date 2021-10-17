@@ -32,7 +32,6 @@ export default function Code({ navigation, route }) {
 
     return navigation.navigate(TWO_FACTOR_AUTH,
       { screen: CONGRATS, params: { type: '' } });
-
   };
 
   return (

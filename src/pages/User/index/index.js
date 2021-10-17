@@ -99,6 +99,7 @@ export default observer(({ navigation }) => {
         inactiveTintColor: colors.white,
         showLabel: true,
         }}
+        initialRouteName={HOME_PAGE}
       >
         {/* <Tab.Screen
         name={DASHBOARD}
@@ -171,6 +172,36 @@ export default observer(({ navigation }) => {
         }}
       /> */}
         <Tab.Screen
+          name="Trade"
+          component={() => <></>}
+          options={{
+              tabBarIcon: ({ focused }) => (focused ? (
+                <View style={tabStyles.activeTab}>
+                  <Image source={require('../../../../assets/images/TradeActive.png')} style={{ width: 90, height: 90 }} />
+                </View>
+              ) : (
+                <View style={tabStyles.tab}>
+                  <Image source={require('../../../../assets/images/TradeInactive.png')} style={{ width: 60, height: 60 }} />
+                </View>
+              )),
+            }}
+        />
+        <Tab.Screen
+          name="Earn"
+          component={() => <></>}
+          options={{
+              tabBarIcon: ({ focused }) => (focused ? (
+                <View style={tabStyles.activeTab}>
+                  <Image source={require('../../../../assets/images/EarnActive.png')} style={{ width: 90, height: 90 }} />
+                </View>
+              ) : (
+                <View style={tabStyles.tab}>
+                  <Image source={require('../../../../assets/images/EarnInactive.png')} style={{ width: 60, height: 60 }} />
+                </View>
+              )),
+            }}
+        />
+        <Tab.Screen
           name={HOME_PAGE}
           component={HomePages}
           options={{
@@ -184,6 +215,21 @@ export default observer(({ navigation }) => {
             </View>
           )),
         }}
+        />
+        <Tab.Screen
+          name="Debit card"
+          component={() => <></>}
+          options={{
+              tabBarIcon: ({ focused }) => (focused ? (
+                <View style={tabStyles.activeTab}>
+                  <Image source={require('../../../../assets/images/DebitCardActive.png')} style={{ width: 90, height: 90 }} />
+                </View>
+              ) : (
+                <View style={tabStyles.tab}>
+                  <Image source={require('../../../../assets/images/DebitCardInactive.png')} style={{ width: 60, height: 60 }} />
+                </View>
+              )),
+            }}
         />
         <Tab.Screen
           name={BORROW}
