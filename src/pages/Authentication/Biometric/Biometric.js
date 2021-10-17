@@ -29,6 +29,7 @@ import Notification from '../../../components/Notification/Notification';
 import styles from './Biometric.styles';
 import { authPageWrapper as wrapper, view } from '../../../../styles/mixins';
 import colors from '../../../../styles/colors';
+import {HOME} from "../../../../constants/navigation/userScreens";
 
 // User can be redirected to this page only if his device supports biometric authentication!
 export default function Biometric({ navigation }) {
