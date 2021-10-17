@@ -9,6 +9,8 @@ import FooterBackground from '../../../../components/FooterBackground/FooterBack
 import CardListItem from '../../../../components/cardListItem/cardListItem';
 import TransActionListItem from '../../../../components/transactionListCard/transactionListCard';
 
+import getTargets from '../../../../../services/getTargets';
+
 import HistoryClockImage from '../../../../../assets/svgs/HistoryClockImage';
 
 import CurlyLineImage from '../../../../../assets/svgs/CurlyLineImage';

@@ -25,8 +25,14 @@ export default function Code({ navigation, route }) {
         { screen: CONGRATS, params: { type: 'credit' } });
     }
 
+    if (route?.params?.type === 'loan') {
+      return navigation.navigate(TWO_FACTOR_AUTH,
+        { screen: CONGRATS, params: { type: 'loan' } });
+    }
+
     return navigation.navigate(TWO_FACTOR_AUTH,
-      { screen: CONGRATS, params: { type: 'loan' } });
+      { screen: CONGRATS, params: { type: '' } });
+
   };
 
   return (

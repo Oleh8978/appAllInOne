@@ -9,6 +9,8 @@ import DefaultButton from '../../../../components/DefaultButton/DefaultButton';
 import FooterBackground from '../../../../components/FooterBackground/FooterBackground';
 
 import { BORROW, BORROW_PAGES } from '../../../../../constants/navigation/userScreens';
+import { HOME, HOME_PAGE } from '../../../../../constants/navigation/userScreens';
+import { USER } from '../../../../../constants/navigation/navigators';
 
 import colors from '../../../../../styles/colors';
 import styles from './Congrats.styles';
@@ -34,6 +36,23 @@ export default function Congrats({ navigation, route }) {
 );
         }
 
+        if (route?.params?.type === 'loan') {
+          return (
+            <>
+              <Image
+                source={require('../../../../../assets/images/LoanLine.png')}
+                style={{ width: '100%', height: 300 }}
+              />
+              <Text style={styles.mainText}>
+                Congradulations!
+              </Text>
+              <Text style={styles.subText}>
+                Your Loan has been approved.
+              </Text>
+            </>
+          );
+        }
+
         return (
           <>
             <Image
@@ -44,14 +63,22 @@ export default function Congrats({ navigation, route }) {
               Congradulations!
             </Text>
             <Text style={styles.subText}>
-              Your Loan has been approved.
             </Text>
           </>
-);
+        );
     };
 
-    const moveForward = () => navigation.navigate(BORROW,
-            { screen: BORROW_PAGES });
+    const moveForward = () => {
+      if (route?.params?.type === 'loan' || route?.params?.type === 'credit') {
+        return navigation.navigate(BORROW,
+          { screen: BORROW_PAGES });
+      }
+      
+      return navigation.navigate(USER,
+        { screen: HOME_PAGE, params: {
+          screen: HOME
+        } });
+    }
 
   return (
     <View style={{ height: '100%', width: '100%' }}>

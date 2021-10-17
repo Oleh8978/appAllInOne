@@ -8,7 +8,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import Store from '../../../store';
 import statusBar from '../../../../utilities/statusBar';
 
-import { ACCOUNT } from '../../../../constants/navigation/userScreens';
+import { USER } from '../../../../constants/navigation/navigators';
+import { HOME_PAGE, HOME } from '../../../../constants/navigation/userScreens';
 
 import KeyboardNormalizer from '../../../HOCs/KeyboardNormalizerScrolling';
 import Header from '../../../components/Header/Header';
@@ -19,6 +20,8 @@ import KYCSecondStep from './KYCPages/KYCSecondStep';
 import KYCtheThirdStep from './KYCPages/KYCtheThirdStep';
 import KYCScan from './KYCPages/KYCScan';
 import KYCFinish from './KYCPages/KYCFinish';
+
+import KYCStatus from '../../../../services/getKycStatus';
 
 import BlueCheckBoxImage from '../../../../assets/svgs/BlueCheckBoxImage';
 import BlueCheckBoxCheckedImage from '../../../../assets/svgs/BlueCheckBoxCheckedImage';
@@ -44,16 +47,30 @@ function KnowYourCustomer({ navigation, route }) {
   // selected type of documents
   const [selectedType, setSelectedType] = useState({});
 
-  useEffect(() => {
-    setPage(page < route.params?.page ? route.params?.page : page);
+  const getKYCData = async () => {
+    const data = await KYCStatus();
 
+    if (data.tier === 2) {
+      setPage(3)
+    }
+  };
+
+  useEffect(() => {
+
+    getKYCData();
+
+    setPage(page < route.params?.page ? route.params?.page : page);
+    
     const parent = navigation.dangerouslyGetParent();
+
     parent.setOptions({
       tabBarVisible: false,
     });
+
     return () => parent.setOptions({
       tabBarVisible: true,
     });
+
   }, []);
 
   const deleteLastError = () => setFormErrors(formErrors.slice(0, formErrors.length - 1));
@@ -64,7 +81,7 @@ function KnowYourCustomer({ navigation, route }) {
     if (page < 5) {
       // navigation.push(KNOW_YOUR_CUSTOMER, { page: page + 1 });
       setPage(page + 1);
-    } else navigation.navigate(ACCOUNT);
+    } else navigation.navigate( USER, { screen: HOME_PAGE,  params: {screen : HOME} });
   };
 
   const addErrors = (errors) => setFormErrors([...formErrors, ...errors]);

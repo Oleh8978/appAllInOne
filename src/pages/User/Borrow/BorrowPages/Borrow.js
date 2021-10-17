@@ -51,7 +51,6 @@ export default function Borrow({ navigation }) {
   const [creditUtilized, setCreditUtilized] = useState(0);
   const [plaidToken, setPlaidToken] = useState('');
   const [error, setError] = useState('');
-  const [tier, setTier] = useState(null);
 
   const fetchData = async () => {
     const data = await getTargets();
@@ -69,16 +68,16 @@ export default function Borrow({ navigation }) {
     })();
   }, []);
 
-  if (tier !== null && tier.tier !== 4) {
-    navigation.navigate(BORROW, { screen: INFO, params: { type: typeLine } });
-  }
+  // if (tier !== null && tier.tier !== 4) {
+  //   navigation.navigate(BORROW, { screen: INFO, params: { type: typeLine } });
+  // }
 
   useEffect(() => {
       fetchData();
   }, []);
 
   const isAnyCredit = () => {
-    if (receivedBorrow.filter((item) => item.type === 'creditLine').length > 0) {
+    if (receivedBorrow && receivedBorrow.filter((item) => item.type === 'creditLine').length > 0) {
       return {
         available: creditUtilized,
         text: 'Credit utilized',
@@ -105,7 +104,7 @@ export default function Borrow({ navigation }) {
   const openCredit = {
     type: 'openCredit',
   };
-
+  
   return (
     <LinearGradient
       colors={[colors.darkGreen, colors.darkBlue]}
@@ -115,7 +114,7 @@ export default function Borrow({ navigation }) {
     >
       <CurlyLineImage style={{ ...styles.imageTop }} />
       <PageHeader text={isAnyCredit().text} credit={isAnyCredit().available} />
-      {receivedBorrow.length < 0
+      { receivedBorrow && receivedBorrow.length === 0 || !receivedBorrow
        ? (
          <ScrollView style={styles.mainWrapper} showsVerticalScrollIndicator={false}>
            <Card typeOfInfo="credit" onPress={() => moveForward('credit')} />
@@ -128,7 +127,7 @@ export default function Borrow({ navigation }) {
              <Text style={styles.headerText}>
                Active credits and loans
              </Text>
-             {receivedBorrow.map((item) => (
+             {receivedBorrow && receivedBorrow.map((item) => (
                <Card
                  data={item}
                  onPress={() => moveForwardLineInfo(item.type)}

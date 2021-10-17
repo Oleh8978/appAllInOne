@@ -13,8 +13,34 @@ import getWallets from '../../../../../services/getWallets';
 import ResizebleCard from '../../../../components/ResizebleCard/ResizebleCard';
 import colors from '../../../../../styles/colors';
 import styles from './CreditLine.styles';
+import KYCStatus from '../../../../../services/getKycStatus';
+
+
+import {
+  HOME,
+  HOME_PAGE,
+} from '../../../../../constants/navigation/userScreens';
+
+
+const customHook = (navigation) => {
+  const getKYCData = async () => {
+    const data = await KYCStatus();
+
+    if (data.tier !== 4) {
+      navigation.navigate(HOME_PAGE, { screen: HOME });
+    }
+  };
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      getKYCData();
+    });
+    return unsubscribe;
+  }, [navigation]);
+};
 
 export default function CreditLine({ navigation }) {
+  customHook(navigation);
   const [wallets, setWallets] = useState([]);
   const [creditLine, setCreditLIne] = useState({
     creditLinePerc: 0,

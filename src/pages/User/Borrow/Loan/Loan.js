@@ -9,14 +9,38 @@ import FooterBackground from '../../../../components/FooterBackground/FooterBack
 import ResizebleCard from '../../../../components/ResizebleCard/ResizebleCard';
 import CardMonth from '../../../../components/CardMonth/CardMonth';
 
+import getTargets from '../../../../../services/getTargets';
+
 import getPresets from '../../../../../services/getPresets';
 import getWallets from '../../../../../services/getWallets';
-import getSecurityAsset from '../../../../../services/getSecurityAsset';
-
-import CurlyLineImage from '../../../../../assets/svgs/CurlyLineImage';
 
 import styles from './Loan.styles';
 import colors from '../../../../../styles/colors';
+
+import KYCStatus from '../../../../../services/getKycStatus';
+
+import {
+  HOME,
+  HOME_PAGE,
+} from '../../../../../constants/navigation/userScreens';
+
+
+const customHook = (navigation) => {
+  const getKYCData = async () => {
+    const data = await KYCStatus();
+
+    if (data.tier !== 4) {
+      navigation.navigate(HOME_PAGE, { screen: HOME });
+    }
+  };
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      getKYCData();
+    });
+    return unsubscribe;
+  }, [navigation]);
+};
 
 const data = [
   {
@@ -58,6 +82,7 @@ const data2 = [
 ];
 
 export default function Loan({ navigation }) {
+  customHook(navigation);
   const [wallets, setWallets] = useState([]);
   const [monthsData, setMonthsData] = useState([]);
   const [daysSelected, setDaysSelected] = useState('6m');
