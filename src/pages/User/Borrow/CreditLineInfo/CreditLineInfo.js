@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
 View, ScrollView, Text, TouchableOpacity,
 } from 'react-native';
@@ -39,6 +39,17 @@ const transactions = [
 ];
 
 export default function CreditLineInfo({ navigation }) {
+  const [creditUtilized, setCreditUtilized] = useState(0);
+
+  const fetchData = async () => {
+    const data = await getTargets();
+    setCreditUtilized(data.utilized);
+  };
+
+  useEffect(() => {
+    fetchData();
+}, []);
+
   return (
     <LinearGradient
       colors={[colors.darkGreen, colors.darkBlue]}
@@ -53,7 +64,8 @@ export default function CreditLineInfo({ navigation }) {
       />
       <View style={styles.underHeader}>
         <Text style={styles.underHeaderTopText}>
-          $25,004.59
+          $
+          {creditUtilized}
         </Text>
         <Text style={styles.underHeaderBottomText}>
           Credit utilized

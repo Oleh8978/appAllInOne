@@ -45,7 +45,7 @@ export default StyleSheet.create({
   arrowDown: {
     position: 'absolute',
     right: 11,
-    top: 45,
+    top: 52,
   },
   maxButton: {
     height: 20,

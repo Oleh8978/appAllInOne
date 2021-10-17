@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { TWO_FACTOR_AUTH } from '../../../../constants/navigation/authenticationScreens';
@@ -12,6 +12,10 @@ import {
     INFO_CREDIT,
     INFO_LOAN,
   } from '../../../../constants/navigation/userScreens';
+
+import Store from '../../../store/index';
+
+import kycStatus from '../../../../services/getKycStatus';
 
 import Borrow from './BorrowPages/Borrow';
 import CreditLine from './CreditLine/CreditLine';

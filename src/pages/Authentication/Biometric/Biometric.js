@@ -35,8 +35,10 @@ export default function Biometric({ navigation }) {
   useFocusEffect(() => statusBar('light'));
 
   const [error, setError] = useState('');
+  const [loader, setLoader] = useState(false);
 
   const activate = async () => {
+    setLoader(true);
     try {
       await ReactNativeBiometrics.createKeys('Confirm fingerprint').then(
         async (publicKey) => {
@@ -50,9 +52,12 @@ export default function Biometric({ navigation }) {
                 [USE_BIOMETRIC, 'true'],
                 [WILL_TUNE_BIOMETRIC, 'false'],
               ]);
-              await navigation.navigate(USER);
+              setLoader(false);
+              await navigation.navigate(USER, { screen: HOME });
             }
           } catch (e) {
+            setLoader(false);
+            setError(e);
             console.log(e);
           }
         },
@@ -98,7 +103,7 @@ export default function Biometric({ navigation }) {
             </View>
           </View>
           <View style={{ ...view, paddingHorizontal: 15 }}>
-            <DefaultButton onPress={activate} title="Activate" />
+            <DefaultButton onPress={activate} title="Activate" loader={loader} />
             <Indent height={12} />
             <TouchableWithoutFeedback onPress={deactivate}>
               <Text allowFontScaling={false} style={{ color: colors.white, textDecorationLine: 'underline' }}>

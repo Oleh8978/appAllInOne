@@ -52,10 +52,11 @@ export default KeyboardNormalizer(
   observer(
     ({
       navigation,
-      route: {
-        params: { coin },
-      },
+      // route: {
+      //   params: { coin },
+      // },
     }) => {
+      const coin = 'BTC';
       useFocusEffect(() => statusBar('dark'));
 
       const [wallet, setWallet] = useState(null);
@@ -82,6 +83,8 @@ export default KeyboardNormalizer(
           }
         })();
       }, []);
+
+      console.log('@plaid token ', plaidPublicToken);
 
       useEffect(() => {
         setWallet(Store.wallets.wallets.find((_wallet) => _wallet?.coin === coin)?.wallet);

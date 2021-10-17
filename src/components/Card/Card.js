@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
  View, Text, TouchableOpacity, Image,
 } from 'react-native';
+import { openLink } from 'react-native-plaid-link-sdk';
 
 import ArrowNext from '../../../assets/svgs/ArrovNext';
 import CheckGreen from '../../../assets/svgs/CheckGreenImage';
@@ -13,6 +14,11 @@ import LiteCoin from '../../../assets/svgs/LiteCoin';
 import USDCoin from '../../../assets/svgs/USDCoin';
 import TrueUSDT from '../../../assets/svgs/TrueUSDT';
 
+import repayCredit from '../../../services/repayCredit';
+import getPlaidAccounts from '../../../services/getPlaidAccounts';
+
+import Store from '../../store/index';
+
 import styles from './Card.styles';
 import colors from '../../../styles/colors';
 
@@ -21,10 +27,41 @@ export default function Card({
     headerText,
     typeOfInfo = 'credit',
     data = {},
+    token = '',
 }) {
+  const [loader, setLoader] = useState(false);
+  const [error, setError] = useState('');
+
+  const repayCreditFunc = async (targetType, targetId, amount) => {
+    await repayCredit(targetType, targetId, amount);
+  };
+
+  const sendPayment = async (targetType, targetId, amount) => {
+    try {
+      await openLink({
+        tokenConfig: { token },
+        onSuccess: async ({ publicToken }) => {
+          try {
+            const accounts = (await getPlaidAccounts(publicToken))?.map(
+              (account) => ({
+                name: account.name,
+                value: account.account_id,
+              }),
+            );
+            await repayCreditFunc(targetType, targetId, amount);
+          } catch (e) {
+            setError(e.message);
+          }
+        },
+      });
+    } catch (e) {
+      setError(e);
+    }
+  };
+
   const coinImage = (type) => {
     switch (type) {
-        case 'Bitcoin':
+        case 'BTC':
             return <Bitcoin />;
         case 'Etherum':
             return <EtherumCoin />;
@@ -85,16 +122,16 @@ export default function Card({
 
               <View style={styles.containerTop}>
                 <Text style={styles.payOutText}>
-                  {data.type === 'credit' ? 'To pay of: ' : 'Loan Avaliable'}
+                  {data.type === 'creditLine' ? 'To pay of: ' : 'Loan Avaliable'}
                 </Text>
                 <Text style={styles.amountText}>
                   $
-                  {data.amount}
+                  {data.range.max}
                 </Text>
               </View>
 
               <View style={{ ...styles.containerBottom, flexDirection: 'row', alignItems: 'center' }}>
-                {coinImage(data.cryptoAmount.type)}
+                {coinImage('BTC')}
                 <View
                   style={{
                       flexDirection: 'column',
@@ -103,13 +140,13 @@ export default function Card({
                       }}
                 >
                   <Text style={{ flexDirection: 'row', color: colors.grey }}>
-                    {data.cryptoAmount.short}
+                    {'BTC'}
                     {' '}
-                    {data.cryptoAmount.amount}
+                    {`${parseFloat(Store.wallets.exchangeRates.USD).toFixed(6)}`}
                   </Text>
                   <Text style={{ color: colors.grey }}>
                     {'$'}
-                    {data.cryptoAmount.equality}
+                    {`${parseFloat(Store.wallets.exchangeRates.BTC).toFixed(2)}`}
                   </Text>
                 </View>
               </View>
@@ -124,7 +161,7 @@ export default function Card({
                 </Text>
                 <Text style={{ ...styles.amountText, marginLeft: 'auto', marginRight: 0 }}>
                   $
-                  {data.nextPayment.amount}
+                  25.59
                 </Text>
                 <Text
                   style={{ ...styles.payOutText,
@@ -133,7 +170,7 @@ export default function Card({
                           fontSize: 12,
                           marginTop: 5 }}
                 >
-                  {data.nextPayment.date}
+                  30.10.2021
                 </Text>
               </View>
 
@@ -142,7 +179,8 @@ export default function Card({
                        justifyContent: 'center',
                        height: 40 }}
               >
-                <TouchableOpacity style={styles.button}>
+                {/* TO DO CHANGE DATA TYPES  */}
+                <TouchableOpacity style={styles.button} onPress={() => sendPayment(data.type, 'BTC', 25.59)}>
                   <Text style={styles.buttonText}>
                     Repay
                   </Text>
@@ -160,11 +198,36 @@ export default function Card({
     return <></>;
   };
 
+  const header = () => {
+    if (data.type === 'creditLine') {
+      return <Text>Credit Line </Text>;
+    }
+
+    if (data.type === 'loan') {
+      return (
+        <Text>
+          Loan
+          {`${data.duration / 30 }`}
+          {' '}
+          months
+        </Text>
+);
+    }
+
+    if (!data.type && typeOfInfo === 'credit') {
+      return <Text>Credit Line</Text>;
+    }
+
+    if (!data.type && typeOfInfo === 'loan') {
+      return <Text>Loan</Text>;
+    }
+  };
+
   return (
     <TouchableOpacity style={styles.main} onPress={onPress}>
       <View style={styles.mainTop}>
         <Text style={styles.headerText}>
-          {Object.keys(data).length === 0 ? headerText : data.header}
+          {header()}
         </Text>
         <ArrowNext style={{ ...styles.mainTopArrow }} />
       </View>

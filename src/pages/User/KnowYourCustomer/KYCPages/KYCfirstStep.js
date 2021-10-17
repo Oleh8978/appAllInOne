@@ -37,6 +37,7 @@ function KYCfirstStep({ type = 'natural_person', jumpToNextPage, showLoader, tit
   const [dateIsPicked, setDateIsPicked] = useState(false);
 
   const dataSetter = (data) => {
+    data.date = date;
     firstPageGetter(data);
     jumpToNextPage();
   };

@@ -7,7 +7,7 @@ export default (background) => {
   );
   if (Platform.OS === 'android') {
     StatusBar.setBackgroundColor(
-      background === 'light' ? colors.white : colors.purple,
+      background === 'light' ? colors.lightBlue : colors.darkBlue,
     );
   }
 };

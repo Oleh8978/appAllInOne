@@ -10,6 +10,7 @@ export default StyleSheet.create({
     bottom: 0,
     justifyContent: 'flex-end',
     margin: 0,
+    backgroundColor: 'rgba(52, 52, 52, 0.8)',
   },
   filterModalBody: {
     ...modal,

@@ -14,6 +14,7 @@ import colors from '../../../../../styles/colors';
 import styles from './Congrats.styles';
 
 export default function Congrats({ navigation, route }) {
+  console.log('route?.params?.type ', route?.params?.type);
     const body = () => {
         if (route?.params?.type === 'credit') {
           return (

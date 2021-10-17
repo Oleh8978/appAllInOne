@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
 View, ScrollView, Text, Platform, TouchableOpacity,
 } from 'react-native';
@@ -9,6 +9,10 @@ import FooterBackground from '../../../../components/FooterBackground/FooterBack
 import DefaultButton from '../../../../components/DefaultButton/DefaultButton';
 import Picker from '../../../../components/Picker/Picker';
 import FormInput from '../../../../components/FormInput/FormInput';
+
+import getSecurityAssets from '../../../../../services/getSecurityAsset';
+import borrowLoan from '../../../../../services/borrowLoan';
+import borrowCredit from '../../../../../services/borrowCreditLine';
 
 import { CODE_SCREN_2FA } from '../../../../../constants/navigation/twoFactorAuth';
 
@@ -23,21 +27,11 @@ import styles from './ReciveFounds.styles';
 
 const list = [
     {
-        name: 'Debit card',
-        value: 'Debit card',
+        name: 'Rhino account',
+        value: 'Rhino account',
         trnasfers: [
             'Rhino account',
             'External bank transfer',
-        ],
-    },
-    {
-        name: 'Test card',
-        value: 'Test card',
-        trnasfers: [
-            'Rhino account',
-            'External bank transfer',
-            'Virtual bank transfer',
-            'Test bank transfer',
         ],
     },
 ];
@@ -47,14 +41,44 @@ export default function ReciveFounds({ navigation, route }) {
     const [isChecked, setIsChecked] = useState(false);
     const [pickedValue, setPickedValue] = useState(list[0].name);
     const [values, setValues] = useState(list[0].trnasfers);
+    const [code, setCode] = useState('');
+    const [loader, setLoader] = useState(false);
+
+    const { coin, perst, amount, duration } = route.params;
+
+    const getSecurityCode = async () => {
+      const type = route.params.name === 'credit' ? 'creditLine' : 'loan';
+      const data = await getSecurityAssets(coin, type, amount);
+      setCode(data);
+    };
 
     const checkMarkSetter = (value) => {
         setValues(list.filter((item) => item.value === value)[0].trnasfers);
     };
 
     const moveForward = () => {
-     navigation.navigate(TWO_FACTOR_AUTH, { screen: CODE_SCREN_2FA, params: { type: route.params.name === 'credit' ? 'credit' : 'loan' } });
+      setLoader(true);
+      try {
+        if (route.params.name === 'loan') {
+          borrowLoan(code.id, amount, duration);
+        }
+
+        if (route.params.name === 'credit') {
+          borrowCredit(code.id, amount);
+        }
+
+        setLoader(false);
+      } catch (e) {
+        setLoader(false);
+        console.log(e);
+      }
+      navigation.navigate(TWO_FACTOR_AUTH, { screen: CODE_SCREN_2FA, params: { type: route.params.name === 'credit' ? 'credit' : 'loan' } });
+      setLoader(false);
     };
+
+    useEffect(() => {
+      getSecurityCode();
+    }, []);
 
   return (
     <LinearGradient
@@ -124,6 +148,7 @@ export default function ReciveFounds({ navigation, route }) {
           isArrowNext
           customStyles={{ marginBottom: 90, marginTop: 'auto' }}
           onPress={() => moveForward()}
+          loader={loader}
         />
       </ScrollView>
       {isPickerOpened && (

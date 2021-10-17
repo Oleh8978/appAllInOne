@@ -16,6 +16,7 @@ import Notification from './src/components/Notification/Notification';
 
 import AuthenticationNavigator from './src/pages/Authentication/index';
 import UserNavigator from './src/pages/User/index';
+import colors from './styles/colors';
 
 async function urlOpener(url, redirectUrl) {
   if (await InAppBrowser.isAvailable()) {
@@ -65,7 +66,7 @@ const App = observer(() => {
   }, [Store.application.notifications]);
 
   if (!loaded) {
-    return <Loader isAbsolute />;
+    return <Loader isAbsolute color={colors.grey} />;
   }
 
   return (

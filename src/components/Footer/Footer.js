@@ -16,6 +16,7 @@ export default function Footer({
   onPress,
   customStyle,
   customStyleContainer,
+  customTextStyle,
 }) {
   const marginBottom = DEVICE_WIDTH <= 360 ? 8 : 15;
 
@@ -25,7 +26,7 @@ export default function Footer({
         onPress={onPress}
         style={{ ...styles.button, ...customStyleContainer }}
       >
-        <Text allowFontScaling={false} style={styles.textStyle}>
+        <Text allowFontScaling={false} style={{ ...styles.textStyle, ...customTextStyle, fontWeight: 'bold' }}>
           {textFooter}
         </Text>
       </TouchableOpacity>

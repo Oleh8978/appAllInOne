@@ -95,7 +95,7 @@ export default function FormInput({
           ...inputCustomStyle,
           paddingRight: isMax ? 40 : 15,
           borderColor: error ? colors.red : colors.grey,
-          borderWidth: error ? 3 : 1
+          borderWidth: error ? 3 : 1,
         }}
         placeholderTextColor={colors.grey}
         onFocus={_onFocus}

@@ -13,7 +13,7 @@ export default {
   imageTop: {
     width: '100%',
     height: 300,
-    marginTop: 50,
+    marginTop: 0,
   },
   form: {
     ...formWrapper,

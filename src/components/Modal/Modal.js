@@ -27,16 +27,19 @@ export default function ModalWrapper({
   customStyleBody = {},
   isNeedLine = true,
   isWhite = false,
+  hasBackdrop = true,
 }) {
   return (
     <Modal
       testID="modal"
       swipeDirection={swipeDirection}
+      propagateSwipe
       isVisible
       onSwipeComplete={close}
       onBackdropPress={close}
       style={{ ...styles.filterModal, ...customStyleBackground }}
       propagateSwipe
+      hasBackdrop={hasBackdrop}
     >
       <ContentWrapper keyboardNormalizer={keyboardNormalizer}>
         <View style={{

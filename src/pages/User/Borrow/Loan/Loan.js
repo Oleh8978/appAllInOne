@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
 View, ScrollView, Text, TouchableOpacity,
 } from 'react-native';
@@ -9,56 +9,33 @@ import FooterBackground from '../../../../components/FooterBackground/FooterBack
 import ResizebleCard from '../../../../components/ResizebleCard/ResizebleCard';
 import CardMonth from '../../../../components/CardMonth/CardMonth';
 
+import getPresets from '../../../../../services/getPresets';
+import getWallets from '../../../../../services/getWallets';
+import getSecurityAsset from '../../../../../services/getSecurityAsset';
+
 import CurlyLineImage from '../../../../../assets/svgs/CurlyLineImage';
 
 import styles from './Loan.styles';
 import colors from '../../../../../styles/colors';
 
-const staticData = [
-  {
-      type: 'Bitcoin',
-      amount: '1.00000000',
-      AvailableCredit: 25004.59,
-      Short: 'BTC',
-  },
-  {
-      type: 'Litecoin',
-      amount: '1.00000000',
-      AvailableCredit: 25004.59,
-      Short: 'LTC',
-  },
-  {
-      type: 'Etherum',
-      amount: '1.00000000',
-      AvailableCredit: 25004.59,
-      Short: 'ETH',
-  },
-  {
-      type: 'TrueUSD',
-      amount: '1.00000000',
-      AvailableCredit: 25004.59,
-      Short: 'TUSD',
-  },
-  {
-      type: 'USD Coin',
-      amount: '1.00000000',
-      AvailableCredit: 25004.59,
-      Short: 'USDC',
-  },
-];
-
 const data = [
   {
+    id: 1,
     data: '6 month',
-    type: 'current',
+    type: false,
+    days: '6m',
   },
   {
-    data: '6 month',
-    type: '',
+    id: 2,
+    data: '12 month',
+    type: false,
+    days: '12m',
   },
   {
+    id: 3,
     data: '24 month',
-    type: '',
+    type: false,
+    days: '24m',
   },
 ];
 
@@ -81,6 +58,93 @@ const data2 = [
 ];
 
 export default function Loan({ navigation }) {
+  const [wallets, setWallets] = useState([]);
+  const [monthsData, setMonthsData] = useState([]);
+  const [daysSelected, setDaysSelected] = useState('6m');
+  const [loans, setLoans] = useState([]);
+
+  const getDataWallets = async () => {
+    const preset = await getPresets();
+    const data = await getWallets();
+    const arr = [];
+    Object.values(preset).map((item) => {
+      if (Object.values(preset).indexOf(item) !== 0) {
+        if (Object.values(preset).indexOf(item) === 1) {
+          arr.push({
+            id: Object.values(preset).indexOf(item),
+            data: `${String(Number(item.thresholds.initial) * 100) }%`,
+            subData: `${String(Number(item.rates.default) * 100) }% APR`,
+            type: true,
+          });
+        } else {
+          arr.push({
+            id: Object.values(preset).indexOf(item),
+            data: `${String(Number(item.thresholds.initial) * 100) }%`,
+            subData: `${String(Number(item.rates.default) * 100) }% APR`,
+            type: false,
+          });
+        }
+      }
+    });
+    setLoans(arr);
+    setWallets(dataArrFormatter(data));
+  };
+
+  const dataArrFormatter = (obj) => {
+    const arr = [];
+    for (const [key, value] of Object.entries(obj)) {
+      arr.push({ coin: key, data: value });
+    }
+    return arr;
+  };
+
+  useEffect(() => {
+    getDataWallets();
+
+    if (monthsData.length === 0) {
+      data[0].type = true;
+      setMonthsData(data);
+    }
+  }, []);
+
+  const selectMonth = (item) => {
+    if (item.id === 1) {
+      monthsData.map((item) => item.type = false);
+      monthsData[0].type = true;
+    }
+
+    if (item.id === 2) {
+      monthsData.map((item) => item.type = false);
+      monthsData[1].type = true;
+    }
+
+    if (item.id === 3) {
+      monthsData.map((item) => item.type = false);
+      monthsData[2].type = true;
+    }
+
+    if (item.id === 1) {
+      loans.map((item) => item.type = false);
+      setDaysSelected('6m');
+      loans[0].type = true;
+    }
+
+    if (item.id === 2) {
+      setDaysSelected('12m');
+      loans.map((item) => item.type = false);
+      loans[1].type = true;
+    }
+
+    if (item.id === 3) {
+      setDaysSelected('24m');
+      loans.map((item) => item.type = false);
+      loans[2].type = true;
+    }
+
+    setLoans(loans);
+    setMonthsData(monthsData);
+  };
+
   return (
     <LinearGradient
       colors={[colors.darkGreen, colors.darkBlue]}
@@ -88,7 +152,6 @@ export default function Loan({ navigation }) {
       start={{ x: 0.0, y: 0.10 }}
       end={{ x: 1.0, y: 0.10 }}
     >
-      <CurlyLineImage style={{ ...styles.imageTop }} />
       <Header
         navigation={navigation}
         topText="Request for loan"
@@ -98,19 +161,27 @@ export default function Loan({ navigation }) {
           Choose term for loan
         </Text>
         <View style={{ flexDirection: 'row' }}>
-          {data.map((item) => <CardMonth data={item} key={Math.random()} />)}
+          {monthsData.map((item) => <CardMonth data={item} key={Math.random()} func={selectMonth} />)}
         </View>
         <Text style={styles.textHeader}>
           Your Loan-to-Value persentage:
         </Text>
         <View style={{ flexDirection: 'row' }}>
-          {data2.map((item) => <CardMonth data={item} key={Math.random()} />)}
+          {loans.map((item) => <CardMonth data={item} key={Math.random()} func={selectMonth} />)}
         </View>
         <View style={styles.mainBottomPlate}>
           <Text style={styles.textHeader}>
             Choose collateral wallet:
           </Text>
-          {staticData.map((item) => <ResizebleCard data={item} key={Math.random()} navigation={navigation} typeCard="loan" />)}
+          {wallets.map((item) => (
+            <ResizebleCard
+              data={item}
+              key={Math.random()}
+              navigation={navigation}
+              duration={daysSelected}
+              typeCard="loan"
+            />
+))}
         </View>
       </ScrollView>
       <FooterBackground />

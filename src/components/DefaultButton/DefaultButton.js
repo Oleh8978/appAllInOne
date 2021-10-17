@@ -71,7 +71,7 @@ export default function DefaultButton({
 
   const leftBodyProvider = () => {
     if (isEmail) {
-      return <EmailImage style={{ marginTop: 1, marginRight: 5 }} />;
+      return <EmailImage style={{ marginTop: 1, marginRight: -1 }} />;
     }
     return <></>;
   };
@@ -94,10 +94,10 @@ export default function DefaultButton({
         allowFontScaling={false}
         style={{
           color: textColor,
+          fontWeight: 'bold',
           fontSize:
             DEVICE_WIDTH <= 375 ? (isSmall ? 12 : 16) : isSmall ? 16 : 18,
           ...textStyles,
-          marginRight: isArrowNext ? 10 : 0,
         }}
       >
         {title}

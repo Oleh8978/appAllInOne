@@ -101,7 +101,6 @@ function SignType({ navigation, route: { params: type } }) {
   };
 
   const signIn = async ({ email, password }) => {
-
     try {
       setShowLoader(true);
       await signInUser(email, password);
@@ -132,7 +131,7 @@ function SignType({ navigation, route: { params: type } }) {
       }}
         colors={[colors.lightBlue, colors.darkBlue]}
       >
-        <Loader color={colors.purple} isAbsolute size="large" />
+        <Loader color={colors.grey} isAbsolute size="large" />
       </LinearGradient>
     );
   }
@@ -268,6 +267,7 @@ function SignType({ navigation, route: { params: type } }) {
               onPress={() => navigation.navigate(CREATE_USER_EMAIL)}
               isLight
               customStyles={{ marginTop: 15, width: '100%' }}
+              textStyles={{ fontWeight: 'normal' }}
               isEmail
             />
           </View>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Text, ScrollView, View, Image,
+  Text, ScrollView, View, Image, Animated,
 } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -38,7 +38,7 @@ import colors from '../../../../styles/colors';
 import styles from './CreateUserEmail.styles';
 
 function CreateUserEmail({ navigation, addHeight }) {
-  useFocusEffect(() => statusBar('dark'));
+  useFocusEffect(() => statusBar('light'));
 
   const [password, setPassword] = useState('');
   const [passwordValidators, setPasswordValidators] = useState(
@@ -75,15 +75,22 @@ function CreateUserEmail({ navigation, addHeight }) {
       style={{ ...wrapper, backgroundColor: 'transparent' }}
       colors={[colors.lightBlue, colors.darkBlue]}
     >
-      <View style={header}>
+      <View
+        style={{
+         ...header,
+         paddingBottom: 0,
+        }}
+      >
         <Header
           topText="Create your account with email"
           navigation={navigation}
           customStyles={{ marginLeft: 55, marginRight: 45 }}
+          mainCustomStyle={{ paddingBottom: 0, marginBottom: 0 }}
         />
       </View>
       <ScrollView showsVerticalScrollIndicator={false} style={{ width: '100%' }}>
-        <Image source={AccountImage} style={styles.imageTop} />
+        {/* <Animated.Image source={AccountImage} style={[{ height }]} /> */}
+        <Animated.Image source={AccountImage} style={[{ ...styles.imageTop }]} />
         <Formik
           validationSchema={yup.object().shape({
           email: emailValidator,

@@ -17,6 +17,7 @@ import {
   ACCOUNT,
   BORROW,
   HOME,
+  HOME_PAGE,
 } from '../../../../constants/navigation/userScreens';
 
 import AccountScreen from '../AccountScreen/AccountScreen';
@@ -70,14 +71,16 @@ export default observer(({ navigation }) => {
 
   if (showLoader && !gotRates) {
     return (
-      <View style={{
-        width: '100%',
-        height: '100%',
-        backgroundColor: colors.white,
-      }}
+      <LinearGradient
+        colors={[colors.lightBlue, colors.darkBlue]}
+        style={{ height: '100%', width: '100%' }}
       >
-        <Loader color={colors.purple} isAbsolute size="large" />
-      </View>
+        <Loader
+          color={colors.grey}
+          isAbsolute
+          size="large"
+        />
+      </LinearGradient>
     );
   }
 
@@ -111,8 +114,8 @@ export default observer(({ navigation }) => {
             </View>
           )),
         }}
-      />
-      <Tab.Screen
+      /> */}
+        {/* <Tab.Screen
         name={WALLETS}
         component={WalletsScreen}
         options={{
@@ -126,7 +129,8 @@ export default observer(({ navigation }) => {
             </View>
           )),
         }}
-      />
+      /> */}
+        {/*
       <Tab.Screen
         name={TRANSACTIONS}
         component={TransactionsScreen}
@@ -167,7 +171,7 @@ export default observer(({ navigation }) => {
         }}
       /> */}
         <Tab.Screen
-          name={HOME}
+          name={HOME_PAGE}
           component={HomePages}
           options={{
           tabBarIcon: ({ focused }) => (focused ? (

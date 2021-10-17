@@ -90,30 +90,30 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors, sel
   }, [documentType, documents.length]);
 
   useEffect(() => {
-    // if (showLoader) {
-    //   const { address, photo, id } = Store.user.status;
-    //   const scanStatus = {
-    //     address: address === 'ok' || address === 'verified' || address === 'pending',
-    //     photo: photo === 'ok' || photo === 'verified' || photo === 'pending',
-    //     id: id === 'ok' || id === 'verified' || id === 'pending',
-    //   };
-    //
-    //   (async () => {
-    //     if (scanStatus.photo && scanStatus.id) {
-    //       await jumpToNextPage();
-    //     } else if (scanStatus.address || scanStatus.photo || await AsyncStorage.getItem(ID_OTHER_UPLOADED) === 'true') {
-    //       const additionalDocuments = Object.keys(scanStatus)
-    //         .reduce((accumulator, key) => (!scanStatus[key] ? `${accumulator}${accumulator ? ', ' : ''}${key}` : accumulator), '')
-    //         .replace(/,$/, '');
-    //       await Store.application.addNotification(`We have received your ${await AsyncStorage.getItem(UPLOADED_DOCUMENT_TYPE) || 'document'}, now we need documents with ${additionalDocuments}`);
-    //       setDocuments([]);
-    //       setOtherDocumentName('');
-    //       setDocumentType(ID_DOCUMENTS_LIST[0].value);
-    //       setDocumentTypeName(ID_DOCUMENTS_LIST[0].name);
-    //     }
-    //     setShowLoader(false);
-    //   })();
-    // }
+    if (showLoader) {
+      const { address, photo, id } = Store.user.status;
+      const scanStatus = {
+        address: address === 'ok' || address === 'verified' || address === 'pending',
+        photo: photo === 'ok' || photo === 'verified' || photo === 'pending',
+        id: id === 'ok' || id === 'verified' || id === 'pending',
+      };
+
+      (async () => {
+        if (scanStatus.photo && scanStatus.id) {
+          await jumpToNextPage();
+        } else if (scanStatus.address || scanStatus.photo || await AsyncStorage.getItem(ID_OTHER_UPLOADED) === 'true') {
+          const additionalDocuments = Object.keys(scanStatus)
+            .reduce((accumulator, key) => (!scanStatus[key] ? `${accumulator}${accumulator ? ', ' : ''}${key}` : accumulator), '')
+            .replace(/,$/, '');
+          await Store.application.addNotification(`We have received your ${await AsyncStorage.getItem(UPLOADED_DOCUMENT_TYPE) || 'document'}, now we need documents with ${additionalDocuments}`);
+          setDocuments([]);
+          setOtherDocumentName('');
+          setDocumentType(ID_DOCUMENTS_LIST[0].value);
+          setDocumentTypeName(ID_DOCUMENTS_LIST[0].name);
+        }
+        setShowLoader(false);
+      })();
+    }
   }, [Store.user.status]);
 
   const uploadID = async () => {
@@ -159,7 +159,7 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors, sel
       }
     }
     // uncomment for the test purposes to move to finish page
-    jumpToNextPage();
+    // jumpToNextPage();
     setShowLoader(false);
   };
 
@@ -298,7 +298,6 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors, sel
                     </View>
                   </>
 )}
-
           {document2 === undefined
                 ? (
                   <View style={{ ...styles.kycUploadContainer }}>
@@ -312,8 +311,7 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors, sel
                     />
                     <Text allowFontScaling={false} style={styles.photoHeader}>Back side</Text>
                   </View>
-)
-                : (
+                ) : (
                   <>
                     <View style={{ marginbottom: 15 }}>
                       <TouchableWithoutFeedback onPress={() => deleteDocument(1)}>
@@ -341,8 +339,7 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors, sel
           {!(documents.length === needUploadTwoPhoto + 1)
             ? (
               <></>
-            )
-            : (
+            ) : (
               <DefaultButton
                 title="Next page"
                 onPress={uploadID}

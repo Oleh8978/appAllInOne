@@ -17,10 +17,11 @@ import colors from '../../../../../styles/colors';
 
 export default function Code({ navigation, route }) {
     const [code, setCode] = useState('');
+    console.log('route?.params?.type  ', route?.params?.type);
 
   const moveForward = () => {
     if (route?.params?.type === 'credit') {
-      navigation.navigate(TWO_FACTOR_AUTH,
+      return navigation.navigate(TWO_FACTOR_AUTH,
         { screen: CONGRATS, params: { type: 'credit' } });
     }
 

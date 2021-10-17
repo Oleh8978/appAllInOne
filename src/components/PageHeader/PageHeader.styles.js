@@ -6,7 +6,7 @@ export default StyleSheet.create({
         width: '100%',
         height: 200,
         flexDirection: 'column',
-        marginTop: 100,
+        marginTop: 65,
     },
     mainTop: {
         width: '100%',

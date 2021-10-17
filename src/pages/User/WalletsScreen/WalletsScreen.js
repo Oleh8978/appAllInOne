@@ -23,14 +23,14 @@ export default function WalletsScreen() {
       initialRouteName={WALLETS}
       screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen name={WALLETS} component={Wallets} />
-      <Stack.Screen name={WALLET_INFORMATION} component={WalletInformation} />
+      {/* <Stack.Screen name={WALLETS} component={Wallets} /> */}
+      {/* <Stack.Screen name={WALLET_INFORMATION} component={WalletInformation} /> */}
       <Stack.Screen name={DEPOSIT} component={Deposit} />
-      <Stack.Screen
+      {/* <Stack.Screen
         name={TRANSFER_BETWEEN_WALLETS}
         component={TransferBetweenWallets}
-      />
-      <Stack.Screen name={WITHDRAW} component={Withdraw} />
+      /> */}
+      {/* <Stack.Screen name={WITHDRAW} component={Withdraw} /> */}
     </Stack.Navigator>
   );
 }

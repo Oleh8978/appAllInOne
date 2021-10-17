@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
  View, Text, TouchableOpacity, Image,
 } from 'react-native';
@@ -22,15 +22,21 @@ import {
 import colors from '../../../styles/colors';
 import styles from './ResizebleCard.styles';
 
-function ResizebleCard({ navigation, data, typeCard = '' }) {
+function ResizebleCard({ navigation, data, typeCard = '', perst = 0, duration = '' }) {
     const [isOpened, setIsOpened] = useState(false);
-    const [valueAmount, setValueAmount] = useState('');
+    const [valueAmount, setValueAmount] = useState(0);
+
+    useEffect(() => {
+
+    }, []);
+
+    console.log('@ ', data);
 
     const coinImage = (type) => {
         switch (type) {
-            case 'Bitcoin':
+            case 'BTC':
                 return <Bitcoin />;
-            case 'Etherum':
+            case 'ETH':
                 return <EtherumCoin />;
             case 'Litecoin':
                 return <LiteCoin />;
@@ -42,18 +48,35 @@ function ResizebleCard({ navigation, data, typeCard = '' }) {
     };
 
     const moveNext = () => {
-        navigation.navigate(BORROW, { screen: RECIVE_FOUNDS, params: { value: `${valueAmount}`, name: typeCard.length !== 0 ? 'loan' : 'credit' } });
+        navigation.navigate(BORROW, {
+                                      screen: RECIVE_FOUNDS,
+                                      params: {
+                                               coin: data.coin,
+                                               perst,
+                                               amount: valueAmount,
+                                               name: typeCard,
+                                               duration,
+                                              },
+                                    });
       };
 
     const onValueChnage = (data) => {
         setValueAmount(data);
     };
 
+    if (data.coin === 'USD') {
+      return <></>;
+    }
+
+    if (!data.data) {
+      return <></>;
+    }
+
   return (
     <TouchableOpacity style={styles.containerStart} onPress={() => { setIsOpened(!isOpened); }}>
       <View style={{ flexDirection: 'row', width: '100%' }}>
         {isOpened ? <Image source={done} style={{ width: 40, height: 40 }} /> : <></>}
-        {!isOpened && <>{coinImage(data.type)}</>}
+        {!isOpened && <>{coinImage(data.coin)}</>}
         <Text style={styles.typeCoin}>
           {data.type}
         </Text>
@@ -64,17 +87,18 @@ function ResizebleCard({ navigation, data, typeCard = '' }) {
             {' '}
             <Text style={styles.textTopAmount}>
               $
-              {data.AvailableCredit}
+              {parseFloat(data.data.estimate / 2).toFixed(2)}
             </Text>
           </Text>
           <Text style={styles.textBottom}>
-            {data.Short}
+            {data.coin}
             {' '}
-            {' '}
+            {data.data.available}
             <Text style={styles.textBottomAmount}>
               {data.amount}
               {' '}
-              | $192.10
+              | $
+              {parseFloat(data.data.estimate).toFixed(2)}
             </Text>
           </Text>
         </View>
@@ -87,10 +111,10 @@ function ResizebleCard({ navigation, data, typeCard = '' }) {
                       <FormInput
                         customContainer={{ width: '65%' }}
                         isMax
-                        placeholder={`$${ String(data.AvailableCredit)}`}
-                        value={valueAmount}
+                        placeholder={`$${ data.data.estimate / 2}`}
+                        value={`${String(valueAmount)}`}
                         set={onValueChnage}
-                        setMax={() => setValueAmount(String(data.AvailableCredit))}
+                        setMax={() => setValueAmount(data.data.estimate / 2)}
                       />
                       <DefaultButton
                         customStyles={{

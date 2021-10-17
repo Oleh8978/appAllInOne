@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
 View, ScrollView, Text,
 } from 'react-native';
@@ -7,44 +7,42 @@ import LinearGradient from 'react-native-linear-gradient';
 import Header from '../../../../components/Header/Header';
 import FooterBackground from '../../../../components/FooterBackground/FooterBackground';
 
+import getPresets from '../../../../../services/getPresets';
+import getWallets from '../../../../../services/getWallets';
+
 import ResizebleCard from '../../../../components/ResizebleCard/ResizebleCard';
 import colors from '../../../../../styles/colors';
 import styles from './CreditLine.styles';
 
-const staticData = [
-    {
-        type: 'Bitcoin',
-        amount: '1.00000000',
-        AvailableCredit: 25004.59,
-        Short: 'BTC',
-    },
-    {
-        type: 'Litecoin',
-        amount: '1.00000000',
-        AvailableCredit: 25004.59,
-        Short: 'LTC',
-    },
-    {
-        type: 'Etherum',
-        amount: '1.00000000',
-        AvailableCredit: 25004.59,
-        Short: 'ETH',
-    },
-    {
-        type: 'TrueUSD',
-        amount: '1.00000000',
-        AvailableCredit: 25004.59,
-        Short: 'TUSD',
-    },
-    {
-        type: 'USD Coin',
-        amount: '1.00000000',
-        AvailableCredit: 25004.59,
-        Short: 'USDC',
-    },
-];
-
 export default function CreditLine({ navigation }) {
+  const [wallets, setWallets] = useState([]);
+  const [creditLine, setCreditLIne] = useState({
+    creditLinePerc: 0,
+    aprValue: 0,
+  });
+
+  const getDataWallets = async () => {
+    const preset = await getPresets();
+    const data = await getWallets();
+    setCreditLIne({
+      creditLinePerc: preset.creditLine.thresholds.initial,
+      aprValue: preset.creditLine.rates.default,
+    });
+    setWallets(dataArrFormatter(data));
+  };
+
+  const dataArrFormatter = (obj) => {
+    const arr = [];
+    for (const [key, value] of Object.entries(obj)) {
+      arr.push({ coin: key, data: value });
+    }
+    return arr;
+  };
+
+  useEffect(() => {
+    getDataWallets();
+  }, []);
+
   return (
     <LinearGradient
       colors={[colors.darkGreen, colors.darkBlue]}
@@ -67,17 +65,27 @@ export default function CreditLine({ navigation }) {
         </Text>
         <View style={styles.mainTopPlate}>
           <Text style={styles.mainTopPlateHeader}>
-            50%
+            {creditLine.creditLinePerc * 100}
+            %
           </Text>
           <Text style={styles.mainTopPlateSubHeader}>
-            8.95% APR
+            {creditLine.aprValue * 100}
+            % APR
           </Text>
         </View>
         <View style={styles.mainBottomPlate}>
           <Text style={styles.mainBottomPlateHeader}>
             Choose collateral wallet:
           </Text>
-          {staticData.map((item) => <ResizebleCard data={item} key={Math.random()} navigation={navigation} />)}
+          {wallets.map((item) => (
+            <ResizebleCard
+              data={item}
+              key={Math.random()}
+              navigation={navigation}
+              typeCard="credit"
+              perst={creditLine.creditLinePerc}
+            />
+))}
         </View>
       </ScrollView>
       <FooterBackground />

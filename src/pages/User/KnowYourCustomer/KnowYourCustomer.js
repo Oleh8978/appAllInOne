@@ -5,6 +5,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import { observer } from 'mobx-react-lite';
 import LinearGradient from 'react-native-linear-gradient';
 
+import Store from '../../../store';
 import statusBar from '../../../../utilities/statusBar';
 
 import { ACCOUNT } from '../../../../constants/navigation/userScreens';
@@ -35,7 +36,7 @@ import colors from '../../../../styles/colors';
 function KnowYourCustomer({ navigation, route }) {
   useFocusEffect(() => statusBar('dark'));
   // const [page, setPage] = useState(Store.user.KYCProgress);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(Store.user.KYCProgress);
 
   const [formErrors, setFormErrors] = useState([]);
   const [showLoader, setShowLoader] = useState(false);
@@ -58,7 +59,7 @@ function KnowYourCustomer({ navigation, route }) {
   const deleteLastError = () => setFormErrors(formErrors.slice(0, formErrors.length - 1));
 
   const jumpToNextPage = async () => {
-    // await Store.user.setKYCProgress();
+    await Store.user.setKYCProgress();
     setFormErrors([]);
     if (page < 5) {
       // navigation.push(KNOW_YOUR_CUSTOMER, { page: page + 1 });
@@ -70,11 +71,11 @@ function KnowYourCustomer({ navigation, route }) {
 
   const firstPageGetter = (values) => {
     setFirstPageData({
-      name: values.givenName,
+      name: values.name,
       familyName: values.familyName,
       email: values.email,
-      date: '',
-      phoneNumber: '',
+      date: values.date,
+      phoneNumber: values.phoneNumber,
     });
   };
 
@@ -121,7 +122,7 @@ function KnowYourCustomer({ navigation, route }) {
             onPress={setSelectedType}
             title="Select a document to verify your identity:"
           />
-        );
+);
 
       case 4:
           return (
@@ -132,7 +133,8 @@ function KnowYourCustomer({ navigation, route }) {
               showLoader={showLoader}
               setShowLoader={setShowLoader}
             />
-          );
+);
+
       case 5:
         return <KYCFinish jumpToNextPage={jumpToNextPage} />;
 
@@ -161,7 +163,7 @@ function KnowYourCustomer({ navigation, route }) {
             {`${value}`}
           </Text>
         </View>
- );
+);
     } if (page === value) {
       return (
         <View style={{ ...styles.stepContainer }}>
@@ -171,7 +173,7 @@ function KnowYourCustomer({ navigation, route }) {
             {`${value}`}
           </Text>
         </View>
- );
+);
     }
   };
 

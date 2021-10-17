@@ -353,13 +353,14 @@ class Wallets {
   async updateCredit() {
     if (this.root.user.tier > 3) {
       try {
-        await getCreditInfo()
-          .then((credit) => {
-            this.totalAvailable = credit.available;
-            this.totalUtilized = credit.used;
-            this.lineOfCredit = +credit.available + +credit.used ?? 0;
-            return credit;
-          });
+        console.log('');
+        // await getCreditInfo()
+        //   .then((credit) => {
+        //     this.totalAvailable = credit.available;
+        //     this.totalUtilized = credit.used;
+        //     this.lineOfCredit = +credit.available + +credit.used ?? 0;
+        //     return credit;
+        //   });
       } catch (e) {
         throw new Error(e.message);
       }
@@ -438,6 +439,13 @@ class Transactions {
     });
     return transactions;
   }
+}
+
+class Borrow {
+ borrow = {
+   targets: [],
+   utilized: 0,
+ }
 }
 
 class Store {

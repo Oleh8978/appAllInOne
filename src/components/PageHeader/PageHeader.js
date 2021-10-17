@@ -8,16 +8,25 @@ import Bell from '../../../assets/svgs/Bell';
 import RhinoImage from '../../../assets/svgs/RhinoImage';
 import HistoryClockImage from '../../../assets/svgs/HistoryClockImage';
 import CreditCardImage from '../../../assets/svgs/CreditCardImage';
+import DepositHome from '../../../assets/svgs/DepositHome';
+import WithdrawHome from '../../../assets/svgs/WithdrawHome';
+
+import depositCrypto from '../../../services/depositCrypto';
 
 import styles from './PageHeader.styles';
 
 function PageHeader({
   rightType = 'bell',
   centerType = 'credit',
-  credit = 0.56,
+  credit = 0.00,
   menuFunc = () => {},
   rightFunct = () => {},
+  text = 'Available credit',
+  isHomeScreen = false,
 }) {
+  const onDeposit = async () => {
+    await depositCrypto('BTC');
+  };
   const centerBlock = (type) => {
     switch (type) {
       case 'credit':
@@ -28,7 +37,7 @@ function PageHeader({
               $
               {credit}
             </Text>
-            <Text style={{ ...styles.subHeader }}>Available credit</Text>
+            <Text style={{ ...styles.subHeader }}>{text}</Text>
           </View>
               );
       default:
@@ -49,23 +58,29 @@ function PageHeader({
     }
   };
 
-  return (
-    <View style={styles.main}>
-
-      <View style={styles.mainTop}>
-        <View style={styles.leftBlock}>
-          <TouchableOpacity onPress={menuFunc}>
-            <MenuLines style={{ marginLeft: 0, marginRight: 'auto' }} />
+  const bodyProvider = () => {
+    if (isHomeScreen) {
+      return (
+        <View style={styles.mainBottom}>
+          <TouchableOpacity
+            style={styles.mainBottomLeft}
+            onPress={() => { onDeposit(); }}
+          >
+            <DepositHome />
+            <Text>Deposit</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.mainBottomRight}
+            nPress={() => { console.log('chistory'); }}
+          >
+            <WithdrawHome />
+            <Text>Withdraw</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.centerBlock}>
-          {centerBlock(centerType)}
-        </View>
-        <View style={styles.rightBlock}>
-          {rightBlock(rightType)}
-        </View>
-      </View>
+      );
+    }
 
+    return (
       <View style={styles.mainBottom}>
         <TouchableOpacity
           style={styles.mainBottomLeft}
@@ -82,6 +97,26 @@ function PageHeader({
           <Text>Repay</Text>
         </TouchableOpacity>
       </View>
+    );
+  };
+
+  return (
+    <View style={styles.main}>
+
+      <View style={styles.mainTop}>
+        <View style={styles.leftBlock}>
+          <TouchableOpacity onPress={menuFunc}>
+            <MenuLines style={{ marginLeft: 0, marginRight: 'auto' }} />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.centerBlock}>
+          {centerBlock(centerType)}
+        </View>
+        <View style={styles.rightBlock}>
+          {rightBlock(rightType)}
+        </View>
+      </View>
+      <>{bodyProvider()}</>
     </View>
   );
 }

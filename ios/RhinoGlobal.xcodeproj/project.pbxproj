@@ -10,7 +10,6 @@
 		00E356F31AD99517003FC87E /* RhinoGlobalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RhinoGlobalTests.m */; };
 		05529EA0B93F4010A707FA49 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 593252A059934B51B48086EF /* OpenSans-SemiBold.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		1930E33A63BE32EA7A0CE938 /* libPods-RhinoGlobal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55FB9994336E1B00D9CD40BF /* libPods-RhinoGlobal.a */; };
 		1A2A33D45B8775AE727962BD /* libPods-RhinoGlobal-RhinoGlobalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 886870651147E95279BF434A /* libPods-RhinoGlobal-RhinoGlobalTests.a */; };
@@ -18,6 +17,8 @@
 		6B93FC6427035E5F00326436 /* libswiftWebKit.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B93FC6327035E5F00326436 /* libswiftWebKit.tbd */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8C2EF0A5F78C4369A104413C /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6342D7F67B8E4A5491995195 /* OpenSans-ExtraBold.ttf */; };
+		A38A2689271BFD2B00E69D77 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A38A2688271BFD2B00E69D77 /* Images.xcassets */; };
+		A38A268A271BFD2B00E69D77 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A38A2688271BFD2B00E69D77 /* Images.xcassets */; };
 		CCAE24A6D21543DC9C7106D9 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE3A3594782D40C59CB41A3D /* OpenSans-Regular.ttf */; };
 		F68FB73A494F4334BA76B455 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6EB0EAC602844FDA264A4EF /* OpenSans-Bold.ttf */; };
 /* End PBXBuildFile section */
@@ -39,7 +40,6 @@
 		13B07F961A680F5B00A75B9A /* RhinoGlobal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RhinoGlobal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = RhinoGlobal/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = RhinoGlobal/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RhinoGlobal/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RhinoGlobal/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RhinoGlobal/main.m; sourceTree = "<group>"; };
 		182345A924626192F8E9EBDD /* Pods-RhinoGlobal-RhinoGlobalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RhinoGlobal-RhinoGlobalTests.release.xcconfig"; path = "Target Support Files/Pods-RhinoGlobal-RhinoGlobalTests/Pods-RhinoGlobal-RhinoGlobalTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -52,6 +52,7 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RhinoGlobal/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		886870651147E95279BF434A /* libPods-RhinoGlobal-RhinoGlobalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RhinoGlobal-RhinoGlobalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D4E025D928CF028A9315C35 /* Pods-RhinoGlobal-RhinoGlobalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RhinoGlobal-RhinoGlobalTests.debug.xcconfig"; path = "Target Support Files/Pods-RhinoGlobal-RhinoGlobalTests/Pods-RhinoGlobal-RhinoGlobalTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A38A2688271BFD2B00E69D77 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../../../.Trash/Images.xcassets; sourceTree = "<group>"; };
 		A6EB0EAC602844FDA264A4EF /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Bold.ttf"; path = "../assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		CE3A3594782D40C59CB41A3D /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Regular.ttf"; path = "../assets/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		DFD6959B9B5926CCBEC36A45 /* Pods-RhinoGlobal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RhinoGlobal.release.xcconfig"; path = "Target Support Files/Pods-RhinoGlobal/Pods-RhinoGlobal.release.xcconfig"; sourceTree = "<group>"; };
@@ -104,7 +105,7 @@
 				6B26B4CA26A595BF00E16499 /* RhinoGlobal.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
-				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				A38A2688271BFD2B00E69D77 /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
@@ -265,6 +266,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A38A268A271BFD2B00E69D77 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,9 +275,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				F68FB73A494F4334BA76B455 /* OpenSans-Bold.ttf in Resources */,
 				8C2EF0A5F78C4369A104413C /* OpenSans-ExtraBold.ttf in Resources */,
+				A38A2689271BFD2B00E69D77 /* Images.xcassets in Resources */,
 				CCAE24A6D21543DC9C7106D9 /* OpenSans-Regular.ttf in Resources */,
 				05529EA0B93F4010A707FA49 /* OpenSans-SemiBold.ttf in Resources */,
 			);
