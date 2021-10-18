@@ -136,6 +136,8 @@ class User {
             .then(async (status) => {
               if (status.tier < 1) { // for the first sign in, registration in back-end
                 await registerUser(); // now tier is 1
+              } else if (status.tier > 2) {
+                await PrimeTrustApprove();
               }
               await this.KYCApprove(status);
             });

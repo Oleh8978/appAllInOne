@@ -175,7 +175,7 @@ export default observer(({ navigation }) => {
       /> */}
         <Tab.Screen
           name="Trade"
-          component={() => <View style={{height: '100%', width: '100%'}}><FooterBackground/></View>}
+          component={() => <View style={{ height: '100%', width: '100%' }}><FooterBackground /></View>}
           options={{
               tabBarIcon: ({ focused }) => (focused ? (
                 <View style={tabStyles.activeTab}>
@@ -190,7 +190,7 @@ export default observer(({ navigation }) => {
         />
         <Tab.Screen
           name="Earn"
-          component={() => <View style={{height: '100%', width: '100%'}}><FooterBackground/></View>}
+          component={() => <View style={{ height: '100%', width: '100%' }}><FooterBackground /></View>}
           options={{
               tabBarIcon: ({ focused }) => (focused ? (
                 <View style={tabStyles.activeTab}>
@@ -220,7 +220,7 @@ export default observer(({ navigation }) => {
         />
         <Tab.Screen
           name="Debit card"
-          component={() => <View style={{height: '100%', width: '100%'}}><FooterBackground/></View>}
+          component={() => <View style={{ height: '100%', width: '100%' }}><FooterBackground /></View>}
           options={{
               tabBarIcon: ({ focused }) => (focused ? (
                 <View style={tabStyles.activeTab}>
