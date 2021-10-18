@@ -61,7 +61,7 @@ export default function Congrats({ navigation, route }) {
               style={{ width: '100%', height: 300 }}
             />
             <Text style={styles.mainText}>
-              Congradulations!
+              Congratulations!
             </Text>
             <Text style={styles.subText} />
           </>

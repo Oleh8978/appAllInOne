@@ -98,7 +98,7 @@ export default function ReciveFounds({ navigation, route }) {
       >
         <View style={styles.topTextContainer}>
           <Text style={styles.topText}>
-            Where you want to receive  the founds ?
+            Where you want to receive  the funds ?
           </Text>
         </View>
         <View style={styles.bottomContainer}>
