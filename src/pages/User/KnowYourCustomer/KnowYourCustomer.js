@@ -33,6 +33,7 @@ import {
 } from '../../../../styles/mixins';
 import styles from './KnowYourCustomer.styles';
 import colors from '../../../../styles/colors';
+import PrimeTrustApprove from '../../../../services/PrimeTrustApprove';
 
 // TODO create logic: if PrimeTrust request more documents
 
@@ -52,11 +53,16 @@ function KnowYourCustomer({ navigation, route }) {
 
     if (data.tier === 2) {
       setPage(3);
+    } else if (data.tier >= 3) {
+      await PrimeTrustApprove();
+      setPage(5);
     }
   };
 
   useEffect(() => {
-    getKYCData();
+    (async () => {
+      await getKYCData();
+    })();
 
     setPage(page < route.params?.page ? route.params?.page : page);
 
@@ -122,7 +128,7 @@ function KnowYourCustomer({ navigation, route }) {
             firstPageData={firstPageData}
             title="Enter your personal details:"
           />
-);
+        );
 
         // Finish
       case 3:
@@ -137,7 +143,7 @@ function KnowYourCustomer({ navigation, route }) {
             onPress={setSelectedType}
             title="Select a document to verify your identity:"
           />
-);
+        );
 
       case 4:
           return (

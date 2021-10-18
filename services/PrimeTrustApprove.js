@@ -1,6 +1,6 @@
 import getAccessToken from './cognito/getAccessToken';
 import { SERVER_URL } from '../constants/constants';
-// It`s for debug only!!!
+// It`s for testnet only!!!
 
 export default async () => {
   try {

@@ -29,7 +29,7 @@ import Notification from '../../../components/Notification/Notification';
 import styles from './Biometric.styles';
 import { authPageWrapper as wrapper, view } from '../../../../styles/mixins';
 import colors from '../../../../styles/colors';
-import {HOME, HOME_PAGE} from "../../../../constants/navigation/userScreens";
+import { HOME, HOME_PAGE } from '../../../../constants/navigation/userScreens';
 
 // User can be redirected to this page only if his device supports biometric authentication!
 export default function Biometric({ navigation }) {
@@ -54,7 +54,7 @@ export default function Biometric({ navigation }) {
                 [WILL_TUNE_BIOMETRIC, 'false'],
               ]);
               setLoader(false);
-              await navigation.navigate(USER, { screen: HOME_PAGE, params: { screen: HOME} });
+              await navigation.navigate(USER, { screen: HOME_PAGE, params: { screen: HOME } });
             }
           } catch (e) {
             setLoader(false);
