@@ -31,7 +31,6 @@ const list = [
         value: 'Rhino account',
         trnasfers: [
             'Rhino account',
-            'External bank transfer',
         ],
     },
 ];

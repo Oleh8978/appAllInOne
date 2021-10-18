@@ -22,7 +22,6 @@ export default function InfoPage({
     route, navigation,
 }) {
     const [isChecked, setIsChecked] = useState(false);
-  console.log(route.params.type);
     const navigateForward = () => {
         if (route.params.type === 'credit') {
             return navigation.navigate(BORROW, { screen: CREDIT });
