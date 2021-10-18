@@ -22,6 +22,7 @@ import {
   INFO_CREDIT,
   HOME,
   HOME_PAGE,
+  KNOW_YOUR_CUSTOMER,
 } from '../../../../../constants/navigation/userScreens';
 import { USER } from '../../../../../constants/navigation/navigators';
 
@@ -31,9 +32,9 @@ import colors from '../../../../../styles/colors';
 const customHook = (navigation) => {
   const getKYCData = async () => {
     const data = await KYCStatus();
-
-    if (data.tier !== 4) {
-      navigation.navigate(HOME_PAGE, { screen: HOME });
+    console.log('data ', data.tier)
+    if (Number(data.tier) !== 4) {
+      navigation.navigate(HOME_PAGE, { screen: KNOW_YOUR_CUSTOMER });
     }
   };
 

@@ -57,8 +57,8 @@ const priceChartToBeRemoved = [
     chart: '../../../../../assets/images/chartFakeBTC.png',
   },
   {
-    type: 'LTC',
-    name: 'Litecoin',
+    type: 'ETH',
+    name: 'Etherum',
     price: '$190.21',
     percentage: '+2,5%',
     percentage: '+57.7%',

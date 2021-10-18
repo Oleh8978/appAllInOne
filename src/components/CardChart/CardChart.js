@@ -9,6 +9,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import BTC from '../../../assets/svgs/Btc';
 import LTC from '../../../assets/svgs/LiteCoin';
+import ETH from '../../../assets/svgs/Eth';
 
 import styles from './CardChart.styles';
 import colors from '../../../styles/colors';
@@ -22,6 +23,8 @@ const CardChard = ({ data }) => {
                 return <BTC />;
             case 'LTC':
                 return <LTC />;
+            case 'ETH':
+                return <ETH />;
         }
     };
 
@@ -30,6 +33,8 @@ const CardChard = ({ data }) => {
             case 'BTC':
                 return <Image source={require('../../../assets/images/chartFakeBTC.png')} style={styles.image} />;
             case 'LTC':
+                return <Image source={require('../../../assets/images/ChartFakeLTC.png')} style={styles.image} />;
+            case 'ETH':
                 return <Image source={require('../../../assets/images/ChartFakeLTC.png')} style={styles.image} />;
         }
     };
