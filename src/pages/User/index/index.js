@@ -25,6 +25,9 @@ import TransactionsScreen from '../TransactionsScreen/TransactionsScreen';
 import WalletsScreen from '../WalletsScreen/WalletsScreen';
 import BorrowPages from '../Borrow/BorrowScreen';
 import HomePages from '../Home/Home';
+import DebitCard from '../DebitCard/DebitCard';
+import Trade from '../Trade/Trade';
+import Earn from '../Earn/Earn';
 
 import FooterBackground from '../../../components/FooterBackground/FooterBackground';
 
@@ -175,7 +178,7 @@ export default observer(({ navigation }) => {
       /> */}
         <Tab.Screen
           name="Trade"
-          component={() => <View style={{height: '100%', width: '100%'}}><FooterBackground/></View>}
+          component={() => <Trade/>}
           options={{
               tabBarIcon: ({ focused }) => (focused ? (
                 <View style={tabStyles.activeTab}>
@@ -190,7 +193,7 @@ export default observer(({ navigation }) => {
         />
         <Tab.Screen
           name="Earn"
-          component={() => <View style={{height: '100%', width: '100%'}}><FooterBackground/></View>}
+          component={() => <Earn/>}
           options={{
               tabBarIcon: ({ focused }) => (focused ? (
                 <View style={tabStyles.activeTab}>
@@ -220,7 +223,7 @@ export default observer(({ navigation }) => {
         />
         <Tab.Screen
           name="Debit card"
-          component={() => <View style={{height: '100%', width: '100%'}}><FooterBackground/></View>}
+          component={() => <DebitCard />}
           options={{
               tabBarIcon: ({ focused }) => (focused ? (
                 <View style={tabStyles.activeTab}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
 View, ScrollView, Text, TouchableOpacity,
 } from 'react-native';
@@ -21,6 +21,8 @@ import CurlyLineImage from '../../../../../assets/svgs/CurlyLineImage';
 import ArrowDown from '../../../../../assets/svgs/ArrowDown';
 import ArrowUpImage from '../../../../../assets/svgs/ArrowUpImage';
 import CheckImage from '../../../../../assets/svgs/CheckImage';
+
+import getKycStatus from '../../../../../services/getKycStatus';
 
 import styles from './HomeScreen.styles';
 import colors from '../../../../../styles/colors';
@@ -93,6 +95,26 @@ const dataPosibilities = [
 export default function LoanInfo({ navigation }) {
   const [credit, setCredit] = useState('42.000');
   const [isBalanceOpened, setIsBalanceOpened] = useState(false);
+  const [kycChecked, setKycChecked] = useState(false)
+
+  const getKYCData = async () => {
+    const data = await getKycStatus();
+    console.log(data)
+    if (Number(data.tier) >= 4) {
+      setKycChecked(true)
+    }
+  };
+
+  console.log('kycChecked ', kycChecked)
+
+  useEffect(() => {
+    getKYCData();
+    const unsubscribe = navigation.addListener('focus', () => {
+      getKYCData();
+    });
+
+    return unsubscribe;
+  }, [navigation]);
 
     const TWOFA = () => {
         navigation.navigate(TWO_FACTOR_AUTH);
@@ -185,12 +207,12 @@ export default function LoanInfo({ navigation }) {
         >
           <TouchableOpacity style={{ ...styles.wrapperItemsSteps, width: 115, height: 114 }} onPress={() => KYC()}>
             <LinearGradient
-              colors={[
+              colors={kycChecked === false ? [
                  colors.lightBlue,
                  colors.darkBlue,
                 //  colors.white,
                 //  colors.white,
-               ]}
+               ] : [colors.white, colors.white]}
               style={styles.containerItemSteps}
             >
               <View style={{
@@ -205,7 +227,7 @@ export default function LoanInfo({ navigation }) {
                   marginRight: 0,
                   }}
               >
-                {/* <CheckImage /> */}
+                {kycChecked && <CheckImage />}
               </View>
               <Text
                 style={{
@@ -215,7 +237,7 @@ export default function LoanInfo({ navigation }) {
                   marginRight: 'auto',
                   fontWeight: 'bold',
                   fontSize: 15,
-                  color: colors.white,
+                  color: kycChecked ? colors.lightBlue : colors.white,
                   }}
               >
                 KYC
@@ -227,7 +249,7 @@ export default function LoanInfo({ navigation }) {
                   marginRight: 'auto',
                   fontWeight: 'bold',
                   fontSize: 15,
-                  color: colors.white,
+                  color: kycChecked ? colors.lightBlue : colors.white,
                   }}
               >
                 verefication

@@ -10,6 +10,7 @@ import HistoryClockImage from '../../../assets/svgs/HistoryClockImage';
 import CreditCardImage from '../../../assets/svgs/CreditCardImage';
 import DepositHome from '../../../assets/svgs/DepositHome';
 import WithdrawHome from '../../../assets/svgs/WithdrawHome';
+import FormInput from '../FormInput/FormInput';
 
 import depositCrypto from '../../../services/depositCrypto';
 
@@ -17,12 +18,15 @@ import styles from './PageHeader.styles';
 
 function PageHeader({
   rightType = 'bell',
+  isTrade = false,
   centerType = 'credit',
   credit = 0.00,
   menuFunc = () => {},
   rightFunct = () => {},
   text = 'Available credit',
   isHomeScreen = false,
+  isEarn = false,
+  stylesMainblock = {},
 }) {
   const onDeposit = async () => {
     await depositCrypto('BTC');
@@ -40,6 +44,13 @@ function PageHeader({
             <Text style={{ ...styles.subHeader }}>{text}</Text>
           </View>
               );
+        case 'trade':
+          return (
+          <View style={{ ...styles.centerBlockWrapper }}>
+            <RhinoImage style={{ marginLeft: 'auto', marginRight: 'auto' }} />
+            <Text style={{ ...styles.subHeader }}>{text}</Text>
+          </View>
+          );
       default:
         return <></>;
     }
@@ -80,6 +91,28 @@ function PageHeader({
       );
     }
 
+    if (isTrade) {
+      return (<></>)
+    }
+
+    if (isEarn) {
+      return       ( 
+      <View style={styles.mainBottom}>
+      <TouchableOpacity
+        style={{
+          ...styles.mainBottomLeft, 
+          maxWidth: '100%',
+          marginRight: 15,
+          height: 72,
+        }}
+        onPress={() => { onDeposit(); }}
+      >
+        <DepositHome />
+        <Text>Deposit</Text>
+      </TouchableOpacity>
+    </View>)
+    }
+
     return (
       <View style={styles.mainBottom}>
         <TouchableOpacity
@@ -103,7 +136,7 @@ function PageHeader({
   };
 
   return (
-    <View style={styles.main}>
+    <View style={{...styles.main, ...stylesMainblock}}>
 
       <View style={styles.mainTop}>
         <View style={styles.leftBlock}>
