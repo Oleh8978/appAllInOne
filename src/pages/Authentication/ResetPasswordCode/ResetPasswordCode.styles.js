@@ -22,6 +22,7 @@ export default StyleSheet.create({
     textContainerTop: {
         color: colors.white,
         fontSize: 32,
+        fontFamily: 'Gotham Pro', 
     },
     containerBottom: {
         marginTop: 10,

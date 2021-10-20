@@ -95,6 +95,7 @@ export default function DefaultButton({
         style={{
           color: textColor,
           fontWeight: 'bold',
+          fontFamily: 'Gotham Pro',
           fontSize:
             DEVICE_WIDTH <= 375 ? (isSmall ? 12 : 16) : isSmall ? 16 : 18,
           ...textStyles,

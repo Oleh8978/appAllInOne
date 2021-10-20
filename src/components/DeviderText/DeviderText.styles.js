@@ -21,6 +21,7 @@ export default StyleSheet.create({
   textStyle: {
       color: colors.white,
       fontSize: 15,
+      fontFamily: 'Gotham Pro'
   },
   line: {
       width: '100%',

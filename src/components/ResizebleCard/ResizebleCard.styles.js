@@ -20,6 +20,7 @@ export default StyleSheet.create({
       marginTop: 'auto',
       marginBottom: 'auto',
       fontSize: 14,
+      fontFamily: 'Gotham Pro',
   },
   leftContainer: {
       marginRight: 0,
@@ -28,14 +29,17 @@ export default StyleSheet.create({
   },
   textTop: {
       fontSize: 14,
+      fontFamily: 'Gotham Pro',
   },
   textTopAmount: {
       fontSize: 14,
       fontWeight: 'bold',
+      fontFamily: 'Gotham Pro',
   },
   textBottom: {
       marginLeft: 'auto',
       marginRight: 0,
+      fontFamily: 'Gotham Pro',
   },
   bottomContainer: {
       marginTop: 10,

@@ -20,13 +20,13 @@ export default StyleSheet.create({
     },
     mainBottomLeft: {
         marginLeft: 15,
-        marginRight: 'auto',
+        marginRight: 15,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.white,
         borderRadius: 10,
-        maxWidth: 167,
+        // maxWidth: 167,
         maxHeight: 70,
     },
     mainBottomRight: {
@@ -58,9 +58,11 @@ export default StyleSheet.create({
         marginTop: 5,
         fontSize: 32,
         color: colors.white,
+        fontFamily: 'Gotham Pro',
     },
     subHeader: {
         textAlign: 'center',
         color: colors.white,
+        fontFamily: 'Gotham Pro',
     },
 });

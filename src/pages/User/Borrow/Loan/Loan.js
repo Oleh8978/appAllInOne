@@ -9,6 +9,8 @@ import FooterBackground from '../../../../components/FooterBackground/FooterBack
 import ResizebleCard from '../../../../components/ResizebleCard/ResizebleCard';
 import CardMonth from '../../../../components/CardMonth/CardMonth';
 
+import KeyboardNormalizer from '../../../../HOCs/KeyboardNormalizerFolding';
+
 import getTargets from '../../../../../services/getTargets';
 
 import getPresets from '../../../../../services/getPresets';
@@ -80,7 +82,7 @@ const data2 = [
   },
 ];
 
-export default function Loan({ navigation }) {
+function Loan({ navigation }) {
   customHook(navigation);
   const [wallets, setWallets] = useState([]);
   const [monthsData, setMonthsData] = useState([]);
@@ -212,3 +214,5 @@ export default function Loan({ navigation }) {
     </LinearGradient>
   );
 }
+
+export default KeyboardNormalizer(Loan);

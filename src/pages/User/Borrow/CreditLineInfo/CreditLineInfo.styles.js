@@ -34,12 +34,14 @@ export default StyleSheet.create({
         fontSize: 30,
         marginLeft: 'auto',
         marginRight: 'auto',
+        fontFamily: 'Gotham Pro', 
     },
     underHeaderBottomText: {
         fontSize: 14,
         color: colors.white,
         marginLeft: 'auto',
         marginRight: 'auto',
+        fontFamily: 'Gotham Pro', 
     },
     mainBottomRight: {
         height: 72,
@@ -76,5 +78,6 @@ export default StyleSheet.create({
         marginBottom: 15,
         fontWeight: 'bold',
         fontSize: 20,
+        fontFamily: 'Gotham Pro', 
     },
 });

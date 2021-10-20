@@ -16,7 +16,7 @@ const OpenURLButton = ({ url, text, customStyleBtn, customStyleTxt }) => {
 
   return (
     <TouchableOpacity onPress={handlePress} style={{ ...customStyleBtn }}>
-      <Text style={{ color: colors.white, ...customStyleTxt }}>{text}</Text>
+      <Text style={{ color: colors.white, ...customStyleTxt, fontFamily: 'Gotham Pro' }}>{text}</Text>
     </TouchableOpacity>
 );
 };

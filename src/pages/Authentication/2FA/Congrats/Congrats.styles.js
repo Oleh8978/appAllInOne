@@ -20,6 +20,7 @@ export default StyleSheet.create({
         marginRight: 'auto',
         fontSize: 32,
         color: colors.darkBlue,
+        fontFamily: 'Gotham Pro', 
     },
     subText: {
         marginTop: 10,
@@ -27,6 +28,7 @@ export default StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 'auto',
         marginBottom: 'auto',
+        fontFamily: 'Gotham Pro', 
     },
     itemsContainer: {
         width: '100%',

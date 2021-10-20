@@ -20,9 +20,11 @@ export default StyleSheet.create({
     textTop: {
         fontSize: 15,
         color: colors.lightBlue,
+        fontFamily: 'Gotham Pro',
     },
     textBottom: {
         fontSize: 12,
         color: colors.grey,
+        fontFamily: 'Gotham Pro',
     },
 });

@@ -112,7 +112,7 @@ export default function ReciveFounds({ navigation, route }) {
             <TouchableOpacity style={styles.checkbox} onPress={() => setIsChecked(!isChecked)}>
               {isChecked ? <CheckImage /> : <></>}
             </TouchableOpacity>
-            <Text>Make autorepeyments</Text>
+            <Text style={{fontFamily: 'Gotham Pro', }}>Make autorepeyments</Text>
           </View>
           <FormInput
             textheaderCustomStyle={{ color: colors.grey }}

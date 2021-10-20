@@ -9,5 +9,6 @@ export default StyleSheet.create({
     fontSize: 16,
     color: colors.white,
     textDecorationLine: 'underline',
+    fontFamily: 'Gotham Pro'
   },
 });

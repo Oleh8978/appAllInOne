@@ -29,5 +29,6 @@ export default StyleSheet.create({
     },
     headerText: {
         fontSize: 16,
+        fontFamily: 'Gotham Pro', 
     },
 });

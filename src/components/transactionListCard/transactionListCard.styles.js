@@ -31,8 +31,9 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         marginTop: 'auto',
         marginBottom: 'auto',
+        fontFamily: 'Gotham Pro',
     },
     bottomTextRight: {
-
+        fontFamily: 'Gotham Pro',
     },
 });

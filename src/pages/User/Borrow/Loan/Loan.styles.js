@@ -29,6 +29,7 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
         marginBottom: 15,
+        fontFamily: 'Gotham Pro', 
     },
     mainBottomPlate: {
         marginBottom: 100,

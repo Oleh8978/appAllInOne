@@ -17,7 +17,7 @@ export default StyleSheet.create({
   },
   placeholder: {
     fontSize: 14,
-    fontFamily: 'OpenSans-ExtraBold',
+    fontFamily: 'Gotham Pro',
   },
   inputWrapper: {
     width: '100%',

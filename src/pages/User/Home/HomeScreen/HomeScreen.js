@@ -237,6 +237,7 @@ export default function LoanInfo({ navigation }) {
                   marginRight: 'auto',
                   fontWeight: 'bold',
                   fontSize: 15,
+                  fontFamily: 'Gotham Pro', 
                   color: kycChecked ? colors.lightBlue : colors.white,
                   }}
               >
@@ -249,6 +250,7 @@ export default function LoanInfo({ navigation }) {
                   marginRight: 'auto',
                   fontWeight: 'bold',
                   fontSize: 15,
+                  fontFamily: 'Gotham Pro', 
                   color: kycChecked ? colors.lightBlue : colors.white,
                   }}
               >
@@ -288,6 +290,7 @@ export default function LoanInfo({ navigation }) {
                   marginRight: 'auto',
                   fontWeight: 'bold',
                   fontSize: 15,
+                  fontFamily: 'Gotham Pro', 
                   color: colors.white,
                   }}
               >
@@ -300,6 +303,7 @@ export default function LoanInfo({ navigation }) {
                   marginRight: 'auto',
                   fontWeight: 'bold',
                   fontSize: 15,
+                  fontFamily: 'Gotham Pro', 
                   color: colors.white,
                   }}
               >
@@ -339,6 +343,7 @@ export default function LoanInfo({ navigation }) {
                   marginRight: 'auto',
                   fontWeight: 'bold',
                   fontSize: 15,
+                  fontFamily: 'Gotham Pro', 
                   color: colors.white,
                   }}
               >
@@ -351,6 +356,7 @@ export default function LoanInfo({ navigation }) {
                   marginRight: 'auto',
                   fontWeight: 'bold',
                   fontSize: 15,
+                  fontFamily: 'Gotham Pro', 
                   color: colors.white,
                   }}
               >
@@ -381,9 +387,3 @@ export default function LoanInfo({ navigation }) {
     </LinearGradient>
   );
 }
-
-        { /* <View style={{ backgroundColor: 'white', height: 400, paddingTop: 50 }}>
-          <DefaultButton title="KYC" onPress={() => KYC()} />
-          <View style={{ backgroundColor: 'white', height: 30 }} />
-          <DefaultButton title="2FA" onPress={() => TWOFA()} />
-        </View> */ }

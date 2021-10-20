@@ -60,10 +60,7 @@
 	<string>Application need access to photo library to allow user upload ID photo for KYC</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>OpenSans-Bold.ttf</string>
-		<string>OpenSans-ExtraBold.ttf</string>
-		<string>OpenSans-Regular.ttf</string>
-		<string>OpenSans-SemiBold.ttf</string>
+		<string>Gotham_Pro.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

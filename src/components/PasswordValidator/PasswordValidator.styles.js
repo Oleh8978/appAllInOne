@@ -17,7 +17,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
   },
   passwordRequirement: {
-    fontFamily: 'OpenSans-Regular',
+    fontFamily: 'Gotham Pro',
     color: colors.white,
     fontSize: 13,
     paddingBottom: 1,

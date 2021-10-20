@@ -9,6 +9,7 @@ export default StyleSheet.create({
   currency: {
     fontFamily: 'OpenSans-Bold',
     marginLeft: 10,
+    fontFamily: 'Gotham Pro',
   },
   currencyValue: {
     color: colors.purple,

@@ -55,6 +55,7 @@ export default StyleSheet.create({
     color: colors.purple,
     letterSpacing: 0,
     textAlign: 'center',
+    fontFamily: 'Gotham Pro', 
   },
   buttonContainer: {
     width: '100%',

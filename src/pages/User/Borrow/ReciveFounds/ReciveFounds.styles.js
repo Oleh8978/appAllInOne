@@ -25,6 +25,7 @@ export default StyleSheet.create({
     },
     topText: {
         fontSize: 20,
+        fontFamily: 'Gotham Pro', 
     },
     bottomContainer: {
         width: '100%',
@@ -40,6 +41,7 @@ export default StyleSheet.create({
     },
     itemListTxt: {
         marginLeft: 3,
+        fontFamily: 'Gotham Pro', 
     },
     checkBoxContainer: {
         width: '100%',

@@ -1,4 +1,6 @@
 import getAccessToken from './cognito/getAccessToken';
+import sessionRefresher from './awsRefreshSession';
+
 import { SERVER_URL } from '../constants/constants';
 
 export default async (securityId, amount, loanDuration) => {
@@ -19,6 +21,14 @@ export default async (securityId, amount, loanDuration) => {
     }
     return await res.json();
   } catch (e) {
+    if (e === '[Error: ERROR[Auth]: token address mismatch]') {
+      try {
+        await sessionRefresher();
+      } catch (e) {
+        throw new Error(e.message);
+      }
+    }
+
     throw new Error(e);
   }
 };

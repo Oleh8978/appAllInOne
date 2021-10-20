@@ -24,7 +24,7 @@ export default StyleSheet.create({
     minHeight: 40,
     paddingVertical: 20,
     marginHorizontal: 20,
-    fontFamily: 'OpenSans-SemiBold',
+    fontFamily: 'Gotham Pro',
     flex: 1,
     flexWrap: 'wrap',
     color: colors.white,

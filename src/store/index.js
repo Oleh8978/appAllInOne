@@ -7,6 +7,7 @@ import getUser from '../../services/getUser';
 import getKycStatus from '../../services/getKycStatus';
 import PrimeTrustApprove from '../../services/PrimeTrustApprove';
 import getAccessToken from '../../services/cognito/getAccessToken';
+import sessionRefresher from '../../services/awsRefreshSession' 
 
 import getWallets from '../../services/getWallets';
 import createWallet from '../../services/createWallet';
@@ -200,9 +201,18 @@ class User {
           await onErrorReconnect();
         };
       } catch (error) {
+        console.log('error ', error)
         await this.root.application.addError(error.message);
       }
     } catch (e) {
+      if (String(e.message).trim() === 'ERROR[Auth]: token address mismatch') {
+        try {
+          await sessionRefresher();
+        } catch (e) {
+          throw new Error(e.message);
+        }
+      }
+
       throw new Error(e);
     }
   }
@@ -347,6 +357,14 @@ class Wallets {
               this.setTotals();
             });
       } catch (e) {
+        if (String(e.message).trim() === 'ERROR[Auth]: token address mismatch') {
+          try {
+            await sessionRefresher();
+          } catch (e) {
+            throw new Error(e.message);
+          }
+        }
+
         throw new Error(e.message);
       }
     }
@@ -364,6 +382,14 @@ class Wallets {
         //     return credit;
         //   });
       } catch (e) {
+        if (String(e.message).trim() === 'ERROR[Auth]: token address mismatch') {
+          try {
+            await sessionRefresher();
+          } catch (e) {
+            throw new Error(e.message);
+          }
+        }
+
         throw new Error(e.message);
       }
     }
@@ -374,6 +400,13 @@ class Wallets {
       await this.updateWallets();
       await this.updateCredit();
     } catch (e) {
+      if (String(e.message).trim() === 'ERROR[Auth]: token address mismatch') {
+        try {
+          await sessionRefresher();
+        } catch (e) {
+          throw new Error(e.message);
+        }
+      }
       throw new Error(e.message);
     }
   }

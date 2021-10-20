@@ -28,6 +28,7 @@ export default StyleSheet.create({
     textUnder: {
         marginTop: 5,
         fontSize: 15,
+        fontFamily: 'Gotham Pro'
     },
     containerBottom: {
         flexDirection: 'row',
@@ -35,10 +36,12 @@ export default StyleSheet.create({
     },
     leftText: {
         marginRight: 'auto',
+        fontFamily: 'Gotham Pro'
     },
     rightText: {
         fontSize: 15,
         color: colors.lightGreen,
+        fontFamily: 'Gotham Pro'
     },
 
 });

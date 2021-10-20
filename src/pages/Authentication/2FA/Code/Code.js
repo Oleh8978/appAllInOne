@@ -9,13 +9,15 @@ import Header from '../../../../components/Header/Header';
 import DefaultButton from '../../../../components/DefaultButton/DefaultButton';
 import FooterBackground from '../../../../components/FooterBackground/FooterBackground';
 
+import KeyboardNormalizer from '../../../../HOCs/KeyboardNormalizerFolding';
+
 import { CONGRATS } from '../../../../../constants/navigation/twoFactorAuth';
 import { TWO_FACTOR_AUTH } from '../../../../../constants/navigation/authenticationScreens';
 
 import styles from './Code.styles';
 import colors from '../../../../../styles/colors';
 
-export default function Code({ navigation, route }) {
+function Code({ navigation, route }) {
     const [code, setCode] = useState('');
     console.log('route?.params?.type  ', route?.params?.type);
 
@@ -84,3 +86,5 @@ export default function Code({ navigation, route }) {
     </View>
   );
 }
+
+export default KeyboardNormalizer(Code)

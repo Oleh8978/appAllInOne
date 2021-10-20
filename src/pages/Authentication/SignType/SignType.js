@@ -179,7 +179,7 @@ function SignType({ navigation, route: { params: type } }) {
             </View>
             <DeviderText
               textDivider={isLogin ? 'or use your email' : 'or'}
-              customStyle={{ minWidth: isLogin ? 15 : 12 }}
+              customStyle={{ minWidth: isLogin ? 15 : 12, fontFamily: 'Gotham Pro',  }}
             />
             {isLogin
             ? (

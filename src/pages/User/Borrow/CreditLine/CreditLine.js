@@ -7,13 +7,16 @@ import LinearGradient from 'react-native-linear-gradient';
 import Header from '../../../../components/Header/Header';
 import FooterBackground from '../../../../components/FooterBackground/FooterBackground';
 
+import KeyboardNormalizer from '../../../../HOCs/KeyboardNormalizerFolding';
+
 import getPresets from '../../../../../services/getPresets';
 import getWallets from '../../../../../services/getWallets';
+import KYCStatus from '../../../../../services/getKycStatus';
 
 import ResizebleCard from '../../../../components/ResizebleCard/ResizebleCard';
 import colors from '../../../../../styles/colors';
+
 import styles from './CreditLine.styles';
-import KYCStatus from '../../../../../services/getKycStatus';
 
 import {
   HOME,
@@ -37,7 +40,7 @@ const customHook = (navigation) => {
   }, [navigation]);
 };
 
-export default function CreditLine({ navigation }) {
+function CreditLine({ navigation }) {
   customHook(navigation);
   const [wallets, setWallets] = useState([]);
   const [creditLine, setCreditLIne] = useState({
@@ -116,3 +119,5 @@ export default function CreditLine({ navigation }) {
     </LinearGradient>
   );
 }
+
+export default KeyboardNormalizer(CreditLine)

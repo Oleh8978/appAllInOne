@@ -54,7 +54,7 @@ export default function Borrow({ navigation }) {
 
   const fetchData = async () => {
     const data = await getTargets();
-    console.log('data ', data)
+    // console.log('data ', data)
     setReceivedBorrow(data.targets);
     setCreditUtilized(data.utilized);
   };

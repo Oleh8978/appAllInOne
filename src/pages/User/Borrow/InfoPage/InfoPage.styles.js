@@ -11,7 +11,7 @@ export default StyleSheet.create({
         height: '100%',
         borderTopRightRadius: 30,
         borderTopLeftRadius: 30,
-        marginTop: 100,
+        marginTop: 25,
         marginBottom: -60,
         backgroundColor: colors.white,
         paddingTop: 15,
@@ -20,12 +20,13 @@ export default StyleSheet.create({
     },
     containerTop: {
         height: '100%',
-        minHeight: 420,
+        minHeight: 490,
         justifyContent: 'center',
         marginBottom: 'auto',
     },
     textMain: {
         textAlign: 'center',
+        fontFamily: 'Gotham Pro', 
     },
     containerBottom: {
         marginTop: 'auto',

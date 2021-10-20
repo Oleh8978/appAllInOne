@@ -15,6 +15,7 @@ import FormInput from '../FormInput/FormInput';
 import depositCrypto from '../../../services/depositCrypto';
 
 import styles from './PageHeader.styles';
+import colors from '../../../styles/colors';
 
 function PageHeader({
   rightType = 'bell',
@@ -78,14 +79,14 @@ function PageHeader({
             onPress={() => { onDeposit(); }}
           >
             <DepositHome />
-            <Text>Deposit</Text>
+            <Text style={{fontFamily: 'Gotham Pro',}}>Deposit</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.mainBottomRight}
             nPress={() => { console.log('chistory'); }}
           >
             <WithdrawHome />
-            <Text>Withdraw</Text>
+            <Text style={{fontFamily: 'Gotham Pro',}}>Withdraw</Text>
           </TouchableOpacity>
         </View>
       );
@@ -108,7 +109,7 @@ function PageHeader({
         onPress={() => { onDeposit(); }}
       >
         <DepositHome />
-        <Text>Deposit</Text>
+        <Text style={{fontFamily: 'Gotham Pro',}}>Deposit</Text>
       </TouchableOpacity>
     </View>)
     }
@@ -116,21 +117,20 @@ function PageHeader({
     return (
       <View style={styles.mainBottom}>
         <TouchableOpacity
-          style={{ ...styles.mainBottomLeft, backgroundColor: 'rgba(256, 256, 256, 0.5)' }}
+          style={{ ...styles.mainBottomLeft, backgroundColor: colors.white }}
           onPress={() => { console.log('credit card'); }}
-          disabled
         >
           <CreditCardImage />
-          <Text>Borrow</Text>
+          <Text style={{fontFamily: 'Gotham Pro',}}>Borrow</Text>
         </TouchableOpacity>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={{ ...styles.mainBottomRight, backgroundColor: 'rgba(256, 256, 256, 0.5)' }}
           nPress={() => { console.log('chistory'); }}
           disabled
         >
           <HistoryClockImage />
           <Text>Repay</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     );
   };
