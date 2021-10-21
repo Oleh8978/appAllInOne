@@ -120,4 +120,4 @@ function CreditLine({ navigation }) {
   );
 }
 
-export default KeyboardNormalizer(CreditLine)
+export default KeyboardNormalizer(CreditLine);

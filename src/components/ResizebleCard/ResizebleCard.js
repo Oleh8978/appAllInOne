@@ -106,7 +106,7 @@ function ResizebleCard({ navigation, data, typeCard = '', perst = 0, duration = 
       {isOpened
                 ? (
                   <View style={styles.bottomContainer}>
-                    <Text style={{fontFamily: 'Gotham Pro',}}>How much do you want to get?</Text>
+                    <Text style={{ fontFamily: 'Gotham Pro' }}>How much do you want to get?</Text>
                     <View style={styles.bottomContainerBottom}>
                       <FormInput
                         customContainer={{ width: '65%' }}

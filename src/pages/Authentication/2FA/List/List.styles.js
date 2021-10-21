@@ -23,7 +23,7 @@ export default StyleSheet.create({
         maxWidth: 230,
         marginLeft: 'auto',
         marginRight: 'auto',
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
     subHeader: {
         textAlign: 'center',
@@ -33,7 +33,7 @@ export default StyleSheet.create({
         fontSize: 15,
         marginTop: 10,
         marginBottom: 15,
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
 
 });

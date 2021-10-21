@@ -22,7 +22,7 @@ export default StyleSheet.create({
     mainTopHeader: {
         textAlign: 'center',
         fontSize: 20,
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
     mainTopPlate: {
         ...shadow,
@@ -43,13 +43,13 @@ export default StyleSheet.create({
         color: colors.darkBlue,
         fontSize: 15,
         textAlign: 'center',
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
     mainTopPlateSubHeader: {
         color: colors.darkBlue,
         fontSize: 12,
         textAlign: 'center',
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
     mainBottomPlate: {
         width: '100%',
@@ -61,7 +61,7 @@ export default StyleSheet.create({
         marginLeft: 0,
         marginRight: 'auto',
         marginTop: 20,
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
 
 });

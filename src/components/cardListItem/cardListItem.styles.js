@@ -15,7 +15,7 @@ export default StyleSheet.create({
         marginRight: 'auto',
         marginTop: 'auto',
         marginBottom: 'auto',
-        fontFamily: 'Gotham Pro'
+        fontFamily: 'Gotham Pro',
     },
     rightContainer: {
         flexDirection: 'column',
@@ -24,9 +24,9 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         marginTop: 'auto',
         marginBottom: 'auto',
-        fontFamily: 'Gotham Pro'
+        fontFamily: 'Gotham Pro',
     },
     bottomTextRight: {
-        fontFamily: 'Gotham Pro'
+        fontFamily: 'Gotham Pro',
     },
 });

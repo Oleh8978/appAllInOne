@@ -18,6 +18,6 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 15,
         color: colors.darkBlue,
-        fontFamily: 'Gotham Pro'
+        fontFamily: 'Gotham Pro',
     },
 });

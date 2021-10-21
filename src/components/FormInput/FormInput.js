@@ -115,12 +115,12 @@ export default function FormInput({
               borderRadius: 8,
               }}
           >
-            <Text 
-             style={{ 
-              color: colors.white, 
-              fontSize: 10, 
+            <Text
+              style={{
+              color: colors.white,
+              fontSize: 10,
               textAlign: 'center',
-              fontFamily: 'Gotham Pro' 
+              fontFamily: 'Gotham Pro',
               }}
             >
               Max

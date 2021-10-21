@@ -34,6 +34,7 @@ export default StyleSheet.create({
   modalHeader: {
     position: 'absolute',
     top: 35,
-    fontFamily: 'OpenSans-Bold',
+    fontFamily: 'Gotham Pro',
+    fontWeight: 'bold',
   },
 });

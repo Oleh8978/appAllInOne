@@ -14,7 +14,7 @@ export default StyleSheet.create({
     marginRight: 10,
   },
   type: {
-    fontFamily: 'Gotham Pro', 
+    fontFamily: 'Gotham Pro',
     color: colors.black,
   },
   arrow: {
@@ -24,16 +24,16 @@ export default StyleSheet.create({
   topValue: {
     fontSize: 18,
     color: colors.purple,
-    fontFamily: 'Gotham Pro', 
+    fontFamily: 'Gotham Pro',
   },
   topValueCurrency: {
     fontSize: 11,
     color: colors.purple,
-    fontFamily: 'Gotham Pro', 
+    fontFamily: 'Gotham Pro',
   },
   bottomValue: {
     fontSize: 12,
     color: colors.grey,
-    fontFamily: 'Gotham Pro', 
+    fontFamily: 'Gotham Pro',
   },
 });

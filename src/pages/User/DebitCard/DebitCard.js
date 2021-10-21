@@ -5,19 +5,15 @@ import FooterBackground from '../../../components/FooterBackground/FooterBackgro
 
 import mainFake from '../../../../assets/images/debitscreen.png';
 
-
 import styles from './DebitCard.styles';
 
-
 export default function DebitCard({ navigation }) {
-
   return (
     <View
       style={{ height: '100%', width: '100%', minHeight: '100%' }}
     >
-        <Image style={{height: '100%', width: '100%'}} source={mainFake} />
+      <Image style={{ height: '100%', width: '100%' }} source={mainFake} />
       <FooterBackground />
     </View>
   );
 }
-

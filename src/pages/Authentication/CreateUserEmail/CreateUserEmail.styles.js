@@ -33,6 +33,6 @@ export default {
   },
   textFooter: {
     color: colors.white,
-    fontFamily: 'Gotham Pro', 
+    fontFamily: 'Gotham Pro',
   },
 };

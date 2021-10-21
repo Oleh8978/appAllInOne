@@ -3,7 +3,7 @@ import {
   Platform, Animated, Keyboard, KeyboardAvoidingView,
 } from 'react-native';
 
-export default (MyComponent, wrapperStyle, deployedHeight, hideHeight = 0, additionalDeployedHeight = 1) => class KeyboardNormalizerFolding extends Component {
+export default (MyComponent, wrapperStyle, deployedHeight = 200, hideHeight = 0, additionalDeployedHeight = 1) => class KeyboardNormalizerFolding extends Component {
   constructor(props) {
     super(props);
 

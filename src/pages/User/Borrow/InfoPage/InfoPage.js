@@ -41,7 +41,7 @@ export default function InfoPage({
         topText={route.params.type === 'credit' ? 'Credit Line' : ''}
         customStyles={{ marginLeft: 60, marginRight: 'auto' }}
         navigation={navigation}
-        mainCustomStyle={{height: 90 }}
+        mainCustomStyle={{ height: 90 }}
       />
       <ScrollView
         style={{ ...styles.mainBody }}
@@ -59,7 +59,7 @@ export default function InfoPage({
             <TouchableOpacity style={styles.checkbox} onPress={() => setIsChecked(!isChecked)}>
               {isChecked ? <CheckImage /> : <></>}
             </TouchableOpacity>
-            <Text style={{fontFamily: 'Gotham Pro', }}>I have read, understood, and agree</Text>
+            <Text style={{ fontFamily: 'Gotham Pro' }}>I have read, understood, and agree</Text>
           </View>
           <DefaultButton
             isArrowNext

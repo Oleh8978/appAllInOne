@@ -75,14 +75,14 @@ export default function LoanInfo({ navigation }) {
             onPress={() => { console.log('credit card'); }}
           >
             <CreditCardImage />
-            <Text style={{fontFamily: 'Gotham Pro', }}>Borrow</Text>
+            <Text style={{ fontFamily: 'Gotham Pro' }}>Borrow</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.mainBottomRight}
             nPress={() => { console.log('chistory'); }}
           >
             <HistoryClockImage />
-            <Text style={{fontFamily: 'Gotham Pro', }}>Repay</Text>
+            <Text style={{ fontFamily: 'Gotham Pro' }}>Repay</Text>
           </TouchableOpacity>
         </View>
 

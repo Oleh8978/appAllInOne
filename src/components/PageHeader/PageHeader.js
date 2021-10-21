@@ -47,10 +47,10 @@ function PageHeader({
               );
         case 'trade':
           return (
-          <View style={{ ...styles.centerBlockWrapper }}>
-            <RhinoImage style={{ marginLeft: 'auto', marginRight: 'auto' }} />
-            <Text style={{ ...styles.subHeader }}>{text}</Text>
-          </View>
+            <View style={{ ...styles.centerBlockWrapper }}>
+              <RhinoImage style={{ marginLeft: 'auto', marginRight: 'auto' }} />
+              <Text style={{ ...styles.subHeader }}>{text}</Text>
+            </View>
           );
       default:
         return <></>;
@@ -79,39 +79,40 @@ function PageHeader({
             onPress={() => { onDeposit(); }}
           >
             <DepositHome />
-            <Text style={{fontFamily: 'Gotham Pro',}}>Deposit</Text>
+            <Text style={{ fontFamily: 'Gotham Pro' }}>Deposit</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.mainBottomRight}
             nPress={() => { console.log('chistory'); }}
           >
             <WithdrawHome />
-            <Text style={{fontFamily: 'Gotham Pro',}}>Withdraw</Text>
+            <Text style={{ fontFamily: 'Gotham Pro' }}>Withdraw</Text>
           </TouchableOpacity>
         </View>
       );
     }
 
     if (isTrade) {
-      return (<></>)
+      return (<></>);
     }
 
     if (isEarn) {
-      return       ( 
-      <View style={styles.mainBottom}>
-      <TouchableOpacity
-        style={{
-          ...styles.mainBottomLeft, 
+      return (
+        <View style={styles.mainBottom}>
+          <TouchableOpacity
+            style={{
+          ...styles.mainBottomLeft,
           maxWidth: '100%',
           marginRight: 15,
           height: 72,
         }}
-        onPress={() => { onDeposit(); }}
-      >
-        <DepositHome />
-        <Text style={{fontFamily: 'Gotham Pro',}}>Deposit</Text>
-      </TouchableOpacity>
-    </View>)
+            onPress={() => { onDeposit(); }}
+          >
+            <DepositHome />
+            <Text style={{ fontFamily: 'Gotham Pro' }}>Deposit</Text>
+          </TouchableOpacity>
+        </View>
+);
     }
 
     return (
@@ -121,7 +122,7 @@ function PageHeader({
           onPress={() => { console.log('credit card'); }}
         >
           <CreditCardImage />
-          <Text style={{fontFamily: 'Gotham Pro',}}>Borrow</Text>
+          <Text style={{ fontFamily: 'Gotham Pro' }}>Borrow</Text>
         </TouchableOpacity>
         {/* <TouchableOpacity
           style={{ ...styles.mainBottomRight, backgroundColor: 'rgba(256, 256, 256, 0.5)' }}
@@ -136,7 +137,7 @@ function PageHeader({
   };
 
   return (
-    <View style={{...styles.main, ...stylesMainblock}}>
+    <View style={{ ...styles.main, ...stylesMainblock }}>
 
       <View style={styles.mainTop}>
         <View style={styles.leftBlock}>

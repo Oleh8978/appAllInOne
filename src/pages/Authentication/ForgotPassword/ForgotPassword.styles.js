@@ -18,7 +18,7 @@ export default StyleSheet.create({
     textContainerTop: {
         color: colors.white,
         fontSize: 32,
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
     containerBottom: {
         marginTop: 10,
@@ -29,6 +29,6 @@ export default StyleSheet.create({
     textContainerBottom: {
         color: colors.white,
         fontSize: 15,
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
 });
