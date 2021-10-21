@@ -90,6 +90,6 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   boldText: {
-    fontFamily: 'OpenSans-SemiBold',
+    // fontFamily: 'OpenSans-SemiBold',
   },
 });

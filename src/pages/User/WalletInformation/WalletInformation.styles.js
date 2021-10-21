@@ -30,7 +30,7 @@ export default StyleSheet.create({
   },
   valueBold: {
     color: colors.purple,
-    fontFamily: 'OpenSans-Bold',
+    // fontFamily: 'OpenSans-Bold',
     fontSize: DEVICE_WIDTH <= 360 ? 17 : 25,
   },
   button: {

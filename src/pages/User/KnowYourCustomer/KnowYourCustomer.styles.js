@@ -69,7 +69,7 @@ export default StyleSheet.create({
     maxWidth: '95%',
     textAlign: 'center',
     fontSize: 18,
-    fontFamily: 'OpenSans-SemiBold',
+    // fontFamily: 'OpenSans-SemiBold',
     color: colors.black,
   },
   agreementBackground: {

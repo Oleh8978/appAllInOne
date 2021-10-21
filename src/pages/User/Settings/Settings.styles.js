@@ -9,7 +9,7 @@ export default StyleSheet.create({
     color: colors.black,
   },
   bottomText: {
-    fontFamily: 'OpenSans-Bold',
+    // fontFamily: 'OpenSans-Bold',
     fontSize: 14,
     color: colors.black,
 

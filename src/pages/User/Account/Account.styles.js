@@ -14,7 +14,7 @@ export default StyleSheet.create({
   },
   name: {
     textAlign: 'center',
-    fontFamily: 'OpenSans-Bold',
+    // fontFamily: 'OpenSans-Bold',
     fontSize: DEVICE_WIDTH <= 360 ? 21 : 26,
     color: colors.white,
   },

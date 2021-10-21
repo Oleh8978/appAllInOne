@@ -35,7 +35,7 @@ export default StyleSheet.create({
   bankingOfCryptoText: {
     fontSize: 19,
     color: colors.white,
-    fontFamily: 'OpenSans-Bold',
+    // fontFamily: 'OpenSans-Bold',
   },
   bankingOfCryptoSubText: {
     marginTop: 5,
@@ -44,7 +44,7 @@ export default StyleSheet.create({
     zIndex: 2,
   },
   bankingOfCryptoBoldText: {
-    fontFamily: 'OpenSans-Bold',
+    // fontFamily: 'OpenSans-Bold',
     fontSize: 10,
   },
   question: {
@@ -81,7 +81,7 @@ export default StyleSheet.create({
     top: 10,
   },
   currency: {
-    fontFamily: 'OpenSans-Bold',
+    // fontFamily: 'OpenSans-Bold',
     marginLeft: 10,
   },
   currencyValue: {
