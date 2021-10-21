@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import {
- View, ScrollView, Image, Text, TouchableOpacity,
+ ScrollView, Image, Text, Animated,
 } from 'react-native';
-
 import OTPInput from 'react-native-otp';
+
 import Header from '../../../../components/Header/Header';
 import DefaultButton from '../../../../components/DefaultButton/DefaultButton';
 import FooterBackground from '../../../../components/FooterBackground/FooterBackground';
@@ -37,7 +37,7 @@ function Code({ navigation, route }) {
   };
 
   return (
-    <View>
+    <Animated.View>
       <Header
         isBlue
         mainCustomStyle={{ backgroundColor: colors.white }}
@@ -83,8 +83,8 @@ function Code({ navigation, route }) {
         />
       </ScrollView>
       <FooterBackground />
-    </View>
+    </Animated.View>
   );
 }
 
-export default KeyboardNormalizer(Code)
+export default KeyboardNormalizer(Code);

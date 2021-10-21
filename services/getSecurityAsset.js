@@ -21,7 +21,6 @@ export default async (coin, type, amount) => {
     }
     return await res.json();
   } catch (e) {
-
     if (String(e.message).trim() === 'ERROR[Auth]: token address mismatch') {
       try {
         await sessionRefresher();

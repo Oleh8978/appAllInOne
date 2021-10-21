@@ -77,7 +77,7 @@ export default function CreditLineInfo({ navigation }) {
           onPress={() => { console.log('chistory'); }}
         >
           <HistoryClockImage />
-          <Text style={{fontFamily: 'Gotham Pro', }}>
+          <Text style={{ fontFamily: 'Gotham Pro' }}>
             Repay
           </Text>
         </TouchableOpacity>

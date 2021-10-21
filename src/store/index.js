@@ -7,7 +7,7 @@ import getUser from '../../services/getUser';
 import getKycStatus from '../../services/getKycStatus';
 import PrimeTrustApprove from '../../services/PrimeTrustApprove';
 import getAccessToken from '../../services/cognito/getAccessToken';
-import sessionRefresher from '../../services/awsRefreshSession' 
+import sessionRefresher from '../../services/awsRefreshSession';
 
 import getWallets from '../../services/getWallets';
 import createWallet from '../../services/createWallet';
@@ -201,7 +201,7 @@ class User {
           await onErrorReconnect();
         };
       } catch (error) {
-        console.log('error ', error)
+        console.log('error ', error);
         await this.root.application.addError(error.message);
       }
     } catch (e) {

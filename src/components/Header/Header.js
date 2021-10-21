@@ -32,9 +32,9 @@ export default function Header({
         )}
         <Text
           allowFontScaling={false}
-          style={{ 
-            ...styles.topText, 
-            color: colors.white, 
+          style={{
+            ...styles.topText,
+            color: colors.white,
             ...customStyles,
            }}
         >

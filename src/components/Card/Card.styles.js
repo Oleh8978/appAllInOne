@@ -20,7 +20,7 @@ export default StyleSheet.create({
         color: colors.darkBlue,
         fontSize: 18,
         flex: 1,
-        fontFamily: 'Gotham Pro'
+        fontFamily: 'Gotham Pro',
     },
     informationBody: {
         flexDirection: 'column',

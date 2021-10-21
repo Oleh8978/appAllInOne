@@ -34,7 +34,7 @@ export default StyleSheet.create({
         color: colors.lightBlue,
         marginLeft: 0,
         marginRight: 'auto',
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
     blockOpened: {
         flexDirection: 'row',
@@ -52,7 +52,7 @@ export default StyleSheet.create({
     priceChartText: {
         fontSize: 16,
         marginBottom: 10,
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
     fontSizeItemChartContainer: {
         flexDirection: 'row',
@@ -67,7 +67,7 @@ export default StyleSheet.create({
         marginTop: 30,
         marginBottom: 10,
         fontSize: 16,
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
     wrapperItemsSteps: {
         ...shadow,

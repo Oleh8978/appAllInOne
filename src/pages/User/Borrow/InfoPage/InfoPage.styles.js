@@ -26,7 +26,7 @@ export default StyleSheet.create({
     },
     textMain: {
         textAlign: 'center',
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
     containerBottom: {
         marginTop: 'auto',

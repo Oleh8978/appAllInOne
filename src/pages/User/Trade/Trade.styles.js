@@ -14,5 +14,5 @@ export default StyleSheet.create({
         paddingHorizontal: 0,
         paddingRight: 0,
     },
-    
+
 });

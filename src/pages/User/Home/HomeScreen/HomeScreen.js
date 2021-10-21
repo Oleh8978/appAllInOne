@@ -95,17 +95,17 @@ const dataPosibilities = [
 export default function LoanInfo({ navigation }) {
   const [credit, setCredit] = useState('42.000');
   const [isBalanceOpened, setIsBalanceOpened] = useState(false);
-  const [kycChecked, setKycChecked] = useState(false)
+  const [kycChecked, setKycChecked] = useState(false);
 
   const getKYCData = async () => {
     const data = await getKycStatus();
-    console.log(data)
+    console.log(data);
     if (Number(data.tier) >= 4) {
-      setKycChecked(true)
+      setKycChecked(true);
     }
   };
 
-  console.log('kycChecked ', kycChecked)
+  console.log('kycChecked ', kycChecked);
 
   useEffect(() => {
     getKYCData();
@@ -237,7 +237,7 @@ export default function LoanInfo({ navigation }) {
                   marginRight: 'auto',
                   fontWeight: 'bold',
                   fontSize: 15,
-                  fontFamily: 'Gotham Pro', 
+                  fontFamily: 'Gotham Pro',
                   color: kycChecked ? colors.lightBlue : colors.white,
                   }}
               >
@@ -250,7 +250,7 @@ export default function LoanInfo({ navigation }) {
                   marginRight: 'auto',
                   fontWeight: 'bold',
                   fontSize: 15,
-                  fontFamily: 'Gotham Pro', 
+                  fontFamily: 'Gotham Pro',
                   color: kycChecked ? colors.lightBlue : colors.white,
                   }}
               >
@@ -290,7 +290,7 @@ export default function LoanInfo({ navigation }) {
                   marginRight: 'auto',
                   fontWeight: 'bold',
                   fontSize: 15,
-                  fontFamily: 'Gotham Pro', 
+                  fontFamily: 'Gotham Pro',
                   color: colors.white,
                   }}
               >
@@ -303,7 +303,7 @@ export default function LoanInfo({ navigation }) {
                   marginRight: 'auto',
                   fontWeight: 'bold',
                   fontSize: 15,
-                  fontFamily: 'Gotham Pro', 
+                  fontFamily: 'Gotham Pro',
                   color: colors.white,
                   }}
               >
@@ -343,7 +343,7 @@ export default function LoanInfo({ navigation }) {
                   marginRight: 'auto',
                   fontWeight: 'bold',
                   fontSize: 15,
-                  fontFamily: 'Gotham Pro', 
+                  fontFamily: 'Gotham Pro',
                   color: colors.white,
                   }}
               >
@@ -356,7 +356,7 @@ export default function LoanInfo({ navigation }) {
                   marginRight: 'auto',
                   fontWeight: 'bold',
                   fontSize: 15,
-                  fontFamily: 'Gotham Pro', 
+                  fontFamily: 'Gotham Pro',
                   color: colors.white,
                   }}
               >

@@ -20,7 +20,7 @@ export default StyleSheet.create({
     headerMain: {
         fontSize: 32,
         textAlign: 'center',
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
     subHeader: {
         marginTop: 10,
@@ -28,7 +28,7 @@ export default StyleSheet.create({
         maxWidth: '90%',
         fontSize: 15,
         marginBottom: 20,
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
     skipContainer: {
         marginTop: 35,
@@ -39,6 +39,6 @@ export default StyleSheet.create({
         textDecorationLine: 'underline',
         fontSize: 18,
         color: colors.lightBlue,
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
 });

@@ -25,10 +25,10 @@ export default StyleSheet.create({
     marginBottom: 90,
     textAlign: 'center',
     color: colors.white,
-    fontFamily: 'Gotham Pro', 
+    fontFamily: 'Gotham Pro',
   },
   welcome: {
-    fontFamily: 'Gotham Pro', 
+    fontFamily: 'Gotham Pro',
     textTransform: 'uppercase',
   },
   logoText: {

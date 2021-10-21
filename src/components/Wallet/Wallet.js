@@ -60,7 +60,7 @@ export default observer(({
               alignItems: 'flex-start',
             }}
             >
-              <Text allowFontScaling={false} style={{ color: colors.black, fontFamily: 'Gotham Pro',  }}>Own</Text>
+              <Text allowFontScaling={false} style={{ color: colors.black, fontFamily: 'Gotham Pro' }}>Own</Text>
               <Text allowFontScaling={false} style={styles.topValue}>
                 <Text allowFontScaling={false} style={styles.topValueCurrency}>{coin}</Text>
                 {' '}
@@ -81,7 +81,7 @@ export default observer(({
               alignItems: 'flex-start',
             }}
             >
-              <Text allowFontScaling={false} style={{ color: colors.black, fontFamily: 'Gotham Pro', }}>Credit</Text>
+              <Text allowFontScaling={false} style={{ color: colors.black, fontFamily: 'Gotham Pro' }}>Credit</Text>
               <Text allowFontScaling={false} style={styles.topValue}>
                 <Text allowFontScaling={false} style={styles.topValueCurrency}>{coin}</Text>
                 {' '}
@@ -100,7 +100,7 @@ export default observer(({
           </View>
         ) : (
           <View style={{ ...blockHeader, ...flexRow }}>
-            <Text allowFontScaling={false} style={{ color: colors.black, fontFamily: 'Gotham Pro',  }}>{balance}</Text>
+            <Text allowFontScaling={false} style={{ color: colors.black, fontFamily: 'Gotham Pro' }}>{balance}</Text>
             <Text allowFontScaling={false} style={styles.topValue}>
               <Text allowFontScaling={false} style={styles.topValueCurrency}>{coin}</Text>
               {' '}

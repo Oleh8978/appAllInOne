@@ -24,14 +24,14 @@ export default StyleSheet.create({
         maxWidth: 190,
         marginLeft: 'auto',
         marginRight: 'auto',
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
     subHeader: {
         width: '90%',
         fontSize: 15,
         textAlign: 'center',
         marginBottom: 30,
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
 
 });
