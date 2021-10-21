@@ -6,6 +6,7 @@ import {
 
 import ChevronLeftWhiteImage from '../../../assets/svgs/ChevronLeftWhite';
 import ChevronLeftBlue from '../../../assets/svgs/ChevronLeftBlue';
+import Bell from '../../../assets/svgs/Bell';
 
 import colors from '../../../styles/colors';
 import styles from './Header.styles';
@@ -19,6 +20,7 @@ export default function Header({
   customStyles,
   isBlue = false,
   mainCustomStyle,
+  isBell
 }) {
   return (
     <SafeAreaView style={{ ...styles.wrapper, marginTop: deviceMarginTop, ...mainCustomStyle }}>
@@ -38,6 +40,9 @@ export default function Header({
         >
           {topText}
         </Text>
+        {
+          isBell && <><Bell/></>
+        }
       </View>
     </SafeAreaView>
   );

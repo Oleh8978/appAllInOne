@@ -25,3 +25,4 @@ export const INFO_LOAN = 'INFO_LOAN ';
 export const RECIVE_FOUNDS = 'RECIVE_FOUNDS';
 export const HOME = 'HOME';
 export const HOME_PAGE = 'Home';
+export const NOTIFICATION_PAGE = 'NOTIFICATION_PAGE';
