@@ -33,7 +33,7 @@ export default StyleSheet.create({
         color: colors.lightBlue,
         marginLeft: 0,
         marginRight: 'auto',
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
     blockOpened: {
         flexDirection: 'row',
@@ -51,7 +51,7 @@ export default StyleSheet.create({
     priceChartText: {
         fontSize: 16,
         marginBottom: 10,
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
     fontSizeItemChartContainer: {
         flexDirection: 'row',
@@ -66,7 +66,7 @@ export default StyleSheet.create({
         marginTop: 30,
         marginBottom: 10,
         fontSize: 16,
-        fontFamily: 'Gotham Pro', 
+        fontFamily: 'Gotham Pro',
     },
     wrapperItemsSteps: {
         ...shadow,
@@ -90,22 +90,22 @@ export default StyleSheet.create({
         padding: 10,
     },
     pressButton: {
-        marginTop: 10, 
-        marginRight: 15, 
+        marginTop: 10,
+        marginRight: 15,
         marginLeft: 'auto',
         height: 40,
         width: 110,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     texLeft: {
         color: colors.lightBlue,
         fontSize: 14,
         lineHeight: 13,
         textDecorationLine: 'underline',
-        fontFamily: 'Gotham Pro'
+        fontFamily: 'Gotham Pro',
     },
     itemsWrapper: {
         paddingHorizontal: 15,
-    }
+    },
 });

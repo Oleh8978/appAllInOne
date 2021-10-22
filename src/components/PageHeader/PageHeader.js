@@ -62,18 +62,18 @@ function PageHeader({
       case 'bell':
         return (
           <TouchableOpacity onPress={rightFunct}>
-            <View 
-           style={{
+            <View
+              style={{
              ...styles.bellContainer,
              marginTop: -2,
             }}
-          >
-              <View style={{...styles.numberContainer}}>
-                <Text style={{...styles.numberText}}>
+            >
+              <View style={{ ...styles.numberContainer }}>
+                <Text style={{ ...styles.numberText }}>
                   3
                 </Text>
               </View>
-              <Bell/>
+              <Bell />
             </View>
           </TouchableOpacity>
         );
@@ -91,15 +91,15 @@ function PageHeader({
             onPress={() => { onDeposit(); }}
           >
             <DepositHome />
-            <Text 
-             style={{ 
+            <Text
+              style={{
                fontFamily: 'Gotham Pro',
                color: colors.darkBlue,
                fontSize: 13,
                lineHeight: 13,
                }}
             >
-            Deposit
+              Deposit
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -107,15 +107,15 @@ function PageHeader({
             nPress={() => { console.log('chistory'); }}
           >
             <WithdrawHome />
-            <Text 
-             style={{ 
+            <Text
+              style={{
                fontFamily: 'Gotham Pro',
                color: colors.darkBlue,
                fontSize: 13,
                lineHeight: 13,
                }}
             >
-            Withdraw
+              Withdraw
             </Text>
           </TouchableOpacity>
         </View>

@@ -48,7 +48,7 @@ export default StyleSheet.create({
         fontSize: 16,
         marginBottom: 10,
         // fontFamily: 'Gotham Pro',
-        fontWeight: '600'
+        fontWeight: '600',
     },
     fontSizeItemChartContainer: {
         flexDirection: 'row',
@@ -63,7 +63,7 @@ export default StyleSheet.create({
         marginTop: 30,
         marginBottom: 10,
         fontSize: 16,
-        fontWeight: '600'
+        fontWeight: '600',
         // fontFamily: 'Gotham Pro',
     },
     wrapperItemsSteps: {
@@ -94,7 +94,7 @@ export default StyleSheet.create({
         marginRight: 'auto',
         fontWeight: 'bold',
         fontSize: 15,
-        fontWeight: '600'
+        fontWeight: '600',
     },
     KYCTextBottom: {
         marginLeft: 0,
@@ -102,6 +102,6 @@ export default StyleSheet.create({
         marginRight: 'auto',
         fontWeight: 'bold',
         fontSize: 15,
-        fontWeight: '600'
-    }
+        fontWeight: '600',
+    },
 });

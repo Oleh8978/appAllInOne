@@ -14,7 +14,6 @@ import TwoFactorAuthentication from '../../Authentication/2FA/index';
 import KnowYourCustomer from '../KnowYourCustomer/KnowYourCustomer';
 import NotificationsPage from '../NotificationPage/Notifications';
 
-
 const Stack = createStackNavigator();
 
 export default function BorrowPages() {

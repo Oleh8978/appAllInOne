@@ -20,7 +20,7 @@ export default function Header({
   customStyles,
   isBlue = false,
   mainCustomStyle,
-  isBell = false
+  isBell = false,
 }) {
   return (
     <SafeAreaView style={{ ...styles.wrapper, marginTop: deviceMarginTop, ...mainCustomStyle }}>
@@ -42,17 +42,17 @@ export default function Header({
         </Text>
         {
           isBell && (
-          <View 
-           style={{
-             ...styles.bellContainer}}
+          <View
+            style={{ ...styles.bellContainer }}
           >
-            <View style={{...styles.numberContainer}}>
-              <Text style={{...styles.numberText}}>
+            <View style={{ ...styles.numberContainer }}>
+              <Text style={{ ...styles.numberText }}>
                 3
               </Text>
             </View>
-            <Bell/>
-          </View>)
+            <Bell />
+          </View>
+)
         }
       </View>
     </SafeAreaView>

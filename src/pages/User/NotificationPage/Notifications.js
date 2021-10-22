@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {
-    View, 
-    ScrollView, 
-    Text, 
+    View,
+    ScrollView,
+    Text,
     TouchableOpacity,
     } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -24,7 +24,7 @@ const data = [
         name2: 'John Doe',
         amount2: '+$75.00',
         isRead: false,
-        date: 'Today at 12:22'
+        date: 'Today at 12:22',
 
     },
     {
@@ -35,49 +35,45 @@ const data = [
         amount2: undefined,
         content: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
         isRead: true,
-        date: '2 hours ago'
-    }
-]
+        date: '2 hours ago',
+    },
+];
 
 export default function NotificationsPage({ navigation }) {
-
   return (
-      <LinearGradient
-        colors={[colors.darkGreen, colors.darkBlue]}
-        style={{ height: '100%', width: '100%' }}
-        start={{ x: 0.0, y: 0.10 }}
-        end={{ x: 1.0, y: 0.10 }}
-      >
-        <Header
-          topText="Notifications"
-          navigation={navigation}
-          customStyles={{
+    <LinearGradient
+      colors={[colors.darkGreen, colors.darkBlue]}
+      style={{ height: '100%', width: '100%' }}
+      start={{ x: 0.0, y: 0.10 }}
+      end={{ x: 1.0, y: 0.10 }}
+    >
+      <Header
+        topText="Notifications"
+        navigation={navigation}
+        customStyles={{
             width: 270,
             fontSize: 20,
             lineHeight: 19,
             marginTop: 17,
             }}
-            isBell={true}
-        />
-        <ScrollView style={styles.mainWrapper}>
-            <TouchableOpacity
-                style={styles.pressButton}
-            >
-                <Text style={styles.texLeft}>
-                    Mark all as read
-                </Text>
-            </TouchableOpacity>
-            <View style={{
-                ...styles.itemsWrapper
-            }}>
-                {data.map(item => {
-                    return <NotificationPlate data={item} />
-                })}
-            </View>
-        </ScrollView>
-        <FooterBackground/>
-      </LinearGradient>
+        isBell
+      />
+      <ScrollView style={styles.mainWrapper}>
+        <TouchableOpacity
+          style={styles.pressButton}
+        >
+          <Text style={styles.texLeft}>
+            Mark all as read
+          </Text>
+        </TouchableOpacity>
+        <View style={{
+                ...styles.itemsWrapper,
+            }}
+        >
+          {data.map((item) => <NotificationPlate data={item} />)}
+        </View>
+      </ScrollView>
+      <FooterBackground />
+    </LinearGradient>
   );
 }
-
-

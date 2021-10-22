@@ -27,7 +27,7 @@ const CardChard = ({ data }) => {
             case 'LTC':
                 return <LTC />;
             case 'ETH':
-                return <ETH style={{ marginTop: 5}}/>;
+                return <ETH style={{ marginTop: 5 }} />;
         }
     };
 
@@ -38,9 +38,11 @@ const CardChard = ({ data }) => {
             case 'LTC':
                 return <FakeETHChart style={styles.image} />;
             case 'ETH':
-                return <View style={{height: 50}}>
-                        <FakeETHChart style={styles.image} />
-                      </View>;
+                return (
+                  <View style={{ height: 50 }}>
+                    <FakeETHChart style={styles.image} />
+                  </View>
+);
         }
     };
 

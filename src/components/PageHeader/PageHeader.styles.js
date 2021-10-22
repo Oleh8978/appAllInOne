@@ -74,7 +74,7 @@ export default StyleSheet.create({
         marginTop: -2,
         marginLeft: 'auto',
         marginRight: 22,
-        flexDirection: 'column'
+        flexDirection: 'column',
       },
       numberContainer: {
         justifyContent: 'center',
@@ -87,12 +87,12 @@ export default StyleSheet.create({
         marginRight: 0,
         elevation: 6,
         zIndex: 6,
-        backgroundColor: colors.errorColor
+        backgroundColor: colors.errorColor,
       },
       numberText: {
         color: colors.white,
         fontFamily: 'Gotham Pro',
         fontWeight: 'normal',
         fontSize: 12,
-      }
+      },
 });

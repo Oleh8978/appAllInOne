@@ -6,73 +6,74 @@ import {
   TouchableOpacity,
   SafeAreaView,
   ScrollView,
-  Image
+  Image,
 } from 'react-native';
 
-
 import colors from '../../../styles/colors';
-import styles from './NotificationPlate.styles'
+import styles from './NotificationPlate.styles';
 
 export default function NotificationPlate({ data }) {
-
   return (
     <View
       style={{
-        ...styles.body
+        ...styles.body,
       }}
     >
-        {data.image && <Image style={styles.image} source={data.image} />}
-     <View 
+      {data.image && <Image style={styles.image} source={data.image} />}
+      <View
         style={styles.row}
-     >
-         <Text 
+      >
+        <Text
           style={{
               ...styles.header,
               marginLeft: 0,
-              marginRight: 'auto'
+              marginRight: 'auto',
             }}
         >
-            {data.name}
-         </Text>
-         <Text style={styles.header}>
-            {data.amount1}
-         </Text>
-     </View>
-
-     <View style={styles.row}>
-        <Text 
-         style={{
-             ...styles.subHeader,
-             marginRight: 'auto'
-            }}
-        >
-            {data.name2}
+          {data.name}
         </Text>
-        {data.amount2 && <Text style={styles.subHeader}>
-            {data.amount2}
-        </Text>}
-     </View>
+        <Text style={styles.header}>
+          {data.amount1}
+        </Text>
+      </View>
 
-     {data.content && <View style={styles.row}>
-        <Text 
-         style={{
+      <View style={styles.row}>
+        <Text
+          style={{
+             ...styles.subHeader,
+             marginRight: 'auto',
+            }}
+        >
+          {data.name2}
+        </Text>
+        {data.amount2 && (
+        <Text style={styles.subHeader}>
+          {data.amount2}
+        </Text>
+)}
+      </View>
+
+      {data.content && (
+      <View style={styles.row}>
+        <Text
+          style={{
              ...styles.content,
             }}
         >
-            {data.content}
+          {data.content}
         </Text>
-     </View>}
+      </View>
+)}
 
-     <View style={styles.rowRead}>
+      <View style={styles.rowRead}>
         <Text style={styles.time}>
-            {data.date}
+          {data.date}
         </Text>
 
-        {data.isRead && <View style={styles.radio}/>}
+        {data.isRead && <View style={styles.radio} />}
 
-     </View>
+      </View>
 
     </View>
-  ) 
+  );
 }
-

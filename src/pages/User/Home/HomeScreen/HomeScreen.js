@@ -24,7 +24,7 @@ import CheckImage from '../../../../../assets/svgs/CheckImage';
 
 import getKycStatus from '../../../../../services/getKycStatus';
 
-// fake charts 
+// fake charts
 import FakeBTCChart from '../../../../../assets/svgs/FakeBTCChart';
 
 import styles from './HomeScreen.styles';
@@ -147,7 +147,7 @@ export default function LoanInfo({ navigation }) {
         showsVerticalScrollIndicator={false}
         nestedScrollEnabled
       >
-        <View style={{marginLeft:0, marginRight: 15 }}>
+        <View style={{ marginLeft: 0, marginRight: 15 }}>
           {isBalanceOpened === true
             ? (
               <TouchableOpacity
@@ -160,7 +160,7 @@ export default function LoanInfo({ navigation }) {
                   </Text>
                   <ArrowUpImage />
                 </View>
-                <View style={{marginTop: 16 }}>
+                <View style={{ marginTop: 16 }}>
                   {dataToBeRemoved.map((item) => <BalanceDetailsComponent data={item} key={Math.random()} />)}
                 </View>
               </TouchableOpacity>

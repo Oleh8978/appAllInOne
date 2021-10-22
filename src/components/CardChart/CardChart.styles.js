@@ -30,7 +30,7 @@ export default StyleSheet.create({
         fontSize: 15,
         lineHeight: 21,
         // fontFamily: 'Gotham Pro',
-        fontWeight: '600'
+        fontWeight: '600',
     },
     containerBottom: {
         flexDirection: 'row',
