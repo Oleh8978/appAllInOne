@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
   Text,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import EyeImage from '../../../assets/svgs/Eye';
 import ArrowDown from '../../../assets/svgs/ArrowDown';
@@ -36,32 +37,35 @@ export default function FormInput({
   headerText = '',
   inputCustomStyle = {},
   isNeedArrow = false,
+  customContainer = {},
+  isMax = false,
+  setMax = () => {},
 }) {
   const isHideFunctional = isHide || autoCompleteType === 'password';
   const [isInvisible, setIsInvisible] = useState(isHideFunctional);
   const [inFocus, setInFocus] = useState(false);
-  const [inputFont, setInputFont] = useState('OpenSans-ExtraBold');
+  const [inputFont, setInputFont] = useState('Gotham Pro');
 
-  useEffect(() => setInputFont(value.length ? 'OpenSans-Regular' : 'OpenSans-ExtraBold'), [value]);
+  useEffect(() => setInputFont('Gotham Pro'), [value]);
 
   const _onFocus = (e) => {
     onFocus(e);
     setInFocus(true);
-    setInputFont('OpenSans-Regular');
+    // setInputFont('OpenSans-Regular');
   };
 
   const _onBlur = (e) => {
     onBlur(e);
     setInFocus(false);
     if (value.length) {
-      setInputFont('OpenSans-Regular');
+      // setInputFont('OpenSans-Regular');
     } else {
-      setInputFont('OpenSans-ExtraBold');
+      // setInputFont('OpenSans-ExtraBold');
     }
   };
 
   return (
-    <View style={styles.inputWrapper}>
+    <View style={{ ...styles.inputWrapper, ...customContainer }}>
       <Text
         allowFontScaling={false}
         style={{
@@ -89,12 +93,41 @@ export default function FormInput({
           fontFamily: inputFont,
           ...style,
           ...inputCustomStyle,
+          fontFamily: 'Gotham Pro',
+          paddingRight: isMax ? 40 : 15,
+          borderColor: error ? colors.red : colors.grey,
+          borderWidth: error ? 3 : 1,
         }}
         placeholderTextColor={colors.grey}
         onFocus={_onFocus}
         onBlur={_onBlur}
         maxLength={maxLength}
       />
+      {isMax
+        && (
+        <TouchableOpacity style={styles.maxButton} onPress={() => { setMax(); }}>
+          <LinearGradient
+            colors={[colors.lightBlue, colors.darkBlue]}
+            style={{
+              height: '100%',
+              width: '100%',
+              justifyContent: 'center',
+              borderRadius: 8,
+              }}
+          >
+            <Text
+              style={{
+              color: colors.white,
+              fontSize: 10,
+              textAlign: 'center',
+              fontFamily: 'Gotham Pro',
+              }}
+            >
+              Max
+            </Text>
+          </LinearGradient>
+        </TouchableOpacity>
+)}
       {isNeedArrow && <ArrowDown style={styles.arrowDown} />}
       {/* <Text allowFontScaling={false} style={styles.error}>{error}</Text> */}
       {isHideFunctional && (

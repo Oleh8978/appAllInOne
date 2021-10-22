@@ -12,11 +12,11 @@ export default StyleSheet.create({
         height: '100%',
         paddingRight: 15,
         paddingLeft: 15,
-        backgroundColor: colors.white
+        backgroundColor: colors.white,
     },
     img: {
         height: 300,
-        width: '100%'
+        width: '100%',
     },
     mainHeader: {
         fontSize: 32,
@@ -24,12 +24,14 @@ export default StyleSheet.create({
         maxWidth: 190,
         marginLeft: 'auto',
         marginRight: 'auto',
+        fontFamily: 'Gotham Pro',
     },
     subHeader: {
         width: '90%',
         fontSize: 15,
         textAlign: 'center',
         marginBottom: 30,
-    }
+        fontFamily: 'Gotham Pro',
+    },
 
 });

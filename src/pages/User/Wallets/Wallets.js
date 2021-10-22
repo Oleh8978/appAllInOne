@@ -39,6 +39,7 @@ export default observer(({ navigation }) => {
     setWallets(Store.wallets.wallets.filter((_wallet) => _wallet.coin !== 'USD'));
   }, [Store.wallets.wallets]);
 
+  console.log('Store.wallets.wallets ', Store.wallets.wallets);
   const createWalletRedirect = async () => {
     if (Store.user.KYCProgress < 3) {
       Alert.alert(
@@ -88,7 +89,7 @@ export default observer(({ navigation }) => {
               value={Store.wallets.totalCredit}
             />
           </View>
-          <View style={view}>
+          <View style={{ ...view, backgroundColor: 'red' }}>
             {wallets.map((wallet) => (
               <Wallet
                 balance={tab}
@@ -99,6 +100,7 @@ export default observer(({ navigation }) => {
             ))}
             {!Store.wallets.wallets.length && (
             <DefaultButton
+              customStyles={{ backgroundColor: 'red' }}
               title="Create Wallet"
               onPress={createWalletRedirect}
             />

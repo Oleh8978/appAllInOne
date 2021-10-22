@@ -15,7 +15,7 @@ export default StyleSheet.create({
     zIndex: 1,
   },
   transactionTypeText: {
-    fontFamily: 'OpenSans-Bold',
+    // fontFamily: 'OpenSans-Bold',
     fontSize: 21,
   },
   transactionLogoColor: {

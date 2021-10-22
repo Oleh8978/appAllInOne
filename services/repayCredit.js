@@ -1,10 +1,12 @@
 import getAccessToken from './cognito/getAccessToken';
+import sessionRefresher from './awsRefreshSession';
+
 import { SERVER_URL } from '../constants/constants';
 
-export default async (plaidAccountId, plaidPublicToken, amount) => {
+export default async (targetType, targetId, amount) => {
   try {
     const res = await fetch(
-      `https://${SERVER_URL}/api?command=repay&plaid_account_id=${plaidAccountId}&plaid_public_token=${plaidPublicToken}&amount=${amount}`,
+      `https://${SERVER_URL}/api?command=repay&targetType=${targetType}&targetId=${targetId}&plaidAccountId=&plaidPublicToken=&amount=${amount}`,
       {
         method: 'POST',
         headers: {
@@ -19,6 +21,14 @@ export default async (plaidAccountId, plaidPublicToken, amount) => {
     }
     return res;
   } catch (e) {
+    if (String(e.message).trim() === 'ERROR[Auth]: token address mismatch') {
+      try {
+        await sessionRefresher();
+      } catch (e) {
+        throw new Error(e.message);
+      }
+    }
+
     throw new Error(e);
   }
 };

@@ -7,8 +7,8 @@ export default StyleSheet.create({
     height: 28,
   },
   currency: {
-    fontFamily: 'OpenSans-Bold',
     marginLeft: 10,
+    fontFamily: 'Gotham Pro',
   },
   currencyValue: {
     color: colors.purple,

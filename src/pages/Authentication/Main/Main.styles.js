@@ -5,7 +5,7 @@ import colors from '../../../../styles/colors';
 export default StyleSheet.create({
   container: {
     ...wrapper,
-    backgroundColor: '#392994',
+    backgroundColor: colors.darkBlue,
   },
   mainContainer: {
     marginTop: 'auto',
@@ -25,9 +25,10 @@ export default StyleSheet.create({
     marginBottom: 90,
     textAlign: 'center',
     color: colors.white,
+    fontFamily: 'Gotham Pro',
   },
   welcome: {
-    fontFamily: 'OpenSans-Bold',
+    fontFamily: 'Gotham Pro',
     textTransform: 'uppercase',
   },
   logoText: {

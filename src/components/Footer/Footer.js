@@ -13,19 +13,20 @@ import styles from './Footer.styles';
 
 export default function Footer({
   textFooter,
-  onPressFunctionality,
+  onPress,
   customStyle,
   customStyleContainer,
+  customTextStyle,
 }) {
   const marginBottom = DEVICE_WIDTH <= 360 ? 8 : 15;
 
   return (
     <SafeAreaView style={{ ...view, marginBottom, ...customStyle }}>
       <TouchableOpacity
-        onPress={() => onPressFunctionality()}
+        onPress={onPress}
         style={{ ...styles.button, ...customStyleContainer }}
       >
-        <Text allowFontScaling={false} style={styles.textStyle}>
+        <Text allowFontScaling={false} style={{ ...styles.textStyle, ...customTextStyle, fontWeight: 'bold' }}>
           {textFooter}
         </Text>
       </TouchableOpacity>

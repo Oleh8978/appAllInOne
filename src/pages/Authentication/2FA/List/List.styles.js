@@ -9,6 +9,7 @@ export default StyleSheet.create({
     },
     body: {
         marginTop: 40,
+        marginBottom: -60,
         borderTopRightRadius: 25,
         borderTopLeftRadius: 25,
         backgroundColor: colors.white,
@@ -21,7 +22,8 @@ export default StyleSheet.create({
         marginTop: 35,
         maxWidth: 230,
         marginLeft: 'auto',
-        marginRight: 'auto'
+        marginRight: 'auto',
+        fontFamily: 'Gotham Pro',
     },
     subHeader: {
         textAlign: 'center',
@@ -31,7 +33,7 @@ export default StyleSheet.create({
         fontSize: 15,
         marginTop: 10,
         marginBottom: 15,
-
-    }
+        fontFamily: 'Gotham Pro',
+    },
 
 });

@@ -12,7 +12,7 @@ export default StyleSheet.create({
     paddingHorizontal: 17,
     paddingTop: '10%',
     paddingBottom: 10,
-    zIndex: 1,
+    zIndex: 5,
   },
   attention: {
     height: '100%',
@@ -24,7 +24,7 @@ export default StyleSheet.create({
     minHeight: 40,
     paddingVertical: 20,
     marginHorizontal: 20,
-    fontFamily: 'OpenSans-SemiBold',
+    fontFamily: 'Gotham Pro',
     flex: 1,
     flexWrap: 'wrap',
     color: colors.white,

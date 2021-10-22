@@ -18,7 +18,7 @@ export default function Header({
   deviceMarginTop,
   customStyles,
   isBlue = false,
-  mainCustomStyle
+  mainCustomStyle,
 }) {
   return (
     <SafeAreaView style={{ ...styles.wrapper, marginTop: deviceMarginTop, ...mainCustomStyle }}>
@@ -30,7 +30,11 @@ export default function Header({
         )}
         <Text
           allowFontScaling={false}
-          style={{ ...styles.topText, color: colors.white, ...customStyles }}
+          style={{
+            ...styles.topText,
+            color: colors.white,
+            ...customStyles,
+           }}
         >
           {topText}
         </Text>

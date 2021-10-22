@@ -6,6 +6,5 @@ export default {
   alignItems: 'center',
   justifyContent: 'center',
   backgroundColor: 'transparent',
-  paddingBottom: 20,
-  paddingVertical: Platform.OS === 'android' ? 20 : 40,
+  paddingVertical: 10,
 };

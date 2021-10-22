@@ -36,9 +36,10 @@ export default observer(
   ({
     navigation,
     route: {
-      params: { coin },
+      // params: { coin = 'BTC' },
     },
   }) => {
+    const coin = 'BTC';
     useFocusEffect(() => statusBar('light'));
 
     useEffect(() => {

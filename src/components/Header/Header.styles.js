@@ -7,9 +7,11 @@ export default StyleSheet.create({
   wrapper: {
     ...view,
     marginTop: 20,
+    zIndex: 1,
   },
   header: {
     width: '100%',
+    height: 40,
     marginBottom: 15,
   },
   backArrow: {
@@ -21,9 +23,9 @@ export default StyleSheet.create({
     zIndex: 1,
   },
   topText: {
-    fontFamily: 'OpenSans-SemiBold',
+    fontFamily: 'Gotham Pro',
     textAlign: 'center',
-    marginTop: 8,
     fontSize: DEVICE_WIDTH <= 375 ? 20 : 24,
+    marginTop: 14,
   },
 });

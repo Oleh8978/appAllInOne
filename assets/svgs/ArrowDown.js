@@ -3,8 +3,8 @@ import Svg, { Path } from 'react-native-svg';
 
 function ArrowDown(props) {
   return (
-    <Svg width={24} height={24} {...props} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <Path d="M12 15L12.3536 15.3536L12 15.7071L11.6464 15.3536L12 15ZM18.3536 9.35355L12.3536 15.3536L11.6464 14.6464L17.6464 8.64645L18.3536 9.35355ZM11.6464 15.3536L5.64645 9.35355L6.35355 8.64645L12.3536 14.6464L11.6464 15.3536Z" fill="#848CA5" />
+    <Svg width={14} height={9} {...props} viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <Path d="M7 7L7.70711 7.70711L7 8.41421L6.29289 7.70711L7 7ZM13.7071 1.70711L7.70711 7.70711L6.29289 6.29289L12.2929 0.292893L13.7071 1.70711ZM6.29289 7.70711L0.292893 1.70711L1.70711 0.292894L7.70711 6.29289L6.29289 7.70711Z" fill="#6560E0" />
     </Svg>
   );
 }

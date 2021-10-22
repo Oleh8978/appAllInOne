@@ -1,6 +1,8 @@
 import getAccessToken from './cognito/getAccessToken';
+import sessionRefresher from './awsRefreshSession';
+
 import { SERVER_URL } from '../constants/constants';
-// It`s for debug only!!!
+// It`s for testnet only!!!
 
 export default async () => {
   try {
@@ -29,6 +31,14 @@ export default async () => {
     }
     return res;
   } catch (e) {
+    if (String(e.message).trim() === 'ERROR[Auth]: token address mismatch') {
+      try {
+        await sessionRefresher();
+      } catch (e) {
+        throw new Error(e.message);
+      }
+    }
+
     throw new Error(e);
   }
 };

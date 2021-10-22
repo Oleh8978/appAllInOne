@@ -16,6 +16,7 @@ export default Object.assign(({
   onValueChange,
   list,
   select,
+  isWhite = false,
 }) => {
   const [modalSwipeDirection, setModalSwipeDirection] = useState('down');
   return Platform.OS === 'android'
@@ -36,7 +37,7 @@ export default Object.assign(({
       </>
     )
     : (
-      <Modal close={close} header={header} swipeDirection={modalSwipeDirection}>
+      <Modal close={close} header={header} swipeDirection={modalSwipeDirection} isWhite={isWhite}>
         <View style={{ width: '100%', height: 200 }}>
           <TouchableWithoutFeedback onPressOut={() => setModalSwipeDirection([])}>
             {/* logic bonds with TouchableWithoutFeedback and modalSwipeDirection is important for normal Picker work */}

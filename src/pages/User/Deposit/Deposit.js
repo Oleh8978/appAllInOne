@@ -34,10 +34,11 @@ import styles from './Deposit.styles';
 export default observer(
   ({
     navigation,
-    route: {
-      params: { coin, isParentTabBar = true },
-    },
+    // route: {
+    //   params: { isParentTabBar = true },
+    // },
   }) => {
+    const coin = 'BTC';
     useFocusEffect(() => statusBar('dark'));
 
     const [address, setAddress] = useState('');

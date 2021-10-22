@@ -1,14 +1,14 @@
 import { Auth } from 'aws-amplify';
 
-export default async ({ name, familyName, email, password }) => {
+export default async ({ email, password }) => {
   try {
     return await Auth.signUp({
       username: email,
       password,
       attributes: {
         email,
-        given_name: name,
-        family_name: familyName,
+        given_name: 'given_name',
+        family_name: 'family_name',
       },
     });
   } catch (e) {

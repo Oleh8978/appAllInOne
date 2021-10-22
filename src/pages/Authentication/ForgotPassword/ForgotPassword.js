@@ -9,10 +9,10 @@ import {
   ScrollView,
 } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
+import LinearGradient from 'react-native-linear-gradient';
 import { Auth } from 'aws-amplify';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import LinearGradient from 'react-native-linear-gradient';
 
 import statusBar from '../../../../utilities/statusBar';
 import { emailValidator } from '../../../../utilities/yupValidators';
@@ -27,8 +27,9 @@ import DefaultButton from '../../../components/DefaultButton/DefaultButton';
 import Notification from '../../../components/Notification/Notification';
 import Footer from '../../../components/Footer/Footer';
 
-import styles from './ForgotPassword.styles';
+import ForgotPasswordImage from '../../../../assets/images/ForgotPasswordImage.png';
 import colors from '../../../../styles/colors';
+import styles from './ForgotPassword.styles';
 
 import {
   view,
@@ -45,15 +46,13 @@ function ForgotPassword({ navigation, height, route }) {
 
   return (
     <>
-      <LinearGradient colors={[colors.lightBlue, colors.darkBlue]} style={{ ...view, height: '100%', justifyContent: 'flex-start' }}>
-        <View style={{ ...header, backgroundColor: 'transparent', marginTop: 0 }}>
-          <Header
-            topText=""
-            navigation={navigation}
-          />
-        </View>
+      <LinearGradient
+        colors={[colors.lightBlue, colors.darkBlue]}
+        style={{ ...view, height: '100%', justifyContent: 'flex-start' }}
+      >
+        <Header navigation={navigation} />
         <ScrollView style={{ width: '100%', height: '100%' }} showsHorizontalScrollIndicator={false}>
-          <Image source={require('../../../../assets/images/ForgotPasswordImage.png')} style={styles.imageTop} />
+          <Image source={ForgotPasswordImage} style={styles.imageTop} />
           <View style={styles.textContainer}>
             <Text style={styles.textContainerTop}>
               Forgot password?
@@ -117,7 +116,11 @@ function ForgotPassword({ navigation, height, route }) {
             </View>
           )}
           </Formik>
-          <Footer textFooter="Log into your account" customStyle={{ marginTop: 15 }} onPressFunctionality={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'login' } })} />
+          <Footer
+            textFooter="Log into your account"
+            customStyle={{ marginTop: 15 }}
+            onPress={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'login' } })}
+          />
         </ScrollView>
       </LinearGradient>
       <Notification notification={formError} close={() => setFormError('')} />

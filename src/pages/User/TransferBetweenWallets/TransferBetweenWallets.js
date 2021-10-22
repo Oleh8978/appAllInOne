@@ -54,7 +54,8 @@ import styles from './TransferBetweenWallets.styles';
 import colors from '../../../../styles/colors';
 
 export default KeyboardNormalizerScrolling(
-  observer(({ navigation, route: { params: coin } }) => {
+  observer(({ navigation }) => {
+    const coin = 'BTC';
     useFocusEffect(() => statusBar('dark'));
 
     const animation = useMemo(() => new Animated.Value(0), []);

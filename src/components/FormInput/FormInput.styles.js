@@ -12,12 +12,12 @@ export default StyleSheet.create({
     borderRadius: 8,
     borderColor: colors.grey,
     borderWidth: 1,
-    padding: 15,
+    padding: 14,
     height: 48,
   },
   placeholder: {
     fontSize: 14,
-    fontFamily: 'OpenSans-ExtraBold',
+    fontFamily: 'Gotham Pro',
   },
   inputWrapper: {
     width: '100%',
@@ -45,6 +45,13 @@ export default StyleSheet.create({
   arrowDown: {
     position: 'absolute',
     right: 11,
-    top: 45,
+    top: 52,
+  },
+  maxButton: {
+    height: 20,
+    width: 35,
+    marginRight: 15,
+    marginLeft: 'auto',
+    marginTop: -35,
   },
 });

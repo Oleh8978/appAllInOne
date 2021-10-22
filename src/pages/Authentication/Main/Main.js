@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import {
   Linking,
   SafeAreaView,
-  Text, View,
+  Text,
+  View,
+  Image,
+  Platform,
 } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import ReactNativeBiometrics from 'react-native-biometrics';
@@ -25,11 +28,11 @@ import Notification from '../../../components/Notification/Notification';
 import EMLogoImage from '../../../../assets/svgs/EMLogo';
 import EMLogoTextImage from '../../../../assets/svgs/EMLogoText';
 import { view } from '../../../../styles/mixins';
-import styles from './Main.styles';
 import colors from '../../../../styles/colors';
+import styles from './Main.styles';
 
 export default function Main({ navigation }) {
-  useFocusEffect(() => statusBar('dark'));
+  useFocusEffect(() => statusBar('light'));
 
   const [error, setError] = useState('');
 
@@ -63,40 +66,57 @@ export default function Main({ navigation }) {
     })();
   }, []);
 
-  const onPressFunctionality = () => {
-    Linking.openURL(`mailto:${EMAIL}`);
-  };
-
   return (
-    <SafeAreaView style={styles.container}>
-      <LinearGradient colors={[colors.lightBlue, colors.darkBlue]} style={styles.main}>
-        <View style={styles.mainContainer}>
-          <View style={view}>
-            <EMLogoImage style={styles.logo} />
-            <Text style={styles.textsWrapper}>
-              <Text style={styles.welcome}>{'Welcome to \n'}</Text>
-              <EMLogoTextImage style={styles.logoText} />
-            </Text>
-            <DefaultButton
-              title="Create account"
-              customStyles={{ marginBottom: 5 }}
-              onPress={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'registration' } })}
-              isLight
-              customStyles={{ backgroundColor: colors.darkGreen }}
+    <>
+      {Platform.OS === 'ios' && (
+      <View
+        style={{
+        width: '100%',
+        height: '6%',
+        backgroundColor: colors.lightBlue,
+      }}
+      />
+)}
+      <SafeAreaView style={styles.container}>
+        <LinearGradient colors={[colors.lightBlue, colors.darkBlue]} style={styles.main}>
+          <View style={styles.mainContainer}>
+            <View style={view}>
+              {/* <EMLogoImage style={styles.logo} /> */}
+              <Image
+                source={require('../../../../assets/images/logo.png')}
+                style={{
+               width: 100,
+               height: 100,
+               marginBottom: 30,
+               }}
+              />
+              <Text style={styles.textsWrapper}>
+                <Text style={styles.welcome}>{'Welcome to \n'}</Text>
+                <EMLogoTextImage style={styles.logoText} />
+              </Text>
+              <DefaultButton
+                title="Create account"
+                onPress={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'registration' } })}
+                isLight
+                customStyles={{ backgroundColor: colors.darkGreen }}
+              />
+              <DefaultButton
+                title="Log in"
+                onPress={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'login' } })}
+                disabled={false}
+                isArrowNext
+                customStyles={{ backgroundColor: colors.white, marginTop: 10 }}
+              />
+            </View>
+            <Footer
+              onPress={async () => Linking.openURL(`mailto:${EMAIL}`)}
+              textFooter="Contact support"
             />
-            <DefaultButton
-              title="Log in"
-              onPress={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'login' } })}
-              disabled={false}
-              isArrowNext
-              customStyles={{ backgroundColor: colors.white, marginTop: 10 }}
-            />
+            <Notification notification={error} close={() => setError('')} />
           </View>
-          <Footer onPressFunctionality={onPressFunctionality} textFooter="Contact support" />
-          <Notification notification={error} close={() => setError('')} />
-        </View>
-      </LinearGradient>
-    </SafeAreaView>
+        </LinearGradient>
+      </SafeAreaView>
+    </>
   );
 }
 

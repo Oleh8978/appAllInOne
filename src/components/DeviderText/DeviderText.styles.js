@@ -3,7 +3,7 @@ import colors from '../../../styles/colors';
 import { DEVICE_WIDTH } from '../../../constants/constants';
 
 export default StyleSheet.create({
-  constainer: {
+  container: {
       flexDirection: 'row',
       maxWidth: DEVICE_WIDTH <= 360 ? 290 : 360,
   },
@@ -21,6 +21,7 @@ export default StyleSheet.create({
   textStyle: {
       color: colors.white,
       fontSize: 15,
+      fontFamily: 'Gotham Pro',
   },
   line: {
       width: '100%',

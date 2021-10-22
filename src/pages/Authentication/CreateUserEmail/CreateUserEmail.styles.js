@@ -13,7 +13,7 @@ export default {
   imageTop: {
     width: '100%',
     height: 300,
-    marginTop: 50,
+    marginTop: 0,
   },
   form: {
     ...formWrapper,
@@ -33,5 +33,6 @@ export default {
   },
   textFooter: {
     color: colors.white,
+    fontFamily: 'Gotham Pro',
   },
 };

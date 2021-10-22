@@ -17,9 +17,11 @@ export default StyleSheet.create({
   value: {
     fontSize: 18,
     color: colors.purple,
+    fontFamily: 'Gotham Pro',
   },
   valueCurrency: {
     fontSize: 11,
     color: colors.purple,
+    fontFamily: 'Gotham Pro',
   },
 });

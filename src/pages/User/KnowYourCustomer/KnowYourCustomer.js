@@ -5,9 +5,11 @@ import { useFocusEffect } from '@react-navigation/native';
 import { observer } from 'mobx-react-lite';
 import LinearGradient from 'react-native-linear-gradient';
 
+import Store from '../../../store';
 import statusBar from '../../../../utilities/statusBar';
 
-import { ACCOUNT } from '../../../../constants/navigation/userScreens';
+import { USER } from '../../../../constants/navigation/navigators';
+import { HOME_PAGE, HOME } from '../../../../constants/navigation/userScreens';
 
 import KeyboardNormalizer from '../../../HOCs/KeyboardNormalizerScrolling';
 import Header from '../../../components/Header/Header';
@@ -19,6 +21,8 @@ import KYCtheThirdStep from './KYCPages/KYCtheThirdStep';
 import KYCScan from './KYCPages/KYCScan';
 import KYCFinish from './KYCPages/KYCFinish';
 
+import KYCStatus from '../../../../services/getKycStatus';
+
 import BlueCheckBoxImage from '../../../../assets/svgs/BlueCheckBoxImage';
 import BlueCheckBoxCheckedImage from '../../../../assets/svgs/BlueCheckBoxCheckedImage';
 import BlueCheckBoxCircleImage from '../../../../assets/svgs/BlueCheckBoxCircleImage';
@@ -29,13 +33,14 @@ import {
 } from '../../../../styles/mixins';
 import styles from './KnowYourCustomer.styles';
 import colors from '../../../../styles/colors';
+import PrimeTrustApprove from '../../../../services/PrimeTrustApprove';
 
 // TODO create logic: if PrimeTrust request more documents
 
 function KnowYourCustomer({ navigation, route }) {
   useFocusEffect(() => statusBar('dark'));
   // const [page, setPage] = useState(Store.user.KYCProgress);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(Store.user.KYCProgress);
 
   const [formErrors, setFormErrors] = useState([]);
   const [showLoader, setShowLoader] = useState(false);
@@ -43,13 +48,30 @@ function KnowYourCustomer({ navigation, route }) {
   // selected type of documents
   const [selectedType, setSelectedType] = useState({});
 
+  const getKYCData = async () => {
+    const data = await KYCStatus();
+
+    if (data.tier === 2) {
+      setPage(3);
+    } else if (data.tier >= 3) {
+      await PrimeTrustApprove();
+      setPage(5);
+    }
+  };
+
   useEffect(() => {
+    (async () => {
+      await getKYCData();
+    })();
+
     setPage(page < route.params?.page ? route.params?.page : page);
 
     const parent = navigation.dangerouslyGetParent();
+
     parent.setOptions({
       tabBarVisible: false,
     });
+
     return () => parent.setOptions({
       tabBarVisible: true,
     });
@@ -58,23 +80,23 @@ function KnowYourCustomer({ navigation, route }) {
   const deleteLastError = () => setFormErrors(formErrors.slice(0, formErrors.length - 1));
 
   const jumpToNextPage = async () => {
-    // await Store.user.setKYCProgress();
+    await Store.user.setKYCProgress();
     setFormErrors([]);
     if (page < 5) {
       // navigation.push(KNOW_YOUR_CUSTOMER, { page: page + 1 });
       setPage(page + 1);
-    } else navigation.navigate(ACCOUNT);
+    } else navigation.navigate(USER, { screen: HOME_PAGE, params: { screen: HOME } });
   };
 
   const addErrors = (errors) => setFormErrors([...formErrors, ...errors]);
 
   const firstPageGetter = (values) => {
     setFirstPageData({
-      name: values.givenName,
+      name: values.name,
       familyName: values.familyName,
       email: values.email,
-      date: '',
-      phoneNumber: '',
+      date: values.date,
+      phoneNumber: values.phoneNumber,
     });
   };
 
@@ -106,7 +128,7 @@ function KnowYourCustomer({ navigation, route }) {
             firstPageData={firstPageData}
             title="Enter your personal details:"
           />
-);
+        );
 
         // Finish
       case 3:
@@ -132,7 +154,8 @@ function KnowYourCustomer({ navigation, route }) {
               showLoader={showLoader}
               setShowLoader={setShowLoader}
             />
-          );
+);
+
       case 5:
         return <KYCFinish jumpToNextPage={jumpToNextPage} />;
 
@@ -161,7 +184,7 @@ function KnowYourCustomer({ navigation, route }) {
             {`${value}`}
           </Text>
         </View>
- );
+);
     } if (page === value) {
       return (
         <View style={{ ...styles.stepContainer }}>
@@ -171,7 +194,7 @@ function KnowYourCustomer({ navigation, route }) {
             {`${value}`}
           </Text>
         </View>
- );
+);
     }
   };
 
@@ -187,11 +210,11 @@ function KnowYourCustomer({ navigation, route }) {
         <Header
           topText="KYC Verification"
           navigation={navigation}
-          goBackFunction={() => {
-            if (!showLoader) {
-              navigation.navigate(ACCOUNT);
-            }
-          }}
+          // goBackFunction={() => {
+          //   if (!showLoader) {
+          //     navigation.navigate(ACCOUNT);
+          //   }
+          // }}
         />
 
       </LinearGradient>

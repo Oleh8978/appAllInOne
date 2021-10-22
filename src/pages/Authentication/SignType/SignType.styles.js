@@ -20,6 +20,7 @@ export default StyleSheet.create({
     fontSize: 18,
     marginTop: 'auto',
     marginBottom: 'auto',
+    fontFamily: 'Gotham Pro',
   },
   formWrapper: {
     height: 175,

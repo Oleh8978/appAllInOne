@@ -225,8 +225,6 @@ export default observer(
               pastScrollRange={pastScrollRange} // until 01-01-2021
               futureScrollRange={0} // don`t allow scroll in future
               theme={{
-                textDayFontFamily: 'OpenSans-Regular',
-                textMonthFontFamily: 'OpenSans-SemiBold',
                 textDayFontSize: 14,
                 textMonthFontSize: 16,
               }}

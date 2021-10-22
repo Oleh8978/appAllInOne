@@ -36,7 +36,7 @@ export default function SmallValueBlock({
           ) : (
             <></>
           )}
-          <Text allowFontScaling={false} style={{ ...styles.blockHeaderText, fontSize: DEVICE_WIDTH <= 360 ? 11 : 13 }}>{name}</Text>
+          <Text allowFontScaling={false} style={{ ...styles.blockHeaderText, fontSize: DEVICE_WIDTH <= 360 ? 11 : 13, fontFamily: 'Gotham Pro' }}>{name}</Text>
           <Text allowFontScaling={false} style={styles.value}>
             <Text allowFontScaling={false} style={styles.valueCurrency}>{currency}</Text>
             {' '}

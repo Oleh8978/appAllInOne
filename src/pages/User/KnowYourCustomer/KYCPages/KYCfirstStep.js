@@ -37,6 +37,7 @@ function KYCfirstStep({ type = 'natural_person', jumpToNextPage, showLoader, tit
   const [dateIsPicked, setDateIsPicked] = useState(false);
 
   const dataSetter = (data) => {
+    data.date = date;
     firstPageGetter(data);
     jumpToNextPage();
   };
@@ -175,6 +176,7 @@ function KYCfirstStep({ type = 'natural_person', jumpToNextPage, showLoader, tit
           close={() => setShowDatePicker(false)}
           header={type === 'natural_person' ? 'Select your birth day date' : 'Set date of incorporation'}
           value={date}
+          isWhite
           onValueChange={(event, _date) => {
             if (Platform.OS === 'android') {
               setShowDatePicker(false);

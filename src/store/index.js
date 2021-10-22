@@ -7,6 +7,7 @@ import getUser from '../../services/getUser';
 import getKycStatus from '../../services/getKycStatus';
 import PrimeTrustApprove from '../../services/PrimeTrustApprove';
 import getAccessToken from '../../services/cognito/getAccessToken';
+import sessionRefresher from '../../services/awsRefreshSession';
 
 import getWallets from '../../services/getWallets';
 import createWallet from '../../services/createWallet';
@@ -136,6 +137,8 @@ class User {
             .then(async (status) => {
               if (status.tier < 1) { // for the first sign in, registration in back-end
                 await registerUser(); // now tier is 1
+              } else if (status.tier > 2) {
+                await PrimeTrustApprove();
               }
               await this.KYCApprove(status);
             });
@@ -198,9 +201,18 @@ class User {
           await onErrorReconnect();
         };
       } catch (error) {
+        console.log('error ', error);
         await this.root.application.addError(error.message);
       }
     } catch (e) {
+      if (String(e.message).trim() === 'ERROR[Auth]: token address mismatch') {
+        try {
+          await sessionRefresher();
+        } catch (e) {
+          throw new Error(e.message);
+        }
+      }
+
       throw new Error(e);
     }
   }
@@ -337,21 +349,22 @@ class Wallets {
                   }));
 
               if (_wallets.length === 1) { // Here is creating all available wallets if they weren't created before
-                await Promise.all(
-                    AVAILABLE_COINS
-                        .filter(((_coin) => !this.root.wallets.wallets.some((wallet) => wallet.coin === _coin.value)))
-                        .map(async (coin) => {
-                          await createWallet(coin.value);
-                        }),
-                );
+                await createWallet();
                 return this.root.wallets.updateWallets();
               }
-
               this.isSeveralWallets = this.wallets.length > 2; // exclude USD wallet
               this.wallets = _wallets;
               this.setTotals();
             });
       } catch (e) {
+        if (String(e.message).trim() === 'ERROR[Auth]: token address mismatch') {
+          try {
+            await sessionRefresher();
+          } catch (e) {
+            throw new Error(e.message);
+          }
+        }
+
         throw new Error(e.message);
       }
     }
@@ -360,14 +373,23 @@ class Wallets {
   async updateCredit() {
     if (this.root.user.tier > 3) {
       try {
-        await getCreditInfo()
-          .then((credit) => {
-            this.totalAvailable = credit.available;
-            this.totalUtilized = credit.used;
-            this.lineOfCredit = +credit.available + +credit.used ?? 0;
-            return credit;
-          });
+        console.log('');
+        // await getCreditInfo()
+        //   .then((credit) => {
+        //     this.totalAvailable = credit.available;
+        //     this.totalUtilized = credit.used;
+        //     this.lineOfCredit = +credit.available + +credit.used ?? 0;
+        //     return credit;
+        //   });
       } catch (e) {
+        if (String(e.message).trim() === 'ERROR[Auth]: token address mismatch') {
+          try {
+            await sessionRefresher();
+          } catch (e) {
+            throw new Error(e.message);
+          }
+        }
+
         throw new Error(e.message);
       }
     }
@@ -378,6 +400,13 @@ class Wallets {
       await this.updateWallets();
       await this.updateCredit();
     } catch (e) {
+      if (String(e.message).trim() === 'ERROR[Auth]: token address mismatch') {
+        try {
+          await sessionRefresher();
+        } catch (e) {
+          throw new Error(e.message);
+        }
+      }
       throw new Error(e.message);
     }
   }
@@ -445,6 +474,13 @@ class Transactions {
     });
     return transactions;
   }
+}
+
+class Borrow {
+ borrow = {
+   targets: [],
+   utilized: 0,
+ }
 }
 
 class Store {
