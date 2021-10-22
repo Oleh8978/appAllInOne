@@ -93,7 +93,7 @@ const dataPosibilities = [
   },
 ];
 
-export default function LoanInfo({ navigation }) {
+export default function HomeScreen({ navigation }) {
   const [credit, setCredit] = useState('42.000');
   const [isBalanceOpened, setIsBalanceOpened] = useState(false);
   const [kycChecked, setKycChecked] = useState(false);
@@ -106,7 +106,7 @@ export default function LoanInfo({ navigation }) {
     }
   };
 
-  console.log('kycChecked ', kycChecked);
+  // console.log('kycChecked ', kycChecked);
 
   useEffect(() => {
     getKYCData();

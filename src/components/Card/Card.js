@@ -32,6 +32,8 @@ export default function Card({
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState('');
 
+  console.log('Store.wallets.exchangeRates ', Store.wallets.exchangeRates)
+
   const repayCreditFunc = async (targetType, targetId, amount) => {
     await repayCredit(targetType, targetId, amount);
   };
@@ -146,7 +148,7 @@ export default function Card({
                   </Text>
                   <Text style={{ color: colors.grey }}>
                     {'$'}
-                    {`${parseFloat(Store.wallets.exchangeRates.BTC).toFixed(2)}`}
+                    {`${parseFloat(Store.wallets.exchangeRates.BTC.sell).toFixed(2)}`}
                   </Text>
                 </View>
               </View>

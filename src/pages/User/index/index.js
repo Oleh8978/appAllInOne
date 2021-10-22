@@ -178,7 +178,7 @@ export default observer(({ navigation }) => {
       /> */}
         <Tab.Screen
           name="Trade"
-          component={() => <Trade />}
+          component={Trade}
           options={{
               tabBarIcon: ({ focused }) => (focused ? (
                 <View style={tabStyles.activeTab}>
@@ -193,7 +193,7 @@ export default observer(({ navigation }) => {
         />
         <Tab.Screen
           name="Earn"
-          component={() => <Earn />}
+          component={Earn}
           options={{
               tabBarIcon: ({ focused }) => (focused ? (
                 <View style={tabStyles.activeTab}>
@@ -223,7 +223,7 @@ export default observer(({ navigation }) => {
         />
         <Tab.Screen
           name="Debit card"
-          component={() => <DebitCard />}
+          component={DebitCard}
           options={{
               tabBarIcon: ({ focused }) => (focused ? (
                 <View style={tabStyles.activeTab}>

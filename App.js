@@ -79,10 +79,10 @@ const App = observer(() => {
             gestureEnabled: false,
           }}
         >
-          {/* <Stack.Screen
+          <Stack.Screen
             name={AUTHENTICATION}
             component={AuthenticationNavigator}
-          /> */}
+          />
           <Stack.Screen name={USER} component={UserNavigator} />
         </Stack.Navigator>
       </NavigationContainer>

@@ -4,7 +4,6 @@ import sessionRefresher from './awsRefreshSession';
 import { SERVER_URL } from '../constants/constants';
 
 export default async () => {
-  console.log(await getAccessToken());
   try {
     const res = await fetch(
       `https://${SERVER_URL}/api?command=kycStatus`,
