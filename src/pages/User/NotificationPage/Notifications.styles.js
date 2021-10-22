@@ -10,8 +10,7 @@ export default StyleSheet.create({
         marginBottom: -20,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
-        backgroundColor: colors.white,
-        paddingHorizontal: 20,
+        backgroundColor: colors.whitePurpule,
         paddingRight: 0,
     },
     balanceClick: {
@@ -90,4 +89,23 @@ export default StyleSheet.create({
         flexDirection: 'column',
         padding: 10,
     },
+    pressButton: {
+        marginTop: 10, 
+        marginRight: 15, 
+        marginLeft: 'auto',
+        height: 40,
+        width: 110,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    texLeft: {
+        color: colors.lightBlue,
+        fontSize: 14,
+        lineHeight: 13,
+        textDecorationLine: 'underline',
+        fontFamily: 'Gotham Pro'
+    },
+    itemsWrapper: {
+        paddingHorizontal: 15,
+    }
 });

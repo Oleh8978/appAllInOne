@@ -23,9 +23,9 @@ export default function BorrowPages() {
       initialRouteName={HOME}
       screenOptions={{ headerShown: false }}
     >
-      {/* <Stack.Screen name={HOME} component={Home} />
+      <Stack.Screen name={HOME} component={Home} />
       <Stack.Screen name={TWO_FACTOR_AUTH} component={TwoFactorAuthentication} />
-      <Stack.Screen name={KNOW_YOUR_CUSTOMER} component={KnowYourCustomer} /> */}
+      <Stack.Screen name={KNOW_YOUR_CUSTOMER} component={KnowYourCustomer} />
       <Stack.Screen name={NOTIFICATION_PAGE} component={NotificationsPage} />
     </Stack.Navigator>
   );

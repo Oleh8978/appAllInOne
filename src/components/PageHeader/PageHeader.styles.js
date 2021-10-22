@@ -56,13 +56,43 @@ export default StyleSheet.create({
     headerText: {
         textAlign: 'center',
         marginTop: 5,
-        fontSize: 32,
+        fontSize: 30,
+        lineHeight: 33,
         color: colors.white,
         fontFamily: 'Gotham Pro',
     },
     subHeader: {
         textAlign: 'center',
+        fontSize: 14,
+        lineHeight: 17,
         color: colors.white,
         fontFamily: 'Gotham Pro',
     },
+    bellContainer: {
+        width: 40,
+        height: 40,
+        marginTop: -2,
+        marginLeft: 'auto',
+        marginRight: 22,
+        flexDirection: 'column'
+      },
+      numberContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 18,
+        height: 18,
+        borderRadius: 20,
+        marginBottom: -14,
+        marginLeft: 22,
+        marginRight: 0,
+        elevation: 6,
+        zIndex: 6,
+        backgroundColor: colors.errorColor
+      },
+      numberText: {
+        color: colors.white,
+        fontFamily: 'Gotham Pro',
+        fontWeight: 'normal',
+        fontSize: 12,
+      }
 });
