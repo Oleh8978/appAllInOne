@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { authPageWrapper as wrapper } from '../../../../styles/mixins';
 import colors from '../../../../styles/colors';
 
 export default StyleSheet.create({

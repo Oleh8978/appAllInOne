@@ -6,7 +6,7 @@ export default StyleSheet.create({
     main: {
         width: '100%',
         height: '100%',
-        backgroundColor: colors.white,
+        backgroundColor: colors.white
     },
     body: {
         paddingRight: 15,
@@ -30,12 +30,12 @@ export default StyleSheet.create({
     },
     skipContainer: {
         marginTop: 35,
-        paddingRight: 19,
+        paddingRight: 19
     },
     skipText: {
         textAlign: 'center',
         textDecorationLine: 'underline',
         fontSize: 18,
-        color: colors.lightBlue,
-    },
+        color: colors.lightBlue
+    }
 });

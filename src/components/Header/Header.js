@@ -18,7 +18,7 @@ export default function Header({
   deviceMarginTop,
   customStyles,
   isBlue = false,
-  mainCustomStyle,
+  mainCustomStyle
 }) {
   return (
     <SafeAreaView style={{ ...styles.wrapper, marginTop: deviceMarginTop, ...mainCustomStyle }}>

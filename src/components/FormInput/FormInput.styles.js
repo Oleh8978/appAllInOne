@@ -12,7 +12,7 @@ export default StyleSheet.create({
     borderRadius: 8,
     borderColor: colors.grey,
     borderWidth: 1,
-    padding: 14,
+    padding: 15,
     height: 48,
   },
   placeholder: {
@@ -46,12 +46,5 @@ export default StyleSheet.create({
     position: 'absolute',
     right: 11,
     top: 45,
-  },
-  maxButton: {
-    height: 20,
-    width: 35,
-    marginRight: 15,
-    marginLeft: 'auto',
-    marginTop: -35,
   },
 });

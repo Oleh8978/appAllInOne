@@ -5,8 +5,6 @@ import {
 
 import PropTypes from 'prop-types';
 import Modal from 'react-native-modal';
-
-import colors from '../../../styles/colors';
 import styles from './Modal.styles';
 
 const ContentWrapper = ({ keyboardNormalizer, children }) => (keyboardNormalizer
@@ -26,7 +24,6 @@ export default function ModalWrapper({
   customStyleBackground = {},
   customStyleBody = {},
   isNeedLine = true,
-  isWhite = false,
 }) {
   return (
     <Modal
@@ -44,9 +41,6 @@ export default function ModalWrapper({
             ...customStyleBody,
             marginBottom: 5,
             marginTop: 'auto',
-            backgroundColor: isWhite ? colors.white : 'transparent',
-            borderTopLeftRadius: 20,
-            borderTopRightRadius: 20,
             }}
         >
           <View style={styles.sliderWrapper}>

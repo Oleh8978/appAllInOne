@@ -7,7 +7,6 @@ export default StyleSheet.create({
   wrapper: {
     ...view,
     marginTop: 20,
-    zIndex: 1,
   },
   header: {
     width: '100%',

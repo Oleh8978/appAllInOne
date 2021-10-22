@@ -23,7 +23,7 @@ import {
   BIOMETRIC,
   WELL_DONE,
   PASSCODE,
-  TWO_FACTOR_AUTH,
+  TWO_FACTOR_AUTH
 } from '../../../../constants/navigation/authenticationScreens';
 
 const Stack = createStackNavigator();

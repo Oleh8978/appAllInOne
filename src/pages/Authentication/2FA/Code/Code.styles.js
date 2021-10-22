@@ -12,11 +12,11 @@ export default StyleSheet.create({
         height: '100%',
         paddingRight: 15,
         paddingLeft: 15,
-        backgroundColor: colors.white,
+        backgroundColor: colors.white
     },
     img: {
         height: 300,
-        width: '100%',
+        width: '100%'
     },
     mainHeader: {
         fontSize: 32,
@@ -30,6 +30,6 @@ export default StyleSheet.create({
         fontSize: 15,
         textAlign: 'center',
         marginBottom: 30,
-    },
+    }
 
 });

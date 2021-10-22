@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {
- TouchableOpacity, View, Image,
-} from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { observer } from 'mobx-react-lite';
-import LinearGradient from 'react-native-linear-gradient';
 
 import Store from '../../../store';
 
@@ -15,16 +12,11 @@ import {
   WALLETS,
   TRANSACTIONS,
   ACCOUNT,
-  BORROW,
-  HOME,
 } from '../../../../constants/navigation/userScreens';
 
 import AccountScreen from '../AccountScreen/AccountScreen';
 import TransactionsScreen from '../TransactionsScreen/TransactionsScreen';
 import WalletsScreen from '../WalletsScreen/WalletsScreen';
-import BorrowPages from '../Borrow/BorrowScreen';
-import HomePages from '../Home/Home';
-
 import Loader from '../../../components/Loader/Loader';
 
 import DashboardImage from '../../../../assets/svgs/Dashboard';
@@ -82,22 +74,8 @@ export default observer(({ navigation }) => {
   }
 
   return (
-    <>
-      <Tab.Navigator
-        tabBarOptions={{
-       style: {
-         position: 'absolute',
-         borderTopRightRadius: 30,
-         borderTopLeftRadius: 30,
-         borderTopColor: 'transparent',
-         backgroundColor: 'transparent',
-         },
-         activeTintColor: colors.white,
-        inactiveTintColor: colors.white,
-        showLabel: true,
-        }}
-      >
-        {/* <Tab.Screen
+    <Tab.Navigator tabBarOptions={{ style: { position: 'absolute' }, showLabel: false }}>
+      {/* <Tab.Screen
         name={DASHBOARD}
         component={DashboardScreen}
         options={{
@@ -111,8 +89,8 @@ export default observer(({ navigation }) => {
             </View>
           )),
         }}
-      />
-      <Tab.Screen
+      /> */}
+      {/* <Tab.Screen
         name={WALLETS}
         component={WalletsScreen}
         options={{
@@ -126,8 +104,8 @@ export default observer(({ navigation }) => {
             </View>
           )),
         }}
-      />
-      <Tab.Screen
+      /> */}
+      {/* <Tab.Screen
         name={TRANSACTIONS}
         component={TransactionsScreen}
         options={{
@@ -141,7 +119,7 @@ export default observer(({ navigation }) => {
             </View>
           )),
         }}
-      />
+      /> */}
       <Tab.Screen
         name={ACCOUNT}
         component={AccountScreen}
@@ -165,41 +143,8 @@ export default observer(({ navigation }) => {
             />
           ),
         }}
-      /> */}
-        <Tab.Screen
-          name={HOME}
-          component={HomePages}
-          options={{
-          tabBarIcon: ({ focused }) => (focused ? (
-            <View style={tabStyles.activeTab}>
-              <Image source={require('../../../../assets/images/HomeActive.png')} style={{ width: 90, height: 90 }} />
-            </View>
-          ) : (
-            <View style={tabStyles.tab}>
-              <Image source={require('../../../../assets/images/HomeInactive.png')} style={{ width: 60, height: 60 }} />
-            </View>
-          )),
-        }}
-        />
-        <Tab.Screen
-          name={BORROW}
-          component={BorrowPages}
-          options={{
-          tabBarIcon: ({ focused }) => (focused ? (
-            <View style={tabStyles.activeTab}>
-              {/* <TransactionsActiveImage /> */}
-              <Image source={require('../../../../assets/images/BorrowActiveImg.png')} style={{ width: 90, height: 90 }} />
-            </View>
-          ) : (
-            <View style={tabStyles.tab}>
-              <Image source={require('../../../../assets/images/BorrowInActiveImg.png')} style={{ width: 60, height: 60 }} />
-            </View>
-          )),
-        }}
-        />
-      </Tab.Navigator>
-
-    </>
+      />
+    </Tab.Navigator>
   );
 });
 

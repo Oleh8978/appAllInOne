@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import LinearGradient from 'react-native-linear-gradient';
 import { Auth, Hub } from 'aws-amplify';
+import LinearGradient from 'react-native-linear-gradient';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
@@ -34,17 +34,18 @@ import {
 } from '../../../../constants/navigation/authenticationScreens';
 import { WILL_TUNE_BIOMETRIC } from '../../../../constants/storageKeys';
 
-import KeyboardNormalizer from '../../../HOCs/KeyboardNormalizerFolding';
-
 import Header from '../../../components/Header/Header';
 import Footer from '../../../components/Footer/Footer';
 import Notification from '../../../components/Notification/Notification';
+
 import Loader from '../../../components/Loader/Loader';
+
 import FormInput from '../../../components/FormInput/FormInput';
 import DefaultButton from '../../../components/DefaultButton/DefaultButton';
 import DeviderText from '../../../components/DeviderText/DeviderText';
 
-import MainPageImage from '../../../../assets/images/MainPage.png';
+import KeyboardNormalizer from '../../../HOCs/KeyboardNormalizerFolding';
+
 import GoogleImage from '../../../../assets/svgs/Google';
 import FacebookImage from '../../../../assets/svgs/Facebook';
 import AppleImage from '../../../../assets/svgs/Apple';
@@ -58,9 +59,9 @@ import styles from './SignType.styles';
 import colors from '../../../../styles/colors';
 
 function SignType({ navigation, route: { params: type } }) {
-  useFocusEffect(() => statusBar('dark'));
+  useFocusEffect(() => statusBar('light'));
 
-  const isLogin = type?.type === 'login';
+  const isLogin = type.type === 'login';
   const [loginError, setLoginError] = useState('');
   const [formError, setFormError] = useState('');
   const [showLoader, setShowLoader] = useState(false);
@@ -101,7 +102,6 @@ function SignType({ navigation, route: { params: type } }) {
   };
 
   const signIn = async ({ email, password }) => {
-
     try {
       setShowLoader(true);
       await signInUser(email, password);
@@ -121,6 +121,7 @@ function SignType({ navigation, route: { params: type } }) {
       setFormError(e);
     }
     setShowLoader(false);
+    Keyboard.dismiss();
   };
 
   if (showLoader) {
@@ -149,17 +150,15 @@ function SignType({ navigation, route: { params: type } }) {
           isLight
         />
         <ScrollView showsVerticalScrollIndicator={false} style={{ width: '100%', height: '100%' }}>
-          {isLogin ? <></> : <Image source={MainPageImage} style={{ width: '100%', height: 345 }} />}
-          <View style={{ ...view, marginTop: isLogin ? 100 : 0 }}>
+          {isLogin ? <></> : <Image source={require('../../../../assets/images/MainPage.png')} alt="img" style={{ width: '100%', height: 345 }} />}
+          <View style={{ ...view, marginTop: 10, marginTop: isLogin ? 100 : 0 }}>
             <TouchableOpacity
               style={shadowBlock}
               onPress={() => authentication('SignInWithApple')}
             >
               <View style={{ ...styles.buttonsItemContainer }}>
                 <AppleImage style={{ ...styles.logo, marginLeft: -25 }} />
-                <Text allowFontScaling={false} style={styles.signUpText}>
-                  Continue with Apple
-                </Text>
+                <Text allowFontScaling={false} style={styles.signUpText}>Continue with Apple</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -177,10 +176,7 @@ function SignType({ navigation, route: { params: type } }) {
                 <Text allowFontScaling={false} style={styles.signUpText}>Continue with Facebook</Text>
               </View>
             </View>
-            <DeviderText
-              textDivider={isLogin ? 'or use your email' : 'or'}
-              customStyle={{ minWidth: isLogin ? 15 : 12 }}
-            />
+            <DeviderText textDevider={isLogin ? 'or use your email' : 'or'} customStyle={{ minWidth: isLogin ? 15 : 12 }} />
             {isLogin
             ? (
               <Formik
@@ -204,9 +200,12 @@ function SignType({ navigation, route: { params: type } }) {
            isValid,
            dirty,
         }) => (
-          <View style={{ ...styles.formWrapper, height: Platform.OS === 'IOS' ? '100%' : 350 }}>
+          <View style={{ ...styles.formWrapper, height: Platform.Os === 'IOS' ? '100%' : 350 }}>
             <View style={styles.form}>
-              <View>
+              <View
+                style={styles.scrollableFormBody}
+
+              >
                 <FormInput
                   keyboardType="email-address"
                   autoCompleteType="email"
@@ -224,7 +223,7 @@ function SignType({ navigation, route: { params: type } }) {
                   onBlur={handleBlur('password')}
                   value={values.password}
                   textContentType="newPassword"
-                  placeholder="Enter your password"
+                  placeholder="Create your password"
                   headerText="password"
                   error={touched.password && !!errors.password}
                 />
@@ -243,11 +242,10 @@ function SignType({ navigation, route: { params: type } }) {
               textFooter="Forgot password"
               customStyle={{ marginTop: 5 }}
               customStyleContainer={{ marginTop: 0 }}
-              onPress={() => {
-              navigation.navigate(AUTHENTICATION,
-                { screen: FORGOT_PASSWORD,
-                  params: { email: errors.email ? '' : values.email } });
-                }}
+              onPressFunctionality={() => {
+              navigation.navigate(AUTHENTICATION, { screen: FORGOT_PASSWORD,
+                                                    params: { email: errors.email ? '' : values.email } });
+                                                   }}
             />
             )}
             {isLogin
@@ -255,9 +253,10 @@ function SignType({ navigation, route: { params: type } }) {
             <Footer
               textFooter="Create an account"
               customStyle={{ marginTop: 5 }}
-              onPress={() => navigation.navigate(SIGN_TYPE, { type: 'create' })}
+              onPressFunctionality={() => navigation.navigate(SIGN_TYPE, { type: 'create' })}
             />
-          )}
+)}
+
           </View>
         )}
               </Formik>
@@ -267,18 +266,13 @@ function SignType({ navigation, route: { params: type } }) {
               title="Continue with Email"
               onPress={() => navigation.navigate(CREATE_USER_EMAIL)}
               isLight
-              customStyles={{ marginTop: 15, width: '100%' }}
+              customStyles={{ marginTop: 15,
+                            width: '100%' }}
               isEmail
             />
           </View>
           )}
-            {!isLogin && (
-            <Footer
-              textFooter="Log into your account"
-              customStyle={{ marginTop: 15 }}
-              onPress={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'login' } })}
-            />
-            )}
+            {!isLogin && <Footer textFooter="Log into your account" customStyle={{ marginTop: 15 }} onPressFunctionality={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'login' } })} />}
           </View>
           <View />
           <View />

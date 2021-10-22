@@ -1,10 +1,10 @@
 import getAccessToken from './cognito/getAccessToken';
 import { SERVER_URL } from '../constants/constants';
 
-export default async () => {
+export default async (currency = 'BTC') => {
   try {
     const res = await fetch(
-      `https://${SERVER_URL}/api?command=createAssets`,
+      `https://${SERVER_URL}/api?command=createAsset&coin=${currency}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',

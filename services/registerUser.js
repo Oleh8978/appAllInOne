@@ -6,7 +6,7 @@ export default async () => {
   try {
     const user = await Auth.currentAuthenticatedUser();
     const res = await fetch(
-      `https://${SERVER_URL}/api?command=register&email=${user.attributes.email}`,
+      `https://${SERVER_URL}/api?command=register&email=${user.attributes.email}&name=${user.attributes.given_name} ${user.attributes.family_name}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',

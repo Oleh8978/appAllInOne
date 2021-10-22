@@ -14,7 +14,6 @@ export default Object.assign(({
   value,
   onValueChange,
   select,
-  isWhite = false,
   maximumDate = new Date(),
 }) => {
   const DatePicker = useCallback(() => useMemo(() => (
@@ -36,7 +35,7 @@ export default Object.assign(({
       </>
     )
     : (
-      <Modal close={close} header={header} swipeDirection="down" isWhite={isWhite}>
+      <Modal close={close} header={header} swipeDirection="down">
         <View style={{ width: '100%', height: 200 }}>
           <DatePicker />
         </View>

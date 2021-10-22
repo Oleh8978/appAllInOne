@@ -7,11 +7,15 @@ export default StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
+    borderColor: colors.purple,
+    borderTopWidth: 3,
   },
   tab: {
     height: '100%',
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
+    borderColor: colors.white,
+    borderTopWidth: 3,
   },
 });

@@ -293,10 +293,10 @@ function KYCScan({ jumpToNextPage, showLoader, setShowLoader, setFormErrors, sel
                         maxWidth: '100%',
                         marginBottom: 45,
                       }}
-                      />
-                      <Text allowFontScaling={false} style={{ ...styles.photoHeader, position: 'absolute', top: documentSize[0][1] + 10 }}>Front side</Text>
-                    </View>
-                  </>
+      />
+      <Text allowFontScaling={false} style={{ ...styles.photoHeader, position: 'absolute', top: documentSize[0][1] + 10 }}>Front side</Text>
+    </View>
+  </>
 )}
 
           {document2 === undefined

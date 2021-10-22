@@ -25,8 +25,8 @@ import Notification from '../../../components/Notification/Notification';
 import EMLogoImage from '../../../../assets/svgs/EMLogo';
 import EMLogoTextImage from '../../../../assets/svgs/EMLogoText';
 import { view } from '../../../../styles/mixins';
-import colors from '../../../../styles/colors';
 import styles from './Main.styles';
+import colors from '../../../../styles/colors';
 
 export default function Main({ navigation }) {
   useFocusEffect(() => statusBar('dark'));
@@ -63,6 +63,10 @@ export default function Main({ navigation }) {
     })();
   }, []);
 
+  const onPressFunctionality = () => {
+    Linking.openURL(`mailto:${EMAIL}`);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <LinearGradient colors={[colors.lightBlue, colors.darkBlue]} style={styles.main}>
@@ -75,6 +79,7 @@ export default function Main({ navigation }) {
             </Text>
             <DefaultButton
               title="Create account"
+              customStyles={{ marginBottom: 5 }}
               onPress={() => navigation.navigate(AUTHENTICATION, { screen: SIGN_TYPE, params: { type: 'registration' } })}
               isLight
               customStyles={{ backgroundColor: colors.darkGreen }}
@@ -87,7 +92,7 @@ export default function Main({ navigation }) {
               customStyles={{ backgroundColor: colors.white, marginTop: 10 }}
             />
           </View>
-          <Footer onPress={async () => Linking.openURL(`mailto:${EMAIL}`)} textFooter="Contact support" />
+          <Footer onPressFunctionality={onPressFunctionality} textFooter="Contact support" />
           <Notification notification={error} close={() => setError('')} />
         </View>
       </LinearGradient>

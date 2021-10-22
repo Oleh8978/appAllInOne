@@ -5,7 +5,7 @@ import colors from '../../../../styles/colors';
 export default StyleSheet.create({
   container: {
     ...wrapper,
-    backgroundColor: colors.darkBlue,
+    backgroundColor: '#392994',
   },
   mainContainer: {
     marginTop: 'auto',

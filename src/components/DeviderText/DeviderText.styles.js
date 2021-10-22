@@ -3,7 +3,7 @@ import colors from '../../../styles/colors';
 import { DEVICE_WIDTH } from '../../../constants/constants';
 
 export default StyleSheet.create({
-  container: {
+  constainer: {
       flexDirection: 'row',
       maxWidth: DEVICE_WIDTH <= 360 ? 290 : 360,
   },

@@ -6,6 +6,6 @@ export default {
     width: 3,
     height: 3,
   },
-  shadowColor: colors.darkBlue,
+  shadowColor: colors.black,
   shadowOpacity: 0.15,
 };

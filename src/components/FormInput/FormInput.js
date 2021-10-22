@@ -8,7 +8,6 @@ import {
   TouchableWithoutFeedback,
   Text,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
 import EyeImage from '../../../assets/svgs/Eye';
 import ArrowDown from '../../../assets/svgs/ArrowDown';
@@ -37,9 +36,6 @@ export default function FormInput({
   headerText = '',
   inputCustomStyle = {},
   isNeedArrow = false,
-  customContainer = {},
-  isMax = false,
-  setMax = () => {},
 }) {
   const isHideFunctional = isHide || autoCompleteType === 'password';
   const [isInvisible, setIsInvisible] = useState(isHideFunctional);
@@ -65,7 +61,7 @@ export default function FormInput({
   };
 
   return (
-    <View style={{ ...styles.inputWrapper, ...customContainer }}>
+    <View style={styles.inputWrapper}>
       <Text
         allowFontScaling={false}
         style={{
@@ -93,33 +89,12 @@ export default function FormInput({
           fontFamily: inputFont,
           ...style,
           ...inputCustomStyle,
-          paddingRight: isMax ? 40 : 15,
-          borderColor: error ? colors.red : colors.grey,
-          borderWidth: error ? 3 : 1
         }}
         placeholderTextColor={colors.grey}
         onFocus={_onFocus}
         onBlur={_onBlur}
         maxLength={maxLength}
       />
-      {isMax
-        && (
-        <TouchableOpacity style={styles.maxButton} onPress={() => { setMax(); }}>
-          <LinearGradient
-            colors={[colors.lightBlue, colors.darkBlue]}
-            style={{
-              height: '100%',
-              width: '100%',
-              justifyContent: 'center',
-              borderRadius: 8,
-              }}
-          >
-            <Text style={{ color: colors.white, fontSize: 10, textAlign: 'center' }}>
-              Max
-            </Text>
-          </LinearGradient>
-        </TouchableOpacity>
-)}
       {isNeedArrow && <ArrowDown style={styles.arrowDown} />}
       {/* <Text allowFontScaling={false} style={styles.error}>{error}</Text> */}
       {isHideFunctional && (
