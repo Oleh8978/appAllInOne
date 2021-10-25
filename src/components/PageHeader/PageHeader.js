@@ -139,7 +139,13 @@ function PageHeader({
             onPress={() => { onDeposit(); }}
           >
             <DepositHome />
-            <Text style={{ fontFamily: 'Gotham Pro' }}>Deposit</Text>
+            <Text 
+             style={{ 
+               fontFamily: 'Gotham Pro', 
+               color: colors.darkBlue, 
+              }}
+            >
+              Deposit</Text>
           </TouchableOpacity>
         </View>
 );

@@ -77,7 +77,7 @@ export default function Card({
   };
 
   const body = (data) => {
-    if (Object.keys(data).length === 0) {
+    if (Object.keys(data).length === 0 && typeOfInfo === 'credit' || Object.keys(data).length === 0 && typeOfInfo === 'loan') {
       return (
         <View style={{ ...styles.informationBody }}>
           <Text style={{ ...styles.informationBodyHeadTxtx }}>
@@ -104,6 +104,45 @@ export default function Card({
                 <CheckGreen />
                 <Text style={styles.checkText}>
                   {typeOfInfo === 'credit' ? 'No origination or hidden fees' : 'No minimum collateral required'}
+                </Text>
+              </View>
+
+            </View>
+            <View style={styles.informationBodyBottomRight}>
+              <Image source={safe} style={{ ...styles.Image }} />
+            </View>
+          </View>
+        </View>
+        );
+    }
+
+    if (Object.keys(data).length === 0 && typeOfInfo === 'flexible deposit' || Object.keys(data).length === 0 && typeOfInfo === 'long term deposit') {
+      return (
+        <View style={{ ...styles.informationBody }}>
+          <Text style={{ ...styles.informationBodyHeadTxtx }}>
+            Grow your portfolio exponentially while keeping your crypto safe.
+          </Text>
+          <View style={styles.informationBodyBottom}>
+            <View style={styles.informationBodyBottomLeft}>
+
+              <View style={styles.checkRow}>
+                <CheckGreen />
+                <Text style={styles.checkText}>
+                  Multiple cryptocurrencies
+                </Text>
+              </View>
+
+              <View style={styles.checkRow}>
+                <CheckGreen />
+                <Text style={styles.checkText}>
+                  Compounding interest
+                </Text>
+              </View>
+
+              <View style={styles.checkRow}>
+                <CheckGreen />
+                <Text style={styles.checkText}>
+                  Replenishment
                 </Text>
               </View>
 
@@ -209,6 +248,7 @@ export default function Card({
       return (
         <Text>
           Loan
+          {' '}
           {`${data.duration / 30 }`}
           {' '}
           months
@@ -222,6 +262,14 @@ export default function Card({
 
     if (!data.type && typeOfInfo === 'loan') {
       return <Text>Loan</Text>;
+    }
+
+    if (!data.type && typeOfInfo === 'flexible deposit') {
+      return <Text>Flexible deposit</Text>;
+    }
+
+    if (!data.type && typeOfInfo === 'long term deposit') {
+      return <Text>Long term deposit</Text>;
     }
   };
 

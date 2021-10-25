@@ -22,10 +22,7 @@ import ArrowDown from '../../../../../assets/svgs/ArrowDown';
 import ArrowUpImage from '../../../../../assets/svgs/ArrowUpImage';
 import CheckImage from '../../../../../assets/svgs/CheckImage';
 
-import getKycStatus from '../../../../../services/getKycStatus';
-
-// fake charts
-import FakeBTCChart from '../../../../../assets/svgs/FakeBTCChart';
+import store from '../../../../store';
 
 import styles from './HomeScreen.styles';
 import colors from '../../../../../styles/colors';
@@ -99,14 +96,11 @@ export default function HomeScreen({ navigation }) {
   const [kycChecked, setKycChecked] = useState(false);
 
   const getKYCData = async () => {
-    const data = await getKycStatus();
-    console.log(data);
-    if (Number(data.tier) >= 4) {
+    if (Number(store.user.KYCProgress) >= 2) {
       setKycChecked(true);
     }
   };
 
-  // console.log('kycChecked ', kycChecked);
 
   useEffect(() => {
     getKYCData();
