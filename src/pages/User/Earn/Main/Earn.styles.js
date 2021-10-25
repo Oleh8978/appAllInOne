@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../../../styles/colors';
+import colors from '../../../../../styles/colors';
 
 export default StyleSheet.create({
     imageTop: {
@@ -14,8 +14,8 @@ export default StyleSheet.create({
         marginBottom: -20,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
-        backgroundColor: colors.white,
-        // paddingHorizontal: 20,
+        backgroundColor: colors.whitePurpule,
+        paddingHorizontal: 20,
     },
     topContainer: {
         marginTop: 20,

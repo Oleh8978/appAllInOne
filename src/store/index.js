@@ -478,7 +478,8 @@ class Transactions {
 
 class Borrow {
  borrow = {
-   targets: [],
+   creditLines: [],
+   Loans: [],
    utilized: 0,
  }
 }

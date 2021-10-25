@@ -55,14 +55,15 @@ export default StyleSheet.create({
     },
     headerText: {
         textAlign: 'center',
-        marginTop: 5,
+        marginTop: 10,
         fontSize: 30,
         lineHeight: 33,
         color: colors.white,
-        fontFamily: 'Gotham Pro',
+        // fontFamily: 'Gotham Pro',
+        fontWeight: '500'
     },
     subHeader: {
-        textAlign: 'center',
+        marginTop: 5,        textAlign: 'center',
         fontSize: 14,
         lineHeight: 17,
         color: colors.white,

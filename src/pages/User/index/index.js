@@ -18,6 +18,7 @@ import {
   BORROW,
   HOME,
   HOME_PAGE,
+  EARN_PAGE
 } from '../../../../constants/navigation/userScreens';
 
 import AccountScreen from '../AccountScreen/AccountScreen';
@@ -27,7 +28,7 @@ import BorrowPages from '../Borrow/BorrowScreen';
 import HomePages from '../Home/Home';
 import DebitCard from '../DebitCard/DebitCard';
 import Trade from '../Trade/Trade';
-import Earn from '../Earn/Earn';
+import Earn from '../Earn/index';
 
 import FooterBackground from '../../../components/FooterBackground/FooterBackground';
 
@@ -192,7 +193,7 @@ export default observer(({ navigation }) => {
             }}
         />
         <Tab.Screen
-          name="Earn"
+          name={EARN_PAGE}
           component={Earn}
           options={{
               tabBarIcon: ({ focused }) => (focused ? (

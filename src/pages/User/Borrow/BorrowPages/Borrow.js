@@ -138,7 +138,7 @@ export default function Borrow({ navigation }) {
              <Text style={styles.headerText}>
                Add more credit lines or loans
              </Text>
-             <Card headerText="Credit Line" onPress={() => moveForward('credit')} />
+             <Card headerText="Credit Line" typeOfInfo="credit" onPress={() => moveForward('credit')} />
              <Card headerText="Loan" typeOfInfo="loan" onPress={() => moveForward('loan')} />
            </View>
 
