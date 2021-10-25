@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { View , Image} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { observer } from 'mobx-react-lite';
 import LinearGradient from 'react-native-linear-gradient';
@@ -192,11 +192,11 @@ export default observer(({ navigation }) => {
           options={{
               tabBarIcon: ({ focused }) => (focused ? (
                 <View style={tabStyles.activeTab}>
-                  <Image source={require('../../../../assets/images/TradeActive.png')} style={{ width: 90, height: 90 }} />
+                  <TradeActive />
                 </View>
               ) : (
                 <View style={tabStyles.tab}>
-                  <Image source={require('../../../../assets/images/TradeInactive.png')} style={{ width: 60, height: 60 }} />
+                  <TradeInactive />
                 </View>
               )),
             }}
@@ -207,11 +207,11 @@ export default observer(({ navigation }) => {
           options={{
               tabBarIcon: ({ focused }) => (focused ? (
                 <View style={tabStyles.activeTab}>
-                  <Image source={require('../../../../assets/images/EarnActive.png')} style={{ width: 90, height: 90 }} />
+                  <EarnActive />
                 </View>
               ) : (
                 <View style={tabStyles.tab}>
-                  <Image source={require('../../../../assets/images/EarnInactive.png')} style={{ width: 60, height: 60 }} />
+                  <EarnInactive/>
                 </View>
               )),
             }}
@@ -245,21 +245,6 @@ export default observer(({ navigation }) => {
               </View>
             )),
           }}
-        />
-        <Tab.Screen
-          name="Debit card"
-          component={DebitCard}
-          options={{
-              tabBarIcon: ({ focused }) => (focused ? (
-                <View style={tabStyles.activeTab}>
-                  <Image source={require('../../../../assets/images/DebitCardActive.png')} style={{ width: 90, height: 90 }} />
-                </View>
-              ) : (
-                <View style={tabStyles.tab}>
-                  <Image source={require('../../../../assets/images/DebitCardInactive.png')} style={{ width: 60, height: 60 }} />
-                </View>
-              )),
-            }}
         />
         <Tab.Screen
           name={BORROW}
