@@ -63,7 +63,8 @@ export default StyleSheet.create({
         fontWeight: '500'
     },
     subHeader: {
-        marginTop: 5,        textAlign: 'center',
+        marginTop: 5,        
+        textAlign: 'center',
         fontSize: 14,
         lineHeight: 17,
         color: colors.white,

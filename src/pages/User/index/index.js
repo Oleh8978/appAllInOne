@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {
- TouchableOpacity, View, Image,
-} from 'react-native';
+import { View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { observer } from 'mobx-react-lite';
 import LinearGradient from 'react-native-linear-gradient';
@@ -20,6 +18,16 @@ import {
   HOME_PAGE,
   EARN_PAGE
 } from '../../../../constants/navigation/userScreens';
+import TradeActive from '../../../../assets/svgs/TradeActive';
+import TradeInactive from '../../../../assets/svgs/TradeInactive';
+import EarnInactive from '../../../../assets/svgs/EarnInactive';
+import EarnActive from '../../../../assets/svgs/EarnActive';
+import HomeInactive from '../../../../assets/svgs/HomeInactive';
+import HomeActive from '../../../../assets/svgs/HomeActive';
+import DebitcardActive from '../../../../assets/svgs/DebitcardActive';
+import DebitcardInactive from '../../../../assets/svgs/DebitcardInactive';
+import BorrowActive from '../../../../assets/svgs/BorrowActive';
+import BorrowInactive from '../../../../assets/svgs/BorrowInactive';
 
 import AccountScreen from '../AccountScreen/AccountScreen';
 import TransactionsScreen from '../TransactionsScreen/TransactionsScreen';
@@ -94,16 +102,17 @@ export default observer(({ navigation }) => {
     <>
       <Tab.Navigator
         tabBarOptions={{
-       style: {
-         position: 'absolute',
-         borderTopRightRadius: 30,
-         borderTopLeftRadius: 30,
-         borderTopColor: 'transparent',
-         backgroundColor: 'transparent',
-         },
-         activeTintColor: colors.white,
-        inactiveTintColor: colors.white,
-        showLabel: true,
+          style: {
+            position: 'absolute',
+            borderTopRightRadius: 30,
+            borderTopLeftRadius: 30,
+            borderTopColor: 'transparent',
+            backgroundColor: 'transparent',
+            top: '92%',
+          },
+          activeTintColor: colors.white,
+          inactiveTintColor: colors.white,
+          showLabel: true,
         }}
         initialRouteName={HOME_PAGE}
       >
@@ -211,16 +220,31 @@ export default observer(({ navigation }) => {
           name={HOME_PAGE}
           component={HomePages}
           options={{
-          tabBarIcon: ({ focused }) => (focused ? (
-            <View style={tabStyles.activeTab}>
-              <Image source={require('../../../../assets/images/HomeActive.png')} style={{ width: 90, height: 90 }} />
-            </View>
-          ) : (
-            <View style={tabStyles.tab}>
-              <Image source={require('../../../../assets/images/HomeInactive.png')} style={{ width: 60, height: 60 }} />
-            </View>
-          )),
-        }}
+            tabBarIcon: ({ focused }) => (focused ? (
+              <View style={tabStyles.activeTab}>
+                <HomeActive />
+              </View>
+            ) : (
+              <View style={tabStyles.tab}>
+                <HomeInactive />
+              </View>
+            )),
+          }}
+        />
+        <Tab.Screen
+          name="Debit card"
+          component={DebitCard}
+          options={{
+            tabBarIcon: ({ focused }) => (focused ? (
+              <View style={tabStyles.activeTab}>
+                <DebitcardActive />
+              </View>
+            ) : (
+              <View style={tabStyles.tab}>
+                <DebitcardInactive />
+              </View>
+            )),
+          }}
         />
         <Tab.Screen
           name="Debit card"
@@ -241,17 +265,17 @@ export default observer(({ navigation }) => {
           name={BORROW}
           component={BorrowPages}
           options={{
-          tabBarIcon: ({ focused }) => (focused ? (
-            <View style={tabStyles.activeTab}>
-              {/* <TransactionsActiveImage /> */}
-              <Image source={require('../../../../assets/images/BorrowActiveImg.png')} style={{ width: 90, height: 90 }} />
-            </View>
-          ) : (
-            <View style={tabStyles.tab}>
-              <Image source={require('../../../../assets/images/BorrowInActiveImg.png')} style={{ width: 60, height: 60 }} />
-            </View>
-          )),
-        }}
+            tabBarIcon: ({ focused }) => (focused ? (
+              <View style={tabStyles.activeTab}>
+                {/* <TransactionsActiveImage /> */}
+                <BorrowActive />
+              </View>
+            ) : (
+              <View style={tabStyles.tab}>
+                <BorrowInactive />
+              </View>
+            )),
+          }}
         />
       </Tab.Navigator>
 

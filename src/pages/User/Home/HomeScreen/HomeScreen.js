@@ -63,7 +63,6 @@ const priceChartToBeRemoved = [
     price: '$190.21',
     percentage: '+2,5%',
     percentage: '+57.7%',
-
   },
 ];
 
@@ -100,7 +99,6 @@ export default function HomeScreen({ navigation }) {
       setKycChecked(true);
     }
   };
-
 
   useEffect(() => {
     getKYCData();

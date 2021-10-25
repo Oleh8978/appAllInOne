@@ -31,9 +31,6 @@ export default function Card({
 }) {
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState('');
-
-  console.log('Store.wallets.exchangeRates ', Store.wallets.exchangeRates)
-
   const repayCreditFunc = async (targetType, targetId, amount) => {
     await repayCredit(targetType, targetId, amount);
   };
@@ -263,7 +260,6 @@ export default function Card({
     if (!data.type && typeOfInfo === 'loan') {
       return <Text>Loan</Text>;
     }
-
     if (!data.type && typeOfInfo === 'flexible deposit') {
       return <Text>Flexible deposit</Text>;
     }

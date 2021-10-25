@@ -38,6 +38,11 @@ export default StyleSheet.create({
     },
     leftText: {
         marginRight: 'auto',
+        fontFamily: 'Gotham Pro',
+    },
+    rightText: {
+        fontSize: 15,
+        color: colors.lightGreen,
         marginTop: 3,
         fontSize: 15,
         lineHeight: 21,
