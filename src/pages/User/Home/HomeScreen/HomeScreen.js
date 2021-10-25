@@ -8,7 +8,7 @@ import FooterBackground from '../../../../components/FooterBackground/FooterBack
 
 import { TWO_FACTOR_AUTH } from '../../../../../constants/navigation/authenticationScreens';
 
-import { KNOW_YOUR_CUSTOMER } from '../../../../../constants/navigation/userScreens';
+import { KNOW_YOUR_CUSTOMER, NOTIFICATION_PAGE } from '../../../../../constants/navigation/userScreens';
 
 import { MAIN_SCREN_2FA } from '../../../../../constants/navigation/twoFactorAuth';
 
@@ -22,7 +22,7 @@ import ArrowDown from '../../../../../assets/svgs/ArrowDown';
 import ArrowUpImage from '../../../../../assets/svgs/ArrowUpImage';
 import CheckImage from '../../../../../assets/svgs/CheckImage';
 
-import getKycStatus from '../../../../../services/getKycStatus';
+import store from '../../../../store';
 
 import styles from './HomeScreen.styles';
 import colors from '../../../../../styles/colors';
@@ -56,7 +56,6 @@ const priceChartToBeRemoved = [
     name: 'Bitcoin',
     price: '$50,018.00',
     percentage: '+0,5%',
-    chart: '../../../../../assets/images/chartFakeBTC.png',
   },
   {
     type: 'ETH',
@@ -64,8 +63,6 @@ const priceChartToBeRemoved = [
     price: '$190.21',
     percentage: '+2,5%',
     percentage: '+57.7%',
-    chart: '../../../../../assets/images/chartFakeLTC',
-
   },
 ];
 
@@ -92,20 +89,16 @@ const dataPosibilities = [
   },
 ];
 
-export default function LoanInfo({ navigation }) {
+export default function HomeScreen({ navigation }) {
   const [credit, setCredit] = useState('42.000');
   const [isBalanceOpened, setIsBalanceOpened] = useState(false);
   const [kycChecked, setKycChecked] = useState(false);
 
   const getKYCData = async () => {
-    const data = await getKycStatus();
-    console.log(data);
-    if (Number(data.tier) >= 4) {
+    if (Number(store.user.KYCProgress) >= 2) {
       setKycChecked(true);
     }
   };
-
-  console.log('kycChecked ', kycChecked);
 
   useEffect(() => {
     getKYCData();
@@ -138,13 +131,15 @@ export default function LoanInfo({ navigation }) {
         text="Available Balance"
         credit={credit}
         isHomeScreen
+        navigation={navigation}
+        rightFunct={() => navigation.navigate(NOTIFICATION_PAGE)}
       />
       <ScrollView
         style={styles.mainWrapper}
         showsVerticalScrollIndicator={false}
         nestedScrollEnabled
       >
-        <View style={{ position: 'relative', right: 10, maxWidth: '95%' }}>
+        <View style={{ marginLeft: 0, marginRight: 15 }}>
           {isBalanceOpened === true
             ? (
               <TouchableOpacity
@@ -157,7 +152,7 @@ export default function LoanInfo({ navigation }) {
                   </Text>
                   <ArrowUpImage />
                 </View>
-                <View>
+                <View style={{ marginTop: 16 }}>
                   {dataToBeRemoved.map((item) => <BalanceDetailsComponent data={item} key={Math.random()} />)}
                 </View>
               </TouchableOpacity>
@@ -176,7 +171,7 @@ export default function LoanInfo({ navigation }) {
         </View>
         <View style={styles.priceChart}>
           <Text style={styles.priceChartText}>
-            Price Chart
+            Price Charts
           </Text>
           <ScrollView
             style={styles.ItemsChartContainer}
@@ -220,7 +215,7 @@ export default function LoanInfo({ navigation }) {
                   height: 20,
                   borderRadius: 2,
                   borderWidth: 1,
-                  borderColor: colors.white,
+                  borderColor: kycChecked ? colors.lightBlue : colors.white,
                   justifyContent: 'center',
                   alignItems: 'center',
                   marginLeft: 'auto',
@@ -231,13 +226,7 @@ export default function LoanInfo({ navigation }) {
               </View>
               <Text
                 style={{
-                  marginLeft: 0,
-                  marginTop: 'auto',
-                  marginBottom: 0,
-                  marginRight: 'auto',
-                  fontWeight: 'bold',
-                  fontSize: 15,
-                  fontFamily: 'Gotham Pro',
+                  ...styles.kycTextTop,
                   color: kycChecked ? colors.lightBlue : colors.white,
                   }}
               >
@@ -245,12 +234,7 @@ export default function LoanInfo({ navigation }) {
               </Text>
               <Text
                 style={{
-                  marginLeft: 0,
-                  marginBottom: 0,
-                  marginRight: 'auto',
-                  fontWeight: 'bold',
-                  fontSize: 15,
-                  fontFamily: 'Gotham Pro',
+                  ...styles.KYCTextBottom,
                   color: kycChecked ? colors.lightBlue : colors.white,
                   }}
               >

@@ -8,6 +8,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignContent: 'space-between',
         marginTop: 8,
+        height: 40,
     },
     textOne: {
         flex: 1,

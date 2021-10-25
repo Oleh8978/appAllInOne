@@ -1,11 +1,17 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../../../../styles/colors';
-import shadow from '../../../../../styles/mixins/shadowBlock';
-import roundedLayer from '../../../../../styles/mixins/roundedLayer';
+import colors from '../../../../styles/colors';
+import shadow from '../../../../styles/mixins/shadowBlock';
 
 export default StyleSheet.create({
     mainWrapper: {
-        ...roundedLayer,
+        height: '100%',
+        minHeight: '100%',
+        width: '100%',
+        marginBottom: -20,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+        backgroundColor: colors.whitePurpule,
+        paddingRight: 0,
     },
     balanceClick: {
         ...shadow,
@@ -22,14 +28,12 @@ export default StyleSheet.create({
     },
     balanceClickLeft: {
         fontStyle: 'normal',
-        fontWeight: '600',
+        fontWeight: 'normal',
         fontSize: 16,
-        lineHeight: 16,
         color: colors.lightBlue,
         marginLeft: 0,
-        marginTop: 3,
         marginRight: 'auto',
-        // fontFamily: 'Gotham Pro',
+        fontFamily: 'Gotham Pro',
     },
     blockOpened: {
         flexDirection: 'row',
@@ -47,8 +51,7 @@ export default StyleSheet.create({
     priceChartText: {
         fontSize: 16,
         marginBottom: 10,
-        // fontFamily: 'Gotham Pro',
-        fontWeight: '600',
+        fontFamily: 'Gotham Pro',
     },
     fontSizeItemChartContainer: {
         flexDirection: 'row',
@@ -63,8 +66,7 @@ export default StyleSheet.create({
         marginTop: 30,
         marginBottom: 10,
         fontSize: 16,
-        fontWeight: '600',
-        // fontFamily: 'Gotham Pro',
+        fontFamily: 'Gotham Pro',
     },
     wrapperItemsSteps: {
         ...shadow,
@@ -87,21 +89,23 @@ export default StyleSheet.create({
         flexDirection: 'column',
         padding: 10,
     },
-    kycTextTop: {
-        marginLeft: 0,
-        marginTop: 'auto',
-        marginBottom: 0,
-        marginRight: 'auto',
-        fontWeight: 'bold',
-        fontSize: 15,
-        fontWeight: '600',
+    pressButton: {
+        marginTop: 10,
+        marginRight: 15,
+        marginLeft: 'auto',
+        height: 40,
+        width: 110,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
-    KYCTextBottom: {
-        marginLeft: 0,
-        marginBottom: 0,
-        marginRight: 'auto',
-        fontWeight: 'bold',
-        fontSize: 15,
-        fontWeight: '600',
+    texLeft: {
+        color: colors.lightBlue,
+        fontSize: 14,
+        lineHeight: 13,
+        textDecorationLine: 'underline',
+        fontFamily: 'Gotham Pro',
+    },
+    itemsWrapper: {
+        paddingHorizontal: 15,
     },
 });

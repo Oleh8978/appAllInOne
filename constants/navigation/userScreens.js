@@ -24,4 +24,10 @@ export const INFO_CREDIT = 'INFO_CREDIT';
 export const INFO_LOAN = 'INFO_LOAN ';
 export const RECIVE_FOUNDS = 'RECIVE_FOUNDS';
 export const HOME = 'HOME';
-export const HOME_PAGE = 'Home';
+export const HOME_PAGE = 'HOME_PAGE';
+
+export const NOTIFICATION_PAGE = 'NOTIFICATION_PAGE';
+
+export const EARN_PAGE = 'EARN_PAGE';
+export const EARN_MAIN = 'EARN_MAIN';
+export const EARN_DEPOSIT = 'EARN_DEPOSIT';

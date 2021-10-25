@@ -63,7 +63,19 @@ function PageHeader({
       case 'bell':
         return (
           <TouchableOpacity onPress={rightFunct}>
-            <Bell style={{ marginLeft: 'auto', marginRight: 0 }} />
+            <View
+              style={{
+             ...styles.bellContainer,
+             marginTop: -2,
+            }}
+            >
+              <View style={{ ...styles.numberContainer }}>
+                <Text style={{ ...styles.numberText }}>
+                  3
+                </Text>
+              </View>
+              <Bell />
+            </View>
           </TouchableOpacity>
         );
       default:
@@ -80,14 +92,32 @@ function PageHeader({
             onPress={() => { onDeposit(); }}
           >
             <DepositHome />
-            <Text style={{ fontFamily: 'Gotham Pro' }}>Deposit</Text>
+            <Text
+              style={{
+               fontFamily: 'Gotham Pro',
+               color: colors.darkBlue,
+               fontSize: 13,
+               lineHeight: 13,
+               }}
+            >
+              Deposit
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.mainBottomRight}
             nPress={() => { console.log('chistory'); }}
           >
             <WithdrawHome />
-            <Text style={{ fontFamily: 'Gotham Pro' }}>Withdraw</Text>
+            <Text
+              style={{
+               fontFamily: 'Gotham Pro',
+               color: colors.darkBlue,
+               fontSize: 13,
+               lineHeight: 13,
+               }}
+            >
+              Withdraw
+            </Text>
           </TouchableOpacity>
         </View>
       );
@@ -110,7 +140,13 @@ function PageHeader({
             onPress={() => { onDeposit(); }}
           >
             <DepositHome />
-            <Text style={{ fontFamily: 'Gotham Pro' }}>Deposit</Text>
+            <Text 
+             style={{ 
+               fontFamily: 'Gotham Pro', 
+               color: colors.darkBlue, 
+              }}
+            >
+              Deposit</Text>
           </TouchableOpacity>
         </View>
 );

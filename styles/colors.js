@@ -17,7 +17,11 @@ export default {
   orange: '#FFA53B',
 
   lightBlue: '#6560E0',
+  greenText: '#24CA49',
   darkBlue: '#392994',
   lightGreen: '#BCF6DF',
   darkGreen: '#38E39F',
+  errorColor: '#FF3B30',
+  whitePurpule: '#FAFAFF',
+  greyText: '#848CA5',
 };
