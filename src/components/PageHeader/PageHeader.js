@@ -27,6 +27,7 @@ function PageHeader({
   text = 'Available credit',
   isHomeScreen = false,
   isEarn = false,
+  isDebitCard = false,
   stylesMainblock = {},
 }) {
   const onDeposit = async () => {
@@ -142,7 +143,7 @@ function PageHeader({
       <View style={styles.mainTop}>
         <View style={styles.leftBlock}>
           <TouchableOpacity onPress={menuFunc}>
-            <MenuLines style={{ marginLeft: 0, marginRight: 'auto' }} />
+            <MenuLines style={{ marginLeft: 0, marginRight: 'auto', display: `${isDebitCard ? 'none' : 'flex'}` }} />
           </TouchableOpacity>
         </View>
         <View style={styles.centerBlock}>
