@@ -16,14 +16,13 @@ export default StyleSheet.create({
     lineHeight: 45,
     textAlign: 'center',
     color: colors.white,
-    fontFamily: 'Gotham Pro',
     fontWeight: 'bold',
     fontSize: 30,
   },
   cardImage: {
-    top: '-2%',
+    top: '-3%',
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: 10,
   },
   cardChecboxContainer: {
     width: '100%',

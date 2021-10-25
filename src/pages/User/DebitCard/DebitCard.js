@@ -15,7 +15,7 @@ import PageHeader from '../../../components/PageHeader/PageHeader';
 import ChekMark from '../../../../assets/svgs/ChekMark';
 import DefaultButton from '../../../components/DefaultButton/DefaultButton';
 import DebitCardBackground from '../../../../assets/svgs/DebitCardBackground';
-import DebitCardImage from '../../../../assets/svgs/DebitCardImage';
+import DebitCardImage from '../../../../assets/images/DebitCards.png';
 
 const DebitCard = () => (
   <LinearGradient
@@ -45,11 +45,9 @@ const DebitCard = () => (
             Your Rhino
             Debit Card!
           </Text>
-          {/* <DebitCardImage /> */}
-          <Image
-            source={require('../../../../assets/images/DebitCards.png')}
-            style={styles.cardImage}
-          />
+          <View style={styles.cardImage}>
+            <Image source={DebitCardImage} />
+          </View>
         </View>
         <View style={styles.cardChecboxContainer}>
           <View style={styles.cardCheckbox}>
@@ -71,7 +69,7 @@ const DebitCard = () => (
             width: '90%',
             justifyContent: 'center',
             marginHorizontal: 20,
-            fontWeight: 500,
+            fontWeight: 'bold',
             marginTop: 15,
             marginBottom: 40,
           }}
