@@ -37,6 +37,7 @@ export default StyleSheet.create({
         width: '100%',
     },
     leftText: {
+        marginTop: 7,
         marginRight: 'auto',
         fontFamily: 'Gotham Pro',
     },
