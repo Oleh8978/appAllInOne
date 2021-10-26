@@ -26,10 +26,12 @@ export default StyleSheet.create({
     zIndex: 1,
   },
   topText: {
-    fontFamily: 'Gotham Pro',
     textAlign: 'center',
     fontSize: DEVICE_WIDTH <= 375 ? 20 : 24,
     marginTop: 14,
+    marginLeft: 70,
+    fontSize: 20,
+    fontWeight: '500',
   },
   bellContainer: {
     width: 40,

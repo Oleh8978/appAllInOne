@@ -20,11 +20,12 @@ export default StyleSheet.create({
     },
     mainHeader: {
         fontSize: 32,
+        lineHeight: 38,
         textAlign: 'center',
         maxWidth: 190,
         marginLeft: 'auto',
         marginRight: 'auto',
-        fontFamily: 'Gotham Pro',
+        fontWeight: '400'
     },
     subHeader: {
         width: '90%',
@@ -32,6 +33,7 @@ export default StyleSheet.create({
         textAlign: 'center',
         marginBottom: 30,
         fontFamily: 'Gotham Pro',
+        lineHeight: 21,
     },
 
 });

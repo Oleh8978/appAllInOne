@@ -20,13 +20,15 @@ export default StyleSheet.create({
     headerMain: {
         fontSize: 32,
         textAlign: 'center',
-        fontFamily: 'Gotham Pro',
+        lineHeight: 38,
+        fontWeight: '400'
     },
     subHeader: {
         marginTop: 10,
         textAlign: 'center',
         maxWidth: '90%',
         fontSize: 15,
+        lineHeight: 21,
         marginBottom: 20,
         fontFamily: 'Gotham Pro',
     },

@@ -63,6 +63,11 @@ export default function CreditLineInfo({ navigation }) {
       <Header
         navigation={navigation}
         topText="Credit line details"
+        customStyles={{
+          marginLeft: 70,
+          fontSize: 20,
+          fontWeight: '500',
+        }}
       />
       <View style={styles.underHeader}>
         <Text style={styles.underHeaderTopText}>
