@@ -92,22 +92,6 @@ const dataPosibilities = [
 export default function HomeScreen({ navigation }) {
   const [credit, setCredit] = useState('42.000');
   const [isBalanceOpened, setIsBalanceOpened] = useState(false);
-  const [kycChecked, setKycChecked] = useState(false);
-
-  const getKYCData = async () => {
-    if (Number(store.user.KYCProgress) >= 2) {
-      setKycChecked(true);
-    }
-  };
-
-  useEffect(() => {
-    getKYCData();
-    const unsubscribe = navigation.addListener('focus', () => {
-      getKYCData();
-    });
-
-    return unsubscribe;
-  }, [navigation]);
 
     const TWOFA = () => {
         navigation.navigate(TWO_FACTOR_AUTH);
@@ -202,7 +186,7 @@ export default function HomeScreen({ navigation }) {
         >
           <TouchableOpacity style={{ ...styles.wrapperItemsSteps, width: 115, height: 114 }} onPress={() => KYC()}>
             <LinearGradient
-              colors={kycChecked === false ? [
+              colors={Number(store.user.KYCProgress) <= 2 ? [
                  colors.lightBlue,
                  colors.darkBlue,
                 //  colors.white,
@@ -215,19 +199,19 @@ export default function HomeScreen({ navigation }) {
                   height: 20,
                   borderRadius: 2,
                   borderWidth: 1,
-                  borderColor: kycChecked ? colors.lightBlue : colors.white,
+                  borderColor: Number(store.user.KYCProgress) >= 2 ? colors.lightBlue : colors.white,
                   justifyContent: 'center',
                   alignItems: 'center',
                   marginLeft: 'auto',
                   marginRight: 0,
                   }}
               >
-                {kycChecked && <CheckImage />}
+                {Number(store.user.KYCProgress) >= 2 && <CheckImage />}
               </View>
               <Text
                 style={{
                   ...styles.kycTextTop,
-                  color: kycChecked ? colors.lightBlue : colors.white,
+                  color: Number(store.user.KYCProgress) >= 2 ? colors.lightBlue : colors.white,
                   }}
               >
                 KYC
@@ -235,7 +219,7 @@ export default function HomeScreen({ navigation }) {
               <Text
                 style={{
                   ...styles.KYCTextBottom,
-                  color: kycChecked ? colors.lightBlue : colors.white,
+                  color: Number(store.user.KYCProgress) >= 2 ? colors.lightBlue : colors.white,
                   }}
               >
                 verefication
